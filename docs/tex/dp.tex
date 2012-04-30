@@ -1,0 +1,232 @@
+% preambule dokumentu
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{dipp2}
+\begin{document}
+\pagestyle{headings}
+
+
+% uvodni cast zaverecne prace
+\titul{Webová architektura v prostředí vysoké zátěže}{Bc. Jakub Škrha}{Ing. Michael Štencl, Ph.D.}{Brno 2012}
+\podekovani{Text poděkování}
+\prohlaseni{Text prohlášení}{místo a datum prohlášení}
+\abstract{Citace práce v anglickém jazyce}{abstrakt práce v anglickém jazyce}
+\abstrakt{Citace práce v českém jazyce}{abstrakt práce v českém jazyce}
+\obsah
+\cislovat{3}
+
+
+
+% Uvod
+\kapitola{Úvod}
+Něco na téma jak vzniká vysoká zátěž na iternetu, jaký je vliv internetu, roustoucí zájem o internet a stoupající zátěž. Uvidíme, napíšu to jako poslední.
+
+
+% Nezadouci vlivy
+\kapitola{Nežádoucí vlivy a důsledky vysoké zátěže}
+Co může způsobit vysoká zátěž, pád serverů, projektů, škoda pro firmy
+
+
+% Zneuziti
+\kapitola{Zneužití vysoké zátěže}
+Různé typu útoků DoS, Anonymous
+
+
+% Tri a vice vrstev
+\kapitola{Tří a vícevrstvá architektura webových systémů}
+Třívrstvá architektura je začátek, ovšem v praci nestačí. Obrázky a příklady architektur projektů s vysokou zátěží. Lehké představení dalších možných vrstev.
+
+
+% Aplikacni vrstva
+\kapitola{Aplikační vrstva}
+Aplikační vrstva je základ. Realizuje a sestavuje odpovědi na požadavky uživatelů.
+
+\sekce{Webová aplikační architektura MVC}
+Webové projekty jsou dnes tvořeny na této architektuře. Proč a co to je.
+
+\sekce{Druhy aplikačních vrstev}
+Něco o JAVA Spring, C sharp, Pearl, Python a PHP.
+
+\sekce{Webový server Apache}
+Popis webového serveru apache, jeho úlohy, proč se používá, proč o něm píšu a proč ho já používám pro svoji práci.
+
+\sekce{Programovací jazyk PHP}
+Je to rozšířený jazyk pro svoji jednoduchost, čitelnost, ohebnost a dynamičnost.
+
+\sekce{Ajax a webové služby}
+Ajax na straně klienta, webová služba na straně aplikace. Stránky jsou dynamické a skládané z více požadavků.
+
+
+
+% Databaze
+\kapitola{Dabázová vrstva}
+Úloha perzistence dat. Stará se o data, odlehčení aplikace, apod.
+
+\sekce{Optimalizace SQL dotazů}
+Proč a jak optimalizovat dotazy
+
+\sekce{Indexace}
+Proč jsou dobré indexy
+
+\sekce{Partitioning}
+Kdy a jak používat partitioning
+
+\sekce{Replikace}
+Něco o replikacích a proč se používají.
+
+\sekce{Druhy databází}
+Něco málo o MySQL, Oracle, PostgreSQl, MSSQL.
+
+\sekce{PostgreSQL}
+Co je to za databázi a proč jsem si ji vybral pro svoji práci.
+
+
+
+% Web cache
+\kapitola{Webová cache}
+Proč webovou cache, proč se používá a k čemu je dobrá. Urychlení odezvy, odlehčení jiným požadavkům na aplikaci, apod.
+
+\sekce{Druhy cache}
+Popsat jednotlivé druhy browser, proxy, reverse proxy a aplikační cache
+
+\sekce{Typy obsahu}
+Popsat typy obsahu pro cache. Dynamický vs. statický
+
+\sekce{Proxy cache a cache prohlížeče}
+Klientská část, kde a kdo ji instaluje a kdy a jak se používá.
+
+\sekce{Reverzní proxy cache}
+Serverová část, kde a kdo ji instaluje a kdy a jak se používá.
+
+\podsekce{Nginx}
+Popis NGINX a proč jsem ho vybral.
+
+\sekce{Aplikační a distribuovaná cache}
+Popis aplikačních a distribuovaných cache, jaký je jejich smysl a kde je jejich použití
+
+\podsekce{Memcached}
+Popis Memcached a proč jsem ji vybral
+
+
+% Dalsi vrstvy
+\kapitola{Další vrstvy aplikace}
+K čemu jsou další vrstvy
+
+\sekce{CDN}
+Content delivery network obrázky a stream.
+
+\sekce{NoSQL Databáze}
+K čemu slouží a kde najdou své uplatnění.
+
+\sekce{Vyhledávání}
+Z vyhledávání se také dělá další vrstva.
+
+
+
+% Virtualizace
+\kapitola{Virtualizace}
+Projekty dnes neběží vždy na jednom serveru, ale na více virtualizovaných serverech. Proč tomu tak je.
+
+
+% Load balancing
+\kapitola{Load balancing}
+Nevím jestli k této kapitole se vůbec dostanu, uvidíme. Každopádně serverů bývá vždy několik a jak zajišťovat toto rozložení zátěže.
+
+
+% Cloud computing
+\kapitola{Cloud Computing}
+Budoucnost projektů, startupů, vše řešeno cloudem. AWS
+
+
+% Prakticka cast
+\kapitola{Praktická část a experimenty}
+Úvod do toho, že se budu praktickou částí snažit dosáhnout nasymolování vytížené webové architektury a optimalizovat jednotlivé vrstvy v rámci možností.
+
+% Popis aplikace a nastroju
+\sekce{Aplikace a její vrstvy}
+Představení aplikace, její síťové schéma, jednotlivé vrstvy s popisem, domény, apod.
+
+\sekce{Testovací nástroje}
+Popis toho co sleduji testovacími nástroji
+
+\podsekce{XHProf}
+K profilování
+
+\podsekce{Siege}
+Pro generování zátěže
+
+\podsekce{PostgreSQL Explain}
+Vysvětlení sql dotazů
+
+% APC
+\sekce{Aplikační vrstva PHP}
+Tady se budeme snažit optimalizovat PHP kód.
+
+\podsekce{Optimalizace PHP pomocí APC}
+Jak se chovala aplikace bez APC a co dosahnu APC
+
+\podsekce{Dosažené výsledky}
+Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+
+% Databaze
+\sekce{Databázová vrstvy}
+Tady se budeme snažit optimalizovat databázi.
+
+\podsekce{Optimalizace databáze}
+Co jsem použil pro optimalizaci
+
+\podsekce{Dosažené výsledky}
+Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+
+% Memcached
+\sekce{Aplikační cache}
+Tady se budeme snažit optimalizovat databázy.
+
+\podsekce{Optimalizace aplikace pomocí Memcached}
+Co jsem udělal s Memcached, jednotlivé vrstvy modelu, popis toho čeho chci dosáhnout.
+
+\podsekce{Diagram tříd pro aplikaci s podporou Memcached}
+Diagram tříd mé aplikace
+
+\podsekce{Dosažené výsledky}
+Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+
+% Reverse Proxy Cache
+\sekce{Reverzní proxy cache}
+Tady se budeme snažit použít reverzní proxy cache.
+
+\podsekce{Nasazení a konfigurace NGINX s Memcached}
+Jak jsem co dělal s NGINX, problémy, řešení, návrh architektury a jak to ovlivňuje aplikační vrstvu
+
+\podsekce{Význam Ajax a webových služeb pro NGINX}
+Ajax komunikuje s NGINX, proč a jak.
+
+\podsekce{Dosažené výsledky}
+Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+
+
+% Diskuze
+\kapitola{Diskuze}
+Diskutovaná řešení, jak je možné je kombinovat, apod.
+
+
+
+% Zaver
+\kapitola{Závěr}
+Závěr ve smyslu nákladů a přínosů, kdy je lepší co. Uvidíme, napíšu jako poslední.
+
+
+
+
+
+
+% \obrazek
+% \vlozobrbox{test.jpg}{100mm}{100mm}
+% \endobr{Popis obrázku}
+% \begin{literatura}
+% \citace{ucebnice}{Novák, 1991}{\autor{Novák, J.} a~kol.
+% \nazev{Konstrukční vlastnosti ocelí třídy 18}. Praha:
+% SNTL, 1991. 439~s. ISBN 80-8432-289-9.}
+% \end{literatura}
+
+\end{document}
