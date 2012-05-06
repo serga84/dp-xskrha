@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  30 APR 2012 02:15
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  6 MAY 2012 22:22
 entering extended mode
  %&-line parsing enabled.
 **dp.tex
@@ -332,52 +332,193 @@ LaTeX Font Info:    External font `cmex10' loaded for size
  [6] [7
 
 
-] [8
+]
+Underfull \hbox (badness 1533) in paragraph at lines 28--29
+\OT1/cmr/m/n/12 pou^^Tz^^S^^Pv^^San^^S^^P a reg-is-trac^^S^^Pm a samoz^^Trejm^^
+Te v^^Syd^^Telku z ap-likace. Obecn^^Te se d^^Sa
+ []
 
-] [9
-
-] [10
-
-] [11
-
-] [12
-
-] [13
-
-] [14
-
-] [15
-
-] [16
-
-] [17
-
-] [18
-
-] [19] [20
+[8
 
 ]
-[21
+Underfull \hbox (badness 1014) in paragraph at lines 44--45
+[]\OT1/cmr/m/n/12 T^^S^^Pm druh^^Sym a daleko nebezpe^^Tcn^^Tej^^Ts^^S^^Pm ^^Su
+mysln^^Sym zp^^Wusobem lze mno-hdy
+ []
 
-] (./dp.aux) ) 
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.48 ...e a tedy i nějaký útok.\cite{anonymous}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.48 ...e a tedy i nějaký útok.\cite{anonymous}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+[9
+
+] [10] <../images/3layer.png, id=40, 371.3875pt x 125.46875pt>
+File: ../images/3layer.png Graphic file (type png)
+
+<use ../images/3layer.png>
+<../images/wikimedia.png, id=42, 705.63625pt x 449.68pt>
+File: ../images/wikimedia.png Graphic file (type png)
+
+<use ../images/wikimedia.png> [11
+
+ <../images/3layer.png> <../images/wikimedia.png (PNG copy)>]
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.75 ...i do tří modulů. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.77 ...ní do vrstvy View. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.79 ...a pro přehlednost. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.82 ...acích přístupů. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+<../images/mvc.png, id=48, 423.5825pt x 298.11375pt>
+File: ../images/mvc.png Graphic file (type png)
+ <use ../images/mvc.png>
+[12
+
+ <../images/mvc.png>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 94.
+ (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
+
+[13] [14] [15
+
+] [16]
+Underfull \hbox (badness 1033) in paragraph at lines 169--170
+[]\OT1/cmr/m/n/12 Replikace vari-anty master-slave je pod-porov^^Sana ve v^^Tet
+^^Tsin^^Te datab^^Sazov^^Sych
+ []
+
+[17]
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.175 ...kací jen těžko obejde.\cite{replikace}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.175 ...kací jen těžko obejde.\cite{replikace}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+[18] [19
+
+] [20
+
+] [21
+
+] [22
+
+] [23
+
+] [24
+
+] [25] [26] [27
+
+] [28
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
+[]\OT1/cmr/m/sc/12 Doc.Ing.Jaroslav Zen-dulka,CSc. \OT1/cmr/m/it/12 VUT-FIT: 10
+. Ar-chitek-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 348--349
+\OT1/cmr/m/it/12 tura klient/server a t^^Tr^^S^^Pvrstv^^Sa ar-chitek-tura \OT1/
+cmr/m/n/12 [on-line]. Dos-tupn^^Se z:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
+[]\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-mal-izace v Or-a-cle
+ \OT1/cmr/m/n/12 Praha: Uni-corn Col-
+ []
+
+
+Underfull \hbox (badness 5316) in paragraph at lines 358--359
+\OT1/cmr/m/n/12 lege, 2010. 47 s. Dos-tupn^^Se z: http://www.unicorncollege.cz/
+katalog-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
+\OT1/cmr/m/n/12 bakalarskych-praci/bohdan-blaha/attachments/Blaha[]Bohdan[]-
+ []
+
+[29] (./dp.aux) ) 
 Here is how much of TeX's memory you used:
- 1198 strings out of 495027
- 13767 string characters out of 1181419
- 68453 words of memory out of 3000000
- 4405 multiletter control sequences out of 15000+50000
- 10901 words of font info for 38 fonts, out of 3000000 for 9000
+ 1249 strings out of 495027
+ 14605 string characters out of 1181419
+ 73673 words of memory out of 3000000
+ 4446 multiletter control sequences out of 15000+50000
+ 11849 words of font info for 41 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
- 26i,8n,23p,215b,227s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.p
-fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texl
-ive/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmss17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmssbx10.pfb>
-Output written on dp.pdf (21 pages, 118305 bytes).
+ 26i,8n,23p,1801b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
+2.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on dp.pdf (29 pages, 374629 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
+ 145 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 
