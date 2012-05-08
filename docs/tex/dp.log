@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  6 MAY 2012 22:22
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  8 MAY 2012 22:58
 entering extended mode
  %&-line parsing enabled.
 **dp.tex
@@ -379,7 +379,7 @@ File: ../images/wikimedia.png Graphic file (type png)
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.75 ...i do tří modulů. \cite{design-patterns}
+l.74 ...i do tří modulů. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -388,7 +388,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.77 ...ní do vrstvy View. \cite{design-patterns}
+l.76 ...ní do vrstvy View. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -397,7 +397,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.79 ...a pro přehlednost. \cite{design-patterns}
+l.78 ...a pro přehlednost. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -406,7 +406,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.82 ...acích přístupů. \cite{design-patterns}
+l.81 ...acích přístupů. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -418,17 +418,17 @@ File: ../images/mvc.png Graphic file (type png)
 [12
 
  <../images/mvc.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 94.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 93.
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 94.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 93.
 
 [13] [14] [15
 
 ] [16]
-Underfull \hbox (badness 1033) in paragraph at lines 169--170
+Underfull \hbox (badness 1033) in paragraph at lines 167--168
 []\OT1/cmr/m/n/12 Replikace vari-anty master-slave je pod-porov^^Sana ve v^^Tet
 ^^Tsin^^Te datab^^Sazov^^Sych
  []
@@ -437,7 +437,7 @@ Underfull \hbox (badness 1033) in paragraph at lines 169--170
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.175 ...kací jen těžko obejde.\cite{replikace}
+l.173 ...kací jen těžko obejde.\cite{replikace}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -446,79 +446,128 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.175 ...kací jen těžko obejde.\cite{replikace}
+l.173 ...kací jen těžko obejde.\cite{replikace}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
 your output. But keep trying; you can fix this later.
 
-[18] [19
+[18] <../images/cache-process.png, id=73, 401.24907pt x 357.58594pt>
+File: ../images/cache-process.png Graphic file (type png)
 
-] [20
+<use ../images/cache-process.png> [19
 
-] [21
+ <../images/cache-process.png (PNG copy)>] [20] <../images/cache-types.jpg, id=
+81, 704.6325pt x 110.4125pt>
+File: ../images/cache-types.jpg Graphic file (type jpg)
 
-] [22
+<use ../images/cache-types.jpg> [21 <../images/cache-types.jpg>] [22] [23]
+[24
 
-] [23
+] [25
 
-] [24
+] [26
 
-] [25] [26] [27
+] [27
 
 ] [28
 
+] [29] [30] [31
+
+] [32
+
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 []\OT1/cmr/m/sc/12 Doc.Ing.Jaroslav Zen-dulka,CSc. \OT1/cmr/m/it/12 VUT-FIT: 10
 . Ar-chitek-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 348--349
+Underfull \hbox (badness 10000) in paragraph at lines 378--379
 \OT1/cmr/m/it/12 tura klient/server a t^^Tr^^S^^Pvrstv^^Sa ar-chitek-tura \OT1/
 cmr/m/n/12 [on-line]. Dos-tupn^^Se z:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 []\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-mal-izace v Or-a-cle
  \OT1/cmr/m/n/12 Praha: Uni-corn Col-
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 358--359
+Underfull \hbox (badness 5316) in paragraph at lines 388--389
 \OT1/cmr/m/n/12 lege, 2010. 47 s. Dos-tupn^^Se z: http://www.unicorncollege.cz/
 katalog-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 358--359
+Underfull \hbox (badness 10000) in paragraph at lines 388--389
 \OT1/cmr/m/n/12 bakalarskych-praci/bohdan-blaha/attachments/Blaha[]Bohdan[]-
  []
 
-[29] (./dp.aux) ) 
+! Missing $ inserted.
+<inserted text> 
+                $
+l.400 ...upné z: http://www.mnot.net/cache_docs/}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.401 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.401 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.401 
+      
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[33] (./dp.aux) ) 
 Here is how much of TeX's memory you used:
- 1249 strings out of 495027
- 14605 string characters out of 1181419
- 73673 words of memory out of 3000000
- 4446 multiletter control sequences out of 15000+50000
- 11849 words of font info for 41 fonts, out of 3000000 for 9000
+ 1265 strings out of 495027
+ 14942 string characters out of 1181419
+ 73712 words of memory out of 3000000
+ 4458 multiletter control sequences out of 15000+50000
+ 12017 words of font info for 42 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  26i,8n,23p,1801b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
 2.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17
-.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on dp.pdf (29 pages, 374629 bytes).
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/p
+ublic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
+ts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/
+public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmtt8.pfb>
+Output written on dp.pdf (33 pages, 449942 bytes).
 PDF statistics:
- 145 PDF objects out of 1000 (max. 8388607)
+ 172 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -49,13 +49,12 @@ Právě v dnešních dnech se stává symbolem boje za svobodu internetu skupina
 
 
 
-
 % Tri a vice vrstev
 \kapitola{Tří a vícevrstvá architektura webových systémů}
 Webová architektura je ve svém základu třívrstvá. První vrstvu tvoří klient, neboli uživatel se svým Hardware a Software, a svými aplikačními požadavky. Druhou vrstvu tvoří aplikační server, který zpracovává požadavky aplikace, tedy požadavky klienta, zpracuje tento požadavek, vytvoří odpověď a zašle zpět klientovi. Ovšem k tomu, aby mohl tuto odpověď vytvořit, potřebuje i data aplikace, která jsou uloženy v perzistentní databázi, která tvoří třetí a poslední vrstvu třívrstvé architektury. Každá z vrstev, tedy prezentační, aplikační i datová má své místo a svou správu v aplikaci.\cite{tri-vrstvy}
 
 \obrazek
-\vlozeps{../images/3layer.png}{0.4}
+\vlozeps{../images/3layer.png}{0.6}
 \endobr{Tří vrstvá architektura webových aplikací}
 
 V architektuře webových aplikací s vysokou zátěží už je potřeba jiného přístupu. V tomto případě se dá říci, že je třívrstvá architektura nedostačující. Je potřeba počítat se síťovími prvky pro load balancing, s více aplikačními stroji, s databázovými replikacemi, s DNS řešením pro geografické rozdělení zátěže, s CDN pro rozdělení zátěže přidělování obsahu, s vrstvami pro cache aplikace a s dalšími vrstvami pro backendové či frontendové aplikace a služby. V tomto případě neexstuje žádné jasně dané a pevné řešení, každá aplikace si s sebou nese své individuální a charakteristické řešení a strategii, i když některé osvědčené postupy se opakují. Tyto strategie už nesou název vícevrstvá architektura.
@@ -112,7 +111,6 @@ Existuje celá škála různých programovacích jazyků a webových serverů pr
 
 \sekce{Ajax a webové služby}
 Ajax, neboli Asynchronous JavaScript and XML, se dnes stává nedílnou součástí při vývoji webových aplikací. Aplikace tak dostávájí interaktivnější charakter bez nutnosti znovuzaslání celého požadavku webové aplikaci. Celý tento přístup probíhá nejvíce na straně klienta. Je použito javascriptu pro programovou implementaci, který má přístup ke stromu objektů dokumentu zvaného DOM, neboli Document Object Model. Do aplikační vrstvy jsem se rozhodl přidat AJAX z toho důvodu, že používá objekt XMLHttpRequest pro komunikaci s aplikačním serverem. Tyto aplikační požadavky jsou nazývány webovými službami pro Ajax. Tyto požadavky jsou vykonávány na aplikační vrstvě a představují potenciální zátěž, která musí být i v některých případech optimalizována.\cite{ajax}
-
 
 
 
@@ -189,30 +187,62 @@ V dnešní době existuje několik druhů relačních databázových systémů. 
 
 
 % Web cache
-\kapitola{Webová cache}
-Proč webovou cache, proč se používá a k čemu je dobrá. Urychlení odezvy, odlehčení jiným požadavkům na aplikaci, apod.
+\kapitola{Webové cache}
+Webové cache jsou důležitou vrstvou pro rozšíření výchozí třívrstvé architektury. Jak už napovídá z názvu cache, jedná se o vyrovnávací paměť jejíž hlavní účel je zrychlit odpověď webové aplikace na požadavek klienta. Zároveň je důležité poznamenat, že nefunkčnost, zánik či pád cache vrstvy nesmí nijak ovlivnit chod apikace, která musí být funkční i nadále. Účel této vrstvy je pouze zrychlit přístup k datům či již jednou interpretovaných odpovědí webové aplikace.
 
-\sekce{Druhy cache}
-Popsat jednotlivé druhy browser, proxy, reverse proxy a aplikační cache
+Webová cache se tak nachází mezi klientem a aplikační vrstvou. Základní komunikace probíhá tak, že klient pošle HTTP požadavek, aplikační server ho příjme a navrátí HTTP odpověď. Při existenci cache vrstvy probíhá komunikace jiným způsobem. Klient pošle HTTP požadavek a webová architektura zjistí, zda-li je tento HTTP požadavek určen pro ukládání do cache paměti. Pokud ano, tak webová architektura zkusí získat odpověď z cache paměti. Když tuto odpověď v paměti nalezne, zašle jej přímo klientovi. V opačném případě je požadavek poslán do aplikační vrstvy architektury, která jej zpracuje, vytvoří odpověď kterou uloží do cache paměti a pošle klientovi. Při příštím stejném požadavku bude odpověď vrácena z paměti cache. Dojde-li ke změně dat, která jsou uložena v cache paměti, dojde k invalidaci uložených dat v cache paměti a celý proces začne od začátku s novým HTTP požadavkem.
+
+Pro webové architektury v prostředí vysoké zátěže je tato vrstva nevyhnutelná. Odpovědi z cache vrstvy jsou daleko rychlejší, dokonce až mnohonásobně, než odpovědi z aplikační vrstvy. Ve své práci se zabývám právě různými druhy cache a z výsledků profilování a testování vyplývá, že jsou tato tvrzení pravdivá.
+
+\obrazek
+\vlozeps{../images/cache-process.png}{0.6}
+\endobr{Diagram aktivit cache webových systémů}
 
 \sekce{Typy obsahu}
-Popsat typy obsahu pro cache. Dynamický vs. statický
+Z pohledu ukládání do cache paměti je přístup a druh obsahu webové architektury rozdělen na dva typy. Obsah může být buď statického nebo dynamického charakteru. Jak už vyplývá z obecné teorie systémů, statický obsah je konečný, transaprentní a měněn podle předepsaných pravidel, zatím co dynamický obsah se mění v závislosti na čase a jiných nepředvídatelných pravidlech. Například invalidace u statického obsahu proběhne pouze jednou za deset minut. A i když je obsah změněn uprostřed tohoto intervalu, změna se projeví až v přelomu těchto pravidelných desetiminutových intervalů, tedy až po invalidaci. Obsah je tak celých deset minut statický a neměnný. Naopak dynamický obsah se může změnit kdykoli, nepředvídatelně, typicky na nějakou uživatelovu činnost a nebo podle času. Například při vložení komentáře se ihned změní seznam komentářů. U dynamické ukládání dat do cache paměti je tak potřeba se zaměřit především na jejich změnu, tedy na jejich invalidaci.
 
-\sekce{Proxy cache a cache prohlížeče}
-Klientská část, kde a kdo ji instaluje a kdy a jak se používá.
+Z uvedených vlastností vyplývá, že správa cache paměti statického obsahu je jednodušší, kdežto správa cache dynamického přístupu je náročnější. Ve své práci ukazuji, analyzuji a testuji oba dva přístupy a srovnávám jejich přínos jak z pohledu aplikace, tak náročnosti na vybudování.
 
-\sekce{Reverzní proxy cache}
-Serverová část, kde a kdo ji instaluje a kdy a jak se používá.
+\sekce{HTTP hlavičky pro ovládání cache}
+Komunikace ve webových aplikacích probíhá ve valné většině na úrovni protokolu HTTP. Každý HTTP požadavek obsahuje HTTP hlavičky, kterými určuje požadavek, klienta a obsahuje časové razítko. Odpověď na tento požadavek navrací v hlavičkách návratový kód, informace o serveru, časové razítko, typ obsahu odpovědi, délku odpovědi a informace pro případné ukládání do cache paměti. Právě jednotlivé cache hlavičky jsou důležité pro nastavení ukládání a invalidace do proxy cache paměti nebo do reverzní proxy cache paměti.
 
-\podsekce{Nginx}
-Popis NGINX a proč jsem ho vybral.
+Existují dva základní modely pro určení práce s cache vrstvou. Prvním je expirační model. Tento model určuje, do kdy je platná HTTP odpověď, neboli do kdy může tuto odpověď cache vrstva ukládat a označovat ji jako platnou a stále čerstvou. Tento model může být realizován dvěma způsoby. Prvním je hlavička "Expires" udávající časové razítko do kdy je odpověď čerstvá. Druhým, novějším, daleko flexibilnější a konfigurovatelnější způsobem je použití "Cache-control". Díky tomuto způsobu je možné určit další parametry a to nejenom do kdy je daná HTTP odpověď platná. Je možné tím i určit, zda-li je určena jen pro sdílené cache (proxy cache), nebo jen pro uživatelské prohlížečové cache, nebo zda-li je ukládat či nikoli, atd.\cite{rfc-http}
 
-\sekce{Aplikační a distribuovaná cache}
-Popis aplikačních a distribuovaných cache, jaký je jejich smysl a kde je jejich použití
+Druhým modelem je model validační. Ten určuje způsob komunikace pro zjištění, zda-li je odpověď uložená v cache paměti stále validní. Základem je, že cache, která má uloženu odpověď se zeptá je-li odpověď stále validní a server odpoví jestli ano či vrátí novou čerstvou odpověď. Realizováno to může být opět dvěma způsoby. Tím prvním je určení tzv. "Last-Modified". Při prvním požadavku cache získá odpověď s touto hlavičkoku. Odpověď si uloží a při dalším požadavku se cache vrstva dotáže serveru pomocí hlavičky "If-Modified-Since" s časovým razítkem, zda-li je odpověď stále validní. Server odpoví návratovým kódem 304, který říká že nedošlo k žádné změně od daného časového razítka, a nebo vrátí novou čerstvou odpověď pokud došlo ke změně. Podobný princip je založen i na způsobu pomocí hlavičky "Etag" neboli "Entity tag". Etag je nějaký unikátní identifikátor vygenerovaný serverem pro danou HTTP odpověď. Cache vrstva si při prvním požadavku uloží odpověď s tímto Etag. Při dalším požadavku pošle na server HTTP požadavek s hlavičkou "If-None-Match" s tímto Etag. Pokud se Etag shodují, vrátí aplikačnín server odpověď s návratovým kódem 304, a nebo celou čerstvou odpověď.\cite{rfc-http}
 
-\podsekce{Memcached}
-Popis Memcached a proč jsem ji vybral
+Ovládání pomocí HTTP hlaviček slouží hlavně k statiskému obsahu. Pro tento účel je pak dobré zvážit jestli je lepsí odpovědi měnit v nějakých časových intervalech a používat tak expirační model, či jestli se nevyplatí nasazovat model validační, který nese složitější administraci.
 
+\sekce{Druhy cache}
+Ve webových architekturách exstuje několik druhů cache vrstev. Jejich členění se odvyjí od jejich účelu, pozici v architektuře a typu ukládaných dat. Tyto atributy mezi sebou neúzce souvisí. Základním členěním může být jejich pozice z pohledu internetu, a to na klientskou a serverovou část. Za klientskou část považujeme cache systém uživatelova prohlížeče, či systémovější proxy cache. Na straně serveru se vyskytují reverse proxy cache či distribuované cache.
+
+\obrazek
+\vlozeps{../images/cache-types.jpg}{0.6}
+\endobr{Druhy cache webových systémů}
+
+\podsekce{Proxy cache a cache prohlížeče}
+Tyto druhy cache se týkají klientské části webové architektury, neboli části před internetem. Znamená to tedy, že odpověď na klientův požadavek je vrácena z cache paměti lokální sítě, a tento požadavek vůbec nevstoupí do internetu na vzdálený dotazovaný server. Tyto cache vrstvy zde nejsou jen pro to, aby zrychlily odevzvu na požadavek, ale také aby zmenšily odchozí komunikaci z lokální sítě. A to z toho důvodu, aby byla šířka pásma přístupná i jiným službám, a ušetřili se prostředky za odchozí komunikaci.
+
+V dnešních moderních prohlížečích je práce s cache pamětí podporována. Cache prohlížeče může nastavovat, konfigurovat, či vymazat pouze uživatel, neboli klient sám. Tato paměť ukládá hlavně statický obsah, například obrázky, CSS soubory či JS soubory. Cache paměť najde své uplatnění například když jsou uživatelovi požadavky směřovány jedné webové aplikaci se stejným vzhledem, rozhranním a nebo částí funkcionalit. Takováto data mohou být ukládána do cache paměti na dlouhou dobu, a proto musí aplikace dbát na to, aby byla tato data z cache promazávána tak jak je opravdu potřeba. Jednou z možností je určit jinou url adresu pro stejný soubor, pomocí tzv. "Query string", například takto:
+
+\begin{scriptsize}
+\begin{verbatim}
+<link rel="stylesheet" type="text/css" href="style.css?QUERY_STRING" media="all" />
+\end{verbatim}
+\end{scriptsize}
+
+Proxy cache bývají budovány a instalovány providery a poskytovali připojení k internetu. Jejich záměr je jednoduchý. Jde o to snížit míru odchozí komunikace, nezatěžovat tolik šířku pásma a zmenšit tak náklady spojené s touto komunikací. Nejběžnějším nastavením těchto proxy cache pamětí bývá ukládání a invalidace obsahu v závislosti na HTTP hlavičkách přijaté odpovědi. Nainstalujeme-li například takovouto cache ve firmě či nějakém sídlišti s několika desítky, sty či dokonce až tisíci uživateli, je možné, že část z nich má každé ráno stejný požadavek na stejný zpravodajský server, tudíž mají i stejnou odpověď. A tak může být první odpověď uložena do cache paměti a těm dalším uživatelům může být odpověď servírována z proxy cache paměti.\cite{proxy-cache}
+
+\podsekce{Reverzní proxy cache}
+Reverzní proxy cache, někdy označovány jako tzv. "Gateway cache", mají podobný systém činnosti jako proxy cache. Mají za úkol ukládat statický obsah ve formě HTTP odpovědí a tyto odpovědi vracet nazpět odkud přišel jejich požadavek. Úkolem je tak pokud možno nepropustit požadavek dále na aplikační vrstvu, stejně jako úkolem proxy cache je pokud možno nepropouštět požadavek dále do internetu. Rozdíl mezi reverzní proxy cache a proxy cache spočívá v jejich pozici ve webové architektuře, a také v tom, kým jsou instalovány. Pozice reverzní proxy cache je na straně serveru, neboli blíže aplikační vrstvě architektury, tedy na druhé straně internetu, než odkud příchází požadavky klientů a kde jsou instalovány proxy cache. Reverzní proxy cache jsou instalovány samotnými administrátory a programátory webové aplikace. Jejich účel je zajistit rychlejší odezvu webové aplikace na HTTP požadavky klientů. Reverzní proxy cache jsou nedílnou součástí webové architektury v prostředí vysoké zátěže a bez jejich existence by jen těžko mohla být webová aplikace spolehlivá a rychlá.\cite{proxy-cache}
+
+\podsekce{Aplikační distribuovaná cache}
+Doposud byly popisovány cache paměti pro ukládání statického obsahu. Ovšem v praxi se od projektového vedení setkáme s požadavky na dynamické chování aplikace. Příkladem může posloužit opět situace s komentáři, kdy jeden uživatel vloží komentář k některému z článků. Tento komentář se musí okamžitě objevit v seznamu komentářů k článku. V případě statického obsahu, který se mění pouze v nějakých intervalech, může uživatel nabýt dojmu, že tento komentář se nepodařilo vložit a zkusí ho vložit znovu. Takovéto chování aplikace určitě není v souladu s dobrým chováním interakce mezi uživatelem a aplikací. K tomu, aby se dala data ukládat do cache a aplikace byla stále dynamická, slouží tzv. aplikační distribuovaná cache. HTTP požadavek je tak rozdistribuován mezi menší požadavky a mezi cache paměti.
+
+Jak už vyplývá z názvu druhu této cache, o manipulaci s touto cache pamětí se stará aplikační vrstva. Standartně se ukládají do cache paměti ta data, k nimž je dlouhá doba přístupu, obvykle data z databáze. Účelem je tedy ušetřit spojení a dotazy nad databází. Jeden HTTP požadavek s konkrétní url je často rozdělen na několik požadavků do databáze, v závislosti na tom, o která data se jedná. Například v rámci jedné HTTP stránky může být databáze dotázána o požadovaný článek a seznam komentářů pod článkem. Databáze tak obdrží dva SQL dotazy, na které vrátí příslušná data z databáze. Aby se příště aplikace nemusela na tato data dotazovat, uloží si je do aplikační cache paměti.
+
+Při ukládání takových dat do cache paměti aplikační vrstva určuje jak a kam mají být data uložena, a kdy a za jakých podmínek mají být invalidována. Při aplikaci této cache vrsty dochází k propuštění požadavku na aplikační servery, což znamená větší zátěž aplikační vrstvy. Reverzní proxy cache jsou v tomto směru nepoužitelné, slouží pouze pro statický obsah a všechny požadavky propouští dále na aplikační vrstvu.
+
+Při práci s aplikační distribuovanou cache je důležité si uvědomit několik základních pravidel. Prvním pravidlem je ukládat data do cache paměti co nejmenší. Účelem je tak distribuovat jednotlivá data v různých kontextech. Dále je důležité ukládat data znovuzkonstruovatelná. Je důležité umět z cache paměti přečíst to, co do ní bylo uloženo. Nejlepší je ukládat data serializovaná. Dále je důležité dodržet jednoznačný a jasně definovaný klíč či jmenný prostor pro tato data. Je totiž důležité vědět kde a jak se ptát na data. Největším problémem je invalidace dat v cache paměti. Stejná data mohou být interpretována v různém kontextu. Například při vložení nového článku se změní data pro seznam všech nejnovějších článků, a také data pro seznam nejnovějších článků v dané rubrice. Aplikace má za požadavek dynamické chování, a tak musí být tento článek vidět ihned po vložení ve všech zmíněných kategorií. Čili musí dojít k invalidaci všech závislostí. Tento problém je označován jako invalidační kaskády, a proto je důležité konstruovat aplikaci tak, aby se těmto kaskádám vyhýbalo co nejvíce či s nimi počítat už pří návrhu aplikační cache vrstvy.
 
 % Dalsi vrstvy
 \kapitola{Další vrstvy aplikace}
@@ -362,6 +392,13 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 
 \citace{replikace}{Tomáš Vondra, 2011}{\autor{Tomáš Vondra}
 \nazev{Replikace v PostgreSQL} CSPUG Konference 2011}
+
+\citace{rfc-http}{RFC:2616, 1999}{\autor{R. Fielding, UC Irvine, J. Gettys, J. Mogul, Compaq, H. Frystyk, L. Masinter, Xerox, P. Leach, Microsoft, T. Berners-Lee, W3C/MIT}
+\nazev{RFC:2616 - Hypertext Transfer Protocol -- HTTP/1.1}}
+
+\citace{proxy-cache}{Mark Nottingham, 2012}{\autor{Mark Nottingham}
+\nazev{CACHING TUTORIAL for Web Authors and Webmasters} [online]. Dostupné z: http://www.mnot.net/cache_docs/}
+
 
 \end{literatura}
 
