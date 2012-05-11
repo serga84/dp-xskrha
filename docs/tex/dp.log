@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  8 MAY 2012 22:58
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  12 MAY 2012 00:50
 entering extended mode
  %&-line parsing enabled.
 **dp.tex
@@ -470,104 +470,105 @@ File: ../images/cache-types.jpg Graphic file (type jpg)
 
 ] [27
 
-] [28
+]
+<../images/more-layers.png, id=105, 674.52pt x 179.67125pt>
+File: ../images/more-layers.png Graphic file (type png)
 
-] [29] [30] [31
+<use ../images/more-layers.png> [28
 
-] [32
+ <../images/more-layers.png>] [29]
+Underfull \hbox (badness 10000) in paragraph at lines 351--355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 351--355
+
+ []
+
+[30] [31] <../images/graph-apc.png, id=120, 854.19125pt x 645.41125pt>
+File: ../images/graph-apc.png Graphic file (type png)
+
+<use ../images/graph-apc.png>
+<../images/top-apc.png, id=121, 643.40375pt x 505.89pt>
+File: ../images/top-apc.png Graphic file (type png)
+
+<use ../images/top-apc.png> [32] [33 <../images/graph-apc.png (PNG copy)> <../i
+mages/top-apc.png (PNG copy)>] [34
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+<../images/graph-db.png, id=131, 856.19875pt x 641.39626pt>
+File: ../images/graph-db.png Graphic file (type png)
+
+<use ../images/graph-db.png>
+<../images/xhprof-model-db-no-optim.png, id=132, 935.495pt x 616.3025pt>
+File: ../images/xhprof-model-db-no-optim.png Graphic file (type png)
+
+<use ../images/xhprof-model-db-no-optim.png>
+<../images/xhprof-model-db-optim.png, id=133, 935.495pt x 608.2725pt>
+File: ../images/xhprof-model-db-optim.png Graphic file (type png)
+
+<use ../images/xhprof-model-db-optim.png> [35
+
+ <../images/graph-db.png (PNG copy)>] [36 <../images/xhprof-model-db-no-optim.p
+ng (PNG copy)> <../images/xhprof-model-db-optim.png (PNG copy)>] [37
+
+] [38] [39
+
+] [40
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
 []\OT1/cmr/m/sc/12 Doc.Ing.Jaroslav Zen-dulka,CSc. \OT1/cmr/m/it/12 VUT-FIT: 10
 . Ar-chitek-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+Underfull \hbox (badness 10000) in paragraph at lines 529--530
 \OT1/cmr/m/it/12 tura klient/server a t^^Tr^^S^^Pvrstv^^Sa ar-chitek-tura \OT1/
 cmr/m/n/12 [on-line]. Dos-tupn^^Se z:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--389
+Underfull \hbox (badness 10000) in paragraph at lines 539--540
 []\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-mal-izace v Or-a-cle
  \OT1/cmr/m/n/12 Praha: Uni-corn Col-
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 388--389
+Underfull \hbox (badness 5316) in paragraph at lines 539--540
 \OT1/cmr/m/n/12 lege, 2010. 47 s. Dos-tupn^^Se z: http://www.unicorncollege.cz/
 katalog-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--389
+Underfull \hbox (badness 10000) in paragraph at lines 539--540
 \OT1/cmr/m/n/12 bakalarskych-praci/bohdan-blaha/attachments/Blaha[]Bohdan[]-
  []
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.400 ...upné z: http://www.mnot.net/cache_docs/}
-                                                  
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.401 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.401 
-      
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Extra }, or forgotten \endgroup.
-\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
-                                                  \fi 
-l.401 
-      
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
-
-[33] (./dp.aux) ) 
+[41] (./dp.aux) ) 
 Here is how much of TeX's memory you used:
- 1265 strings out of 495027
- 14942 string characters out of 1181419
- 73712 words of memory out of 3000000
- 4458 multiletter control sequences out of 15000+50000
+ 1296 strings out of 495027
+ 15824 string characters out of 1181419
+ 73733 words of memory out of 3000000
+ 4483 multiletter control sequences out of 15000+50000
  12017 words of font info for 42 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
- 26i,8n,23p,1801b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 26i,8n,21p,1801b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
 2.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfon
-ts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
-onts/cm/cmtt8.pfb>
-Output written on dp.pdf (33 pages, 449942 bytes).
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texm
+f-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></us
+r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on dp.pdf (41 pages, 876706 bytes).
 PDF statistics:
- 172 PDF objects out of 1000 (max. 8388607)
+ 198 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

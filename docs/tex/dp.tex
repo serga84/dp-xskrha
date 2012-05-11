@@ -278,48 +278,199 @@ Budoucnost projektů, startupů, vše řešeno cloudem. AWS
 
 % Prakticka cast
 \kapitola{Praktická část s experimenty a výsledky}
-Úvod do toho, že se budu praktickou částí snažit dosáhnout nasymolování vytížené webové architektury a optimalizovat jednotlivé vrstvy v rámci možností.
+V praktické části se zaměřuji na testy, optimalizaci jednotlivých vrstev webové architektury v prostředí vysoké zátěže. Rozebírám zde jednotlivé vrstvy architektury, tedy aplikační vrstvu, databázovou vrstvu, reverzni cache vrstvu a aplikační distribuoavanou cache. Součástí práce nejsou pouze popis a charakteristika jendotlivých kroků optimalizace, ale i jejich výsledné statistiky a zátěžové testy. Hlavní částí praktické části je ovšem návrh a implementace aplikační úrovně plně podporující práci s aplikační distribuovanou cache. Dále je popsána i výsledná konfigurace a nastavení jednotlivých vrstev architektury. Výsledkem je tedy kompletní použitelná studie řešící problematiku webové architektury v prostředí vysoké zátěže.
 
 % Popis aplikace a nastroju
-\sekce{Aplikace a její vrstvy}
-Představení aplikace, její síťové schéma, jednotlivé vrstvy s popisem, domény, apod.
+\sekce{Vrstvy webové architektury}
+Webová architektura sestává z klientské vrstvy, reverzní proxy cache vrsrtvy, aplikační vrstvy, aplikační distribuované cache a databázové vrstvy. Klientská část je tvořena jedním uživatelem s operačním systémem Linux Ubuntu a zátěžovým testovacím nástrojem Siege. Reverzní proxy cache vrstva je realizována programem Nginx. Aplikační vrstva se skládá z webového serveru Apache2 s programovacím jazykem PHP a s profilovacím nástrojem XHProf. Aplikační distribuovaná cache vrstva je tvořena programem Memcached. Databází je PostgreSQL. Všechny tyto vrstvy serverové části jsou vytvořeny na zvláštních serverech. Pro reverzní proxy cache a aplikační distribuovanou cache byl zvolen jeden server. Každý ze serverů je virtualiziován za pomoci virtualizačního nástroje VirtualBox. Celá webová architektura je konfigurována v jedné virtuální lokální síti 10.9.0.0/24 se statikým přidělováním IP adres. Rozhraní pro přípojení těchto virtualizovaných serverů do virtuální sítě je realizováno pomocí síťových mostů. Vzhledem k tomu, abych mohl ukázat velké poměrové rozdíly v jednotlivých krocích optimalizace v jednotlivých vrstvách architektury, rozhodl jsem se o velice slabé hardwarové vybavení jednotlivých serverů, která mají 512MB operační paměti RAM a jeden jednojádrový procesor s frekvencí 2GHz.
 
-\sekce{Testovací nástroje}
-Popis toho co sleduji testovacími nástroji
+\obrazek
+\vlozeps{../images/more-layers.png}{0.6}
+\endobr{Vrstvy implementované webové architektury}
+
+\sekce{Testovací a profilovací nástroje}
+Proto, abych mohl všecha svá tvrzení a závěry řádně podložit a abych mohl identifikovat místa nutná pro optimalizaci, jsou potřeba určité testovací a profilovací nátroje. Pomocí profilovacího nástroje XHProf jsem vyprofiloval statistiky pro aplikační vrstvu. Udělal jsem rozbory exekučních plánu pro SQL dotazy pro databázovou vrstvu, aby byla vidět míra jejich míra optimalizace. Také bylo potřeba vytvořit prostředí vysoké zátěže.
 
 \podsekce{XHProf}
-K profilování
+K tomu, aby bylo možné profilovat programovací jazyk PHP, jsem zvolil profilovací nástroj XHProf. Tento nástroj byl vyvinut v programovacím jazyce C. Uvolněn byl pod open-source licencí Apache 2.0. Autorem tohoto profilovacího nástroje je společnost Facebook. Tento profilovací nástroj dokáže vyprofilovat nejenom dobu trvání jednotlivých metod a funkcí, ale i jejich procesorové či paměťové nároky. XHProf je možné provozovat na operačních systémech Linux, FreeBSD a Mac OS X.
+
+Jeho instalace a konfigurace je jednoducha a bezproblemova. Stačilo mi si stáhnout instalační balíček s rozšířením, zkomipilovat a nainstalovat. Po instalaci jej bylo nutné zaregistrovat jako rozšíření pro php v konfiguračním souboru php.ini. Samotné použití je pak velice snadné. Na začátek php skriptu jsem přidal zdrojový kód s jeho aktivací a na konci php skriptu kód pro jeho vypnutí.
+
+Výsledkem profilování je přehledná statistika jednotlivých metod a funkcí ve formátu HTML. Všechno v přehledné tabulce, ve které je možné měnit pohled výsledků profilování podle specifické metody či funce. V tabulce je možné pozorovat čas strávený vykonávání pouze dané funkce, čas strávený vykonávání i funkcí z ní volané, počet volání funkce, doba trvání, procesorové čas a paměťové nároky. Výsledkem může být i graf vygenerovaný z těchto statistik a ze závislostí mezi jednotlivými funkcemi.
+
+Tento program je nenáročný a může být provozován i v ostrém provozu. Výsledky takového profilování jsou důležité k identifikaci problémových míst k optimalizaci, čili pro webovou architekturu v prostředí vysoké zátěže jsou nevyhnutelné.\cite{xhprof}
+
+\newpage
+Příklad použití XHProf profilování:
+\begin{scriptsize}
+\begin{verbatim}
+<?php
+// Enable profiling
+if (extension_loaded('xhprof')) {
+    include_once '/usr/local/lib/php/xhprof_lib/utils/xhprof_lib.php';
+    include_once '/usr/local/lib/php/xhprof_lib/utils/xhprof_runs.php';
+    xhprof_enable(XHPROF_FLAGS_CPU + XHPROF_FLAGS_MEMORY);
+}
+
+// Php code for profiling
+...
+
+// Disable profiling
+if (extension_loaded('xhprof')) {
+    $profiler_namespace = 'myapp';  // namespace for your application
+    $xhprof_data = xhprof_disable();
+    $xhprof_runs = new XHProfRuns_Default();
+    $run_id = $xhprof_runs->save_run($xhprof_data, $profiler_namespace);
+}
+?>
+\end{verbatim}
+\end{scriptsize}
 
 \podsekce{Siege}
-Pro generování zátěže
+Vzhledem k tomu, abych mohl nasimulovat prostředí vysoké zátěže jsem zvolil testovací nástroj Siege. Siege je tedy nástrojem pro testování webových aplikací a jejich doby odezvy v prostředí vysoké zátěže. Tento nástroj má opět lehkou a přívětivou instalaci, nachází se totiž v základních instalačních balíčcích pro operační systém Linux Debian. Siege je programem spouštěným z příkazové řádky. Jako každý program, tak i siege má samozřejmě svůj konfigurační soubor, který je důležité hlavně pro nastavení maximální prováděcí doby jednotlivých testů.
+
+Volby parametrů tohoto příkazového programu jsou velice bohaté, ale přitom jednoduché pro pochopení a použití. Základními parametry jsou:
+
+\begin{itemize}
+\item c - počet simulovaných konkurentích uživatelů
+\item d - interval zpoždění mezi jednotlivými uživatelskými požadavky
+\item r - počet repetic pro zátěžové testy
+\end{itemize}
+
+Ve své práci jsem prováděl zátěžové testy simulováním deseti uživatelů, v intervalu od nuly do jedné sekundy ve třech repeticích. Spuštění vypadá takto:
+\begin{scriptsize}
+\begin{verbatim}
+siege -d1 -c10 -r3 -v http://dp-xskrha.local/hello/Mendelu
+\end{verbatim}
+\end{scriptsize}
+
 
 \podsekce{PostgreSQL Explain}
-Vysvětlení sql dotazů
+Pro konkrétní analýzu problémových SQL dotazů je potřeba identifikovat a analyzovat jejich exekuční plán. V databázi PostgreSQL a ve většině databázích k tomu slouží příkaz explain, který takto zobrazí exekuční plán. Ve své práci jsem analyzoval problémová místa pomocí XHProf profilování, ze kterého jsem zjistil, že všechna ploblémová místa souvisí s dotazi pro databázi. Po této fázi identifikace následovala fáze vysvětlení pomoc SQL dotazu explain.
+
+Pomocí explain je možné vysvětlit všechny kroky exekučního plánu. Zjistíme tak jaký způsob prohledání byl zvolen, zda-li sekvenční nebo indexový. Dále je možné zjistit druh spojení, jestli merge join nebo hash join, apod. U jednotlivých kroků exekučního plánu je zobrazena jejich cenu, předpokládaný počet řádků a předpokládaný počet sloupců. Takto je možné identifikovat slabá místa exekučního plánu a provést tak možnou úspěšnou optimalizaci.\\
+\\
+\\ Ukázka analýzy exekučního plánu:
+\begin{scriptsize}
+\begin{verbatim}
+explain analyze select * from film f where film_id in (select film_id from film_actor);
+                                   QUERY PLAN
+--------------------------------------------------------------------------------------------
+Hash Join  (cost=117.26..195.78 rows=977 width=390) (actual time=21.067..26.570 rows=997 loops=1)
+  Hash Cond: (f.film_id = film_actor.film_id)
+  -> Seq Scan on film f  (cost=0.00..65.00 rows=1000 width=390) 
+  	     (actual time=0.016..1.699 rows=1000 loops=1)
+  -> Hash (cost=105.05..105.05 rows=977 width=2) (actual time=21.029..21.029 rows=997 loops=1)
+    -> HashAggregate  (cost=95.28..105.05 rows=977 width=2) 
+           (actual time=17.598..19.298 rows=997 loops=1)
+       -> Seq Scan on film_actor  (cost=0.00..81.62 rows=5462 width=2) 
+              (actual time=0.012..8.019 rows=5462 loops=1)
+Total runtime: 28.020 ms
+\end{verbatim}
+\end{scriptsize}
+
 
 % APC
 \sekce{Aplikační vrstva PHP}
 Ve své aplikační vrstvě jsem zvolil pro implementaci programovací jazyk PHP běžící na webovém serveru Apache.
-
 Webový server Apache je jedním z nejrozšířenějších a nejpopulárnějším webovým serverem na internetu. Byl implementován v roce 1996 v jazyce C++. Jeho instalace, konfigurace a administrace není nikterak složitá. Na spoustě webových hostingů je dostupný v základní konfiguraci. Je to volně použitelný produkt, který obsahuje spoustu různých přídavných módů. Z těchto důvodů jsem ho vybral pro praktickou část své diplomové práce.
 
 Programovací jazyk PHP se stal jedním z nejpoužívanějších programovacích jazyků pro svoji srozumitelnost, přenositelnost a jednoduchost. Je to dynamicky typovaný programovací jazyk, čili i z těchto důvodů je hodně ohebný. Plně podporuje OOP přístup, čili je možné vyžívat těchto technik včetně návrhových vzorů, které jsou pro složité webové aplikace v prostředí vysoké zátěže velice důležité.
 
 
-\podsekce{Optimalizace PHP pomocí APC}
-Jak se chovala aplikace bez APC a co dosahnu APC
+\podsekce{Optimalizace pomocí APC}
+Programovací jazyk PHP je sice jednoduchý na vývoj, čitelnost a dynamičnosti, ovšem jeho daň je právě náročnost. Tento jazy je interepretovaný jazyk, čili při jeho interpretaci dochází k překladu do "Opcode" PHP kompilátorem. Vzniká tak jakýsi mezikód, který je následně po skončení překladu vykonán.
+
+K tomu, aby se nemusel pokaždé překládat stejný script PHP kompilátorem, je možné ho uložit do cache pro mezikód, neboli Opcode cache. K tomuto účelu slouží APC, neboli Alternative Opcode Cache. APC je rozšířením pro PHP vytvořené přímo samotnými tvůrci programovacího jazyka PHP. Toto rozšíření není nijak zvláště náročné na intalaci ani konfiguraci. Dokonce je k němu možné zprovoznit i webové rozhraní ukazující počet úspěšných či neúspěšných dotazů do cache a jiné další statistiky. Prostřednictvím APC programového rozhraní se dají do cache paměti ukládat i jiné další hodnoty, a to právě přímo ze zdrojových kódů. Úložištěm pro APC je operační paměť RAM. Z toho důvodu je tedy důležité, aby webserver Apache2 stále běžel zapnutý. Při restartu web serveru dojde k invalidace celé APC cache paměti.
+
+Většina interpretovaných jazyků je překládána do nějakého mezikódu. Proto se při žádné změně zdrojových kódů dá využít už jednou zkompilovaných výsledků. Tato forma recyklace zkompilovaného mezikódu dokáže přinést velké výsledky při optimalizaci. U APC jsou tyto výsledky více než viditelné.
 
 \podsekce{Dosažené výsledky}
-Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+Pro dosažení výsledků optimalizace aplikační vrstvy jsem vygeneroval prostředí vysoké zátěže deseti konkurenčních uživatelů s intervalem požadavků do jedné sekundy ve třech repeticích. Na aplikačním serveru tak vzniklo deset vláken Apache2 s PHP pro každého z uživatelů a celý procesorový výkon byl tak rozdělen rovnoměrně mezi jednotlivé vlákna po deseti procentech. Vytížení procesoru aplikačního serveru tak dosahovalo sta procent, čili maximálního vytížení. Tuto prostředí jsem nasimuloval jak pro neoptimalizované prostředí bez APC, tak i pro optimalizovné prostředí s APC. Pro každý požadavek docházelo ke zpracování celého MVC frameworku, čili ke zpracování mnoho funkcí a metod.
+
+Z XHProf profilování jsem vyprofiloval výsledky pro jeden požadavek jak pro APC, tak i bez APC. Výsledky toho profilování jsou takovéto:
+
+\begin{itemize}
+\item neoptimalované - bez APC - 1,3s
+\item optimalizované - s APC - 0,4s
+\end{itemize}
+
+Z výsledku vyplývá, že při optimalizaci aplikační vrstvy pomocí APC došlo k zrychlení provedení PHP skriptů o více než padesát procent, a to jak při jediném požadavku, tak i v prostředí vysoké zátěže. Takovýto fakt se dá určitě označit úspěšnou optimalizací. Alternativou může být použití přístupu s webovým serverem Lighttpd a s cache pamětí pro mezikód eAccelerator. Výsledky by měli být hodně podobné. V dnešních dnech se objevují a publikují zprávy o uvolnění HIP-HOP pro PHP od společnosti Facebook. HIP-HOP používá úplně jiného přístupu pro zrychlení běhu PHP scriptů. Tato varianta je dnes ještě hodně čerstvá a ne tak prověřená, ovšem představuje další možnosti pro optimalizaci aplikační vrstvy v prostředí vysoké zátěže v budoucích dnech.
+
+\obrazek
+\vlozeps{../images/graph-apc.png}{0.4}
+\endobr{Graf s výsledky doby trvání jednotlivých požadavků pro repetice}
+
+\obrazek
+\vlozeps{../images/top-apc.png}{0.4}
+\endobr{Výpis systémových procesů aplikačního serveru}
+
+\clearpage
 
 % Databaze
-\sekce{Databázová vrstvy}
-Tady se budeme snažit optimalizovat databázi.
+\sekce{Databázová vrstva}
+Databázová vrstva je důležitou a nezbytnou součástí webové architektury. Její úloha je perzistence dat pomocí databázového systému. Ovšem přístup k datům může být někdy velice zdlouhavý, až v řádech několik minut a hodin. V prostředí vysoké zátěže dochází obvykle k obrovskému růstu dat a je potřeba nastavit optimalizovat databázovou vrstvu tak, aby jejich doba přístupu byla co nejkratší.
+
+Ve své práci jsem vytvořil databázi nad databázovým systémem PostgreSQL. Tento systém je volně dostupný a najde velké uplatnění právě ve webových architekturách. Podporuje všechny standartní databázové operace a přístupy a je oblíben pro svoji spolehlivost.
+
+Databáze modelované aplikace obsahuje záznamy v řádech miliónů řádků. To z toho důvodu, aby bylo nasimulováno prostředí vysoké zátěže i s velkou databází. Datové záznamy byly pro potřeby mé práce vygenerovány a nepředstavují žádnou paralelu s reálnými daty.
 
 \podsekce{Optimalizace databáze}
-Co jsem použil pro optimalizaci
+Před samotnou optimalizací databázové vrstvy nebyla databáze žádným způsobem optimalizována, ať už za pomocí indexace, optimalizace SQL dotazů, segmentování či vytvoření replikací. Přístup k datům v databázi také nebyl žádným způsobem efektivní. Jednalo se o znovu se opakující dotazy a dokonce místo jednoho SQL dotazu se objevovalo více dotazů pro zjištění stejné inforační hodnoty. Rozhodl jsem se tedy pro aplikování kroku optimalizace databázové vrstvy pomocí optimalizace dotazů SQL.
+
+Pří procesu optimalizace jsem si napřed určil problematické sql dotazy pomocí XHProf profilování. Z tohoto procesu jsem zjistil které sql dotazy je potřeba zoptimalizovat. Dalším krokem následoval rozbor jejich exekučního plánu, vyhledání řešení a jeho aplikace. Řešením optimalizace některých z exukučních plánů byla indexace příslušných sloupců pro nahrazení sekvenčního prohledání za indexové prohledání. Zde je ukázka rozboru neoptimalizovaného exekučního plánu se sekvenčním prohledáním:
+
+\begin{scriptsize}
+\begin{verbatim}
+SELECT * FROM dp_comment WHERE article_id = 15 ORDER BY create_time DESC;
+-------------------------------------------------------------------------
+Sort  (cost=121201.07..121201.08 rows=3 width=540) (actual time=16300.440..16300.444 rows=3 loops=1)
+  Sort Key: create_time
+  Sort Method:  quicksort  Memory: 20kB
+  ->  Seq Scan on dp_comment  (cost=0.00..121201.05 rows=3 width=540) 
+          (actual time=13.531..16300.393 rows=3 loops=1)
+        Filter: (article_id = 15)
+Total runtime: 16300.526 ms
+\end{verbatim}
+\end{scriptsize}
+
+Po optimalizace je vidět, že sekvenční prohledání bylo odstraněno a nahrazeno indexovým prohledáním, které je daleko efektivnější:
+
+\clearpage
+\begin{scriptsize}
+\begin{verbatim}
+SELECT * FROM dp_comment WHERE article_id = 15 ORDER BY create_time DESC;
+-------------------------------------------------------------------------
+Sort  (cost=8.47..8.48 rows=3 width=540) (actual time=0.119..0.134 rows=4 loops=1)
+  Sort Key: create_time
+  Sort Method:  quicksort  Memory: 21kB
+  ->  Index Scan using dp_comment_article_id_fk_i on dp_comment  (cost=0.00..8.45 rows=3 width=540) 
+          (actual time=0.043..0.068 rows=4 loops=1)
+        Index Cond: (article_id = 1441)
+Total runtime: 0.303 ms
+\end{verbatim}
+\end{scriptsize}
 
 \podsekce{Dosažené výsledky}
-Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+Při optimalizaci dotazů jsem důkladně prozkoumával exekuční plány jednotlivých dlouhotrvajících SQL dotazů. Na spoustě místech byly řešitelné pomocí indexace. Abych tyto kroky potvrdil i pro prostředí vysoké zátěže, rozhodl jsem se nasimulovat prostředí vysoké zátěže opět pomocí programu siege, který vytvořil deset konkurenčních uživatelů s intervalem požadavku do jedné sekundy a ve třech repeticích. Test proběhl samozřejmě před i po kroku optimalizace.
+
+\obrazek
+\vlozeps{../images/graph-db.png}{0.4}
+\endobr{Graf s výsledky doby trvání jednotlivých požadavků pro repetice}
+
+\obrazek
+\vlozeps{../images/xhprof-model-db-no-optim.png}{0.4}
+\endobr{XHProf profilování aplikačního modelu databázových dotazů před optimalizací}
+
+\obrazek
+\vlozeps{../images/xhprof-model-db-optim.png}{0.4}
+\endobr{XHProf profilování aplikačního modelu databázových dotazů po optimalizací}
+
+\clearpage
+
+Z výsledků experimentu vyplývá, že SQL dotazy, které trvaly několik řádů sekund se zoptimalizovali až pod dobu jedné sekundy. Z grafu v prostředí vysoké zátěže je vidět, že před optimalizací byla maximální doba jednoho požadavku až 420 sekund. Celý proces byl hodně nestabilní a kolísavý. Po optimalizaci je viditelné ustálení činnosti databázového systému a zmenšení doby odezvy. Zrychlení je vidět až o více než padesát procent. Dalšími budoucími řešeními, která se by se dala aplikovat mohou být segmentace či replikace. Samotná optimalizace SQL dotazů řeší určité problémy, ovšem databáze může přerůst až do takových rozměrů, kdy je potřeba sáhnout k těmto řešením.
+
+Databázová vrstva bývá velice často největším zdrojem zpomalení. Dotazy na tuto vrstvu jsou nejnáročnější ze všech procesů skrze celou webovou architekturu. Proto je velice důležité tento proces nepodceňovat a věnovat tomu patřičné prostředky.
 
 % Memcached
 \sekce{Aplikační cache}
@@ -397,7 +548,10 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 \nazev{RFC:2616 - Hypertext Transfer Protocol -- HTTP/1.1}}
 
 \citace{proxy-cache}{Mark Nottingham, 2012}{\autor{Mark Nottingham}
-\nazev{CACHING TUTORIAL for Web Authors and Webmasters} [online]. Dostupné z: http://www.mnot.net/cache_docs/}
+\nazev{CACHING TUTORIAL for Web Authors and Webmasters} [online]. Dostupné z: http://www.mnot.net/cache\_docs/}
+
+\citace{xhprof}{Jakub Onderka, 2012}{\autor{Jakub Onderka}
+\nazev{Zdrojak.cz: Profilování PHP skriptů pomocí XHProf} [online]. Dostupné z: http://www.zdrojak.cz/clanky/profilovani-php-skriptu-pomoci-xhprof/}
 
 
 \end{literatura}

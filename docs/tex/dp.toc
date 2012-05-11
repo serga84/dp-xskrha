@@ -28,25 +28,25 @@
 \contentsline {section}{\numberline {10}Load balancing}{26}
 \contentsline {section}{\numberline {11}Cloud Computing}{27}
 \contentsline {section}{\numberline {12}Praktick\IeC {\'a} \IeC {\v c}\IeC {\'a}st s experimenty a v\IeC {\'y}sledky}{28}
-\contentsline {subsection}{\numberline {12.1}Aplikace a jej\IeC {\'\i } vrstvy}{28}
-\contentsline {subsection}{\numberline {12.2}Testovac\IeC {\'\i } n\IeC {\'a}stroje}{28}
-\contentsline {subsubsection}{\numberline {12.2.1}XHProf}{28}
-\contentsline {subsubsection}{\numberline {12.2.2}Siege}{28}
-\contentsline {subsubsection}{\numberline {12.2.3}PostgreSQL Explain}{28}
-\contentsline {subsection}{\numberline {12.3}Aplika\IeC {\v c}n\IeC {\'\i } vrstva PHP}{28}
-\contentsline {subsubsection}{\numberline {12.3.1}Optimalizace PHP pomoc\IeC {\'\i } APC}{28}
-\contentsline {subsubsection}{\numberline {12.3.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{29}
-\contentsline {subsection}{\numberline {12.4}Datab\IeC {\'a}zov\IeC {\'a} vrstvy}{29}
-\contentsline {subsubsection}{\numberline {12.4.1}Optimalizace datab\IeC {\'a}ze}{29}
-\contentsline {subsubsection}{\numberline {12.4.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{29}
-\contentsline {subsection}{\numberline {12.5}Aplika\IeC {\v c}n\IeC {\'\i } cache}{29}
-\contentsline {subsubsection}{\numberline {12.5.1}Optimalizace aplikace pomoc\IeC {\'\i } Memcached}{29}
-\contentsline {subsubsection}{\numberline {12.5.2}Diagram t\IeC {\v r}\IeC {\'\i }d pro aplikaci s podporou Memcached}{29}
-\contentsline {subsubsection}{\numberline {12.5.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{29}
-\contentsline {subsection}{\numberline {12.6}Reverzn\IeC {\'\i } proxy cache}{29}
-\contentsline {subsubsection}{\numberline {12.6.1}Nasazen\IeC {\'\i } a konfigurace NGINX s Memcached}{29}
-\contentsline {subsubsection}{\numberline {12.6.2}V\IeC {\'y}znam Ajax a webov\IeC {\'y}ch slu\IeC {\v z}eb pro NGINX}{29}
-\contentsline {subsubsection}{\numberline {12.6.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{30}
-\contentsline {section}{\numberline {13}Diskuze}{31}
-\contentsline {section}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{32}
-\contentsline {section}{\numberline {15}Literatura}{33}
+\contentsline {subsection}{\numberline {12.1}Vrstvy webov\IeC {\'e} architektury}{28}
+\contentsline {subsection}{\numberline {12.2}Testovac\IeC {\'\i } a profilovac\IeC {\'\i } n\IeC {\'a}stroje}{29}
+\contentsline {subsubsection}{\numberline {12.2.1}XHProf}{29}
+\contentsline {subsubsection}{\numberline {12.2.2}Siege}{30}
+\contentsline {subsubsection}{\numberline {12.2.3}PostgreSQL Explain}{30}
+\contentsline {subsection}{\numberline {12.3}Aplika\IeC {\v c}n\IeC {\'\i } vrstva PHP}{31}
+\contentsline {subsubsection}{\numberline {12.3.1}Optimalizace pomoc\IeC {\'\i } APC}{31}
+\contentsline {subsubsection}{\numberline {12.3.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{32}
+\contentsline {subsection}{\numberline {12.4}Datab\IeC {\'a}zov\IeC {\'a} vrstva}{34}
+\contentsline {subsubsection}{\numberline {12.4.1}Optimalizace datab\IeC {\'a}ze}{34}
+\contentsline {subsubsection}{\numberline {12.4.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{35}
+\contentsline {subsection}{\numberline {12.5}Aplika\IeC {\v c}n\IeC {\'\i } cache}{37}
+\contentsline {subsubsection}{\numberline {12.5.1}Optimalizace aplikace pomoc\IeC {\'\i } Memcached}{37}
+\contentsline {subsubsection}{\numberline {12.5.2}Diagram t\IeC {\v r}\IeC {\'\i }d pro aplikaci s podporou Memcached}{37}
+\contentsline {subsubsection}{\numberline {12.5.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{37}
+\contentsline {subsection}{\numberline {12.6}Reverzn\IeC {\'\i } proxy cache}{37}
+\contentsline {subsubsection}{\numberline {12.6.1}Nasazen\IeC {\'\i } a konfigurace NGINX s Memcached}{37}
+\contentsline {subsubsection}{\numberline {12.6.2}V\IeC {\'y}znam Ajax a webov\IeC {\'y}ch slu\IeC {\v z}eb pro NGINX}{37}
+\contentsline {subsubsection}{\numberline {12.6.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{38}
+\contentsline {section}{\numberline {13}Diskuze}{39}
+\contentsline {section}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{40}
+\contentsline {section}{\numberline {15}Literatura}{41}
