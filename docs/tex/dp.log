@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  12 MAY 2012 00:50
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  13 MAY 2012 01:25
 entering extended mode
  %&-line parsing enabled.
 **dp.tex
@@ -23,7 +23,44 @@ File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.3 �
+     ��\usepackage[czech]{babel}
+You're in trouble here.  Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+Missing character: There is no � in font cmr12!
+(/usr/share/texmf-texlive/tex/generic/babel/babel.sty
+Package: babel 2008/07/06 v3.8l The Babel package
+
+(/usr/share/texmf-texlive/tex/generic/babel/czech.ldf
+Language: czech 2008/07/06 v3.1a Czech support from the babel system
+
+(/usr/share/texmf-texlive/tex/generic/babel/babel.def
+File: babel.def 2008/07/06 v3.8l Babel common definitions
+\babel@savecnt=\count87
+\U@D=\dimen103
+)
+Package babel Info: Making " an active character on input line 172.
+\cs@wordlen=\count88
+Package babel Info: Making - an active character on input line 226.
+
+Overfull \hbox (410.56091pt too wide) in paragraph at lines 3--324
+[]                                                                             
+                                                                               
+                                                                               
+                                                                  
+ []
+
+)) (/usr/share/texmf-texlive/tex/latex/base/inputenc.sty
 Package: inputenc 2008/03/30 v1.1d Input encoding file
 \inpenc@prehook=\toks14
 \inpenc@posthook=\toks15
@@ -263,61 +300,61 @@ Package graphics Info: Driver file: pdftex.def on input line 91.
 
 (/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
 File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
-\Gread@gobject=\count87
+\Gread@gobject=\count89
 ))
-\Gin@req@height=\dimen103
-\Gin@req@width=\dimen104
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
 )
-\leftmargini=\dimen105
-\leftmarginii=\dimen106
-\leftmarginiii=\dimen107
-\leftmarginiv=\dimen108
-\leftmarginv=\dimen109
-\leftmarginvi=\dimen110
+\leftmargini=\dimen106
+\leftmarginii=\dimen107
+\leftmarginiii=\dimen108
+\leftmarginiv=\dimen109
+\leftmarginv=\dimen110
+\leftmarginvi=\dimen111
 ) (./dp.aux)
 \openout1 = `dp.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 5.
-LaTeX Font Info:    ... okay on input line 5.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
 
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count88
-\scratchdimen=\dimen111
+\scratchcounter=\count90
+\scratchdimen=\dimen112
 \scratchbox=\box26
-\nofMPsegments=\count89
-\nofMParguments=\count90
+\nofMPsegments=\count91
+\nofMParguments=\count92
 \everyMPshowfont=\toks17
-\MPscratchCnt=\count91
-\MPscratchDim=\dimen112
-\MPnumerator=\count92
+\MPscratchCnt=\count93
+\MPscratchDim=\dimen113
+\MPnumerator=\count94
 \everyMPtoPDFconversion=\toks18
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 10.
+(Font)              <14.4> on input line 17.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 10.
+(Font)              <7> on input line 17.
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 12.
+(Font)              <12> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 12.
+(Font)              <8> on input line 19.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 12.
+(Font)              <6> on input line 19.
  [3
 
 ] [4
@@ -333,23 +370,23 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 
 ]
-Underfull \hbox (badness 1533) in paragraph at lines 28--29
-\OT1/cmr/m/n/12 pou^^Tz^^S^^Pv^^San^^S^^P a reg-is-trac^^S^^Pm a samoz^^Trejm^^
-Te v^^Syd^^Telku z ap-likace. Obecn^^Te se d^^Sa
+Underfull \hbox (badness 2828) in paragraph at lines 35--36
+\OT1/cmr/m/n/12 pou^^Tz^^S^^Pv^^San^^S^^P a re-gis-trac^^S^^Pm a sa-moz^^Trejm^
+^Te v^^Syd^^Telku z apli-kace. Obecn^^Te se d^^Sa
  []
 
 [8
 
 ]
-Underfull \hbox (badness 1014) in paragraph at lines 44--45
-[]\OT1/cmr/m/n/12 T^^S^^Pm druh^^Sym a daleko nebezpe^^Tcn^^Tej^^Ts^^S^^Pm ^^Su
-mysln^^Sym zp^^Wusobem lze mno-hdy
+Underfull \hbox (badness 1014) in paragraph at lines 51--52
+[]\OT1/cmr/m/n/12 T^^S^^Pm druh^^Sym a da-leko ne-bezpe^^Tcn^^Tej^^Ts^^S^^Pm ^^
+Sumysln^^Sym zp^^Wusobem lze mnohdy
  []
 
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.48 ...e a tedy i nějaký útok.\cite{anonymous}
+l.55 ...e a tedy i nějaký útok.\cite{anonymous}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -358,7 +395,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.48 ...e a tedy i nějaký útok.\cite{anonymous}
+l.55 ...e a tedy i nějaký útok.\cite{anonymous}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -379,7 +416,7 @@ File: ../images/wikimedia.png Graphic file (type png)
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.74 ...i do tří modulů. \cite{design-patterns}
+l.81 ...i do tří modulů. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -388,7 +425,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.76 ...ní do vrstvy View. \cite{design-patterns}
+l.83 ...ní do vrstvy View. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -397,7 +434,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.78 ...a pro přehlednost. \cite{design-patterns}
+l.85 ...a pro přehlednost. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -406,7 +443,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.81 ...acích přístupů. \cite{design-patterns}
+l.88 ...acích přístupů. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -418,26 +455,26 @@ File: ../images/mvc.png Graphic file (type png)
 [12
 
  <../images/mvc.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 93.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 99.
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 93.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 99.
 
 [13] [14] [15
 
 ] [16]
-Underfull \hbox (badness 1033) in paragraph at lines 167--168
-[]\OT1/cmr/m/n/12 Replikace vari-anty master-slave je pod-porov^^Sana ve v^^Tet
-^^Tsin^^Te datab^^Sazov^^Sych
+Underfull \hbox (badness 1033) in paragraph at lines 173--174
+[]\OT1/cmr/m/n/12 Replikace va-ri-anty master-slave je pod-po-rov^^Sana ve v^^T
+et^^Tsin^^Te da-tab^^Sazov^^Sych
  []
 
 [17]
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.173 ...kací jen těžko obejde.\cite{replikace}
+l.179 ...kací jen těžko obejde.\cite{replikace}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -446,7 +483,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.173 ...kací jen těžko obejde.\cite{replikace}
+l.179 ...kací jen těžko obejde.\cite{replikace}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -457,118 +494,195 @@ File: ../images/cache-process.png Graphic file (type png)
 
 <use ../images/cache-process.png> [19
 
- <../images/cache-process.png (PNG copy)>] [20] <../images/cache-types.jpg, id=
-81, 704.6325pt x 110.4125pt>
-File: ../images/cache-types.jpg Graphic file (type jpg)
+ <../images/cache-process.png (PNG copy)>] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 220--224
 
-<use ../images/cache-types.jpg> [21 <../images/cache-types.jpg>] [22] [23]
-[24
+ []
 
-] [25
+<../images/cache-types.png, id=81, 846.16125pt x 277.035pt>
+File: ../images/cache-types.png Graphic file (type png)
+
+<use ../images/cache-types.png> [21 <../images/cache-types.png>]
+<../images/proxy-cache.png, id=87, 482.80376pt x 147.55125pt>
+File: ../images/proxy-cache.png Graphic file (type png)
+
+<use ../images/proxy-cache.png> [22 <../images/proxy-cache.png>]
+<../images/reverse-proxy-cache.png, id=92, 602.25pt x 166.6225pt>
+File: ../images/reverse-proxy-cache.png Graphic file (type png)
+
+<use ../images/reverse-proxy-cache.png> [23 <../images/reverse-proxy-cache.png>
+]
+<../images/application-distributed-cache.png, id=97, 442.65375pt x 259.97125pt>
+File: ../images/application-distributed-cache.png Graphic file (type png)
+<use ../images/application-distributed-cache.png> [24 <../images/application-di
+stributed-cache.png>] [25
 
 ] [26
 
 ] [27
 
+] [28
+
 ]
-<../images/more-layers.png, id=105, 674.52pt x 179.67125pt>
-File: ../images/more-layers.png Graphic file (type png)
+<../images/nginx-architecture.png, id=115, 681.54625pt x 198.7425pt>
+File: ../images/nginx-architecture.png Graphic file (type png)
 
-<use ../images/more-layers.png> [28
+<use ../images/nginx-architecture.png> [29
 
- <../images/more-layers.png>] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 351--355
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 351--355
+ <../images/nginx-architecture.png>]
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 388--392
 
  []
 
-[30] [31] <../images/graph-apc.png, id=120, 854.19125pt x 645.41125pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 388--392
+
+ []
+
+[31] [32] <../images/graph-apc.png, id=130, 854.19125pt x 645.41125pt>
 File: ../images/graph-apc.png Graphic file (type png)
 
 <use ../images/graph-apc.png>
-<../images/top-apc.png, id=121, 643.40375pt x 505.89pt>
+<../images/top-apc.png, id=131, 643.40375pt x 505.89pt>
 File: ../images/top-apc.png Graphic file (type png)
 
-<use ../images/top-apc.png> [32] [33 <../images/graph-apc.png (PNG copy)> <../i
-mages/top-apc.png (PNG copy)>] [34
+<use ../images/top-apc.png> [33] [34 <../images/graph-apc.png (PNG copy)> <../i
+mages/top-apc.png (PNG copy)>]
+<../images/app-architecture.png, id=138, 337.26pt x 205.76875pt>
+File: ../images/app-architecture.png Graphic file (type png)
 
-]
-<../images/graph-db.png, id=131, 856.19875pt x 641.39626pt>
+<use ../images/app-architecture.png> [35
+
+ <../images/app-architecture.png>]
+<../images/graph-db.png, id=143, 855.195pt x 636.3775pt>
 File: ../images/graph-db.png Graphic file (type png)
 
 <use ../images/graph-db.png>
-<../images/xhprof-model-db-no-optim.png, id=132, 935.495pt x 616.3025pt>
+<../images/xhprof-model-db-no-optim.png, id=144, 935.495pt x 616.3025pt>
 File: ../images/xhprof-model-db-no-optim.png Graphic file (type png)
 
-<use ../images/xhprof-model-db-no-optim.png>
-<../images/xhprof-model-db-optim.png, id=133, 935.495pt x 608.2725pt>
+<use ../images/xhprof-model-db-no-optim.png> [36] [37 <../images/graph-db.png (
+PNG copy)> <../images/xhprof-model-db-no-optim.png (PNG copy)>]
+<../images/xhprof-model-db-optim.png, id=152, 935.495pt x 608.2725pt>
 File: ../images/xhprof-model-db-optim.png Graphic file (type png)
 
-<use ../images/xhprof-model-db-optim.png> [35
+<use ../images/xhprof-model-db-optim.png>
+<../images/database-architecture.png, id=153, 481.8pt x 201.75375pt>
+File: ../images/database-architecture.png Graphic file (type png)
 
- <../images/graph-db.png (PNG copy)>] [36 <../images/xhprof-model-db-no-optim.p
-ng (PNG copy)> <../images/xhprof-model-db-optim.png (PNG copy)>] [37
+<use ../images/database-architecture.png> [38
 
-] [38] [39
+ <../images/xhprof-model-db-optim.png (PNG copy)> <../images/database-architect
+ure.png>] [39] [40]
+<../images/graph-memcached.png, id=164, 855.195pt x 632.3625pt>
+File: ../images/graph-memcached.png Graphic file (type png)
 
-] [40
+<use ../images/graph-memcached.png> [41 <../images/graph-memcached.png (PNG cop
+y)>]
+<../images/xhprof-model-memcached-no-optim.png, id=168, 935.495pt x 614.295pt>
+File: ../images/xhprof-model-memcached-no-optim.png Graphic file (type png)
+
+<use ../images/xhprof-model-memcached-no-optim.png>
+<../images/xhprof-model-memcached-optim.png, id=169, 939.51pt x 612.2875pt>
+File: ../images/xhprof-model-memcached-optim.png Graphic file (type png)
+
+<use ../images/xhprof-model-memcached-optim.png> [42
+
+ <../images/xhprof-model-memcached-no-optim.png (PNG copy)> <../images/xhprof-m
+odel-memcached-optim.png (PNG copy)>]
+<../images/memcached-architecture.png, id=173, 487.8225pt x 346.29375pt>
+File: ../images/memcached-architecture.png Graphic file (type png)
+
+<use ../images/memcached-architecture.png> [43
+
+ <../images/memcached-architecture.png>] <../images/nginx-memcached.png, id=179
+, 681.54625pt x 302.12875pt>
+File: ../images/nginx-memcached.png Graphic file (type png)
+
+<use ../images/nginx-memcached.png> [44 <../images/nginx-memcached.png>]
+<../images/graph-nginx.png, id=184, 855.195pt x 634.37pt>
+File: ../images/graph-nginx.png Graphic file (type png)
+
+<use ../images/graph-nginx.png>
+File: ../images/nginx-architecture.png Graphic file (type png)
+ <use ../images/nginx-architecture.png> [45 <../images/graph-nginx.png (PNG cop
+y)>] [46
+
+] [47
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 529--530
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
 []\OT1/cmr/m/sc/12 Doc.Ing.Jaroslav Zen-dulka,CSc. \OT1/cmr/m/it/12 VUT-FIT: 10
-. Ar-chitek-
+. Ar-chi-tek-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 529--530
-\OT1/cmr/m/it/12 tura klient/server a t^^Tr^^S^^Pvrstv^^Sa ar-chitek-tura \OT1/
-cmr/m/n/12 [on-line]. Dos-tupn^^Se z:
+Underfull \hbox (badness 10000) in paragraph at lines 631--632
+\OT1/cmr/m/it/12 tura kli-ent/server a t^^Tr^^S^^Pvrstv^^Sa ar-chi-tek-tura \OT
+1/cmr/m/n/12 [on-line]. Do-stupn^^Se z:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--540
-[]\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-mal-izace v Or-a-cle
- \OT1/cmr/m/n/12 Praha: Uni-corn Col-
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
+[]\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-ma-li-zace v Oracle 
+\OT1/cmr/m/n/12 Praha: Uni-corn College,
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 539--540
-\OT1/cmr/m/n/12 lege, 2010. 47 s. Dos-tupn^^Se z: http://www.unicorncollege.cz/
-katalog-
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
+\OT1/cmr/m/n/12 2010. 47 s. Do-stupn^^Se z: http://www.unicorncollege.cz/katalo
+g-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 539--540
+Underfull \hbox (badness 10000) in paragraph at lines 641--642
 \OT1/cmr/m/n/12 bakalarskych-praci/bohdan-blaha/attachments/Blaha[]Bohdan[]-
  []
 
-[41] (./dp.aux) ) 
+
+Underfull \hbox (badness 3623) in paragraph at lines 656--657
+\OT1/cmr/m/n/12 Do-stupn^^Se z: http://www.zdrojak.cz/clanky/profilovani-php-sk
+riptu-pomoci-
+ []
+
+
+Underfull \hbox (badness 1005) in paragraph at lines 659--660
+[]\OT1/cmr/m/sc/12 Vito Chin \OT1/cmr/m/it/12 Tech-por-tal Ibu-il-dings: Un-der
+-stan-ding APC \OT1/cmr/m/n/12 [on-line]. Do-stupn^^Se z:
+ []
+
+[48]
+Underfull \hbox (badness 1275) in paragraph at lines 668--669
+[]\OT1/cmr/m/sc/12 Ilya Gri-go-rik \OT1/cmr/m/it/12 Ig-vita.com: Nginx and Mem-
+ca-ched, a 400% bo-ost! \OT1/cmr/m/n/12 [on-line].
+ []
+
+[49] [50
+
+] (./dp.aux) ) 
 Here is how much of TeX's memory you used:
- 1296 strings out of 495027
- 15824 string characters out of 1181419
- 73733 words of memory out of 3000000
- 4483 multiletter control sequences out of 15000+50000
+ 1778 strings out of 495027
+ 22783 string characters out of 1181419
+ 82746 words of memory out of 3000000
+ 4945 multiletter control sequences out of 15000+50000
  12017 words of font info for 42 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
- 26i,8n,21p,1801b,229s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx1
-2.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texm
-f-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fo
-nts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/pub
-lic/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
-s/cm/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17
-.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on dp.pdf (41 pages, 876706 bytes).
+ 26i,8n,24p,1799b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public
+/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/s
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fon
+ts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on dp.pdf (50 pages, 1345348 bytes).
 PDF statistics:
- 198 PDF objects out of 1000 (max. 8388607)
+ 246 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

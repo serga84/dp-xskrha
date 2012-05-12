@@ -1,3 +1,4 @@
+\select@language {czech}
 \contentsline {section}{\numberline {1}\IeC {\'U}vod}{7}
 \contentsline {section}{\numberline {2}Ne\IeC {\v z}\IeC {\'a}douc\IeC {\'\i } vlivy a d\IeC {\r u}sledky vysok\IeC {\'e} z\IeC {\'a}t\IeC {\v e}\IeC {\v z}e}{8}
 \contentsline {section}{\numberline {3}Zneu\IeC {\v z}it\IeC {\'\i } vysok\IeC {\'e} z\IeC {\'a}t\IeC {\v e}\IeC {\v z}e}{9}
@@ -17,36 +18,37 @@
 \contentsline {subsection}{\numberline {7.1}Typy obsahu}{20}
 \contentsline {subsection}{\numberline {7.2}HTTP hlavi\IeC {\v c}ky pro ovl\IeC {\'a}d\IeC {\'a}n\IeC {\'\i } cache}{20}
 \contentsline {subsection}{\numberline {7.3}Druhy cache}{21}
-\contentsline {subsubsection}{\numberline {7.3.1}Proxy cache a cache prohl\IeC {\'\i }\IeC {\v z}e\IeC {\v c}e}{21}
+\contentsline {subsubsection}{\numberline {7.3.1}Proxy cache a cache prohl\IeC {\'\i }\IeC {\v z}e\IeC {\v c}e}{22}
 \contentsline {subsubsection}{\numberline {7.3.2}Reverzn\IeC {\'\i } proxy cache}{22}
-\contentsline {subsubsection}{\numberline {7.3.3}Aplika\IeC {\v c}n\IeC {\'\i } distribuovan\IeC {\'a} cache}{22}
-\contentsline {section}{\numberline {8}Dal\IeC {\v s}\IeC {\'\i } vrstvy aplikace}{24}
-\contentsline {subsection}{\numberline {8.1}CDN}{24}
-\contentsline {subsection}{\numberline {8.2}NoSQL Datab\IeC {\'a}ze}{24}
-\contentsline {subsection}{\numberline {8.3}Vyhled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i }}{24}
-\contentsline {section}{\numberline {9}Virtualizace}{25}
-\contentsline {section}{\numberline {10}Load balancing}{26}
-\contentsline {section}{\numberline {11}Cloud Computing}{27}
-\contentsline {section}{\numberline {12}Praktick\IeC {\'a} \IeC {\v c}\IeC {\'a}st s experimenty a v\IeC {\'y}sledky}{28}
-\contentsline {subsection}{\numberline {12.1}Vrstvy webov\IeC {\'e} architektury}{28}
-\contentsline {subsection}{\numberline {12.2}Testovac\IeC {\'\i } a profilovac\IeC {\'\i } n\IeC {\'a}stroje}{29}
-\contentsline {subsubsection}{\numberline {12.2.1}XHProf}{29}
-\contentsline {subsubsection}{\numberline {12.2.2}Siege}{30}
-\contentsline {subsubsection}{\numberline {12.2.3}PostgreSQL Explain}{30}
-\contentsline {subsection}{\numberline {12.3}Aplika\IeC {\v c}n\IeC {\'\i } vrstva PHP}{31}
-\contentsline {subsubsection}{\numberline {12.3.1}Optimalizace pomoc\IeC {\'\i } APC}{31}
-\contentsline {subsubsection}{\numberline {12.3.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{32}
-\contentsline {subsection}{\numberline {12.4}Datab\IeC {\'a}zov\IeC {\'a} vrstva}{34}
-\contentsline {subsubsection}{\numberline {12.4.1}Optimalizace datab\IeC {\'a}ze}{34}
-\contentsline {subsubsection}{\numberline {12.4.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{35}
-\contentsline {subsection}{\numberline {12.5}Aplika\IeC {\v c}n\IeC {\'\i } cache}{37}
-\contentsline {subsubsection}{\numberline {12.5.1}Optimalizace aplikace pomoc\IeC {\'\i } Memcached}{37}
-\contentsline {subsubsection}{\numberline {12.5.2}Diagram t\IeC {\v r}\IeC {\'\i }d pro aplikaci s podporou Memcached}{37}
-\contentsline {subsubsection}{\numberline {12.5.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{37}
-\contentsline {subsection}{\numberline {12.6}Reverzn\IeC {\'\i } proxy cache}{37}
-\contentsline {subsubsection}{\numberline {12.6.1}Nasazen\IeC {\'\i } a konfigurace NGINX s Memcached}{37}
-\contentsline {subsubsection}{\numberline {12.6.2}V\IeC {\'y}znam Ajax a webov\IeC {\'y}ch slu\IeC {\v z}eb pro NGINX}{37}
-\contentsline {subsubsection}{\numberline {12.6.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{38}
-\contentsline {section}{\numberline {13}Diskuze}{39}
-\contentsline {section}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{40}
-\contentsline {section}{\numberline {15}Literatura}{41}
+\contentsline {subsubsection}{\numberline {7.3.3}Aplika\IeC {\v c}n\IeC {\'\i } distribuovan\IeC {\'a} cache}{23}
+\contentsline {section}{\numberline {8}Dal\IeC {\v s}\IeC {\'\i } vrstvy aplikace}{25}
+\contentsline {subsection}{\numberline {8.1}CDN}{25}
+\contentsline {subsection}{\numberline {8.2}NoSQL Datab\IeC {\'a}ze}{25}
+\contentsline {subsection}{\numberline {8.3}Vyhled\IeC {\'a}v\IeC {\'a}n\IeC {\'\i }}{25}
+\contentsline {section}{\numberline {9}Virtualizace}{26}
+\contentsline {section}{\numberline {10}Load balancing}{27}
+\contentsline {section}{\numberline {11}Cloud Computing}{28}
+\contentsline {section}{\numberline {12}Praktick\IeC {\'a} \IeC {\v c}\IeC {\'a}st s experimenty a v\IeC {\'y}sledky}{29}
+\contentsline {subsection}{\numberline {12.1}Vrstvy webov\IeC {\'e} architektury}{29}
+\contentsline {subsection}{\numberline {12.2}Testovac\IeC {\'\i } a profilovac\IeC {\'\i } n\IeC {\'a}stroje}{30}
+\contentsline {subsubsection}{\numberline {12.2.1}XHProf}{30}
+\contentsline {subsubsection}{\numberline {12.2.2}Siege}{31}
+\contentsline {subsubsection}{\numberline {12.2.3}PostgreSQL Explain}{31}
+\contentsline {subsection}{\numberline {12.3}Aplika\IeC {\v c}n\IeC {\'\i } vrstva PHP}{32}
+\contentsline {subsubsection}{\numberline {12.3.1}Optimalizace pomoc\IeC {\'\i } APC}{32}
+\contentsline {subsubsection}{\numberline {12.3.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{33}
+\contentsline {subsection}{\numberline {12.4}Datab\IeC {\'a}zov\IeC {\'a} vrstva}{35}
+\contentsline {subsubsection}{\numberline {12.4.1}Optimalizace datab\IeC {\'a}ze}{35}
+\contentsline {subsubsection}{\numberline {12.4.2}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{36}
+\contentsline {subsection}{\numberline {12.5}Aplika\IeC {\v c}n\IeC {\'\i } distribuovan\IeC {\'a} cache}{38}
+\contentsline {subsubsection}{\numberline {12.5.1}Optimalizace aplikace pomoc\IeC {\'\i } Memcached}{39}
+\contentsline {subsubsection}{\numberline {12.5.2}Specifikace aplikace}{39}
+\contentsline {subsubsection}{\numberline {12.5.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{40}
+\contentsline {subsection}{\numberline {12.6}Reverzn\IeC {\'\i } proxy cache}{43}
+\contentsline {subsubsection}{\numberline {12.6.1}Optimalizace pomoc\IeC {\'\i } reverzn\IeC {\'\i } proxy cache Nginx s Memcached}{43}
+\contentsline {subsubsection}{\numberline {12.6.2}Vyu\IeC {\v z}it\IeC {\'\i } Ajax a webov\IeC {\'y}ch slu\IeC {\v z}eb pro NGINX s Memcached}{44}
+\contentsline {subsubsection}{\numberline {12.6.3}Dosa\IeC {\v z}en\IeC {\'e} v\IeC {\'y}sledky}{45}
+\contentsline {section}{\numberline {13}Diskuze}{46}
+\contentsline {section}{\numberline {14}Z\IeC {\'a}v\IeC {\v e}r}{47}
+\contentsline {section}{\numberline {15}Reference}{48}
+\contentsline {section}{\numberline {16}P\IeC {\v r}\IeC {\'\i }lohy}{50}

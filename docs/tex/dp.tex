@@ -1,7 +1,14 @@
 % preambule dokumentu
 \documentclass[12pt]{article}
+‎\usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{dipp2}
+%\usepackage{graphicx}
+%\usepackage{textcomp}
+%\usepackage{amssymb}
+%\usepackage{amsmath}
+%\usepackage{hyperref}
+%\usepackage{eurosym}
 \begin{document}
 \pagestyle{headings}
 
@@ -29,7 +36,7 @@ Něco na téma jak vzniká vysoká zátěž na iternetu, jaký je vliv internetu
 
 Vysoká zátěž může mít ve své podstatě několik nežádoucích vlivů, které můžou mít až katastrofický scénář. Může docházet k takovému zatížení aplikace, že odpovědi na jednotlivé požadavky mohou trvat velice dlouhou dobu. Tím pádem si uživatel může rozmýšlet, zda-li příště navštíví tuto webovou aplikaci, či zkusí některou z jiných možných konkurenčních alternativ. Takto velice nepříznivý scénář může být ještě horším. A to tak, že díky velkému zatížení dojde dokonce k výpadku celé aplikace, a tím pádem už se uživateli nedostane vůbec žádné odpovědi na jeho požadavek. Při takovém scénáři existuje vysoká pravděpodobnost ztráty a poklesu uživatelů, což může znamenat velký pokles zisků pro firmu či společnost.
 
-Po technické stránce se při velké zátěži vytvoří pro každý požadavek celý samostatný proces či vlákno procesu, které si klade nároky na procesor CPU a operační paměť RAM serveru. Vznikají tak i procesy, které musí čekat na přidělení takových prostředků a tím pádem zatížení, které roste a čeká na vykonání může server přetížit až už nebude provozuschopný. Takovéto zatížení je možné pozorovat při výpisu právě běžících procesů a jejich vytížení na RAM či CPU (například příkazem top). Dále je možno pozorovat tzv. "Load Average" (například příkazem uptime), které představuje počet procesů čekajích na přidělení prostředků během jedné, pěti či patnácti minut.\cite{sledovani-zatizeni} Takto je možné sledovat jaké jsou nežádoucí vlivy vysoké zátěže na technické úrovni.
+Po technické stránce se při velké zátěži vytvoří pro každý požadavek celý samostatný proces či vlákno procesu, které si klade nároky na procesor CPU a operační paměť RAM serveru. Vznikají tak i procesy, které musí čekat na přidělení takových prostředků a tím pádem zatížení, které roste a čeká na vykonání může server přetížit až už nebude provozuschopný. Takovéto zatížení je možné pozorovat při výpisu právě běžících procesů a jejich vytížení na RAM či CPU (například příkazem top). Dále je možno pozorovat tzv. Load Average (například příkazem uptime), které představuje počet procesů čekajích na přidělení prostředků během jedné, pěti či patnácti minut. Takto je možné sledovat jaké jsou nežádoucí vlivy vysoké zátěže na technické úrovni.\cite{sledovani-zatizeni}
 
 Je nutné podotknout, že existuje i jeden skrytý a ne tak viditelný důsledek vysoké zátěže. Tím je fakt, že jakmile se začne zvedat návštěvnost uživatelů, a tím pádem i zátěž aplikace, projektové vedení si klade požadavek, aby tento nárůst uživatelů již zůstal, a naopak se dokonce i zvětšoval. A to vše z toho důvodu, že velký počet uživatelů, znamená velkou zátěž pro aplikaci, ovšem velký finanční přínos pro firmu.
 
@@ -41,11 +48,11 @@ Z nežádoucích vlivů a důsledků uvedených v předchozí kapitole vyplývá
 
 U webových projektů je možné z těch neúmyslných zmínit například nějaké klientské chyby programů, či větší míru indexace robotů jednotlivých vyhledáváčů. Roboti vyhledávačů pravidelně prochází webovou aplikaci a indexují její jednotlivé části, a tyto výsledky zohledňují následně ve svých výsledcích ve vyhledávání. Tito roboti mohou představovat nežádoucí zátěž.
 
-Tím druhým a daleko nebezpečnějším úmyslným způsobem lze mnohdy způsobit daleko větší škody. Toto úmyslné chování už je klasifikováno jako útok na webovou aplikaci za který hrozí postih podle zákona. Tyto útoky jsou nazývány DoS, neboli "Denial of Service". Jejich cílem je ochromit infrastrukturu celé webové architektury přehlcením požadavků na které aplikace bude vytvářet odpovědi. Tyty útoky využívají chyb, nedostatků či nedokonalostí protokolů ICMP, TCP, UDP a jiných protokolů či samotných webových aplikací. Například útok s názvem "Tcp Syn Flood", kdy útočník vytíží aplikaci SYN pakety pro navázání spojení využívá nedokonalosti TCP protokolu. Dalšími útoky využívajích nedokonalostí mohou být "ICMP Flood", "Ping of Death", "Smurf Attack", "IP Spoofing", "Fraggle Attack", "Teardrop", "Application level" aj. Ovšem proti většině těchto útoků už dnes existuje ochrana ve formě servisních instalací jednotlivých systémů či aktualizací programů síťových zařízení a nebo lehkou konfigurací. \cite{dos}
+Tím druhým a daleko nebezpečnějším úmyslným způsobem lze mnohdy způsobit daleko větší škody. Toto úmyslné chování už je klasifikováno jako útok na webovou aplikaci za který hrozí postih podle zákona. Tyto útoky jsou nazývány DoS, neboli Denial of Service. Jejich cílem je ochromit infrastrukturu celé webové architektury přehlcením požadavků na které aplikace bude vytvářet odpovědi. Tyty útoky využívají chyb, nedostatků či nedokonalostí protokolů ICMP, TCP, UDP a jiných protokolů či samotných webových aplikací. Například útok s názvem Tcp Syn Flood, kdy útočník vytíží aplikaci SYN pakety pro navázání spojení využívá nedokonalosti TCP protokolu. Dalšími útoky využívajích nedokonalostí mohou být ICMP Flood, Ping of Death, Smurf Attack, IP Spoofing, Fraggle Attack, Teardrop, Application level aj. Ovšem proti většině těchto útoků už dnes existuje ochrana ve formě servisních instalací jednotlivých systémů či aktualizací programů síťových zařízení a nebo lehkou konfigurací. \cite{dos}
 
-Ovšem co v dnešní době představuje daleko větší nebezpečí, jsou útoky typu DDoS, neboli "Distributed Denial of Service". V tomto případě jako princip obdobný jako u DoS, ovšem s tím, že je úkol distribuovaný. Tedy je spuštěn z několika stanic, několika uživateli a pomocí různých nástrojů. Tento způsob je tedy daleko více organizovaný a daleko více nebezpečný a učinnější. \cite{dos}
+Ovšem co v dnešní době představuje daleko větší nebezpečí, jsou útoky typu DDoS, neboli Distributed Denial of Service. V tomto případě jako princip obdobný jako u DoS, ovšem s tím, že je úkol distribuovaný. Tedy je spuštěn z několika stanic, několika uživateli a pomocí různých nástrojů. Tento způsob je tedy daleko více organizovaný a daleko více nebezpečný a učinnější. \cite{dos}
 
-Právě v dnešních dnech se stává symbolem boje za svobodu internetu skupina s názvem Anonymous, která využívá útoků DDoS. Při svých útocích využívají například útoky typu "Slowloris", kdy útočník využívá protokolu HTTP na aplikační úrovni a chce celou odpověď na svůj požadavek. Při navázaném spojení ovšem odesílá HTTP hlavičky co nejpomaleji, aby tak co nejvíce prodloužili dobu spojení a získal prostor pro vytvoření dalšího spojení, čili další zátěže. Tato skupina napadá webové aplikace veřejnosti neoblíbených politických stran, vládních organizací, protipirátských asociací a jiných subjektů. Získávají si tím obrovskou podporu ve společnosti i médiích, která s jejich kroky souhlasí. Dokonce pro své útoky využívají i příznivců z řad veřejnosti, kteří nemusí odborníky informačních technologií. Stačí jim si pouze stáhnout upravený program, v určený čas ho spustit a připojit. Útoky probíhají hlášeně či neohlášeně, organizovaně a ditribuovaně. Otázkou zůstává, kdy jejich konání přeroste z útoků pro dobro společnosti, a stanou se útoky pro vydírání, posílení moci, či za účelem finančního obohacení. V ten moment i společnost, která je v tyto dny podporuje, může pocítit, jak jsou pro ně nebezpeční. I v historii Země nalezneme spoustu skupin, které byly lidmi podporovány a nakonec se z nich stal symbol krutosti, tyranie, úzkosti a neštěstí. Proto je důležité jejich útoky nepodceňovat a umět se bránit. Má práce se nezabývá konkrétním řešením nějakého z typů útoků, ale zabývá se obecně vysokou zátěží, a jak ustát narůst obrovské zátěže a tedy i nějaký útok.\cite{anonymous}
+Právě v dnešních dnech se stává symbolem boje za svobodu internetu skupina s názvem Anonymous, která využívá útoků DDoS. Při svých útocích využívají například útoky typu Slowloris, kdy útočník využívá protokolu HTTP na aplikační úrovni a chce celou odpověď na svůj požadavek. Při navázaném spojení ovšem odesílá HTTP hlavičky co nejpomaleji, aby tak co nejvíce prodloužili dobu spojení a získal prostor pro vytvoření dalšího spojení, čili další zátěže. Tato skupina napadá webové aplikace veřejnosti neoblíbených politických stran, vládních organizací, protipirátských asociací a jiných subjektů. Získávají si tím obrovskou podporu ve společnosti i médiích, která s jejich kroky souhlasí. Dokonce pro své útoky využívají i příznivců z řad veřejnosti, kteří nemusí odborníky informačních technologií. Stačí jim si pouze stáhnout upravený program, v určený čas ho spustit a připojit. Útoky probíhají hlášeně či neohlášeně, organizovaně a ditribuovaně. Otázkou zůstává, kdy jejich konání přeroste z útoků pro dobro společnosti, a stanou se útoky pro vydírání, posílení moci, či za účelem finančního obohacení. V ten moment i společnost, která je v tyto dny podporuje, může pocítit, jak jsou pro ně nebezpeční. I v historii Země nalezneme spoustu skupin, které byly lidmi podporovány a nakonec se z nich stal symbol krutosti, tyranie, úzkosti a neštěstí. Proto je důležité jejich útoky nepodceňovat a umět se bránit. Má práce se nezabývá konkrétním řešením nějakého z typů útoků, ale zabývá se obecně vysokou zátěží, a jak ustát narůst obrovské zátěže a tedy i nějaký útok.\cite{anonymous}
 
 
 
@@ -86,7 +93,6 @@ View klade důraz na presentační úroveň, tedy na grafickou a jinou interakci
 
 \sekce{Optimalizace aplikační vrstvy}
 \label{sec:profiler}
-
 Optimalizace na úrovni aplikační vrstvy může mít několik způsobů a přístupů. Tato činnost se týká převážně programátorů a softwarových inženýrů, kteří mají za úkol vývoj a údržbu aplikační vrstvy. K tomu, aby se dali identifikovat problematické části pro optimalizaci slouží tzv. profilery. Ty mají obecně za úkol vyprofilovat jednotlivé funkce, metody, procedury, dotazy a příkazy, které se na dané vrstvě, již je profiler určen, vyskytují, a určit jejich dobu trvání, počet volání, čas spuštění, závislosti a další parametry. Profilování, neboli určení kandidátů pro optimalizaci, je prvním a nejdůležitějším krokem pro optimalizaci aplikační vrstvy webové architektury. Další kroky se týkají především těchto oblastí:
 
 \begin{itemize}
@@ -158,7 +164,7 @@ Při vertikální segmentaci dojde k segmentaci podle definovaných sloupců dat
 
 Další možností je aplikační úroveň segmentace, která se ne často objevuje v souvislosti s Partitioning. Nejedná se totiž o segmentaci určité databázové tabulky, ale o segmentaci databáze. Část tabulek je umístěna na jednom serveru, část na dalším serveru, a tak dále.
 
-Partitiong je důležitým nástrojem při optimalizaci databázové vrstvy v architektuře webových systémů v prostředí vysoké zátěže. Dá se totiž předpokládat, že se zvětšující se zátěží roste i počet záznamů tabulek, a tak se doba přístupu zvětšuje a prostředky zatěžují ještě víc. Tyto problémy dokáže vyřešit partitiong.
+Partitioning je důležitým nástrojem při optimalizaci databázové vrstvy v architektuře webových systémů v prostředí vysoké zátěže. Dá se totiž předpokládat, že se zvětšující se zátěží roste i počet záznamů tabulek, a tak se doba přístupu zvětšuje a prostředky zatěžují ještě víc. Tyto problémy dokáže vyřešit partitiong.
 \cite{partitioning-db}
 
 \sekce{Replikace}
@@ -204,25 +210,41 @@ Z pohledu ukládání do cache paměti je přístup a druh obsahu webové archit
 Z uvedených vlastností vyplývá, že správa cache paměti statického obsahu je jednodušší, kdežto správa cache dynamického přístupu je náročnější. Ve své práci ukazuji, analyzuji a testuji oba dva přístupy a srovnávám jejich přínos jak z pohledu aplikace, tak náročnosti na vybudování.
 
 \sekce{HTTP hlavičky pro ovládání cache}
+\label{sec:http-headers}
 Komunikace ve webových aplikacích probíhá ve valné většině na úrovni protokolu HTTP. Každý HTTP požadavek obsahuje HTTP hlavičky, kterými určuje požadavek, klienta a obsahuje časové razítko. Odpověď na tento požadavek navrací v hlavičkách návratový kód, informace o serveru, časové razítko, typ obsahu odpovědi, délku odpovědi a informace pro případné ukládání do cache paměti. Právě jednotlivé cache hlavičky jsou důležité pro nastavení ukládání a invalidace do proxy cache paměti nebo do reverzní proxy cache paměti.
 
-Existují dva základní modely pro určení práce s cache vrstvou. Prvním je expirační model. Tento model určuje, do kdy je platná HTTP odpověď, neboli do kdy může tuto odpověď cache vrstva ukládat a označovat ji jako platnou a stále čerstvou. Tento model může být realizován dvěma způsoby. Prvním je hlavička "Expires" udávající časové razítko do kdy je odpověď čerstvá. Druhým, novějším, daleko flexibilnější a konfigurovatelnější způsobem je použití "Cache-control". Díky tomuto způsobu je možné určit další parametry a to nejenom do kdy je daná HTTP odpověď platná. Je možné tím i určit, zda-li je určena jen pro sdílené cache (proxy cache), nebo jen pro uživatelské prohlížečové cache, nebo zda-li je ukládat či nikoli, atd.\cite{rfc-http}
+Existují dva základní modely pro určení práce s cache vrstvou. Prvním je expirační model. Tento model určuje, do kdy je platná HTTP odpověď, neboli do kdy může tuto odpověď cache vrstva ukládat a označovat ji jako platnou a stále čerstvou. Tento model může být realizován dvěma způsoby. Prvním je hlavička Expires udávající časové razítko do kdy je odpověď čerstvá. Druhým, novějším, daleko flexibilnější a konfigurovatelnější způsobem je použití Cache-control. Díky tomuto způsobu je možné určit další parametry a to nejenom do kdy je daná HTTP odpověď platná. Je možné tím i určit, zda-li je určena jen pro sdílené cache (proxy cache), nebo jen pro uživatelské prohlížečové cache, nebo zda-li je ukládat či nikoli, atd.\cite{rfc-http}
 
-Druhým modelem je model validační. Ten určuje způsob komunikace pro zjištění, zda-li je odpověď uložená v cache paměti stále validní. Základem je, že cache, která má uloženu odpověď se zeptá je-li odpověď stále validní a server odpoví jestli ano či vrátí novou čerstvou odpověď. Realizováno to může být opět dvěma způsoby. Tím prvním je určení tzv. "Last-Modified". Při prvním požadavku cache získá odpověď s touto hlavičkoku. Odpověď si uloží a při dalším požadavku se cache vrstva dotáže serveru pomocí hlavičky "If-Modified-Since" s časovým razítkem, zda-li je odpověď stále validní. Server odpoví návratovým kódem 304, který říká že nedošlo k žádné změně od daného časového razítka, a nebo vrátí novou čerstvou odpověď pokud došlo ke změně. Podobný princip je založen i na způsobu pomocí hlavičky "Etag" neboli "Entity tag". Etag je nějaký unikátní identifikátor vygenerovaný serverem pro danou HTTP odpověď. Cache vrstva si při prvním požadavku uloží odpověď s tímto Etag. Při dalším požadavku pošle na server HTTP požadavek s hlavičkou "If-None-Match" s tímto Etag. Pokud se Etag shodují, vrátí aplikačnín server odpověď s návratovým kódem 304, a nebo celou čerstvou odpověď.\cite{rfc-http}
+Druhým modelem je model validační. Ten určuje způsob komunikace pro zjištění, zda-li je odpověď uložená v cache paměti stále validní. Základem je, že cache, která má uloženu odpověď se zeptá je-li odpověď stále validní a server odpoví jestli ano či vrátí novou čerstvou odpověď. Realizováno to může být opět dvěma způsoby. Tím prvním je určení tzv. Last-Modified. Při prvním požadavku cache získá odpověď s touto hlavičkoku. Odpověď si uloží a při dalším požadavku se cache vrstva dotáže serveru pomocí hlavičky If-Modified-Since s časovým razítkem, zda-li je odpověď stále validní. Server odpoví návratovým kódem 304, který říká že nedošlo k žádné změně od daného časového razítka, a nebo vrátí novou čerstvou odpověď pokud došlo ke změně. Podobný princip je založen i na způsobu pomocí hlavičky Etag neboli Entity tag. Etag je nějaký unikátní identifikátor vygenerovaný serverem pro danou HTTP odpověď. Cache vrstva si při prvním požadavku uloží odpověď s tímto Etag. Při dalším požadavku pošle na server HTTP požadavek s hlavičkou If-None-Match s tímto Etag. Pokud se Etag shodují, vrátí aplikačnín server odpověď s návratovým kódem 304, a nebo celou čerstvou odpověď.\cite{rfc-http}
 
-Ovládání pomocí HTTP hlaviček slouží hlavně k statiskému obsahu. Pro tento účel je pak dobré zvážit jestli je lepsí odpovědi měnit v nějakých časových intervalech a používat tak expirační model, či jestli se nevyplatí nasazovat model validační, který nese složitější administraci.
+Ovládání pomocí HTTP hlaviček slouží hlavně k statiskému obsahu. Pro tento účel je pak dobré zvážit jestli je lepsí odpovědi měnit v nějakých časových intervalech a používat tak expirační model, či jestli se nevyplatí nasazovat model validační, který nese složitější administraci.\\
+\\
+Příklad HTTP hlaviček pro HTTP odpověď:
+\begin{scriptsize}
+\begin{verbatim}
+HTTP/1.1 200 OK
+Date: Mon, 23 May 2005 22:38:34 GMT
+Server: Apache/1.3.3.7 (Unix) (Red-Hat/Linux)
+Last-Modified: Wed, 08 Jan 2003 23:11:55 GMT
+Etag: "3f80f-1b6-3e1cb03b"
+Accept-Ranges:  none
+Content-Length: 438
+Connection: close
+Content-Type: text/html; charset=UTF-8
+\end{verbatim}
+\end{scriptsize}
 
 \sekce{Druhy cache}
 Ve webových architekturách exstuje několik druhů cache vrstev. Jejich členění se odvyjí od jejich účelu, pozici v architektuře a typu ukládaných dat. Tyto atributy mezi sebou neúzce souvisí. Základním členěním může být jejich pozice z pohledu internetu, a to na klientskou a serverovou část. Za klientskou část považujeme cache systém uživatelova prohlížeče, či systémovější proxy cache. Na straně serveru se vyskytují reverse proxy cache či distribuované cache.
 
 \obrazek
-\vlozeps{../images/cache-types.jpg}{0.6}
-\endobr{Druhy cache webových systémů}
+\vlozeps{../images/cache-types.png}{0.5}
+\endobr{Druhy cache ve webové architektuře}
 
 \podsekce{Proxy cache a cache prohlížeče}
 Tyto druhy cache se týkají klientské části webové architektury, neboli části před internetem. Znamená to tedy, že odpověď na klientův požadavek je vrácena z cache paměti lokální sítě, a tento požadavek vůbec nevstoupí do internetu na vzdálený dotazovaný server. Tyto cache vrstvy zde nejsou jen pro to, aby zrychlily odevzvu na požadavek, ale také aby zmenšily odchozí komunikaci z lokální sítě. A to z toho důvodu, aby byla šířka pásma přístupná i jiným službám, a ušetřili se prostředky za odchozí komunikaci.
 
-V dnešních moderních prohlížečích je práce s cache pamětí podporována. Cache prohlížeče může nastavovat, konfigurovat, či vymazat pouze uživatel, neboli klient sám. Tato paměť ukládá hlavně statický obsah, například obrázky, CSS soubory či JS soubory. Cache paměť najde své uplatnění například když jsou uživatelovi požadavky směřovány jedné webové aplikaci se stejným vzhledem, rozhranním a nebo částí funkcionalit. Takováto data mohou být ukládána do cache paměti na dlouhou dobu, a proto musí aplikace dbát na to, aby byla tato data z cache promazávána tak jak je opravdu potřeba. Jednou z možností je určit jinou url adresu pro stejný soubor, pomocí tzv. "Query string", například takto:
+V dnešních moderních prohlížečích je práce s cache pamětí podporována. Cache prohlížeče může nastavovat, konfigurovat, či vymazat pouze uživatel, neboli klient sám. Tato paměť ukládá hlavně statický obsah, například obrázky, CSS soubory či JS soubory. Cache paměť najde své uplatnění například když jsou uživatelovi požadavky směřovány jedné webové aplikaci se stejným vzhledem, rozhranním a nebo částí funkcionalit. Takováto data mohou být ukládána do cache paměti na dlouhou dobu, a proto musí aplikace dbát na to, aby byla tato data z cache promazávána tak jak je opravdu potřeba. Jednou z možností je určit jinou url adresu pro stejný soubor, pomocí tzv. Query string, například takto:
 
 \begin{scriptsize}
 \begin{verbatim}
@@ -232,8 +254,17 @@ V dnešních moderních prohlížečích je práce s cache pamětí podporována
 
 Proxy cache bývají budovány a instalovány providery a poskytovali připojení k internetu. Jejich záměr je jednoduchý. Jde o to snížit míru odchozí komunikace, nezatěžovat tolik šířku pásma a zmenšit tak náklady spojené s touto komunikací. Nejběžnějším nastavením těchto proxy cache pamětí bývá ukládání a invalidace obsahu v závislosti na HTTP hlavičkách přijaté odpovědi. Nainstalujeme-li například takovouto cache ve firmě či nějakém sídlišti s několika desítky, sty či dokonce až tisíci uživateli, je možné, že část z nich má každé ráno stejný požadavek na stejný zpravodajský server, tudíž mají i stejnou odpověď. A tak může být první odpověď uložena do cache paměti a těm dalším uživatelům může být odpověď servírována z proxy cache paměti.\cite{proxy-cache}
 
+\obrazek
+\vlozeps{../images/proxy-cache.png}{0.6}
+\endobr{Proxy cache ve webové architektuře}
+
 \podsekce{Reverzní proxy cache}
-Reverzní proxy cache, někdy označovány jako tzv. "Gateway cache", mají podobný systém činnosti jako proxy cache. Mají za úkol ukládat statický obsah ve formě HTTP odpovědí a tyto odpovědi vracet nazpět odkud přišel jejich požadavek. Úkolem je tak pokud možno nepropustit požadavek dále na aplikační vrstvu, stejně jako úkolem proxy cache je pokud možno nepropouštět požadavek dále do internetu. Rozdíl mezi reverzní proxy cache a proxy cache spočívá v jejich pozici ve webové architektuře, a také v tom, kým jsou instalovány. Pozice reverzní proxy cache je na straně serveru, neboli blíže aplikační vrstvě architektury, tedy na druhé straně internetu, než odkud příchází požadavky klientů a kde jsou instalovány proxy cache. Reverzní proxy cache jsou instalovány samotnými administrátory a programátory webové aplikace. Jejich účel je zajistit rychlejší odezvu webové aplikace na HTTP požadavky klientů. Reverzní proxy cache jsou nedílnou součástí webové architektury v prostředí vysoké zátěže a bez jejich existence by jen těžko mohla být webová aplikace spolehlivá a rychlá.\cite{proxy-cache}
+\label{sec:reverse-proxy}
+Reverzní proxy cache, někdy označovány jako tzv. Gateway cache, mají podobný systém činnosti jako proxy cache. Mají za úkol ukládat statický obsah ve formě HTTP odpovědí a tyto odpovědi vracet nazpět odkud přišel jejich požadavek. Úkolem je tak pokud možno nepropustit požadavek dále na aplikační vrstvu, stejně jako úkolem proxy cache je pokud možno nepropouštět požadavek dále do internetu. Rozdíl mezi reverzní proxy cache a proxy cache spočívá v jejich pozici ve webové architektuře, a také v tom, kým jsou instalovány. Pozice reverzní proxy cache je na straně serveru, neboli blíže aplikační vrstvě architektury, tedy na druhé straně internetu, než odkud příchází požadavky klientů a kde jsou instalovány proxy cache. Reverzní proxy cache jsou instalovány samotnými administrátory a programátory webové aplikace. Jejich účel je zajistit rychlejší odezvu webové aplikace na HTTP požadavky klientů. Reverzní proxy cache jsou nedílnou součástí webové architektury v prostředí vysoké zátěže a bez jejich existence by jen těžko mohla být webová aplikace spolehlivá a rychlá.\cite{proxy-cache}
+
+\obrazek
+\vlozeps{../images/reverse-proxy-cache.png}{0.6}
+\endobr{Reverzní proxy cache ve webové architektuře}
 
 \podsekce{Aplikační distribuovaná cache}
 Doposud byly popisovány cache paměti pro ukládání statického obsahu. Ovšem v praxi se od projektového vedení setkáme s požadavky na dynamické chování aplikace. Příkladem může posloužit opět situace s komentáři, kdy jeden uživatel vloží komentář k některému z článků. Tento komentář se musí okamžitě objevit v seznamu komentářů k článku. V případě statického obsahu, který se mění pouze v nějakých intervalech, může uživatel nabýt dojmu, že tento komentář se nepodařilo vložit a zkusí ho vložit znovu. Takovéto chování aplikace určitě není v souladu s dobrým chováním interakce mezi uživatelem a aplikací. K tomu, aby se dala data ukládat do cache a aplikace byla stále dynamická, slouží tzv. aplikační distribuovaná cache. HTTP požadavek je tak rozdistribuován mezi menší požadavky a mezi cache paměti.
@@ -243,6 +274,12 @@ Jak už vyplývá z názvu druhu této cache, o manipulaci s touto cache pamět�
 Při ukládání takových dat do cache paměti aplikační vrstva určuje jak a kam mají být data uložena, a kdy a za jakých podmínek mají být invalidována. Při aplikaci této cache vrsty dochází k propuštění požadavku na aplikační servery, což znamená větší zátěž aplikační vrstvy. Reverzní proxy cache jsou v tomto směru nepoužitelné, slouží pouze pro statický obsah a všechny požadavky propouští dále na aplikační vrstvu.
 
 Při práci s aplikační distribuovanou cache je důležité si uvědomit několik základních pravidel. Prvním pravidlem je ukládat data do cache paměti co nejmenší. Účelem je tak distribuovat jednotlivá data v různých kontextech. Dále je důležité ukládat data znovuzkonstruovatelná. Je důležité umět z cache paměti přečíst to, co do ní bylo uloženo. Nejlepší je ukládat data serializovaná. Dále je důležité dodržet jednoznačný a jasně definovaný klíč či jmenný prostor pro tato data. Je totiž důležité vědět kde a jak se ptát na data. Největším problémem je invalidace dat v cache paměti. Stejná data mohou být interpretována v různém kontextu. Například při vložení nového článku se změní data pro seznam všech nejnovějších článků, a také data pro seznam nejnovějších článků v dané rubrice. Aplikace má za požadavek dynamické chování, a tak musí být tento článek vidět ihned po vložení ve všech zmíněných kategorií. Čili musí dojít k invalidaci všech závislostí. Tento problém je označován jako invalidační kaskády, a proto je důležité konstruovat aplikaci tak, aby se těmto kaskádám vyhýbalo co nejvíce či s nimi počítat už pří návrhu aplikační cache vrstvy.
+
+\obrazek
+\vlozeps{../images/application-distributed-cache.png}{0.5}
+\endobr{Aplikační distribuovaná cache ve webové architektuře}
+
+
 
 % Dalsi vrstvy
 \kapitola{Další vrstvy aplikace}
@@ -278,25 +315,25 @@ Budoucnost projektů, startupů, vše řešeno cloudem. AWS
 
 % Prakticka cast
 \kapitola{Praktická část s experimenty a výsledky}
-V praktické části se zaměřuji na testy, optimalizaci jednotlivých vrstev webové architektury v prostředí vysoké zátěže. Rozebírám zde jednotlivé vrstvy architektury, tedy aplikační vrstvu, databázovou vrstvu, reverzni cache vrstvu a aplikační distribuoavanou cache. Součástí práce nejsou pouze popis a charakteristika jendotlivých kroků optimalizace, ale i jejich výsledné statistiky a zátěžové testy. Hlavní částí praktické části je ovšem návrh a implementace aplikační úrovně plně podporující práci s aplikační distribuovanou cache. Dále je popsána i výsledná konfigurace a nastavení jednotlivých vrstev architektury. Výsledkem je tedy kompletní použitelná studie řešící problematiku webové architektury v prostředí vysoké zátěže.
+V praktické části se zaměřuji na testy, optimalizaci jednotlivých vrstev webové architektury v prostředí vysoké zátěže. Ve své práci rozebírám a experimentuji s jednotlivými vrstvami architektury, tedy aplikační vrstvou, databázovou vrstvou, reverzní proxy cache vrstvou a aplikační distribuoavanou cache vrstvou. Součástí práce nejsou pouze popis a charakteristika jendotlivých kroků optimalizace, ale i jejich výsledné statistiky a zátěžové testy. Hlavní částí praktické části je ovšem návrh a implementace aplikační úrovně plně podporující práci s aplikační distribuovanou cache. Dále je popsána i výsledná konfigurace a nastavení jednotlivých vrstev architektury. Výsledkem je tedy kompletní použitelná studie řešící problematiku webové architektury v prostředí vysoké zátěže.
 
 % Popis aplikace a nastroju
 \sekce{Vrstvy webové architektury}
-Webová architektura sestává z klientské vrstvy, reverzní proxy cache vrsrtvy, aplikační vrstvy, aplikační distribuované cache a databázové vrstvy. Klientská část je tvořena jedním uživatelem s operačním systémem Linux Ubuntu a zátěžovým testovacím nástrojem Siege. Reverzní proxy cache vrstva je realizována programem Nginx. Aplikační vrstva se skládá z webového serveru Apache2 s programovacím jazykem PHP a s profilovacím nástrojem XHProf. Aplikační distribuovaná cache vrstva je tvořena programem Memcached. Databází je PostgreSQL. Všechny tyto vrstvy serverové části jsou vytvořeny na zvláštních serverech. Pro reverzní proxy cache a aplikační distribuovanou cache byl zvolen jeden server. Každý ze serverů je virtualiziován za pomoci virtualizačního nástroje VirtualBox. Celá webová architektura je konfigurována v jedné virtuální lokální síti 10.9.0.0/24 se statikým přidělováním IP adres. Rozhraní pro přípojení těchto virtualizovaných serverů do virtuální sítě je realizováno pomocí síťových mostů. Vzhledem k tomu, abych mohl ukázat velké poměrové rozdíly v jednotlivých krocích optimalizace v jednotlivých vrstvách architektury, rozhodl jsem se o velice slabé hardwarové vybavení jednotlivých serverů, která mají 512MB operační paměti RAM a jeden jednojádrový procesor s frekvencí 2GHz.
+Webová architektura sestává z klientské vrstvy, reverzní proxy cache vrsrtvy, aplikační vrstvy, aplikační distribuované cache a databázové vrstvy. Klientská část je tvořena jedním uživatelem s operačním systémem Linux Ubuntu a zátěžovým testovacím nástrojem Siege. Reverzní proxy cache vrstva je realizována programem Nginx. Aplikační vrstva se skládá z webového serveru Apache2 s programovacím jazykem PHP a s profilovacím nástrojem XHProf. Aplikační distribuovaná cache vrstva je tvořena programem Memcached. Databází je PostgreSQL. Všechny tyto vrstvy serverové části jsou vytvořeny na zvláštních serverech. Pro reverzní proxy cache a aplikační distribuovanou cache byl zvolen jeden server. Každý ze serverů je virtualiziován za pomoci virtualizačního nástroje VirtualBox. Celá webová architektura je konfigurována v jedné virtuální lokální síti 10.9.0.0/24 se statickým přidělováním IP adres. Rozhraní pro přípojení těchto virtualizovaných serverů do virtuální sítě je realizováno pomocí síťových mostů. Vzhledem k tomu, abych mohl ukázat velké poměrové rozdíly v jednotlivých krocích optimalizace v jednotlivých vrstvách architektury, rozhodl jsem se o velice slabé hardwarové vybavení jednotlivých serverů, která mají 512MB operační paměti RAM a jeden jednojádrový procesor s frekvencí 2GHz.
 
 \obrazek
-\vlozeps{../images/more-layers.png}{0.6}
+\vlozeps{../images/nginx-architecture.png}{0.6}
 \endobr{Vrstvy implementované webové architektury}
 
 \sekce{Testovací a profilovací nástroje}
-Proto, abych mohl všecha svá tvrzení a závěry řádně podložit a abych mohl identifikovat místa nutná pro optimalizaci, jsou potřeba určité testovací a profilovací nátroje. Pomocí profilovacího nástroje XHProf jsem vyprofiloval statistiky pro aplikační vrstvu. Udělal jsem rozbory exekučních plánu pro SQL dotazy pro databázovou vrstvu, aby byla vidět míra jejich míra optimalizace. Také bylo potřeba vytvořit prostředí vysoké zátěže.
+Proto, abych mohl všecha svá tvrzení a závěry řádně podložit a abych mohl identifikovat místa nutná pro optimalizaci, jsou potřeba určité testovací a profilovací nátroje. Pomocí profilovacího nástroje XHProf jsem vyprofiloval statistiky pro aplikační vrstvu. Udělal jsem rozbory exekučních plánů pro SQL dotazy pro databázovou vrstvu, aby byla vidět míra jejich optimalizace. Také bylo potřeba vytvořit prostředí vysoké zátěže.
 
 \podsekce{XHProf}
 K tomu, aby bylo možné profilovat programovací jazyk PHP, jsem zvolil profilovací nástroj XHProf. Tento nástroj byl vyvinut v programovacím jazyce C. Uvolněn byl pod open-source licencí Apache 2.0. Autorem tohoto profilovacího nástroje je společnost Facebook. Tento profilovací nástroj dokáže vyprofilovat nejenom dobu trvání jednotlivých metod a funkcí, ale i jejich procesorové či paměťové nároky. XHProf je možné provozovat na operačních systémech Linux, FreeBSD a Mac OS X.
 
-Jeho instalace a konfigurace je jednoducha a bezproblemova. Stačilo mi si stáhnout instalační balíček s rozšířením, zkomipilovat a nainstalovat. Po instalaci jej bylo nutné zaregistrovat jako rozšíření pro php v konfiguračním souboru php.ini. Samotné použití je pak velice snadné. Na začátek php skriptu jsem přidal zdrojový kód s jeho aktivací a na konci php skriptu kód pro jeho vypnutí.
+Jeho instalace a konfigurace je jednoduchá a bezproblémové. Stačilo mi si stáhnout instalační balíček s rozšířením, zkomipilovat a nainstalovat. Po instalaci jej bylo nutné zaregistrovat jako rozšíření pro PHP v konfiguračním souboru php.ini. Samotné použití je pak velice snadné. Na začátek PHP skriptu jsem přidal zdrojový kód s jeho aktivací a na konci PHP skriptu kód pro jeho vypnutí.
 
-Výsledkem profilování je přehledná statistika jednotlivých metod a funkcí ve formátu HTML. Všechno v přehledné tabulce, ve které je možné měnit pohled výsledků profilování podle specifické metody či funce. V tabulce je možné pozorovat čas strávený vykonávání pouze dané funkce, čas strávený vykonávání i funkcí z ní volané, počet volání funkce, doba trvání, procesorové čas a paměťové nároky. Výsledkem může být i graf vygenerovaný z těchto statistik a ze závislostí mezi jednotlivými funkcemi.
+Výsledkem profilování je přehledná statistika jednotlivých metod a funkcí ve formátu HTML. Všechno v přehledné tabulce, ve které je možné měnit pohled výsledků profilování podle specifické metody či funkce. V tabulce je možné pozorovat čas strávený vykonáváním pouze dané funkce, čas strávený vykonáváním i funkcí z ní volané, počet volání funkce, doba trvání, procesorový čas a paměťové nároky. Výsledkem může být i graf vygenerovaný z těchto statistik a ze závislostí mezi voláním jednotlivých funkcí.
 
 Tento program je nenáročný a může být provozován i v ostrém provozu. Výsledky takového profilování jsou důležité k identifikaci problémových míst k optimalizaci, čili pro webovou architekturu v prostředí vysoké zátěže jsou nevyhnutelné.\cite{xhprof}
 
@@ -327,12 +364,12 @@ if (extension_loaded('xhprof')) {
 \end{scriptsize}
 
 \podsekce{Siege}
-Vzhledem k tomu, abych mohl nasimulovat prostředí vysoké zátěže jsem zvolil testovací nástroj Siege. Siege je tedy nástrojem pro testování webových aplikací a jejich doby odezvy v prostředí vysoké zátěže. Tento nástroj má opět lehkou a přívětivou instalaci, nachází se totiž v základních instalačních balíčcích pro operační systém Linux Debian. Siege je programem spouštěným z příkazové řádky. Jako každý program, tak i siege má samozřejmě svůj konfigurační soubor, který je důležité hlavně pro nastavení maximální prováděcí doby jednotlivých testů.
+Vzhledem k tomu, abych mohl nasimulovat prostředí vysoké zátěže jsem zvolil testovací nástroj Siege. Siege je tedy nástrojem pro testování webových aplikací a jejich doby odezvy v prostředí vysoké zátěže. Tento nástroj má opět lehkou a přívětivou instalaci, nachází se totiž v základních instalačních balíčcích pro operační systém Linux Debian. Siege je programem spouštěným z příkazové řádky. Jako každý program, tak i siege má samozřejmě svůj konfigurační soubor, který je důležitý hlavně pro nastavení maximální prováděcí doby jednotlivých testů.
 
 Volby parametrů tohoto příkazového programu jsou velice bohaté, ale přitom jednoduché pro pochopení a použití. Základními parametry jsou:
 
 \begin{itemize}
-\item c - počet simulovaných konkurentích uživatelů
+\item c - počet simulovaných konkurenčních uživatelů
 \item d - interval zpoždění mezi jednotlivými uživatelskými požadavky
 \item r - počet repetic pro zátěžové testy
 \end{itemize}
@@ -346,9 +383,9 @@ siege -d1 -c10 -r3 -v http://dp-xskrha.local/hello/Mendelu
 
 
 \podsekce{PostgreSQL Explain}
-Pro konkrétní analýzu problémových SQL dotazů je potřeba identifikovat a analyzovat jejich exekuční plán. V databázi PostgreSQL a ve většině databázích k tomu slouží příkaz explain, který takto zobrazí exekuční plán. Ve své práci jsem analyzoval problémová místa pomocí XHProf profilování, ze kterého jsem zjistil, že všechna ploblémová místa souvisí s dotazi pro databázi. Po této fázi identifikace následovala fáze vysvětlení pomoc SQL dotazu explain.
+Pro konkrétní analýzu problémových SQL dotazů je potřeba identifikovat a analyzovat jejich exekuční plán. V databázi PostgreSQL a ve většině databázích k tomu slouží příkaz explain, který takto zobrazí exekuční plán. Ve své práci jsem analyzoval problémová místa pomocí XHProf profilování, ze kterého jsem zjistil, že všechna ploblémová místa souvisí s dotazy pro databázi. Po této fázi identifikace následovala fáze vysvětlení pomoc SQL dotazu explain.
 
-Pomocí explain je možné vysvětlit všechny kroky exekučního plánu. Zjistíme tak jaký způsob prohledání byl zvolen, zda-li sekvenční nebo indexový. Dále je možné zjistit druh spojení, jestli merge join nebo hash join, apod. U jednotlivých kroků exekučního plánu je zobrazena jejich cenu, předpokládaný počet řádků a předpokládaný počet sloupců. Takto je možné identifikovat slabá místa exekučního plánu a provést tak možnou úspěšnou optimalizaci.\\
+Pomocí explain je možné vysvětlit všechny kroky exekučního plánu. Zjistíme tak jaký způsob prohledání byl zvolen, zda-li sekvenční nebo indexový. Dále je možné zjistit druh spojení, jestli merge join nebo hash join, apod. U jednotlivých kroků exekučního plánu je zobrazena jejich cena, předpokládaný počet řádků a předpokládaný počet sloupců. Takto je možné identifikovat slabá místa exekučního plánu a provést tak možnou úspěšnou optimalizaci.\\
 \\
 \\ Ukázka analýzy exekučního plánu:
 \begin{scriptsize}
@@ -372,40 +409,43 @@ Total runtime: 28.020 ms
 
 % APC
 \sekce{Aplikační vrstva PHP}
-Ve své aplikační vrstvě jsem zvolil pro implementaci programovací jazyk PHP běžící na webovém serveru Apache.
-Webový server Apache je jedním z nejrozšířenějších a nejpopulárnějším webovým serverem na internetu. Byl implementován v roce 1996 v jazyce C++. Jeho instalace, konfigurace a administrace není nikterak složitá. Na spoustě webových hostingů je dostupný v základní konfiguraci. Je to volně použitelný produkt, který obsahuje spoustu různých přídavných módů. Z těchto důvodů jsem ho vybral pro praktickou část své diplomové práce.
+Ve své aplikační vrstvě jsem zvolil pro implementaci programovací jazyk PHP 5.3 běžící na webovém serveru Apache 2.0. Webový server Apache je jedním z nejrozšířenějších a nejpopulárnějších webových serverů na internetu. Byl implementován v roce 1996 v jazyce C++. Jeho instalace, konfigurace a administrace není nikterak složitá. Na mnoha webových hostinzích je dostupný v základní konfiguraci. Je to volně použitelný produkt, který obsahuje spoustu různých přídavných módů. Z těchto důvodů jsem ho vybral pro praktickou část své diplomové práce.
 
-Programovací jazyk PHP se stal jedním z nejpoužívanějších programovacích jazyků pro svoji srozumitelnost, přenositelnost a jednoduchost. Je to dynamicky typovaný programovací jazyk, čili i z těchto důvodů je hodně ohebný. Plně podporuje OOP přístup, čili je možné vyžívat těchto technik včetně návrhových vzorů, které jsou pro složité webové aplikace v prostředí vysoké zátěže velice důležité.
+Programovací jazyk PHP se stal jedním z nejpoužívanějších programovacích jazyků pro svoji srozumitelnost, přenositelnost a jednoduchost. Je to dynamicky typovaný programovací jazyk, čili i z těchto důvodů je hodně ohebný. Plně podporuje OOP přístup, čili je možné vyžívat těchto technik včetně návrhových vzorů, které jsou pro složité webové aplikace v prostředí vysoké zátěže velice důležité. Aplikační vrstva samozřejmě podporuje plně koncept návrhového vzoru MVC využíváním MVC frameworku Symfony 2.
 
 
 \podsekce{Optimalizace pomocí APC}
-Programovací jazyk PHP je sice jednoduchý na vývoj, čitelnost a dynamičnosti, ovšem jeho daň je právě náročnost. Tento jazy je interepretovaný jazyk, čili při jeho interpretaci dochází k překladu do "Opcode" PHP kompilátorem. Vzniká tak jakýsi mezikód, který je následně po skončení překladu vykonán.
+Programovací jazyk PHP je sice jednoduchý na vývoj, čitelnost a dynamičnosti, ovšem jeho daň je časová náročnost pro překlad. Tento jazyk je interepretovaný jazyk, čili při jeho interpretaci dochází k překladu do opcode PHP kompilátorem. Vzniká tak mezikód, který je následně po skončení překladu vykonán.
 
-K tomu, aby se nemusel pokaždé překládat stejný script PHP kompilátorem, je možné ho uložit do cache pro mezikód, neboli Opcode cache. K tomuto účelu slouží APC, neboli Alternative Opcode Cache. APC je rozšířením pro PHP vytvořené přímo samotnými tvůrci programovacího jazyka PHP. Toto rozšíření není nijak zvláště náročné na intalaci ani konfiguraci. Dokonce je k němu možné zprovoznit i webové rozhraní ukazující počet úspěšných či neúspěšných dotazů do cache a jiné další statistiky. Prostřednictvím APC programového rozhraní se dají do cache paměti ukládat i jiné další hodnoty, a to právě přímo ze zdrojových kódů. Úložištěm pro APC je operační paměť RAM. Z toho důvodu je tedy důležité, aby webserver Apache2 stále běžel zapnutý. Při restartu web serveru dojde k invalidace celé APC cache paměti.
+K tomu, aby se nemusel pokaždé překládat stejný script PHP kompilátorem, je možné ho uložit do cache pro mezikód, neboli opcode cache. K tomuto účelu slouží APC, neboli Alternative Opcode Cache. APC je rozšířením pro PHP vytvořené přímo samotnými tvůrci programovacího jazyka PHP. Toto rozšíření není nijak zvláště náročné na intalaci ani konfiguraci. Dokonce je k němu možné zprovoznit i webové rozhraní ukazující počet úspěšných či neúspěšných dotazů do cache a jiné další statistiky. Prostřednictvím APC programového rozhraní se dají do cache paměti ukládat i jiné další hodnoty, a to právě přímo ze zdrojových kódů. Úložištěm pro APC je operační paměť RAM. Z toho důvodu je tedy důležité, aby webserver Apache 2.0 stále běžel zapnutý. Při restartu webového serveru dojde k invalidaci celé APC cache paměti.\cite{apc}
 
 Většina interpretovaných jazyků je překládána do nějakého mezikódu. Proto se při žádné změně zdrojových kódů dá využít už jednou zkompilovaných výsledků. Tato forma recyklace zkompilovaného mezikódu dokáže přinést velké výsledky při optimalizaci. U APC jsou tyto výsledky více než viditelné.
 
 \podsekce{Dosažené výsledky}
-Pro dosažení výsledků optimalizace aplikační vrstvy jsem vygeneroval prostředí vysoké zátěže deseti konkurenčních uživatelů s intervalem požadavků do jedné sekundy ve třech repeticích. Na aplikačním serveru tak vzniklo deset vláken Apache2 s PHP pro každého z uživatelů a celý procesorový výkon byl tak rozdělen rovnoměrně mezi jednotlivé vlákna po deseti procentech. Vytížení procesoru aplikačního serveru tak dosahovalo sta procent, čili maximálního vytížení. Tuto prostředí jsem nasimuloval jak pro neoptimalizované prostředí bez APC, tak i pro optimalizovné prostředí s APC. Pro každý požadavek docházelo ke zpracování celého MVC frameworku, čili ke zpracování mnoho funkcí a metod.
-
-Z XHProf profilování jsem vyprofiloval výsledky pro jeden požadavek jak pro APC, tak i bez APC. Výsledky toho profilování jsou takovéto:
+Pro dosažení výsledků optimalizace aplikační vrstvy jsem vygeneroval prostředí vysoké zátěže deseti konkurenčních uživatelů s intervalem požadavků do jedné sekundy ve třech repeticích. Na aplikačním serveru tak vzniklo deset vláken Apache 2.0 s PHP 5.3 pro každého z uživatelů a celý procesorový výkon byl tak rozdělen rovnoměrně mezi jednotlivé vlákna po deseti procentech. Vytížení procesoru aplikačního serveru tak dosahovalo sta procent, čili maximálního vytížení. Toto prostředí jsem nasimuloval jak pro neoptimalizované prostředí bez APC, tak i pro optimalizovné prostředí s APC. Pro každý požadavek docházelo ke zpracování celého MVC frameworku, čili ke zpracování mnoho funkcí a metod. Z XHProf profilování jsem vyprofiloval výsledky pro jeden požadavek jak pro situaci s použitím APC, tak i bez použití APC. Výsledky tohoto profilování jsou takovéto:
 
 \begin{itemize}
 \item neoptimalované - bez APC - 1,3s
 \item optimalizované - s APC - 0,4s
 \end{itemize}
 
-Z výsledku vyplývá, že při optimalizaci aplikační vrstvy pomocí APC došlo k zrychlení provedení PHP skriptů o více než padesát procent, a to jak při jediném požadavku, tak i v prostředí vysoké zátěže. Takovýto fakt se dá určitě označit úspěšnou optimalizací. Alternativou může být použití přístupu s webovým serverem Lighttpd a s cache pamětí pro mezikód eAccelerator. Výsledky by měli být hodně podobné. V dnešních dnech se objevují a publikují zprávy o uvolnění HIP-HOP pro PHP od společnosti Facebook. HIP-HOP používá úplně jiného přístupu pro zrychlení běhu PHP scriptů. Tato varianta je dnes ještě hodně čerstvá a ne tak prověřená, ovšem představuje další možnosti pro optimalizaci aplikační vrstvy v prostředí vysoké zátěže v budoucích dnech.
+Z výsledku vyplývá, že při optimalizaci aplikační vrstvy pomocí APC došlo k zrychlení překladu a provedení PHP skriptů o více než padesát procent, a to jak při jediném požadavku, tak i v prostředí vysoké zátěže. Takovýto fakt se dá určitě označit úspěšnou optimalizací. Alternativou může být použití přístupu s webovým serverem Lighttpd a s cache pamětí pro mezikód eAccelerator. Výsledky by měli být hodně podobné. V dnešních dnech se objevují a publikují zprávy o uvolnění HIP-HOP pro PHP od společnosti Facebook. HIP-HOP používá úplně jiného přístupu pro zrychlení běhu PHP scriptů. Tato varianta je dnes ještě hodně čerstvá a ne tak prověřená, ovšem představuje další možnosti pro optimalizaci aplikační vrstvy v prostředí vysoké zátěže v budoucích dnech.
 
 \obrazek
 \vlozeps{../images/graph-apc.png}{0.4}
-\endobr{Graf s výsledky doby trvání jednotlivých požadavků pro repetice}
+\endobr{Graf s výsledky porovnání doby trvání jednotlivých požadavků pro repetice s použitím a bez použití APC}
 
 \obrazek
 \vlozeps{../images/top-apc.png}{0.4}
-\endobr{Výpis systémových procesů aplikačního serveru}
+\endobr{Výpis systémových procesů aplikačního serveru s APC v prostředí vysoké zátěže}
 
 \clearpage
+
+\obrazek
+\vlozeps{../images/app-architecture.png}{0.5}
+\endobr{Výsledné zapojení webové architektury s aplikační vrstvou a APC}
+
+
 
 % Databaze
 \sekce{Databázová vrstva}
@@ -416,7 +456,7 @@ Ve své práci jsem vytvořil databázi nad databázovým systémem PostgreSQL. 
 Databáze modelované aplikace obsahuje záznamy v řádech miliónů řádků. To z toho důvodu, aby bylo nasimulováno prostředí vysoké zátěže i s velkou databází. Datové záznamy byly pro potřeby mé práce vygenerovány a nepředstavují žádnou paralelu s reálnými daty.
 
 \podsekce{Optimalizace databáze}
-Před samotnou optimalizací databázové vrstvy nebyla databáze žádným způsobem optimalizována, ať už za pomocí indexace, optimalizace SQL dotazů, segmentování či vytvoření replikací. Přístup k datům v databázi také nebyl žádným způsobem efektivní. Jednalo se o znovu se opakující dotazy a dokonce místo jednoho SQL dotazu se objevovalo více dotazů pro zjištění stejné inforační hodnoty. Rozhodl jsem se tedy pro aplikování kroku optimalizace databázové vrstvy pomocí optimalizace dotazů SQL.
+Před samotnou optimalizací databázové vrstvy nebyla databáze žádným způsobem optimalizována, ať už za pomocí indexace, optimalizace SQL dotazů, segmentování či vytvoření replikací. Přístup k datům v databázi také nebyl žádným způsobem efektivní. Jednalo se o znovu se opakující dotazy a dokonce místo jednoho SQL dotazu se objevovalo více dotazů pro zjištění stejné informační hodnoty. Rozhodl jsem se tedy pro aplikování kroku optimalizace databázové vrstvy pomocí optimalizace dotazů SQL.
 
 Pří procesu optimalizace jsem si napřed určil problematické sql dotazy pomocí XHProf profilování. Z tohoto procesu jsem zjistil které sql dotazy je potřeba zoptimalizovat. Dalším krokem následoval rozbor jejich exekučního plánu, vyhledání řešení a jeho aplikace. Řešením optimalizace některých z exukučních plánů byla indexace příslušných sloupců pro nahrazení sekvenčního prohledání za indexové prohledání. Zde je ukázka rozboru neoptimalizovaného exekučního plánu se sekvenčním prohledáním:
 
@@ -434,9 +474,8 @@ Total runtime: 16300.526 ms
 \end{verbatim}
 \end{scriptsize}
 
-Po optimalizace je vidět, že sekvenční prohledání bylo odstraněno a nahrazeno indexovým prohledáním, které je daleko efektivnější:
+Po optimalizaci je vidět, že sekvenční prohledání bylo odstraněno a nahrazeno indexovým prohledáním, které je daleko efektivnější:
 
-\clearpage
 \begin{scriptsize}
 \begin{verbatim}
 SELECT * FROM dp_comment WHERE article_id = 15 ORDER BY create_time DESC;
@@ -454,51 +493,114 @@ Total runtime: 0.303 ms
 \podsekce{Dosažené výsledky}
 Při optimalizaci dotazů jsem důkladně prozkoumával exekuční plány jednotlivých dlouhotrvajících SQL dotazů. Na spoustě místech byly řešitelné pomocí indexace. Abych tyto kroky potvrdil i pro prostředí vysoké zátěže, rozhodl jsem se nasimulovat prostředí vysoké zátěže opět pomocí programu siege, který vytvořil deset konkurenčních uživatelů s intervalem požadavku do jedné sekundy a ve třech repeticích. Test proběhl samozřejmě před i po kroku optimalizace.
 
-\obrazek
-\vlozeps{../images/graph-db.png}{0.4}
-\endobr{Graf s výsledky doby trvání jednotlivých požadavků pro repetice}
-
-\obrazek
-\vlozeps{../images/xhprof-model-db-no-optim.png}{0.4}
-\endobr{XHProf profilování aplikačního modelu databázových dotazů před optimalizací}
-
-\obrazek
-\vlozeps{../images/xhprof-model-db-optim.png}{0.4}
-\endobr{XHProf profilování aplikačního modelu databázových dotazů po optimalizací}
-
-\clearpage
-
-Z výsledků experimentu vyplývá, že SQL dotazy, které trvaly několik řádů sekund se zoptimalizovali až pod dobu jedné sekundy. Z grafu v prostředí vysoké zátěže je vidět, že před optimalizací byla maximální doba jednoho požadavku až 420 sekund. Celý proces byl hodně nestabilní a kolísavý. Po optimalizaci je viditelné ustálení činnosti databázového systému a zmenšení doby odezvy. Zrychlení je vidět až o více než padesát procent. Dalšími budoucími řešeními, která se by se dala aplikovat mohou být segmentace či replikace. Samotná optimalizace SQL dotazů řeší určité problémy, ovšem databáze může přerůst až do takových rozměrů, kdy je potřeba sáhnout k těmto řešením.
+Z výsledků experimentu vyplývá, že SQL dotazy, které trvaly několik řádů sekund se zoptimalizovali až pod dobu jedné sekundy. Z grafu v prostředí vysoké zátěže je vidět, že před optimalizací byla maximální doba jednoho požadavku až 420 sekund. Celý proces byl hodně nestabilní a kolísavý. Po optimalizaci je viditelné ustálení činnosti databázového systému a zmenšení doby odezvy. Zrychlení je vidět až o více než padesát procent. Dalšími budoucími řešeními, která se by se dala aplikovat mohou být segmentace či replikace. Samotná optimalizace SQL dotazů řeší určité problémy, ovšem databáze může přerůst až do takových rozměrů, kdy je potřeba sáhnout k těmto dalsím řešením.
 
 Databázová vrstva bývá velice často největším zdrojem zpomalení. Dotazy na tuto vrstvu jsou nejnáročnější ze všech procesů skrze celou webovou architekturu. Proto je velice důležité tento proces nepodceňovat a věnovat tomu patřičné prostředky.
 
+\obrazek
+\vlozeps{../images/graph-db.png}{0.4}
+\endobr{Graf s výsledky porovnání doby trvání jednotlivých požadavků pro repetice před a po optimalizaci SQL dotazů}
+
+\obrazek
+\vlozeps{../images/xhprof-model-db-no-optim.png}{0.4}
+\endobr{XHProf profilování aplikačního modelu databázových dotazů před optimalizací SQL dotazů}
+
+\clearpage
+
+\obrazek
+\vlozeps{../images/xhprof-model-db-optim.png}{0.4}
+\endobr{XHProf profilování aplikačního modelu databázových dotazů po optimalizaci SQL dotazů}
+
+
+\obrazek
+\vlozeps{../images/database-architecture.png}{0.5}
+\endobr{Výsledné zapojení webové architektury s optimalizovanou databázovou vrstvou}
+
+
 % Memcached
-\sekce{Aplikační cache}
-Tady se budeme snažit optimalizovat databázy.
+\sekce{Aplikační distribuovaná cache}
+\label{sec:memcached}
+Úkolem aplikační distribuované cache je ukládat jednou dotazovaná data do cache paměti a ušetřit tak SQL dotazy do databáze, které mohou být velice náročné. Zároveň ponechává webovou aplikaci dynamickou. Celý tento proces je řízen aplikací a její logikou, a tak je potřeba už v návrhu počítat s existencí dalšího typu úložiště, s přístupem k tomuto úložišti a s invalidací neplatných dat. Při použití aplikační distribuované cache vrstvy se kladou velké systémové a výpočetní nároky na aplikační vrstvu. Jejím úkolem už tak není jen vykonávat zdrojový kód PHP skriptů a práce s databází, ale navíc i řízení celé logiky aplikační distribuované cache. Ve své práci uvádím výsledky, které tato tvrzení dokládají.
 
 \podsekce{Optimalizace aplikace pomocí Memcached}
-Co jsem udělal s Memcached, jednotlivé vrstvy modelu, popis toho čeho chci dosáhnout.
+Ve své práci jsem zvolil aplikační distribuovanou cache s názvem Memcached. Memcached obsahuje rozhraní pro práci v různých programovacích jazycích, například v Java, Ruby On Rails, .NET, apod. Somozřejmě obsahuje i rozhraní pro programovací jazyk PHP, použitého v mé studii. PHP rozhraní pro Memcached je součástí dopňkových rozšíření pro PHP, čili instalace tohoto rozhraní je bezproblémová. Vzhledem k bohaté podpoře různých programovacích jazyků, je možné použít návrh, přístup a výsledky mé studie aplikační distribuované cache Memcached i pro webové architektury implementované v jiných programovacích jazycích než jen PHP.
 
-\podsekce{Diagram tříd pro aplikaci s podporou Memcached}
-Diagram tříd mé aplikace
+Memcached je volně šířitelným software s vysokou rychlostí a stabilitou. Své uplatnění najde v prostředích vysoké zátěže, kde dokáže rapidně snížit dobu přístupu k datům a zachovává aplikaci dynamickou. Memcached byla vyvinuta a implentována v jazyce C pro Live Journal v roce 2003, kdy měla tato webová aplikace přístup několika miliónů dynamického zobrazení stránek během jednoho dne. V takovémto prostředí vysoké zátěže obstála a stává se dnes běžnou součástí vrstev webových arhitektur v prostředí vysoké zátěže.
+
+Fyzickým úložištěm pro Memcached je operační paměť RAM. Do paměti ukládá hodnoty na principu key-value, čili každá hodnota je ukládána a čtena podle konkrétního klíče. Připojení aplikační vrstvy k jednotlivým serverům s memcached není nikterak složité. Těchto cache serverů, neboli uzlů, může být i více a je možné určit v jakém poměru se budou hodnoty do jednotlivých uzlů ukládat. Ne všechny uzly totiž mohou mít stejné hardwarové vybavení, zejména stejnou velikost operační paměti RAM. Aplikační vrstva ani nemusí znát informace o tom, na jakém konkrétním uzlu se uložila jaká hodnota. Pouze zašle Memcached požadavek pro hodnotu podle klíče a Memcached už sama rozhoduje na kterém z uzlů se tato hodnota nachází. Všechny hodnoty jsou ukládány serializované, nebo v textové formě, a nebo v nějakém jiném standardizovaném formátu, který může vybrat aplikační vrstva.\cite{memcached}
+
+Systém Memcached představuje optimálního kandidáta pro tvorbu aplikační distribuované cache pro dynamické webové aplikace. Ovšem vzhledem k náročnosti požadavků pro tuto vrstvu webové architektury je důležitý správný návrh a implementace aplikace. To z toho důvodu, aby byla ukládána a zobrazována čerstvá, aktuální a správná data pro zobrazení korektních informací pro uživatele webové aplikace.
+
+\podsekce{Specifikace aplikace}
+\label{app-model-memcached}
+Pro aplikační vrstvu byl použit programovací jazy PHP s MVC frameworkem Symfony 2. Každý MVC framework by měl pracovat s daty a jejich úložištěm ve vrstvě Model. Vyjímkou by neměli být ani data ukládána pomocí distribuované aplikační cache Memcached.
+
+Model aplikační vrstvy je rozdělen na další čtyři vrstvy, kde každá z nich má svůj jasně definovaný účel. První vrstvou je vrstva Service, neboli vrstva, která je přístupna z jiných vrstev MVC frameworku. Této vrstvě mohou být předány i nějaké parametry. Servisní vrsta požadavek zpracuje, zpracuje předané parametry a předá řízení další vrstvě modelu kterou je DAO, neboli Data Access Object. Účelem této vrstvy je vybrat způsob přistupu ke konkrétním typům úložišť. Jednotlivé typy úložišť jsou přístupné pomocí vrstvy s názvem Mapper. Pro každý typ úložiště existuje Mapper, který má za úkol realizovat daný požadavek na konkrétní úložiště, například databázi či aplikační distribuovanou cache. Úložiště tak tvoří poslední vrstvu pro Model.
+
+Data, neboli dotazy se kterými aplikace pracuje, mohou být tří druhů z pohledu čtení z úložiště a ukládání do úložiště. Dotazy mohou být buď skalárem, čili jednou hodnotou, nebo entitou, neboli objektem s více atributy, či kolekcí entit. Tyto typy dotazů jsou buď předány databázi a nebo distribuované aplikační cache, podle toho jak rozhodne aplikační vrstva. Každý z těchto dotazů definuje svůj SQL dotaz pro načtení z databáze a klíč pod kterým je uložen do Memcached. Do memcached jsou data ukládána serializovaná, a to z toho důvodu, aby mohla být opět zrekonstruovatelná.
+
+Největší problém obecně pro cache vrstvy bývá jejich invalidace. V distribuovaných aplikačních cache vrstvách mohou vznikat tzv. cache kaskády. Vyjímkou tomu nebylo ani v mém návrhu aplikace. Tyto kaskády vznikají tím, že stejná data jsou interpretována v jiných kontextech, čili jakmile dojde ke změně těchto dat, musí se změnit i celá tato kaskáda, neboli se celá kaskáda musí invalidovat. Jedná se tak o závislosti mezi jinými výsledky dotazů na stejných datech. Jako příklad můžu uvést, že jeden stejný článek se může nacházet v kolekci nejnovějších článků a zároveň v kolekci článků dané kategorie. Jakmile dojde ke změně článku v databázi, je potřeba invalidovat i obě dvě tyto kolekce v cache paměti Memcached. Ve své práci tuto skutečnost řeším pomocí Interface Dependency Injection, která určuje způsob předávání závislostí mezi jednotlivými objekty. Vytvoří se tedy nějaká konkrétní kaskáda, která určuje závislosti mezi konkrétními daty a jednotlivými dotazy. Jakmile dojde ke změně určitých dat, tak kaskáda invaliduje všechny závislosti dotazů na těchto datech.
+
+Takto jsou splněny všchny podmínky pro správnou práci a organizaci aplikační distribuované cache. Data jsou do cache paměti ukládána v nejmenších a jasně definovaných formátech, podle jednoznačného a konkrétního klíče a jsou ukládána znovuzrekonstruovatelná. Invalidace dat uloženách v cache paměti je řešena systémem invalidačních kaskád.
 
 \podsekce{Dosažené výsledky}
-Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+Po zhodnocení dosažených výsledků webové architektury s aplikační distribuovanou cache pomocí Memcached bylo potvrzeno další zrychlení odezvy odpovědí na požadavky klientů v prostředí vysoké zátěže. Opět jsem nasimuloval prostředí vysoké zátěže pomocí zátěžových testů programem siege, kdy odpověď požadovalo deset konkurenčních uživatelů ve stejný moment ve třech repeticích. Z XHProf profilování jsem vyprofiloval výsledky pro jeden požadavek jak pro situaci s použitím aplikační distribuované cache, tak i pro situaci pouze s optimalizovanou databází bez použití aplikační ditribuované cache. Výsledky tohoto profilování jsou takovéto:
+
+\begin{itemize}
+\item neoptimalované - bez Memcached - 25,9s
+\item optimalizované - s Memcached - 0.95s
+\end{itemize}
+
+Výsledky potvrdili že došlo k velkému zrychlení odezvy. Zároveň bylo otestováno, že aplikace stále zůstává dynamickou a všechna data jsou invalidována správně a ve správný čas. Ovšem stále zůstává obrovské zatížení aplikační vrstvy. Z toho tedy vyplývá, že při použití aplikační distribuované cache je potřeba počítat s tímto zatížením, které už je nutno řešit více aplikačními servery a rozdělováním zátěže mezi tyto servery. Server určen pro aplikační distribuovanou cache neměl žádné velké vytížení a tudíž se zde nachází potenciál, který se stále jestě může využít.
+
+\obrazek
+\vlozeps{../images/graph-memcached.png}{0.4}
+\endobr{Graf s výsledky porovnání doby trvání jednotlivých požadavků pro repetice v prostředí s Memcached a v prostředí s optimalizovanou databází PostgreSQL}
+
+\clearpage
+
+\obrazek
+\vlozeps{../images/xhprof-model-memcached-no-optim.png}{0.32}
+\endobr{XHProf profilování aplikačního modelu dotazů před optimalizací pomocí Memcached}
+
+\obrazek
+\vlozeps{../images/xhprof-model-memcached-optim.png}{0.32}
+\endobr{XHProf profilování aplikačního modelu dotazů po optimalizaci pomocí Memcached}
+
+\clearpage
+
+\obrazek
+\vlozeps{../images/memcached-architecture.png}{0.5}
+\endobr{Výsledné zapojení webové architektury s aplikační distribuovanou cache vrstvou Memcached}
+
 
 % Reverse Proxy Cache
 \sekce{Reverzní proxy cache}
-Tady se budeme snažit použít reverzní proxy cache.
+Nejrychlejším a nejefektivnější způsobem zůstává stále použití reverse proxy cache. Ovšem ale aplikace tak přichází o dynamičnost. Ale i tak se dají najít situace, kdy je možné použití statického cachevání pomocí reversní proxy cache. Například archiv článků nějakého určitého období může být statického charakteru, poněvadž takovýto obsah se dynamicky nemění. Existuje spousta programů pro řešení klasické reverzní proxy cache (viz. kapitola \ref{sec:reverse-proxy}). V této části své práce popíšu netradiční způsob pro řešení reverzní proxy cache, ale tento způsob má své uplatnění i v praxi a navazuje na předchozí kapitolu \ref{sec:memcached}.
 
-\podsekce{Nasazení a konfigurace NGINX s Memcached}
-Jak jsem co dělal s NGINX, problémy, řešení, návrh architektury a jak to ovlivňuje aplikační vrstvu
+\podsekce{Optimalizace pomocí reverzní proxy cache Nginx s Memcached}
+Jedním z moderních nástrojů pro reverzní proxy cache a se nazývá Nginx. Nginx má spoustu dalších funkcionalit a modulů. Obsahuje modul pro webový server, pro vyvažování zátěže (load balancing), pro geografické vyvažování zátěže, pro servírování obrázků, pro podporu memcached, a spoustu dalších modulů. Tento opravdu silný nástroj byl vytvořen programátorem Igorem Sysoevem v roce 2004 pro druhou největší ruskou webovou aplikaci Rambler.ru, která servírovala přes 500 milionů HTTP odpovědí během jednoho dne. Nginx jako reverzní proxy cache je řízen HTTP hlavičkami jako klasická reverzní proxy cache (viz. kapitola \ref{sec:http-headers}). HTTP odpovědi ukládá do přesně definovaného adresáře souborového systému. Tento klasický způsob se hodí pro skutečný statický obsah, kterým jsou obrázky, CSS soubory, JS soubory apod.\cite{nginx}
 
-\podsekce{Význam Ajax a webových služeb pro NGINX}
-Ajax komunikuje s NGINX, proč a jak.
+Ve své práci jsem použil Nginx jako reverzní proxy cache s modulem pro Memcached. Tento netradiční způsob řešení reverzní proxy cache s sebou přináší určité výhody. Jednou z výhod je, že řízení Memcached je plně pod kontrolou aplikační vrstvy. Aplikační vrstva ukládá a invaliduje výsledné HTTP odpovědi na HTTP požadavky klientů do Memcached, kterou používá reverzní proxy cache Nginx. Jakmile Nginx obdrží HTTP požadavek a z konfigurace zjistí, že HTTP odpověď je možné hledat pod URL adresou v paměti Memcached, zkusí ji tam najít. Pokud ji nenalezne propustí tento požadavek dále na aplikační vrstvu. Aplikační vrstva sestaví HTTP odpověď, uloží ji pod URL adresou HTTP požadavku do cache paměti pro Memcached, a pošle klientovi. Při příštím HTTP požadavku Nginx nalezne HTTP odpvěď v paměti Memcached a pošle klientovi, bez toho, aniž by požadavek propustila na aplikační vrstvu. Takovéto chování je obdobné jako při klasickém nastavení reverzní proxy cache, s tím rozdílem, že ukládání a invalidace nejsou řízeny HTTP hlavičkami. Dalši výhodou může být využití Ajaxu pro vytvoření dynamického přístupu ukládání a invalidace dat do cache paměti pro Memcached a Nginx.\cite{nginx-memcached}
+
+\obrazek
+\vlozeps{../images/nginx-memcached.png}{0.5}
+\endobr{Schéma webové architektury při použití Nginx s modulem pro Memcached}
+
+\podsekce{Využití Ajax a webových služeb pro NGINX s Memcached}
+\label{sec:ajax-nginx-memcached}
+Aplikační vrstva nemusí ukládat do cache paměti Memcached pro Nginx pouze celé kompletní HTML stránky, jakožto odpovědi HTTP požadavků. Může ukládat i další typy odpovědí jako například Ajaxem standardizovaný JSON, což je druh přenosu dat mezi Aplikační vrstvou a technologií Ajax klientské vrstvy. I takováto HTTP odpověď může být ukládána do cache paměti Memcached pro Nginx. V takovémto případě může dojít k rozdělení jednoho HTTP požadavku na víc různých HTTP požadavků pomocí Ajax. Klient zašle HTTP požadavek a Nginx navrátí HTTP odpověď. Tato odpověď pak obsahuje několik dynamických požadavků pomocí. Dynamické mohou být proto, že aplikace může řídit jejich invalidaci podobným způsobem jako v aplikační distribuované cache. Hlavní rozdíl je v tom, že aplikační distribuovaná cache je řízena plně aplikační vrstvou, jak při změně tak čtení. Zatím co tento systém webové architektury je řízen aplikační vrstvou pro změnu a invalidaci dat, ale reverzní proxy cache vrstvou pro čtení a získávání dat z cache paměti. Tímto způsobem může být webová architektura ještě více škálována.
 
 \podsekce{Dosažené výsledky}
-Toto bude vždy na konci každého experimentu, grafy, časy, screeny, apod.
+Z dosažených výsledků vyplývá absulutně nejrychlejší doba pro HTTP odpovědi ze všech mých experimentů. Opět jsem nasimuloval prostředí vysoké zátěže pro deset konkurenčních uživatelů v jeden samý okamžik a ve třech repeticích. Ovšem tento experiment má tu nevýhodu, že obsah takovéto webové architektury se stává statickým. Ale při aplikaci myšlenky z kapitoly \ref{sec:ajax-nginx-memcached} jsou HTTP odpovědi servírovány uživateli velice rychle a jakmile jsou data změněna, může dojít k ivalidaci dat z aplikační vrstvy (viz. kapitola \ref{sec:ajax-nginx-memcached}). Takto se obsah webové aplikace může stát dynamickým. Tento způsob dynamického chování jsem implementoval v aplikační vrstvě i pro Nginx.
 
+\obrazek
+\vlozeps{../images/graph-nginx.png}{0.4}
+\endobr{Graf s výsledky porovnání doby trvání jednotlivých požadavků pro repetice s reverzní proxy cache Nginx s pamětí Memcached}
 
+\obrazek
+\vlozeps{../images/nginx-architecture.png}{0.5}
+\endobr{Výsledné zapojení webové architektury s reverzní proxy cache vrstvou Nginx s pamětí Memcached}
 
 % Diskuze
 \kapitola{Diskuze}
@@ -553,9 +655,22 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 \citace{xhprof}{Jakub Onderka, 2012}{\autor{Jakub Onderka}
 \nazev{Zdrojak.cz: Profilování PHP skriptů pomocí XHProf} [online]. Dostupné z: http://www.zdrojak.cz/clanky/profilovani-php-skriptu-pomoci-xhprof/}
 
+\citace{apc}{Vito Chin, 2010}{\autor{Vito Chin}
+\nazev{Techportal Ibuildings: Understanding APC} [online]. Dostupné z: http://techportal.ibuildings.com/2010/10/07/understanding-apc/}
+
+\citace{memcached}{Brad Fitzpatrick, 2004}{\autor{Brad Fitzpatrick}
+\nazev{Linux Journal: Distributed Caching with Memcached} [online]. Dostupné z: http://www.linuxjournal.com/article/7451}
+
+\citace{nginx}{Will Reese, 2008}{\autor{Will Reese}
+\nazev{Linux Journal: Nginx: the High-Performance Web Server and Reverse Proxy} [online]. Dostupné z: http://www.linuxjournal.com/magazine/nginx-high-performance-web-server-and-reverse-proxy}
+
+\citace{nginx-memcached}{Ilya Grigorik, 2008}{\autor{Ilya Grigorik}
+\nazev{Igvita.com: Nginx and Memcached, a 400\% boost!} [online]. Dostupné z: http://www.igvita.com/2008/02/11/nginx-and-memcached-a-400-boost/}
 
 \end{literatura}
 
+% Prilohy
+\kapitola{Přílohy}
 
 
 \end{document}
