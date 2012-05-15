@@ -72,6 +72,14 @@ V architektuře webových aplikací s vysokou zátěží už je potřeba jiného
 
 Nutkno podoknout, že webové architektury využívají nejčastěji ke své komunikaci mezi klientem a architekturou protokol HTTP, který využívá portu číslo 80 a protokolu TCP pro komunikaci. Proto je celá má odborná studie založena na práci s tímto protokolem.
 
+\kapitola{Typy webového obsahu}
+Obsah webových aplikací je rozdělen na dva typy. Obsah může být buď statického nebo dynamického charakteru. Jak už vyplývá z obecné teorie systémů, statický obsah je konečný, transaprentní a měněn podle předepsaných pravidel, zatím co dynamický obsah se mění v závislosti na čase a jiných nepředvídatelných pravidlech. 
+
+Statickým obsah tedy můžeme chápat videa, obrázky, statické HTML stránky. Jedná se tak o obsah u které známe jeho přesnou životnost, nebo dokážeme určit kdy přesně se má měnit. Například invalidace u statického obsahu proběhne pouze jednou za deset minut. A i když je obsah změněn uprostřed tohoto intervalu, změna se projeví až v přelomu těchto pravidelných desetiminutových intervalů, tedy až po invalidaci. Obsah je tak celých deset minut statický a neměnný.
+
+Naopak dynamický obsah se může změnit kdykoli, nepředvídatelně, typicky na nějakou uživatelovu činnost a nebo v závislosti na čase. Příkladem může být nákupní košík v internetovém obchodě, který se mění v závislosti na uživatelově činnosti. Nebo například při vložení komentáře pod určitý článek se tento komentář ihned zobrazí v seznamu komentářů. Takový obsah se pak těžko ukládá do cache pamětí, dokonce je i náročný i pro rozložení zátěže, poněvadž musí být zachováno uživatelovo sezení aplikace (session).
+
+Z uvedených vlastností vyplývá, že správa statického obsahu je jednodušší, kdežto správa dynamického přístupu je náročnější. Dynamický přístup často předpokládá propuštění požadavku až na aplikační server, který určí výsledek. Statický obsah lze jednoduše ukládat do cache paměti, protože známe jeho přesnou dobu platnosti. Ve své práci ukazuji, analyzuji a testuji oba dva přístupy a srovnávám jejich přínos jak z pohledu aplikace, tak náročnosti na vybudování.
 
 % Aplikacni vrstva
 \kapitola{Aplikační vrstva}
@@ -87,8 +95,10 @@ Model má za úkol přistupovat k datovým úložištím, a to ať už k perzist
 
 View klade důraz na presentační úroveň, tedy na grafickou a jinou interakci s uživatelem. Zpracovává tak výsledek práce vrstvy Controller nad vrstvou Model a zobrazuje výsledek určitých operací. Často využívá nějakých šablonovacích přístupů. \cite{design-patterns}
 
+\clearpage
+
 \obrazek
-\vlozeps{../images/mvc.png}{0.35}
+\vlozeps{../images/mvc.png}{0.5}
 \endobr{Návrhový vzor MVC a jeho životní cyklus}
 
 \sekce{Optimalizace aplikační vrstvy}
@@ -122,6 +132,7 @@ Ajax, neboli Asynchronous JavaScript and XML, se dnes stává nedílnou součás
 
 % Databaze
 \kapitola{Dabázová vrstva}
+\label{sec:database}
 Úkolem databázové vrstvy ve webové architektuře je zajišťovat datové služby a uchovávat tak aplikační data perzistentní. V oblasti webových architektur se nejčastěji vyskytují relační databázové systémy, a proto i má práce je soustředěna na tento typ databázových systémů. Databázový systém obecně tvoří databáze, jakožto skupina strukturovaných homogenních souborů, a SŘBD, neboli Systém řízení báze dat, jakožto integrovaný softwarový prostředek řídící bázi dat.
 
 \sekce{Optimalizace SQL dotazů}
@@ -204,11 +215,6 @@ Pro webové architektury v prostředí vysoké zátěže je tato vrstva nevyhnut
 \vlozeps{../images/cache-process.png}{0.6}
 \endobr{Diagram aktivit cache webových systémů}
 
-\sekce{Typy obsahu}
-Z pohledu ukládání do cache paměti je přístup a druh obsahu webové architektury rozdělen na dva typy. Obsah může být buď statického nebo dynamického charakteru. Jak už vyplývá z obecné teorie systémů, statický obsah je konečný, transaprentní a měněn podle předepsaných pravidel, zatím co dynamický obsah se mění v závislosti na čase a jiných nepředvídatelných pravidlech. Například invalidace u statického obsahu proběhne pouze jednou za deset minut. A i když je obsah změněn uprostřed tohoto intervalu, změna se projeví až v přelomu těchto pravidelných desetiminutových intervalů, tedy až po invalidaci. Obsah je tak celých deset minut statický a neměnný. Naopak dynamický obsah se může změnit kdykoli, nepředvídatelně, typicky na nějakou uživatelovu činnost a nebo podle času. Například při vložení komentáře se ihned změní seznam komentářů. U dynamické ukládání dat do cache paměti je tak potřeba se zaměřit především na jejich změnu, tedy na jejich invalidaci.
-
-Z uvedených vlastností vyplývá, že správa cache paměti statického obsahu je jednodušší, kdežto správa cache dynamického přístupu je náročnější. Ve své práci ukazuji, analyzuji a testuji oba dva přístupy a srovnávám jejich přínos jak z pohledu aplikace, tak náročnosti na vybudování.
-
 \sekce{HTTP hlavičky pro ovládání cache}
 \label{sec:http-headers}
 Komunikace ve webových aplikacích probíhá ve valné většině na úrovni protokolu HTTP. Každý HTTP požadavek obsahuje HTTP hlavičky, kterými určuje požadavek, klienta a obsahuje časové razítko. Odpověď na tento požadavek navrací v hlavičkách návratový kód, informace o serveru, časové razítko, typ obsahu odpovědi, délku odpovědi a informace pro případné ukládání do cache paměti. Právě jednotlivé cache hlavičky jsou důležité pro nastavení ukládání a invalidace do proxy cache paměti nebo do reverzní proxy cache paměti.
@@ -218,7 +224,7 @@ Existují dva základní modely pro určení práce s cache vrstvou. Prvním je 
 Druhým modelem je model validační. Ten určuje způsob komunikace pro zjištění, zda-li je odpověď uložená v cache paměti stále validní. Základem je, že cache, která má uloženu odpověď se zeptá je-li odpověď stále validní a server odpoví jestli ano či vrátí novou čerstvou odpověď. Realizováno to může být opět dvěma způsoby. Tím prvním je určení tzv. Last-Modified. Při prvním požadavku cache získá odpověď s touto hlavičkoku. Odpověď si uloží a při dalším požadavku se cache vrstva dotáže serveru pomocí hlavičky If-Modified-Since s časovým razítkem, zda-li je odpověď stále validní. Server odpoví návratovým kódem 304, který říká že nedošlo k žádné změně od daného časového razítka, a nebo vrátí novou čerstvou odpověď pokud došlo ke změně. Podobný princip je založen i na způsobu pomocí hlavičky Etag neboli Entity tag. Etag je nějaký unikátní identifikátor vygenerovaný serverem pro danou HTTP odpověď. Cache vrstva si při prvním požadavku uloží odpověď s tímto Etag. Při dalším požadavku pošle na server HTTP požadavek s hlavičkou If-None-Match s tímto Etag. Pokud se Etag shodují, vrátí aplikačnín server odpověď s návratovým kódem 304, a nebo celou čerstvou odpověď.\cite{rfc-http}
 
 Ovládání pomocí HTTP hlaviček slouží hlavně k statiskému obsahu. Pro tento účel je pak dobré zvážit jestli je lepsí odpovědi měnit v nějakých časových intervalech a používat tak expirační model, či jestli se nevyplatí nasazovat model validační, který nese složitější administraci.\\
-\\
+\clearpage
 Příklad HTTP hlaviček pro HTTP odpověď:
 \begin{scriptsize}
 \begin{verbatim}
@@ -255,7 +261,7 @@ V dnešních moderních prohlížečích je práce s cache pamětí podporována
 Proxy cache bývají budovány a instalovány providery a poskytovali připojení k internetu. Jejich záměr je jednoduchý. Jde o to snížit míru odchozí komunikace, nezatěžovat tolik šířku pásma a zmenšit tak náklady spojené s touto komunikací. Nejběžnějším nastavením těchto proxy cache pamětí bývá ukládání a invalidace obsahu v závislosti na HTTP hlavičkách přijaté odpovědi. Nainstalujeme-li například takovouto cache ve firmě či nějakém sídlišti s několika desítky, sty či dokonce až tisíci uživateli, je možné, že část z nich má každé ráno stejný požadavek na stejný zpravodajský server, tudíž mají i stejnou odpověď. A tak může být první odpověď uložena do cache paměti a těm dalším uživatelům může být odpověď servírována z proxy cache paměti.\cite{proxy-cache}
 
 \obrazek
-\vlozeps{../images/proxy-cache.png}{0.6}
+\vlozeps{../images/proxy-cache.png}{0.5}
 \endobr{Proxy cache ve webové architektuře}
 
 \podsekce{Reverzní proxy cache}
@@ -263,7 +269,7 @@ Proxy cache bývají budovány a instalovány providery a poskytovali připojen�
 Reverzní proxy cache, někdy označovány jako tzv. Gateway cache, mají podobný systém činnosti jako proxy cache. Mají za úkol ukládat statický obsah ve formě HTTP odpovědí a tyto odpovědi vracet nazpět odkud přišel jejich požadavek. Úkolem je tak pokud možno nepropustit požadavek dále na aplikační vrstvu, stejně jako úkolem proxy cache je pokud možno nepropouštět požadavek dále do internetu. Rozdíl mezi reverzní proxy cache a proxy cache spočívá v jejich pozici ve webové architektuře, a také v tom, kým jsou instalovány. Pozice reverzní proxy cache je na straně serveru, neboli blíže aplikační vrstvě architektury, tedy na druhé straně internetu, než odkud příchází požadavky klientů a kde jsou instalovány proxy cache. Reverzní proxy cache jsou instalovány samotnými administrátory a programátory webové aplikace. Jejich účel je zajistit rychlejší odezvu webové aplikace na HTTP požadavky klientů. Reverzní proxy cache jsou nedílnou součástí webové architektury v prostředí vysoké zátěže a bez jejich existence by jen těžko mohla být webová aplikace spolehlivá a rychlá.\cite{proxy-cache}
 
 \obrazek
-\vlozeps{../images/reverse-proxy-cache.png}{0.6}
+\vlozeps{../images/reverse-proxy-cache.png}{0.5}
 \endobr{Reverzní proxy cache ve webové architektuře}
 
 \podsekce{Aplikační distribuovaná cache}
@@ -280,36 +286,67 @@ Při práci s aplikační distribuovanou cache je důležité si uvědomit něko
 \endobr{Aplikační distribuovaná cache ve webové architektuře}
 
 
+\kapitola{CDN}
+Vrstva CDN neboli Content Delivery Network je důležitou součástí webové architektury v prostředí vysoké zátěže. Jejím úkolem je rozdělit zátěž webové architektury mezi více uzlů. Jedná se o několik serverů, které mají za úkol klientům předávat vesměs statický obsah ve formě multimédií, stream videa či softwarových aktualizací. 
 
-% Dalsi vrstvy
-\kapitola{Další vrstvy aplikace}
-K čemu jsou další vrstvy
+CDN mají obvykle jeden centrální prvek, který rozhoduje o tom na který z CDN uzlů se požadavek přesměruje. Rozhodovat se může v závislosti na spoustě ukazatelů, a záleží už na konkrétním využití CDN. Rozhodovat se mohou například na základě geografického rozdělení. Centrálním prvkem je tak DNS server, který má přehled o kompletní topologii sítě CDN. Má tak přehled o tom, který ze serverů se kde nachází. Dalším ukazatelem pro centrální prvek může být stav serverů, jejich vytížení operační paměti RAM a procesoru CPU, stav odesílaných paketů na síťových kartách, stav cache pamětí apod. 
 
-\sekce{CDN}
-Content delivery network obrázky a stream.
+Existují komerční i open source CDN sítě, větší společnosti pak mývají vlastní řešení. Mezi CDN se objevují i možnosti pro servírování dynamického obsahu, ovšem primární účel by měl být obsah statický. CDN najdou obrovské uplatnění tam, kde dochází k přenosům velkých souborů, které se už nijak nemění, a nebo se mění ve velkých intervalech.\cite{cdn}
 
-\sekce{NoSQL Databáze}
-K čemu slouží a kde najdou své uplatnění.
-
-\sekce{Vyhledávání}
-Z vyhledávání se také dělá další vrstva.
-
+\obrazek
+\vlozeps{../images/cdn.png}{0.5}
+\endobr{Ukázka komunikace klienta s CDN sítí}
 
 
 % Virtualizace
 \kapitola{Virtualizace}
-Projekty dnes neběží vždy na jednom serveru, ale na více virtualizovaných serverech. Proč tomu tak je.
+Virtualizace je moderní pojem, který umožňuje lepší škálovatelnost aplikace a možnost práce s jednotlivými vrstvami webové aplikace a jejími servery. V dnešní době se nejvíce hovoří o tzv. virtualizaci platforem, což znamená provozování více virtuálních počítačů s vlastním operačním systémem na jednom fyzickém počítači. Takto virtualizované počítače i včetně operačních systémů a aplikací jsou od sebe navzájem izolovány. 
+
+Příklady profesionálních nástrojů pro virtualizaci počítačů jsou VMWare, Hyper-V a nebo třeba Citrix Xen Server. Základem virtualizace je fyzický server, který je pod správou vrstvy hypervizor, která řídí přístup k fyzickým zdrojům a rozhraním. Takto přípravený fyzický server se nazývá host. Několik hostů může být spravováno v jedné skupině nazývané cluster, která má své zdroje. To vše bývá spravováno centralním serverem pomocí desktopového klienta či webového rozhraní.
+
+Virtualizace přínáší spoustu výhod. Jednou z nich je elastičnost zdrojů. Jakmile se totiž některý z virtualizovaných serverů jeví jako velice vytížený, je možné mu během pár vteřin přidat chybějící prostředky. Stejně tak je možné tyto prostředky ubrat u serverů, kteří jej nevyužijí.
+
+Pro webové architektury tou největší výhodou je konsolidace serverů, neboli provozování většího počtu virtualizovaných serverů na menším počtu serveru fyzických. Tohoto se hodně využívá ve webových architektůrách. Vzhledem k náročnosti jednotlivých vrstev webové architektury se v dnešních dnech používá přístupu s více virtualizovanými servery, které mají mnohdy jediný účel. Například jeden server pro datábázi, další pro webový server, mailový server, cache servery, apod.
+
+Další výhodou může být redukce hardware, el. energie, prostor a dalších zdrojů. Bez virtualizace by přidání dalšího fyzického serveru znamenalo nakoupení HW komponent, vytvoření dalšího místa v serverovně a přivést další zdroj elektrické energie. Pro virtualizaci nového serveru stačí vyhodnotit stávající využití fyzických prostředků jinými virtuálními servery, dále zhodnotit rezervy na fyzických serverech, popřípadě dokoupit už jen dílčí komponenty jako například operační paměť RAM.
+
+Obrovskou výhodou virtualizace je možnost sjednocení vývojového, testovacího a produkčního prostředí. Díky virtualizaci získáme během pár okamžiků věrnou kopii některého ze serverů a stejně tak je možné ho velice rychle přenést na jiný fyzický server. Dokonce se může tento přenos obejít i bez výpadku serveru, pokud jsou ve stejném clusteru.
+
+Virtualizace dnes znamená obrovské ulehčení pro administraci jednotlivých serverů, jejich konfiguraci, rozšiřitelnost, apod. Dokonce právě vznikající trend s názvem Cloud Computing vychází z virtualizace a jeho modernější oblastí. Proto je důležité pro webovou architekturu v prostředí vysoké zátěže virtualizovat její jednotlivé vrstvy se servery.\cite{virtual}
+
+\clearpage
+
+\obrazek
+\vlozeps{../images/virtual.png}{1}
+\endobr{Ukázka virtualizovaných systémů v prostředí na jednom fyzickém serveru}
 
 
 % Load balancing
-\kapitola{Load balancing}
-Nevím jestli k této kapitole se vůbec dostanu, uvidíme. Každopádně serverů bývá vždy několik a jak zajišťovat toto rozložení zátěže.
+\kapitola{Rozložení zátěže}
+Rozložení zátěže, neboli load balancing, se používá v momentě, kdy zátěž webové architektury přeroste možnosti a výkonnost nějakého ze serverů. Tím pádem je nutné přidat další server a zajistit tak rovnoměrné rozložení zátěže mezi tyto servery. 
+
+Nejznámějším způsobem rozložení zátěže je tzv. Round Robin DNS. Při dotazu klienta na IP adresu cílové serveru, DNS server vrátí náhodný záznam jednoho z několika cílových serverů. Tímto způsobem je zátěž rozdělena náhodně, čili zhruba rovnoměrně mezi všechny servery. Zde nastává problém se sezením mezi aplikací a klientem, tzv. session. Pokud se klient připojuje k různým serverům zcela náhodně, tak není zaručeno že bude mít vždy stejné sezení s aplikací. Je totiž důležité, aby například když se uživatel přihlásí do aplikace, tak se uloží informace o přihlášení do jeho sezení a při zobrazení příští stránky se po něm nevyžadovalo opětovné přihlášení. V tomto případě náhodného přidělování koncových serverů je potřeba ukládat tato sezení do nějakého společného úložiště pro všechny koncové uzly.
+
+Další možností je řešit rozložení zátěže na úrovní transportní vrstvy. K tomu slouží HW load balancery, které rozhodují na který ze serverů se požadavek přepošle dál. Tato profesionální zařízení už mohou rozhodnout v závislosti na jiných parametrech jako aktuální počet dotazů, přenášených dat, vytíženosti šířky pásma, zdrojové IP adresy, její geografické polohy, apod. 
+
+Existují i aplikační load balancery. Ty najdou své uplatnění ve webových architekturách. Jedná se tak o nějaký server s běžícím softwarovým load balancerem, který přijme a zpracuje požadavek a rozhodne, kterému z koncových serverů ho předá dál. Aplikační load balancer by proto neměl mít problém zajistit klientovi vždy stejný koncový server.
+
+Ve webových architektůrách v prostředí vysoké zátěže je zcela nevyhnutelné použití více uzlů, například více aplikačních serverů. Vrstva pro rozložení zátěže je tak nedílnou součástí webové architektury v prostředí vysoké zátěže.
+
+\obrazek
+\vlozeps{../images/load-balancing.png}{0.5}
+\endobr{Ukázka jednoduchého rozložení zátěže}
 
 
-% Cloud computing
-\kapitola{Cloud Computing}
-Budoucnost projektů, startupů, vše řešeno cloudem. AWS
+% Dalsi vrstvy
+\kapitola{Další vrstvy aplikace}
+V prostředí vysoké zátěže je velice důležitá škálovatelnost. Ta vzniká i přidáváním dalších samostatných vrstev a ubírání tím tak práce jiným vrstvám. Proto je dobré se zaměřit i na další vrstvy, další aplikace, služby a možnosti, které mohou běžet samostatně bez nutnosti režie a zásahu jiných vrstev, a přítom mohou hodně odlehčit dalším vrstvám.
 
+Jednu z možností pro přidání další vrstvy aplikace a odlehčení tak jiné jsou No SQL databáze. Jak už bylo nastíněho v kapitole \ref{sec:database}, jedním z největších zdrojů zpoždění ve webových architektrách v prostředí vysoké zátěže mohou být databáze. Proto je vhodné kombinovat toto primární úložiště i s jinými možnostmi. NoSQL databáze jsou od klasických relačních databázi odlišné tím, že nemají žádnou referenční integritu, pevnou strukturu záznamů, nezabraňují redundanci, používají jiný jazyk pro dotazování a jsou volnější a flexibilnější. Jejich uplatnění se nalezne pro data, ve kterých není potřeba uchovávat nějakou větší logiku, a se kterými není potřeba provádět složitější operace. Mohou se hodit i k uchovávání dat k některým statistikám pro analýzy v business inteligence.
+
+Většina webových aplikací podporuje funkci pro vyhledávání. Ať už se jedná o kompletní prohledávání všech dat aplikace či pouze o našeptávač, tak je asi zbytečné těmito akcemi zahlcovat databázový čas a prostředky. Existují totiž i jiné možnosti, jiné aplikace, které zastávají funkčnost vyhledávání. Těmto aplikacemím či službám se předávají data k prohledávání, které si samy prohledávají, indexují a vytváří další statistiky pro vyhledávání a nezatěžují tím aplikační či databázovou vrstvu.
+
+Určitě existuje celá řada dalších aplikací a služeb, které pomůžou většímu rozdělení a škálování aplikace na jiné další části, které dokáží fungovat nezávisle na sobě. Důležité je totiž co nejvíce odlehčovat vrstvám webové architektury v prostředí vysoké zátěže.
 
 
 
@@ -322,7 +359,7 @@ V praktické části se zaměřuji na testy, optimalizaci jednotlivých vrstev w
 Webová architektura sestává z klientské vrstvy, reverzní proxy cache vrsrtvy, aplikační vrstvy, aplikační distribuované cache a databázové vrstvy. Klientská část je tvořena jedním uživatelem s operačním systémem Linux Ubuntu a zátěžovým testovacím nástrojem Siege. Reverzní proxy cache vrstva je realizována programem Nginx. Aplikační vrstva se skládá z webového serveru Apache2 s programovacím jazykem PHP a s profilovacím nástrojem XHProf. Aplikační distribuovaná cache vrstva je tvořena programem Memcached. Databází je PostgreSQL. Všechny tyto vrstvy serverové části jsou vytvořeny na zvláštních serverech. Pro reverzní proxy cache a aplikační distribuovanou cache byl zvolen jeden server. Každý ze serverů je virtualiziován za pomoci virtualizačního nástroje VirtualBox. Celá webová architektura je konfigurována v jedné virtuální lokální síti 10.9.0.0/24 se statickým přidělováním IP adres. Rozhraní pro přípojení těchto virtualizovaných serverů do virtuální sítě je realizováno pomocí síťových mostů. Vzhledem k tomu, abych mohl ukázat velké poměrové rozdíly v jednotlivých krocích optimalizace v jednotlivých vrstvách architektury, rozhodl jsem se o velice slabé hardwarové vybavení jednotlivých serverů, která mají 512MB operační paměti RAM a jeden jednojádrový procesor s frekvencí 2GHz.
 
 \obrazek
-\vlozeps{../images/nginx-architecture.png}{0.6}
+\vlozeps{../images/nginx-architecture.png}{0.5}
 \endobr{Vrstvy implementované webové architektury}
 
 \sekce{Testovací a profilovací nástroje}
@@ -415,6 +452,7 @@ Programovací jazyk PHP se stal jedním z nejpoužívanějších programovacích
 
 
 \podsekce{Optimalizace pomocí APC}
+\label{sec:optim-apc}
 Programovací jazyk PHP je sice jednoduchý na vývoj, čitelnost a dynamičnosti, ovšem jeho daň je časová náročnost pro překlad. Tento jazyk je interepretovaný jazyk, čili při jeho interpretaci dochází k překladu do opcode PHP kompilátorem. Vzniká tak mezikód, který je následně po skončení překladu vykonán.
 
 K tomu, aby se nemusel pokaždé překládat stejný script PHP kompilátorem, je možné ho uložit do cache pro mezikód, neboli opcode cache. K tomuto účelu slouží APC, neboli Alternative Opcode Cache. APC je rozšířením pro PHP vytvořené přímo samotnými tvůrci programovacího jazyka PHP. Toto rozšíření není nijak zvláště náročné na intalaci ani konfiguraci. Dokonce je k němu možné zprovoznit i webové rozhraní ukazující počet úspěšných či neúspěšných dotazů do cache a jiné další statistiky. Prostřednictvím APC programového rozhraní se dají do cache paměti ukládat i jiné další hodnoty, a to právě přímo ze zdrojových kódů. Úložištěm pro APC je operační paměť RAM. Z toho důvodu je tedy důležité, aby webserver Apache 2.0 stále běžel zapnutý. Při restartu webového serveru dojde k invalidaci celé APC cache paměti.\cite{apc}
@@ -456,6 +494,7 @@ Ve své práci jsem vytvořil databázi nad databázovým systémem PostgreSQL. 
 Databáze modelované aplikace obsahuje záznamy v řádech miliónů řádků. To z toho důvodu, aby bylo nasimulováno prostředí vysoké zátěže i s velkou databází. Datové záznamy byly pro potřeby mé práce vygenerovány a nepředstavují žádnou paralelu s reálnými daty.
 
 \podsekce{Optimalizace databáze}
+\label{sec:optim-database}
 Před samotnou optimalizací databázové vrstvy nebyla databáze žádným způsobem optimalizována, ať už za pomocí indexace, optimalizace SQL dotazů, segmentování či vytvoření replikací. Přístup k datům v databázi také nebyl žádným způsobem efektivní. Jednalo se o znovu se opakující dotazy a dokonce místo jednoho SQL dotazu se objevovalo více dotazů pro zjištění stejné informační hodnoty. Rozhodl jsem se tedy pro aplikování kroku optimalizace databázové vrstvy pomocí optimalizace dotazů SQL.
 
 Pří procesu optimalizace jsem si napřed určil problematické sql dotazy pomocí XHProf profilování. Z tohoto procesu jsem zjistil které sql dotazy je potřeba zoptimalizovat. Dalším krokem následoval rozbor jejich exekučního plánu, vyhledání řešení a jeho aplikace. Řešením optimalizace některých z exukučních plánů byla indexace příslušných sloupců pro nahrazení sekvenčního prohledání za indexové prohledání. Zde je ukázka rozboru neoptimalizovaného exekučního plánu se sekvenčním prohledáním:
@@ -532,7 +571,7 @@ Fyzickým úložištěm pro Memcached je operační paměť RAM. Do paměti ukl�
 Systém Memcached představuje optimálního kandidáta pro tvorbu aplikační distribuované cache pro dynamické webové aplikace. Ovšem vzhledem k náročnosti požadavků pro tuto vrstvu webové architektury je důležitý správný návrh a implementace aplikace. To z toho důvodu, aby byla ukládána a zobrazována čerstvá, aktuální a správná data pro zobrazení korektních informací pro uživatele webové aplikace.
 
 \podsekce{Specifikace aplikace}
-\label{app-model-memcached}
+\label{sec:app-model-memcached}
 Pro aplikační vrstvu byl použit programovací jazy PHP s MVC frameworkem Symfony 2. Každý MVC framework by měl pracovat s daty a jejich úložištěm ve vrstvě Model. Vyjímkou by neměli být ani data ukládána pomocí distribuované aplikační cache Memcached.
 
 Model aplikační vrstvy je rozdělen na další čtyři vrstvy, kde každá z nich má svůj jasně definovaný účel. První vrstvou je vrstva Service, neboli vrstva, která je přístupna z jiných vrstev MVC frameworku. Této vrstvě mohou být předány i nějaké parametry. Servisní vrsta požadavek zpracuje, zpracuje předané parametry a předá řízení další vrstvě modelu kterou je DAO, neboli Data Access Object. Účelem této vrstvy je vybrat způsob přistupu ke konkrétním typům úložišť. Jednotlivé typy úložišť jsou přístupné pomocí vrstvy s názvem Mapper. Pro každý typ úložiště existuje Mapper, který má za úkol realizovat daný požadavek na konkrétní úložiště, například databázi či aplikační distribuovanou cache. Úložiště tak tvoří poslední vrstvu pro Model.
@@ -576,12 +615,13 @@ Výsledky potvrdili že došlo k velkému zrychlení odezvy. Zároveň bylo otes
 
 % Reverse Proxy Cache
 \sekce{Reverzní proxy cache}
+\label{sec:reverse-proxy-cache}
 Nejrychlejším a nejefektivnější způsobem zůstává stále použití reverse proxy cache. Ovšem ale aplikace tak přichází o dynamičnost. Ale i tak se dají najít situace, kdy je možné použití statického cachevání pomocí reversní proxy cache. Například archiv článků nějakého určitého období může být statického charakteru, poněvadž takovýto obsah se dynamicky nemění. Existuje spousta programů pro řešení klasické reverzní proxy cache (viz. kapitola \ref{sec:reverse-proxy}). V této části své práce popíšu netradiční způsob pro řešení reverzní proxy cache, ale tento způsob má své uplatnění i v praxi a navazuje na předchozí kapitolu \ref{sec:memcached}.
 
 \podsekce{Optimalizace pomocí reverzní proxy cache Nginx s Memcached}
 Jedním z moderních nástrojů pro reverzní proxy cache a se nazývá Nginx. Nginx má spoustu dalších funkcionalit a modulů. Obsahuje modul pro webový server, pro vyvažování zátěže (load balancing), pro geografické vyvažování zátěže, pro servírování obrázků, pro podporu memcached, a spoustu dalších modulů. Tento opravdu silný nástroj byl vytvořen programátorem Igorem Sysoevem v roce 2004 pro druhou největší ruskou webovou aplikaci Rambler.ru, která servírovala přes 500 milionů HTTP odpovědí během jednoho dne. Nginx jako reverzní proxy cache je řízen HTTP hlavičkami jako klasická reverzní proxy cache (viz. kapitola \ref{sec:http-headers}). HTTP odpovědi ukládá do přesně definovaného adresáře souborového systému. Tento klasický způsob se hodí pro skutečný statický obsah, kterým jsou obrázky, CSS soubory, JS soubory apod.\cite{nginx}
 
-Ve své práci jsem použil Nginx jako reverzní proxy cache s modulem pro Memcached. Tento netradiční způsob řešení reverzní proxy cache s sebou přináší určité výhody. Jednou z výhod je, že řízení Memcached je plně pod kontrolou aplikační vrstvy. Aplikační vrstva ukládá a invaliduje výsledné HTTP odpovědi na HTTP požadavky klientů do Memcached, kterou používá reverzní proxy cache Nginx. Jakmile Nginx obdrží HTTP požadavek a z konfigurace zjistí, že HTTP odpověď je možné hledat pod URL adresou v paměti Memcached, zkusí ji tam najít. Pokud ji nenalezne propustí tento požadavek dále na aplikační vrstvu. Aplikační vrstva sestaví HTTP odpověď, uloží ji pod URL adresou HTTP požadavku do cache paměti pro Memcached, a pošle klientovi. Při příštím HTTP požadavku Nginx nalezne HTTP odpvěď v paměti Memcached a pošle klientovi, bez toho, aniž by požadavek propustila na aplikační vrstvu. Takovéto chování je obdobné jako při klasickém nastavení reverzní proxy cache, s tím rozdílem, že ukládání a invalidace nejsou řízeny HTTP hlavičkami. Dalši výhodou může být využití Ajaxu pro vytvoření dynamického přístupu ukládání a invalidace dat do cache paměti pro Memcached a Nginx.\cite{nginx-memcached}
+Ve své práci jsem použil Nginx jako reverzní proxy cache s modulem pro Memcached. Tento netradiční způsob řešení reverzní proxy cache s sebou přináší určité výhody. Jednou z výhod je, že řízení Memcached je plně pod kontrolou aplikační vrstvy. Aplikační vrstva ukládá a invaliduje výsledné HTTP odpovědi na HTTP požadavky klientů do Memcached, kterou používá reverzní proxy cache Nginx. Jakmile Nginx obdrží HTTP požadavek a z konfigurace zjistí, že HTTP odpověď je možné hledat pod URL adresou v paměti Memcached, zkusí ji tam najít. Pokud ji nenalezne propustí tento požadavek dále na aplikační vrstvu. Aplikační vrstva sestaví HTTP odpověď, uloží ji pod URL adresou HTTP požadavku do cache paměti pro Memcached, a pošle klientovi. Při příštím HTTP požadavku Nginx nalezne HTTP odpvěď v paměti Memcached a pošle klientovi, bez toho, aniž by požadavek propustila na aplikační vrstvu. Takovéto chování je obdobné jako při klasickém nastavení reverzní proxy cache, s tím rozdílem, že ukládání a invalidace nejsou řízeny HTTP hlavičkami. Dalši výhodou může být využití Ajaxu a metodiky aplikační distribuované cache pro vytvoření dynamického přístupu ukládání a invalidace dat do cache paměti pro Memcached a Nginx.\cite{nginx-memcached}
 
 \obrazek
 \vlozeps{../images/nginx-memcached.png}{0.5}
@@ -589,7 +629,9 @@ Ve své práci jsem použil Nginx jako reverzní proxy cache s modulem pro Memca
 
 \podsekce{Využití Ajax a webových služeb pro NGINX s Memcached}
 \label{sec:ajax-nginx-memcached}
-Aplikační vrstva nemusí ukládat do cache paměti Memcached pro Nginx pouze celé kompletní HTML stránky, jakožto odpovědi HTTP požadavků. Může ukládat i další typy odpovědí jako například Ajaxem standardizovaný JSON, což je druh přenosu dat mezi Aplikační vrstvou a technologií Ajax klientské vrstvy. I takováto HTTP odpověď může být ukládána do cache paměti Memcached pro Nginx. V takovémto případě může dojít k rozdělení jednoho HTTP požadavku na víc různých HTTP požadavků pomocí Ajax. Klient zašle HTTP požadavek a Nginx navrátí HTTP odpověď. Tato odpověď pak obsahuje několik dynamických požadavků pomocí. Dynamické mohou být proto, že aplikace může řídit jejich invalidaci podobným způsobem jako v aplikační distribuované cache. Hlavní rozdíl je v tom, že aplikační distribuovaná cache je řízena plně aplikační vrstvou, jak při změně tak čtení. Zatím co tento systém webové architektury je řízen aplikační vrstvou pro změnu a invalidaci dat, ale reverzní proxy cache vrstvou pro čtení a získávání dat z cache paměti. Tímto způsobem může být webová architektura ještě více škálována.
+Aplikační vrstva nemusí ukládat do cache paměti Memcached pro Nginx pouze celé kompletní HTML stránky, jakožto odpovědi HTTP požadavků. Může ukládat i další typy odpovědí jako například Ajaxem standardizovaný JSON, což je druh přenosu dat mezi Aplikační vrstvou a technologií Ajax klientské vrstvy. Díky Ajax tak může dojít k rozdělení jednoho HTTP požadavku na více různých požadavků. Klient zašle HTTP požadavek a Nginx navrátí HTTP odpověď ve formě statické HTML stránky, která obsahuje několik dalších požadavků pomocí Ajax. Odpovědi na tyto Ajax požadavky mohou být dynamického či statického charakteru. Tímto způsobem je webová aplikace rozdělena mezi více webových služeb, které mohou pracovat samostatněji a nezávisle na sobě, a aplikace se tak stává více škálovatelnou.
+
+Vzhledem k tomu, že aplikace a její logika řídí ukládání do cache paměti Memcached, může tak řídit i jejich invalidaci podobným způsobem jako v aplikační distribuované cache (viz. kapitola \ref{sec:app-model-memcached}). Hlavní rozdíl je v tom, že v případě aplikační distribuované cache je práce s cache řízena plně aplikační vrstvou, jak při změně tak čtení. Zatím co systém webové architektury s Nginx a Memcached je řízen aplikační vrstvou pro změnu a invalidaci dat a reverzní proxy cache vrstvou pro čtení a získávání dat z cache paměti. Dochází tak k hybridnímu způsobu práce s reverzní proxy cache a aplikační distribuovanou cache. Toho je možné využít pro webové služby, které tak mohou být dynamického nebo statického charakteru.
 
 \podsekce{Dosažené výsledky}
 Z dosažených výsledků vyplývá absulutně nejrychlejší doba pro HTTP odpovědi ze všech mých experimentů. Opět jsem nasimuloval prostředí vysoké zátěže pro deset konkurenčních uživatelů v jeden samý okamžik a ve třech repeticích. Ovšem tento experiment má tu nevýhodu, že obsah takovéto webové architektury se stává statickým. Ale při aplikaci myšlenky z kapitoly \ref{sec:ajax-nginx-memcached} jsou HTTP odpovědi servírovány uživateli velice rychle a jakmile jsou data změněna, může dojít k ivalidaci dat z aplikační vrstvy (viz. kapitola \ref{sec:ajax-nginx-memcached}). Takto se obsah webové aplikace může stát dynamickým. Tento způsob dynamického chování jsem implementoval v aplikační vrstvě i pro Nginx.
@@ -598,15 +640,25 @@ Z dosažených výsledků vyplývá absulutně nejrychlejší doba pro HTTP odpo
 \vlozeps{../images/graph-nginx.png}{0.4}
 \endobr{Graf s výsledky porovnání doby trvání jednotlivých požadavků pro repetice s reverzní proxy cache Nginx s pamětí Memcached}
 
+\clearpage
+
 \obrazek
 \vlozeps{../images/nginx-architecture.png}{0.5}
 \endobr{Výsledné zapojení webové architektury s reverzní proxy cache vrstvou Nginx s pamětí Memcached}
 
+
+
 % Diskuze
 \kapitola{Diskuze}
-Diskutovaná řešení, jak je možné je kombinovat, apod.
+Ve své práci jsem se nejvíce zaměřil na jednotlivé vrstvy webové architektury obzvláště na vrstvy serverové části. Celkem jsem provedl čtyři větší experimenty, jeden experiment pro aplikační vrstvu, jeden pro databázovou vrstvu, jeden pro aplikační distribuovanou cache vrstvu a jeden pro reverzní proxy cache vrstvu. Pro kazdy z testu jsem navrhnul, implementoval, testoval a vyhodnocoval jejich webovou architekturu, konfiguraci, funkcionalitu, zátěžové testy a schopnost obstát v prostředí vysoké zátěže.
 
+První experiment se týkal aplikační vrstvy a možnosti využití opcode cache pro programovací jazyk PHP (viz. kapitola \ref{sec:optim-apc}). Konfigurace, implementace a realizace tohoto expermentu nebyla až tak náročná a pracná. Vzhledem k nastudovaným teoretickým základům, kdy jsem věděl jako cestou se vydávat to nebylo tak složité a výsledky byly více než dobré, čili takovýto krok mohu jen doporučit pro ostré nasazení. V opravdu vysokých zátěžích je pak důležité nasadit více aplikačních serverů pro vyvažování zátěže, neboli load balancing.
 
+Druhý experiment pracoval se standartní třívrstvou architekturou, tj. klientem, aplikačním serverem a databázovým systémem (viz. kapitola \ref{sec:optim-database}). V tomto experimentu jsem se zaměřil na databázový systém, jeho přístupnot a časovou odezvu v prostředí vysoké zátěže. V tomto směru jsem zjistil, že optimalizace databáze je velice důležitá, protože se přístup a odpovědi na dotazy mohou zrychlit v řádech sekund, minut i hodin. Samozřejmě jakmile se prostředí vysoké zátěže začne zvětšovat a začne ještě více růst zatížení databáze, je potřeba sáhnout k dalším krokům jako například partitioning nebo replikace. Samozřejmě v architektuře webových systémů bývá databázová vrstva tou nejvytíženější a nejpomalejší vrstvou. Proto je dobré zaměřit pozornosti i na to, jak zmenšit dotazování do databáze.
+
+Ve třetím experimentu jsem rozšířil třívrstvou architekturu o vrstvu aplikační distribuované cache (viz. kapitola \ref{sec:memcached}). Právě diký této vrstvě je možné získat rychlejší přístup k již jednou načtených datům z databáze. Zároveň zůstává obsah webové aplikace dynamický. Ovšem zároveň je nutné zmínit, že zde ovšem zůstává velké zatížení aplikační vrstvy. Proto může v prostředí vysoké zátěže nastat situace, kdy je potřeba mít více aplikačních serverů pro vyvažování zátěže. Výsledky testů simulovaného prostředí vysoké zátěže byly rozhodně lepší s využitím aplikační distribuované cache Memcached než výsledky pouze s databází. Ovšem v tomto případě je potřeba přihlédnout k nutnosti zajistit tuto funkcionalitu v jádru aplikace a její logice. Je potřeba zajistit aplikaci přístup ke cache, zajistit ukládání dat ve spravném, dohodnutém a znovuzkonstruovatelném formátu a hlavně zajistit jejich správnou a včasnou invalidaci. S požadavkem aplikační distribuované cache je tak potřeba počítat při jejím návrhu, protože jinak může docházet k častým chybám a náklady, ať už časové či finanční, na zavedení takovéto vrstvy mohou být vysoké.
+
+V posledním experimentu jsem zkombinoval reverzní proxy cache Nginx s aplikační distribuovanou cache Memcached (viz. kapitola \ref{sec:reverse-proxy-cache}). První HTTP požadavky zpracovala aplikační vrstva, vytvořila HTTP odpověď a uložila ji do cache paměti Memcached pro reverzní proxy cache Nginx. Při příštím dotazu našla reverzní proxy cache odpověď v cache paměti a okamžitě ji vrátila klientovi. Invalidace těchto odpovědí probíhá automaticy pomocí Memcached a časového razítka. Tento způsob práce s obsahem webové aplikace se stává tak statický. Ovšem vzhledem k tomu, že odpovědi ukládá aplikační vrstva, může tyto odpovědi stejně tak invalidovat podobně jako v případě aplikační distribuované cache. Jeden HTTP požadavek se tak dá rozložit na více požadavků pomocí technologie Ajax. Odpovědi na jednotlivé požadavky Ajax jsou také ukládány do cache paměti a jejich invalidace může proběhnout ihned. Dochází tak k hibridnímu využití reverzní proxy cache a aplikační distribuované cache. Výsledky pro tento způsob práce byly více než uspokojivé. Obsah webové aplikace je dynamický a rychlý, a to díky režii ukládání a invalidace na straně aplikační distriboavané cache a režii čtení na straně reverzní proxy cache.
 
 % Zaver
 \kapitola{Závěr}
@@ -666,6 +718,13 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 
 \citace{nginx-memcached}{Ilya Grigorik, 2008}{\autor{Ilya Grigorik}
 \nazev{Igvita.com: Nginx and Memcached, a 400\% boost!} [online]. Dostupné z: http://www.igvita.com/2008/02/11/nginx-and-memcached-a-400-boost/}
+
+\citace{cdn}{Pavel Mikulka, 2008}{\autor{Bc. Pavel Mikulka}
+\nazev{Implementace CDN a clusteringu v prostředí GNU/LINUX s testy výkonnosti}, Brno: VUT, 2008. 65 s. Dostupné z: http://www.vutbr.cz/www_base/zav_prace_soubor_verejne.php?file_id=7793} 
+
+\citace{virtual}{Petr Hrůša, 2011}{\autor{Petr Hrůša}
+\nazev{Výhody a nevýhody virtualizace platforem a aktuální nabídka} [online]. Dostupné z: http://www.aquasoft.eu/blog/nazor_odbornika.php?nazor=450} 
+
 
 \end{literatura}
 

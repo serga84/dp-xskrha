@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  13 MAY 2012 01:25
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  16 MAY 2012 00:08
 entering extended mode
  %&-line parsing enabled.
 **dp.tex
@@ -413,68 +413,79 @@ File: ../images/wikimedia.png Graphic file (type png)
 <use ../images/wikimedia.png> [11
 
  <../images/3layer.png> <../images/wikimedia.png (PNG copy)>]
-! A <box> was supposed to be here.
-<to be read again> 
-                   {
-l.81 ...i do tří modulů. \cite{design-patterns}
-                                                  
-I was expecting to see \hbox or \vbox or \copy or \box or
-something like that. So you might find something missing in
-your output. But keep trying; you can fix this later.
+Underfull \hbox (badness 1077) in paragraph at lines 82--83
+\OT1/cmr/m/n/12 kde^^Tzto spr^^Sava dy-na-mick^^Seho p^^Tr^^S^^Pstupu je n^^Sar
+o^^Tcn^^Tej^^Ts^^S^^P. Dy-na-mick^^Sy p^^Tr^^S^^Pstup ^^Tcasto
+ []
 
-! A <box> was supposed to be here.
-<to be read again> 
-                   {
-l.83 ...ní do vrstvy View. \cite{design-patterns}
-                                                  
-I was expecting to see \hbox or \vbox or \copy or \box or
-something like that. So you might find something missing in
-your output. But keep trying; you can fix this later.
-
-! A <box> was supposed to be here.
-<to be read again> 
-                   {
-l.85 ...a pro přehlednost. \cite{design-patterns}
-                                                  
-I was expecting to see \hbox or \vbox or \copy or \box or
-something like that. So you might find something missing in
-your output. But keep trying; you can fix this later.
-
-! A <box> was supposed to be here.
-<to be read again> 
-                   {
-l.88 ...acích přístupů. \cite{design-patterns}
-                                                  
-I was expecting to see \hbox or \vbox or \copy or \box or
-something like that. So you might find something missing in
-your output. But keep trying; you can fix this later.
-
-<../images/mvc.png, id=48, 423.5825pt x 298.11375pt>
-File: ../images/mvc.png Graphic file (type png)
- <use ../images/mvc.png>
 [12
 
- <../images/mvc.png>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 99.
+]
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.89 ...i do tří modulů. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.91 ...ní do vrstvy View. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.93 ...a pro přehlednost. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.96 ...acích přístupů. \cite{design-patterns}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+[13
+
+] <../images/mvc.png, id=55, 423.5825pt x 298.11375pt>
+File: ../images/mvc.png Graphic file (type png)
+
+<use ../images/mvc.png>
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
+
  (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 99.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
 
-[13] [14] [15
+[14
 
-] [16]
-Underfull \hbox (badness 1033) in paragraph at lines 173--174
+ <../images/mvc.png>] [15] [16
+
+] [17]
+Underfull \hbox (badness 1033) in paragraph at lines 184--185
 []\OT1/cmr/m/n/12 Replikace va-ri-anty master-slave je pod-po-rov^^Sana ve v^^T
 et^^Tsin^^Te da-tab^^Sazov^^Sych
  []
 
-[17]
+[18]
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.179 ...kací jen těžko obejde.\cite{replikace}
+l.190 ...kací jen těžko obejde.\cite{replikace}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -483,206 +494,332 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.179 ...kací jen těžko obejde.\cite{replikace}
+l.190 ...kací jen těžko obejde.\cite{replikace}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
 your output. But keep trying; you can fix this later.
 
-[18] <../images/cache-process.png, id=73, 401.24907pt x 357.58594pt>
+[19] <../images/cache-process.png, id=77, 401.24907pt x 357.58594pt>
 File: ../images/cache-process.png Graphic file (type png)
 
-<use ../images/cache-process.png> [19
+<use ../images/cache-process.png> [20
 
- <../images/cache-process.png (PNG copy)>] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 220--224
+ <../images/cache-process.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 226--227
 
  []
 
-<../images/cache-types.png, id=81, 846.16125pt x 277.035pt>
+[21] <../images/cache-types.png, id=84, 846.16125pt x 277.035pt>
 File: ../images/cache-types.png Graphic file (type png)
 
-<use ../images/cache-types.png> [21 <../images/cache-types.png>]
-<../images/proxy-cache.png, id=87, 482.80376pt x 147.55125pt>
+<use ../images/cache-types.png> [22
+
+ <../images/cache-types.png>]
+<../images/proxy-cache.png, id=90, 482.80376pt x 147.55125pt>
 File: ../images/proxy-cache.png Graphic file (type png)
 
-<use ../images/proxy-cache.png> [22 <../images/proxy-cache.png>]
-<../images/reverse-proxy-cache.png, id=92, 602.25pt x 166.6225pt>
+<use ../images/proxy-cache.png>
+<../images/reverse-proxy-cache.png, id=91, 602.25pt x 166.6225pt>
 File: ../images/reverse-proxy-cache.png Graphic file (type png)
 
-<use ../images/reverse-proxy-cache.png> [23 <../images/reverse-proxy-cache.png>
-]
-<../images/application-distributed-cache.png, id=97, 442.65375pt x 259.97125pt>
+<use ../images/reverse-proxy-cache.png> [23 <../images/proxy-cache.png>]
+[24 <../images/reverse-proxy-cache.png>]
+<../images/application-distributed-cache.png, id=100, 442.65375pt x 259.97125pt
+>
 File: ../images/application-distributed-cache.png Graphic file (type png)
-<use ../images/application-distributed-cache.png> [24 <../images/application-di
-stributed-cache.png>] [25
+ <use ../images/application-distributed-cache.png> [25 <../images/application-d
+istributed-cache.png>] <../images/cdn.png, id=106, 793.96625pt x 269.005pt>
+File: ../images/cdn.png Graphic file (type png)
 
-] [26
+<use ../images/cdn.png> [26
 
-] [27
+ <../images/cdn.png>]
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.315 ...notlivé vrstvy se servery.\cite{virtual}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
 
-] [28
+! A <box> was supposed to be here.
+<to be read again> 
+                   {
+l.315 ...notlivé vrstvy se servery.\cite{virtual}
+                                                  
+I was expecting to see \hbox or \vbox or \copy or \box or
+something like that. So you might find something missing in
+your output. But keep trying; you can fix this later.
+
+[27
+
+] <../images/virtual.png, id=114, 346.093pt x 133.298pt>
+File: ../images/virtual.png Graphic file (type png)
+
+<use ../images/virtual.png> [28
+
+ <../images/virtual.png>]
+<../images/load-balancing.png, id=119, 540.0175pt x 230.8625pt>
+File: ../images/load-balancing.png Graphic file (type png)
+
+<use ../images/load-balancing.png> [29
+
+ <../images/load-balancing.png>] [30
 
 ]
-<../images/nginx-architecture.png, id=115, 681.54625pt x 198.7425pt>
+<../images/nginx-architecture.png, id=127, 681.54625pt x 198.7425pt>
 File: ../images/nginx-architecture.png Graphic file (type png)
 
-<use ../images/nginx-architecture.png> [29
+<use ../images/nginx-architecture.png> [31
 
  <../images/nginx-architecture.png>]
-[30]
-Underfull \hbox (badness 10000) in paragraph at lines 388--392
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 425--429
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 388--392
+Underfull \hbox (badness 10000) in paragraph at lines 425--429
 
  []
 
-[31] [32] <../images/graph-apc.png, id=130, 854.19125pt x 645.41125pt>
+[33] [34] <../images/graph-apc.png, id=142, 854.19125pt x 645.41125pt>
 File: ../images/graph-apc.png Graphic file (type png)
 
 <use ../images/graph-apc.png>
-<../images/top-apc.png, id=131, 643.40375pt x 505.89pt>
+<../images/top-apc.png, id=143, 643.40375pt x 505.89pt>
 File: ../images/top-apc.png Graphic file (type png)
 
-<use ../images/top-apc.png> [33] [34 <../images/graph-apc.png (PNG copy)> <../i
+<use ../images/top-apc.png> [35] [36 <../images/graph-apc.png (PNG copy)> <../i
 mages/top-apc.png (PNG copy)>]
-<../images/app-architecture.png, id=138, 337.26pt x 205.76875pt>
+<../images/app-architecture.png, id=150, 337.26pt x 205.76875pt>
 File: ../images/app-architecture.png Graphic file (type png)
 
-<use ../images/app-architecture.png> [35
+<use ../images/app-architecture.png> [37
 
  <../images/app-architecture.png>]
-<../images/graph-db.png, id=143, 855.195pt x 636.3775pt>
+<../images/graph-db.png, id=156, 855.195pt x 636.3775pt>
 File: ../images/graph-db.png Graphic file (type png)
 
 <use ../images/graph-db.png>
-<../images/xhprof-model-db-no-optim.png, id=144, 935.495pt x 616.3025pt>
+<../images/xhprof-model-db-no-optim.png, id=157, 935.495pt x 616.3025pt>
 File: ../images/xhprof-model-db-no-optim.png Graphic file (type png)
 
-<use ../images/xhprof-model-db-no-optim.png> [36] [37 <../images/graph-db.png (
+<use ../images/xhprof-model-db-no-optim.png> [38] [39 <../images/graph-db.png (
 PNG copy)> <../images/xhprof-model-db-no-optim.png (PNG copy)>]
-<../images/xhprof-model-db-optim.png, id=152, 935.495pt x 608.2725pt>
+<../images/xhprof-model-db-optim.png, id=164, 935.495pt x 608.2725pt>
 File: ../images/xhprof-model-db-optim.png Graphic file (type png)
 
 <use ../images/xhprof-model-db-optim.png>
-<../images/database-architecture.png, id=153, 481.8pt x 201.75375pt>
+<../images/database-architecture.png, id=165, 481.8pt x 201.75375pt>
 File: ../images/database-architecture.png Graphic file (type png)
 
-<use ../images/database-architecture.png> [38
+<use ../images/database-architecture.png> [40
 
  <../images/xhprof-model-db-optim.png (PNG copy)> <../images/database-architect
-ure.png>] [39] [40]
-<../images/graph-memcached.png, id=164, 855.195pt x 632.3625pt>
+ure.png>] [41] [42]
+<../images/graph-memcached.png, id=176, 855.195pt x 632.3625pt>
 File: ../images/graph-memcached.png Graphic file (type png)
 
-<use ../images/graph-memcached.png> [41 <../images/graph-memcached.png (PNG cop
+<use ../images/graph-memcached.png> [43 <../images/graph-memcached.png (PNG cop
 y)>]
-<../images/xhprof-model-memcached-no-optim.png, id=168, 935.495pt x 614.295pt>
+<../images/xhprof-model-memcached-no-optim.png, id=181, 935.495pt x 614.295pt>
 File: ../images/xhprof-model-memcached-no-optim.png Graphic file (type png)
 
 <use ../images/xhprof-model-memcached-no-optim.png>
-<../images/xhprof-model-memcached-optim.png, id=169, 939.51pt x 612.2875pt>
+<../images/xhprof-model-memcached-optim.png, id=182, 939.51pt x 612.2875pt>
 File: ../images/xhprof-model-memcached-optim.png Graphic file (type png)
 
-<use ../images/xhprof-model-memcached-optim.png> [42
+<use ../images/xhprof-model-memcached-optim.png> [44
 
  <../images/xhprof-model-memcached-no-optim.png (PNG copy)> <../images/xhprof-m
 odel-memcached-optim.png (PNG copy)>]
-<../images/memcached-architecture.png, id=173, 487.8225pt x 346.29375pt>
+<../images/memcached-architecture.png, id=186, 487.8225pt x 346.29375pt>
 File: ../images/memcached-architecture.png Graphic file (type png)
 
-<use ../images/memcached-architecture.png> [43
+<use ../images/memcached-architecture.png> [45
 
- <../images/memcached-architecture.png>] <../images/nginx-memcached.png, id=179
+ <../images/memcached-architecture.png>] <../images/nginx-memcached.png, id=191
 , 681.54625pt x 302.12875pt>
 File: ../images/nginx-memcached.png Graphic file (type png)
 
-<use ../images/nginx-memcached.png> [44 <../images/nginx-memcached.png>]
-<../images/graph-nginx.png, id=184, 855.195pt x 634.37pt>
+<use ../images/nginx-memcached.png> [46 <../images/nginx-memcached.png>]
+<../images/graph-nginx.png, id=196, 855.195pt x 634.37pt>
 File: ../images/graph-nginx.png Graphic file (type png)
 
-<use ../images/graph-nginx.png>
+<use ../images/graph-nginx.png> [47 <../images/graph-nginx.png (PNG copy)>]
 File: ../images/nginx-architecture.png Graphic file (type png)
- <use ../images/nginx-architecture.png> [45 <../images/graph-nginx.png (PNG cop
-y)>] [46
 
-] [47
+<use ../images/nginx-architecture.png> [48
+
+] [49
+
+] [50] [51
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 631--632
+Underfull \hbox (badness 10000) in paragraph at lines 683--684
 []\OT1/cmr/m/sc/12 Doc.Ing.Jaroslav Zen-dulka,CSc. \OT1/cmr/m/it/12 VUT-FIT: 10
 . Ar-chi-tek-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--632
+Underfull \hbox (badness 10000) in paragraph at lines 683--684
 \OT1/cmr/m/it/12 tura kli-ent/server a t^^Tr^^S^^Pvrstv^^Sa ar-chi-tek-tura \OT
 1/cmr/m/n/12 [on-line]. Do-stupn^^Se z:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 641--642
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
 []\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-ma-li-zace v Oracle 
 \OT1/cmr/m/n/12 Praha: Uni-corn College,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 641--642
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
 \OT1/cmr/m/n/12 2010. 47 s. Do-stupn^^Se z: http://www.unicorncollege.cz/katalo
 g-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 641--642
+Underfull \hbox (badness 10000) in paragraph at lines 693--694
 \OT1/cmr/m/n/12 bakalarskych-praci/bohdan-blaha/attachments/Blaha[]Bohdan[]-
  []
 
 
-Underfull \hbox (badness 3623) in paragraph at lines 656--657
+Underfull \hbox (badness 3623) in paragraph at lines 708--709
 \OT1/cmr/m/n/12 Do-stupn^^Se z: http://www.zdrojak.cz/clanky/profilovani-php-sk
 riptu-pomoci-
  []
 
 
-Underfull \hbox (badness 1005) in paragraph at lines 659--660
+Underfull \hbox (badness 1005) in paragraph at lines 711--712
 []\OT1/cmr/m/sc/12 Vito Chin \OT1/cmr/m/it/12 Tech-por-tal Ibu-il-dings: Un-der
 -stan-ding APC \OT1/cmr/m/n/12 [on-line]. Do-stupn^^Se z:
  []
 
-[48]
-Underfull \hbox (badness 1275) in paragraph at lines 668--669
+[52]
+Underfull \hbox (badness 1275) in paragraph at lines 720--721
 []\OT1/cmr/m/sc/12 Ilya Gri-go-rik \OT1/cmr/m/it/12 Ig-vita.com: Nginx and Mem-
 ca-ched, a 400% bo-ost! \OT1/cmr/m/n/12 [on-line].
  []
 
-[49] [50
+! Missing $ inserted.
+<inserted text> 
+                $
+l.723 ...av_prace_soubor_verejne.php?file_id=7793}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.724 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.724 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 723--724
+[]\OT1/cmr/m/sc/12 Bc. Pa-vel Mi-kulka \OT1/cmr/m/it/12 Im-ple-men-tace CDN a c
+lus-te-ringu v prost^^Tred^^S^^P
+ []
+
+
+Underfull \hbox (badness 1325) in paragraph at lines 723--724
+\OT1/cmr/m/it/12 GNU/LINUX s testy v^^Sykonnosti\OT1/cmr/m/n/12 , Brno: VUT, 20
+08. 65 s. Do-stupn^^Se z:
+ []
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.724 
+      
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.726 ...ft.eu/blog/nazor_odbornika.php?nazor=450}
+                                                  
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.727 
+      
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.727 
+      
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Extra }, or forgotten \endgroup.
+\par ...m \@noitemerr {\@@par }\fi \else {\@@par }
+                                                  \fi 
+l.727 
+      
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+[53] [54
 
 ] (./dp.aux) ) 
 Here is how much of TeX's memory you used:
- 1778 strings out of 495027
- 22783 string characters out of 1181419
- 82746 words of memory out of 3000000
- 4945 multiletter control sequences out of 15000+50000
+ 1799 strings out of 495027
+ 23232 string characters out of 1181419
+ 82844 words of memory out of 3000000
+ 4963 multiletter control sequences out of 15000+50000
  12017 words of font info for 42 fonts, out of 3000000 for 9000
  38 hyphenation exceptions out of 8191
  26i,8n,24p,1799b,367s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.p
 fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-t
-exlive/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public
-/amsfonts/cm/cmss10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmss12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/s
-hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-
-texlive/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fon
-ts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on dp.pdf (50 pages, 1345348 bytes).
+hare/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-
+texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss10.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texmf-tex
+live/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/pub
+lic/amsfonts/cm/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmtt8.pfb>
+Output written on dp.pdf (54 pages, 1468267 bytes).
 PDF statistics:
- 246 PDF objects out of 1000 (max. 8388607)
+ 272 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 111 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 126 words of extra memory for PDF output out of 10000 (max. 10000000)
 
