@@ -1,0 +1,50 @@
+\BOOKMARK [1][-]{section.1}{\332vod}{}
+\BOOKMARK [1][-]{section.2}{Ne\236\341douc\355 vlivy a dusledky vysok\351 z\341te\236e}{}
+\BOOKMARK [1][-]{section.3}{Zneu\236it\355 vysok\351 z\341te\236e}{}
+\BOOKMARK [1][-]{section.4}{Tr\355 a v\355cevrstv\341 architektura webov\375ch syst\351mu}{}
+\BOOKMARK [1][-]{section.5}{Typy webov\351ho obsahu}{}
+\BOOKMARK [1][-]{section.6}{Aplikacn\355 vrstva}{}
+\BOOKMARK [2][-]{subsection.6.1}{Webov\341 aplikacn\355 architektura MVC}{section.6}
+\BOOKMARK [2][-]{subsection.6.2}{Optimalizace aplikacn\355 vrstvy}{section.6}
+\BOOKMARK [2][-]{subsection.6.3}{Druhy aplikacn\355ch vrstev}{section.6}
+\BOOKMARK [2][-]{subsection.6.4}{Ajax a webov\351 slu\236by}{section.6}
+\BOOKMARK [1][-]{section.7}{Dab\341zov\341 vrstva}{}
+\BOOKMARK [2][-]{subsection.7.1}{Optimalizace SQL dotazu}{section.7}
+\BOOKMARK [2][-]{subsection.7.2}{Indexace}{section.7}
+\BOOKMARK [2][-]{subsection.7.3}{Partitioning}{section.7}
+\BOOKMARK [2][-]{subsection.7.4}{Replikace}{section.7}
+\BOOKMARK [2][-]{subsection.7.5}{Druhy relacn\355ch datab\341z\355}{section.7}
+\BOOKMARK [1][-]{section.8}{Webov\351 cache}{}
+\BOOKMARK [2][-]{subsection.8.1}{HTTP hlavicky pro ovl\341d\341n\355 cache}{section.8}
+\BOOKMARK [2][-]{subsection.8.2}{Druhy cache}{section.8}
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Proxy cache a cache prohl\355\236ece}{subsection.8.2}
+\BOOKMARK [3][-]{subsubsection.8.2.2}{Reverzn\355 proxy cache}{subsection.8.2}
+\BOOKMARK [3][-]{subsubsection.8.2.3}{Aplikacn\355 distribuovan\341 cache}{subsection.8.2}
+\BOOKMARK [1][-]{section.9}{CDN}{}
+\BOOKMARK [1][-]{section.10}{Virtualizace}{}
+\BOOKMARK [1][-]{section.11}{Rozlo\236en\355 z\341te\236e}{}
+\BOOKMARK [1][-]{section.12}{Dal\235\355 vrstvy aplikace}{}
+\BOOKMARK [1][-]{section.13}{Praktick\341 c\341st s experimenty a v\375sledky}{}
+\BOOKMARK [2][-]{subsection.13.1}{Vrstvy webov\351 architektury}{section.13}
+\BOOKMARK [2][-]{subsection.13.2}{Testovac\355 a profilovac\355 n\341stroje}{section.13}
+\BOOKMARK [3][-]{subsubsection.13.2.1}{XHProf}{subsection.13.2}
+\BOOKMARK [3][-]{subsubsection.13.2.2}{Siege}{subsection.13.2}
+\BOOKMARK [3][-]{subsubsection.13.2.3}{PostgreSQL Explain}{subsection.13.2}
+\BOOKMARK [2][-]{subsection.13.3}{Aplikacn\355 vrstva PHP}{section.13}
+\BOOKMARK [3][-]{subsubsection.13.3.1}{Optimalizace pomoc\355 APC}{subsection.13.3}
+\BOOKMARK [3][-]{subsubsection.13.3.2}{Dosa\236en\351 v\375sledky}{subsection.13.3}
+\BOOKMARK [2][-]{subsection.13.4}{Datab\341zov\341 vrstva}{section.13}
+\BOOKMARK [3][-]{subsubsection.13.4.1}{Optimalizace datab\341ze}{subsection.13.4}
+\BOOKMARK [3][-]{subsubsection.13.4.2}{Dosa\236en\351 v\375sledky}{subsection.13.4}
+\BOOKMARK [2][-]{subsection.13.5}{Aplikacn\355 distribuovan\341 cache}{section.13}
+\BOOKMARK [3][-]{subsubsection.13.5.1}{Optimalizace aplikace pomoc\355 Memcached}{subsection.13.5}
+\BOOKMARK [3][-]{subsubsection.13.5.2}{Specifikace aplikace}{subsection.13.5}
+\BOOKMARK [3][-]{subsubsection.13.5.3}{Dosa\236en\351 v\375sledky}{subsection.13.5}
+\BOOKMARK [2][-]{subsection.13.6}{Reverzn\355 proxy cache}{section.13}
+\BOOKMARK [3][-]{subsubsection.13.6.1}{Optimalizace pomoc\355 reverzn\355 proxy cache Nginx s Memcached}{subsection.13.6}
+\BOOKMARK [3][-]{subsubsection.13.6.2}{Vyu\236it\355 Ajax a webov\375ch slu\236eb pro NGINX s Memcached}{subsection.13.6}
+\BOOKMARK [3][-]{subsubsection.13.6.3}{Dosa\236en\351 v\375sledky}{subsection.13.6}
+\BOOKMARK [1][-]{section.14}{Diskuze}{}
+\BOOKMARK [1][-]{section.15}{Z\341ver}{}
+\BOOKMARK [1][-]{section.16}{Reference}{}
+\BOOKMARK [1][-]{section.17}{Pr\355lohy}{}
