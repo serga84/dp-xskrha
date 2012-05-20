@@ -2,15 +2,17 @@
 \documentclass[12pt]{article}
 ‎\usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+\usepackage[pdfborder=0]{hyperref}
 \usepackage{dipp2}
+%\usepackage{stencl/dipp_utf}
 %\usepackage{graphicx}
 %\usepackage{textcomp}
 %\usepackage{amssymb}
 %\usepackage{amsmath}
 %\usepackage{eurosym}
-\begin{document}
 \pagestyle{headings}
+
+\begin{document}
 
 
 % uvodni cast zaverecne prace
@@ -34,6 +36,8 @@ Diplomová práce. Brno, 2012.}
 \kapitola{Úvod}
 Něco na téma jak vzniká vysoká zátěž na iternetu, jaký je vliv internetu, roustoucí zájem o internet a stoupající zátěž. Uvidíme, napíšu to jako poslední.
 
+\sekce{Cíl práce}
+Cílem je rozebrat jednotlivé vrstvy aplikace a provést experimenty pro různé cache.
 
 % Nezadouci vlivy
 \kapitola{Nežádoucí vlivy a důsledky vysoké zátěže}
@@ -57,7 +61,7 @@ Tím druhým, a daleko nebezpečnějším, úmyslným způsobem zneužití lze m
 
 Co ovšem v dnešní době představuje daleko větší nebezpečí, jsou útoky typu DDoS, neboli Distributed Denial of Service. V tomto případě je princip útoku obdobný jako u DoS, ovšem s tím rozdílem, že je distribuovaný. Takový útok je spuštěn z několika stanic, několika uživateli a pomocí různých nástrojů. Tento způsob je daleko organizoavnější a daleko nebezpečnější a učinnější. \cite{dos}
 
-V současnosti se stává symbolem boje za svobodu internetu skupina s názvem Anonymous, která využívá útoků DDoS. Při svých útocích využívají například útoky typu Slowloris, kdy útočník využívá protokolu HTTP na aplikační úrovni a vyžaduje celou odpověď na svůj požadavek. Při navázaném spojení ovšem odesílá HTTP hlavičky co nejpomaleji, aby tak co nejvíce prodloužili dobu spojení a získal prostor pro vytvoření dalšího spojení, čili další zátěže. Tato skupina napadá webové aplikace veřejností neoblíbených politických stran, vládních organizací, protipirátských asociací a jiných subjektů. Díky tomu si získávají obrovskou podporu ve společnosti i médiích, která s jejich kroky souhlasí. Dokonce pro své útoky využívají i příznivců z řad veřejnosti, kteří nemusí být specialisty v oboru informačních technologií. Stačí jim pouze stáhnout si upravený program, v určený čas ho spustit a připojit se do internetové sítě. Útoky probíhají neohlášeně, organizovaně a ditribuovaně. Otázkou zůstává, kdy jejich konání zaštiťující se honosnými cíli, přeroste ve vydírání, snahy o posílení moci, či pokusů o finanční obohacení. V ten moment i společnost, která je v tyto dny podporuje, může pocítit jejich nebezpečnost. I v historii lidstva nalezneme spoustu skupin a organizací, které byly lidmi podporovány a nakonec se z nich stal symbol krutosti, tyranie, útlaku a neštěstí. Proto je důležité jejich útoky nepodceňovat a umět se bránit. Tato práce se nezabývá konkrétním řešením některého z typů útoků, ale zabývá se obecně vysokou zátěží, a způsoby, kterými lze ustát obrovský narůst zátěže, tedy i nějaký útok.\cite{anonymous}
+V současnosti se stává symbolem boje za svobodu internetu skupina s názvem Anonymous, která využívá útoků DDoS. Při svých útocích využívají například útoky typu Slowloris, kdy útočník využívá protokolu HTTP na aplikační úrovni a vyžaduje celou odpověď na svůj požadavek. Při navázaném spojení ovšem odesílá HTTP hlavičky co nejpomaleji, aby tak co nejvíce prodloužili dobu spojení a získal prostor pro vytvoření dalšího spojení, čili další zátěže. Tato skupina napadá webové aplikace veřejností neoblíbených politických stran, vládních organizací, protipirátských asociací a jiných subjektů. Díky tomu si získávají obrovskou podporu ve společnosti i médiích, která s jejich kroky souhlasí. Dokonce pro své útoky využívají i příznivců z řad veřejnosti, kteří nemusí být specialisty v oboru informačních technologií. Stačí jim pouze stáhnout si upravený program, v určený čas ho spustit a připojit se do internetové sítě. Útoky probíhají neohlášeně, organizovaně a ditribuovaně. Otázkou zůstává, kdy jejich konání zaštiťující se honosnými cíli, přeroste ve vydírání, snahy o posílení moci, či pokusů o finanční obohacení. V ten moment i společnost, která je v tyto dny podporuje, může pocítit jejich nebezpečnost. I v historii lidstva nalezneme spoustu skupin a organizací, které byly lidmi podporovány a nakonec se z nich stal symbol krutosti, tyranie, útlaku a neštěstí. Proto je důležité jejich útoky nepodceňovat a umět se bránit. Tato práce se nezabývá konkrétním řešením některého z typů útoků, ale zabývá se obecně vysokou zátěží, a způsoby, kterými lze ustát obrovský narůst zátěže, tedy i nějaký útok. \cite{anonymous}
 
 
 
@@ -66,13 +70,13 @@ V současnosti se stává symbolem boje za svobodu internetu skupina s názvem A
 Webová architektura je ve svém základu třívrstvá. První vrstvu tvoří klient, neboli uživatel, se svým hardware, software a svými aplikačními požadavky. Druhou vrstvu tvoří aplikační vrstva, která zpracovává požadavky pro aplikaci, tedy požadavky klienta. Aplikační vrstva tento požadavek zpracuje, vytvoří odpověď a zašle zpět klientovi. Ovšem k tomu, aby mohla tuto odpověď vytvořit, potřebuje i data aplikace, která jsou uložena v perzistentní databázi, která tvoří třetí a poslední vrstvu třívrstvé architektury. Každá z vrstev, tedy prezentační, aplikační i datová, má své místo a význam v aplikaci.\cite{tri-vrstvy}
 
 \obrazek
-\vlozeps{../images/3layer.png}{0.6}
+\vlozeps{../images/3layer.png}{0.5}
 \endobr{Tří vrstvá architektura webových aplikací}
 
 V architektuře webových aplikací s vysokou zátěží už je potřeba jiný přístup. V tomto případě se dá říci, že je třívrstvá architektura nedostačující. Je potřeba počítat se síťovími prvky pro load balancing, s více aplikačními uzly, s databázovými replikacemi, s DNS řešením pro geografické rozdělení zátěže, s CDN pro rozdělení zátěže přidělování statického obsahu, s vrstvami pro cache aplikace a s dalšími vrstvami pro backendové či frontendové aplikace a služby. V tomto případě neexistuje žádné jasně dané a pevné řešení, každá aplikace si s sebou nese svou individuální a specifickou strategii, i když některé osvědčené postupy se využívají opakovaně. Tyto strategie nesou název vícevrstvá architektura.
 
 \obrazek
-\vlozeps{../images/wikimedia.png}{0.3}
+\vlozeps{../images/wikimedia.png}{0.325}
 \endobr{Webová architektura společnosti Wikimedia provozující Wikipedia.org}
 
 Nutkno podoknout, že webové architektury využívají nejčastěji ke své komunikaci mezi klientem a architekturou protokol HTTP, který využívá portu číslo 80 a protokolu TCP pro komunikaci. Proto je celá tato odborná studie založena na práci s tímto protokolem.
@@ -676,57 +680,75 @@ Závěr ve smyslu nákladů a přínosů, kdy je lepší co. Uvidíme, napíšu 
 \begin{literatura}
 
 \citace{sledovani-zatizeni}{Rankin, 2010}{\autor{Kyle Rankin}
+%\citace{sledovani-zatizeni}{1}{\autor{Kyle Rankin}
 \nazev{Hack and / - Linux Troubleshooting, Part I: High Load} [online]. Linux Journal, 1.května 2010. URL: http://www.linuxjournal.com/magazine/hack-and-linux-troubleshooting-part-i-high-load}
 
 \citace{dos}{Khan, 2009}{\autor{Faisal Khan}
+%\citace{dos}{2}{\autor{Faisal Khan}
 \nazev{Dos Attacks Overview - What are DoS attacks} [online]. Dos Attacks, 5.září 2009. URL: http://dos-attacks.com/what-are-dos-attacks/}
 
 \citace{anonymous}{Čepský, 2012}{\autor{Pavel Čepský}
+%\citace{anonymous}{3}{\autor{Pavel Čepský}
 \nazev{Útoky jménem Anonymous: Jak se rodí hackeři?} [online]. Lupa.cz, 7.února 2012. URL: http://www.lupa.cz/clanky/utoky-jmenem-anonymous-jak-se-rodi-hackeri/}
 
 \citace{tri-vrstvy}{Zendulka, 2005}{\autor{Doc.Ing.Jaroslav Zendulka,CSc.}
+%\citace{tri-vrstvy}{4}{\autor{Doc.Ing.Jaroslav Zendulka,CSc.}
 \nazev{10. Architektura klient/server a třívrstvá architektura} [online]. Brno: VUT-FIT, 2005. URL: http://www.fit.vutbr.cz/study/courses/DSI/public/pdf/nove/10\_clsrv.pdf}
 
 \citace{ajax}{McLaughlin, 2005}{\autor{Brett McLaughlin}
+%\citace{ajax}{5}{\autor{Brett McLaughlin}
 \nazev{Mastering Ajax} [online]. Ibm develper works, 6.prosince 2005. URL: http://www.ibm.com/developerworks/web/library/wa-ajaxintro1/index.html}
 
 \citace{design-patterns}{Pecinovský, 2007}{\autor{Rudolf Pecinovský}
+%\citace{design-patterns}{6}{\autor{Rudolf Pecinovský}
 \nazev{Návrhové vzory : 33 vzorových postupů pro objektové programování} 1. vyd. Brno: Computer Press, 2007. 527 s. ISBN 978-80-251-1582-4}
 
 \citace{optimalizace-sql}{Blaha, 2007}{\autor{Bohdan Blaha}
+%\citace{optimalizace-sql}{7}{\autor{Bohdan Blaha}
 \nazev{SQL Optimalizace v Oracle} Praha: Unicorn College, 2010. 47 s. URL:
 http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments/Blaha\_Bohdan\_-\_Optimalizace\_SQL\_dotaz\%C5\%AF\_v\_datab\%C3\%A1zi\_Oracle.pdf}
 
 \citace{partitioning-db}{White, 2009}{\autor{Eli White}
+%\citace{partitioning-db}{8}{\autor{Eli White}
 \nazev{Habits of Highly Scalable Web Applications} DCPHP Konference. 2009}
 
 \citace{replikace}{Vondra, 2011}{\autor{Tomáš Vondra}
+%\citace{replikace}{9}{\autor{Tomáš Vondra}
 \nazev{Replikace v PostgreSQL} CSPUG Konference. Praha, 2011}
 
+%\citace{rfc-http}{RFC:2616, 1999}{\autor{R. Fielding, UC Irvine, J. Gettys, J. Mogul, Compaq, H. Frystyk, L. Masinter, Xerox, P. Leach, Microsoft, T. Berners-Lee, W3C/MIT}
 \citace{rfc-http}{RFC:2616, 1999}{\autor{R. Fielding, UC Irvine, J. Gettys, J. Mogul, Compaq, H. Frystyk, L. Masinter, Xerox, P. Leach, Microsoft, T. Berners-Lee, W3C/MIT}
 \nazev{RFC:2616 - Hypertext Transfer Protocol -- HTTP/1.1}}
 
 \citace{proxy-cache}{Nottingham, 2012}{\autor{Mark Nottingham}
+%\citace{proxy-cache}{11}{\autor{Mark Nottingham}
 \nazev{CACHING TUTORIAL for Web Authors and Webmasters} [online]. Mark Nottingham, 1998-2012. URL: http://www.mnot.net/cache\_docs/}
 
 \citace{xhprof}{Onderka, 2011}{\autor{Jakub Onderka}
+%\citace{xhprof}{12}{\autor{Jakub Onderka}
 \nazev{Profilování PHP skriptů pomocí XHProf} [online]. Zdrojak.cz, 24.ledna 2011. URL: http://www.zdrojak.cz/clanky/profilovani-php-skriptu-pomoci-xhprof/}
 
+%\citace{apc}{13}{\autor{Vito Chin}
 \citace{apc}{Chin, 2010}{\autor{Vito Chin}
 \nazev{Understanding APC} [online]. Techportal Ibuildings, 7.října 2010. URL: http://techportal.ibuildings.com/2010/10/07/understanding-apc/}
 
+%\citace{memcached}{14}{\autor{Brad Fitzpatrick}
 \citace{memcached}{Fitzpatrick, 2004}{\autor{Brad Fitzpatrick}
 \nazev{Distributed Caching with Memcached} [online]. Linux Journal, 1.srpna 2004. URL: http://www.linuxjournal.com/article/7451}
 
+%\citace{nginx}{15}{\autor{Will Reese}
 \citace{nginx}{Reese, 2008}{\autor{Will Reese}
 \nazev{Nginx: the High-Performance Web Server and Reverse Proxy} [online]. Linux Journal, 1.září 2008. URL: http://www.linuxjournal.com/magazine/nginx-high-performance-web-server-and-reverse-proxy}
 
+%\citace{nginx-memcached}{16}{\autor{Ilya Grigorik}
 \citace{nginx-memcached}{Grigorik, 2008}{\autor{Ilya Grigorik}
 \nazev{Nginx and Memcached, a 400\% boost!} [online]. Ingvita, 11.února 2008. URL: http://www.igvita.com/2008/02/11/nginx-and-memcached-a-400-boost/}
 
+%\citace{cdn}{17}{\autor{Bc. Pavel Mikulka}
 \citace{cdn}{Mikulka, 2008}{\autor{Bc. Pavel Mikulka}
 \nazev{Implementace CDN a clusteringu v prostředí GNU/LINUX s testy výkonnosti}, Brno: VUT, 2008. 65 s. URL: http://www.vutbr.cz/www\_base/zav\_prace\_soubor\_verejne.php?file\_id=7793} 
 
+%\citace{virtual}{18}{\autor{Petr Hrůša}
 \citace{virtual}{Hrůša, 2011}{\autor{Petr Hrůša}
 \nazev{Výhody a nevýhody virtualizace platforem a aktuální nabídka} [online]. Aquasoft, 24.listopadu 2011. URL: http://www.aquasoft.eu/blog/nazor_odbornika.php?nazor=450} 
 
@@ -734,7 +756,17 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 \end{literatura}
 
 % Prilohy
-\kapitola{Přílohy}
+\prilohy
 
+\priloha{APC webové rozhraní}
+\vlozeps{../images/apc-web.png}{0.5}
+
+\priloha{XHProf graf závislostí funkcí a metod Symfony2}
+\vlozeps{../images/callgraph-xhprof.png}{0.275}
+
+\priloha{AJAX dynamické požadavky pro reverzní proxy cache Nginx}
+\vlozeps{../images/ajax-nginx.png}{0.4}
+
+\priloha{DVD s aplikací pro aplikační distribuovanou cache Memcached}
 
 \end{document}
