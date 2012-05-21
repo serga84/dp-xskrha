@@ -1,9 +1,9 @@
 % preambule dokumentu
 \documentclass[12pt]{article}
-â€\usepackage[czech]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage[pdfborder=0]{hyperref}
-\usepackage{dipp2}
+%\usepackage[czech]{babel}
+%\usepackage[utf8]{inputenc}
+%\usepackage[pdfborder=0]{hyperref}
+\usepackage{czech, dipp}
 %\usepackage{stencl/dipp_utf}
 %\usepackage{graphicx}
 %\usepackage{textcomp}
@@ -16,18 +16,18 @@
 
 
 % uvodni cast zaverecne prace
-\titul{WebovÃ¡ architektura v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e}{Bc. Jakub Å krha}{Ing. Michael Å tencl, Ph.D.}{Brno 2012}
-\podekovani{ChtÄ›l bych podÄ›kovat svÃ©mu vedoucÃ­mu Ing. Michaelu Å tenclovi, Ph.D., za odbornÃ© vedenÃ­ tÃ©to diplomovÃ© prÃ¡ce. ZejmÃ©na bych chtÄ›l podÄ›kovat OndÅ™eji ProchÃ¡zkovi za konzultace a nasmÄ›rovÃ¡nÃ­ pro vyÅ™eÅ¡enÃ­ praktickÃ© ÄÃ¡sti, kterÃ¡ dÃ­ky tomu odrÃ¡Å¾Ã­ pouÅ¾itÃ­ v reÃ¡lnÃ©m produkÄnÃ­m prostÅ™edÃ­. TakÃ© bych chtÄ›l podÄ›kovat Lucii PalkoskovÃ© za trpÄ›livost a podporu pÅ™i psanÃ­ tÃ©to diplomovÃ© prÃ¡ce a svÃ© rodinÄ› za podporu pÅ™i celÃ©m mÃ©m studiu.}
+\titul{Webová architektura v prostøedí vysoké zátì¾e}{Bc. Jakub ©krha}{Ing. Michael ©tencl, Ph.D.}{Brno 2012}
+\podekovani{Chtìl bych podìkovat svému vedoucímu Ing. Michaelu ©tenclovi, Ph.D., za odborné vedení této diplomové práce. Zejména bych chtìl podìkovat Ondøeji Procházkovi za konzultace a nasmìrování pro vyøe¹ení praktické èásti, která díky tomu odrá¾í pou¾ití v reálném produkèním prostøedí. Také bych chtìl podìkovat Lucii Palkoskové za trpìlivost a podporu pøi psaní této diplomové práce a své rodinì za podporu pøi celém mém studiu.}
 
-\prohlaseni{ProhlaÅ¡uji, Å¾e jsem tuto prÃ¡ci napsal a vyÅ™eÅ¡il samostatnÄ› s pouÅ¾itÃ­m literatury, kterou uvÃ¡dÃ­m v seznamu.}{V BrnÄ› dne 21.5.2012}
+\prohlaseni{Prohla¹uji, ¾e jsem tuto práci napsal a vyøe¹il samostatnì s pou¾itím literatury, kterou uvádím v seznamu.}{V Brnì dne 21.5.2012}
 
 \abstract{\textsc{Skrha, J.} \textit{Web architecture in high load environment.} 
 Diploma thesis. Brno, 2012.}
 {This diploma thesis describes web architecture in high load environment. The thesis contains description of layers, theirs purpose and functionality of web architecture. The aim of thesis is optimalization on individual layers, particularly on application layer, database layer, application distributed cache layer and reverse proxy cache layer. For these layers, presented solutions are based on real production projects such as Linux Debian, Apache2, PHP, PostgreSQL, Memcached and Nginx.}
 
-\abstrakt{\textsc{Å krha, J.} \textit{WebovÃ¡ architektura v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.} 
-DiplomovÃ¡ prÃ¡ce. Brno, 2012.}
-{Tato diplomovÃ¡ prÃ¡ce popisuje webovou architekturu v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. V prÃ¡ci jsou popsÃ¡ny jejÃ­ vrstvy, jejich ÃºÄel a funkÄnost pro webovou architekturu. PrÃ¡ce se zabÃ½vÃ¡ moÅ¾nostÃ­ optimalizace na jednotlivÃ½ch vrstvÃ¡ch webovÃ© architektury, zejmÃ©na aplikaÄnÃ­ vrstvou, databÃ¡zovou vrstvou, aplikaÄnÃ­ distribuovanou cache vrstvou a reverznÃ­ proxy cache vrstvou. Pro tyto vrstvy jsou uvedena vybranÃ¡ Å™eÅ¡enÃ­ odrÃ¡Å¾ejÃ­cÃ­ reÃ¡lnÃ© produkÄnÃ­ nasazenÃ­ v prostÅ™edÃ­ Linux Debian, Apache2, PHP, PostgreSQL, Memcached a Nginx.}
+\abstrakt{\textsc{©krha, J.} \textit{Webová architektura v prostøedí vysoké zátì¾e.} 
+Diplomová práce. Brno, 2012.}
+{Tato diplomová práce popisuje webovou architekturu v prostøedí vysoké zátì¾e. V práci jsou popsány její vrstvy, jejich úèel a funkènost pro webovou architekturu. Práce se zabıvá mo¾ností optimalizace na jednotlivıch vrstvách webové architektury, zejména aplikaèní vrstvou, databázovou vrstvou, aplikaèní distribuovanou cache vrstvou a reverzní proxy cache vrstvou. Pro tyto vrstvy jsou uvedena vybraná øe¹ení odrá¾ející reálné produkèní nasazení v prostøedí Linux Debian, Apache2, PHP, PostgreSQL, Memcached a Nginx.}
 
 
 \obsah
@@ -35,172 +35,172 @@ DiplomovÃ¡ prÃ¡ce. Brno, 2012.}
 
 
 % Uvod
-\kapitola{Ãšvod}
-V 80. letech 20. stoletÃ­, tedy ve dnech, kdy vznikal internet, nikdo netuÅ¡il, Å¾e jeho vÃ½znam, dÅ¯leÅ¾itost a popularita tak markantnÄ› vzroste. Dnes, v 2. dekÃ¡dÄ› 21. stoletÃ­, je internet a web nedÃ­lnou souÄÃ¡stÃ­ firem, organizacÃ­, komunikace, zÃ¡bavy, zpravodajstvÃ­, obchodu, sluÅ¾eb a Å¾ivota bÄ›Å¾nÃ½ch lidÃ­. Internet se stÃ¡vÃ¡ dÅ¯leÅ¾itou vÄ›deckou disciplÃ­nou nejenom na poli informaÄnÃ­ch technologiÃ­. Internetem se zabÃ½vajÃ­ oblasti vÃ½voje hardware a software, poÄÃ­taÄovÃ© sÃ­tÄ›, aplikaÄnÃ­ a komunikaÄnÃ­ protokoly, uÅ¾ivatelskÃ¡ rozhranÃ­ a design, ekonomika a marketing, copywriting, projektovÃ© Å™Ã­zenÃ­, databÃ¡zovÃ© systÃ©my a mnoho dalÅ¡Ã­ch odvÄ›tvÃ­. Jednou z oblastÃ­ je i webovÃ¡ architektura v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+\kapitola{Úvod}
+V 80. letech 20. století, tedy ve dnech, kdy vznikal internet, nikdo netu¹il, ¾e jeho vıznam, dùle¾itost a popularita tak markantnì vzroste. Dnes, v 2. dekádì 21. století, je internet a web nedílnou souèástí firem, organizací, komunikace, zábavy, zpravodajství, obchodu, slu¾eb a ¾ivota bì¾nıch lidí. Internet se stává dùle¾itou vìdeckou disciplínou nejenom na poli informaèních technologií. Internetem se zabıvají oblasti vıvoje hardware a software, poèítaèové sítì, aplikaèní a komunikaèní protokoly, u¾ivatelská rozhraní a design, ekonomika a marketing, copywriting, projektové øízení, databázové systémy a mnoho dal¹ích odvìtví. Jednou z oblastí je i webová architektura v prostøedí vysoké zátì¾e.
 
-ÃšspÄ›ch internetovÃ½ch a webovÃ½ch projektÅ¯ je pÅ™Ã­mo ÃºmÄ›rnÃ½ vÃ½Å¡i nÃ¡vÅ¡tÄ›vnosti, mÃ­Å™e pouÅ¾Ã­vÃ¡nÃ­, poÄtu registracÃ­ a samozÅ™ejmÄ› vÃ½dÄ›lku z aplikace. ObecnÄ› se dÃ¡ pÅ™edpoklÃ¡dat, Å¾e ÄÃ­m je vÄ›tÅ¡Ã­ nÃ¡vÅ¡tÄ›vnost projektu, tÃ­m jsou vÄ›tÅ¡Ã­ i zisky. AÅ¥ uÅ¾ dÃ­ky reklamnÃ­ Äinnosti Äi placennÃ½m sluÅ¾bÃ¡m. OvÅ¡em zde se dÃ¡ velice jasnÄ› konstatovat, Å¾e tyto vÃ½dÄ›lky nejsou aÅ¾ tak lehce zÃ­skanÃ©. Nejenom, Å¾e si musÃ­ aplikace zÃ­skat svÃ© uÅ¾ivatele, ale musÃ­ Å™eÅ¡it problÃ©my s obrovskÃ½m poÄtem uÅ¾ivatelÅ¯. TÃ­m vznikÃ¡ prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e pro webovou architekturu, kterÃ© je potÅ™eba optimalizovat.
+Úspìch internetovıch a webovıch projektù je pøímo úmìrnı vı¹i náv¹tìvnosti, míøe pou¾ívání, poètu registrací a samozøejmì vıdìlku z aplikace. Obecnì se dá pøedpokládat, ¾e èím je vìt¹í náv¹tìvnost projektu, tím jsou vìt¹í i zisky. A» u¾ díky reklamní èinnosti èi placennım slu¾bám. Ov¹em zde se dá velice jasnì konstatovat, ¾e tyto vıdìlky nejsou a¾ tak lehce získané. Nejenom, ¾e si musí aplikace získat své u¾ivatele, ale musí øe¹it problémy s obrovskım poètem u¾ivatelù. Tím vzniká prostøedí vysoké zátì¾e pro webovou architekturu, které je potøeba optimalizovat.
 
-\sekce{CÃ­l prÃ¡ce}
-CÃ­lem tÃ©to prÃ¡ce je provÃ©st rozbor webovÃ© architektury, jejich vrstev, moÅ¾nostÃ­ optimalizace a provÃ©st srovnÃ¡nÃ­ dÃ­lÄÃ­ch Å™eÅ¡enÃ­ v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. PrÃ¡ce se zamÄ›Å™uje na Å™eÅ¡enÃ­ serverovÃ© ÄÃ¡sti webovÃ© architektury. Ãškolem je vytvoÅ™it prototyp serverovÃ© ÄÃ¡sti webovÃ© architektury s aplikaÄnÃ­ vrstvou, databÃ¡zovou vrstvou a cache vrstvou a nasimulovat prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. Je potÅ™eba navrhnout a implementovat Å™eÅ¡enÃ­ optimalizacÃ­ jednotlivÃ½ch vrstev serverovÃ© ÄÃ¡sti a porovnat vÃ½sledky pÅ™ed a po optimalizaci. DÅ¯leÅ¾itou souÄÃ¡stÃ­ tÃ©to prÃ¡ce se mÃ¡ stÃ¡t aplikace s plnou podporou uklÃ¡dÃ¡nÃ­ a ÄtenÃ­ aplikaÄnÃ­ch a databÃ¡zovÃ½ch dat pomocÃ­ pamÄ›ti cache. VÃ½stupem majÃ­ bÃ½t jednotlivÃ© vÃ½sledky zÃ¡tÄ›Å¾ovÃ½ch testÅ¯ a profilovacÃ­ch charakteristik srovnÃ¡vajÃ­cÃ­ch dÃ­lÄÃ­ zpÅ¯soby Å™eÅ¡enÃ­.
+\sekce{Cíl práce}
+Cílem této práce je provést rozbor webové architektury, jejich vrstev, mo¾ností optimalizace a provést srovnání dílèích øe¹ení v prostøedí vysoké zátì¾e. Práce se zamìøuje na øe¹ení serverové èásti webové architektury. Úkolem je vytvoøit prototyp serverové èásti webové architektury s aplikaèní vrstvou, databázovou vrstvou a cache vrstvou a nasimulovat prostøedí vysoké zátì¾e. Je potøeba navrhnout a implementovat øe¹ení optimalizací jednotlivıch vrstev serverové èásti a porovnat vısledky pøed a po optimalizaci. Dùle¾itou souèástí této práce se má stát aplikace s plnou podporou ukládání a ètení aplikaèních a databázovıch dat pomocí pamìti cache. Vıstupem mají bıt jednotlivé vısledky zátì¾ovıch testù a profilovacích charakteristik srovnávajících dílèí zpùsoby øe¹ení.
 
 % Nezadouci vlivy
-\kapitola{NeÅ¾Ã¡doucÃ­ vlivy a dÅ¯sledky vysokÃ© zÃ¡tÄ›Å¾e}
-VysokÃ¡ zÃ¡tÄ›Å¾ mÅ¯Å¾e mÃ­t ve svÃ© podstatÄ› nÄ›kolik neÅ¾Ã¡doucÃ­ch vlivÅ¯, kterÃ© mÅ¯Å¾ou mÃ­t aÅ¾ katastrofickÃ½ scÃ©nÃ¡Å™. MÅ¯Å¾e dochÃ¡zet k takovÃ©mu zatÃ­Å¾enÃ­ aplikace, Å¾e odpovÄ›di na jednotlivÃ© poÅ¾adavky mohou trvat velmi dlouhou dobu. TÃ­m pÃ¡dem se bude uÅ¾ivatel rozhodovat, zda-li pÅ™Ã­Å¡tÄ› navÅ¡tÃ­vÃ­ tuto webovou aplikaci, Äi zkusÃ­ nÄ›kterou z jinÃ½ch moÅ¾nÃ½ch konkurenÄnÃ­ch alternativ. Tento velice nepÅ™Ã­znivÃ½ scÃ©nÃ¡Å™ mÅ¯Å¾e bÃ½t jeÅ¡tÄ› horÅ¡Ã­. A to v pÅ™Ã­padÄ›, Å¾e dÃ­ky velkÃ©mu zatÃ­Å¾enÃ­ dojde dokonce k vÃ½padku celÃ© aplikace, a tÃ­m pÃ¡dem uÅ¾ se uÅ¾ivateli nedostane vÅ¯bec Å¾Ã¡dnÃ© odpovÄ›di na jeho poÅ¾adavek. PÅ™i takovÃ©m scÃ©nÃ¡Å™i existuje vysokÃ¡ pravdÄ›podobnost ztrÃ¡ty uÅ¾ivatelÅ¯, coÅ¾ mÅ¯Å¾e znamenat velkÃ½ pokles ziskÅ¯ pro firmu Äi spoleÄnost.
+\kapitola{Ne¾ádoucí vlivy a dùsledky vysoké zátì¾e}
+Vysoká zátì¾ mù¾e mít ve své podstatì nìkolik ne¾ádoucích vlivù, které mù¾ou mít a¾ katastrofickı scénáø. Mù¾e docházet k takovému zatí¾ení aplikace, ¾e odpovìdi na jednotlivé po¾adavky mohou trvat velmi dlouhou dobu. Tím pádem se bude u¾ivatel rozhodovat, zda-li pøí¹tì nav¹tíví tuto webovou aplikaci, èi zkusí nìkterou z jinıch mo¾nıch konkurenèních alternativ. Tento velice nepøíznivı scénáø mù¾e bıt je¹tì hor¹í. A to v pøípadì, ¾e díky velkému zatí¾ení dojde dokonce k vıpadku celé aplikace, a tím pádem u¾ se u¾ivateli nedostane vùbec ¾ádné odpovìdi na jeho po¾adavek. Pøi takovém scénáøi existuje vysoká pravdìpodobnost ztráty u¾ivatelù, co¾ mù¾e znamenat velkı pokles ziskù pro firmu èi spoleènost.
 
-Po technickÃ© strÃ¡nce se pÅ™i velkÃ© zÃ¡tÄ›Å¾i vytvoÅ™Ã­ pro kaÅ¾dÃ½ poÅ¾adavek celÃ½ samostatnÃ½ proces Äi vlÃ¡kno procesu, kterÃ© si klade nÃ¡roky na procesor CPU a operaÄnÃ­ pamÄ›Å¥ RAM serveru. VznikajÃ­ tak i procesy, kterÃ© musÃ­ Äekat na pÅ™idÄ›lenÃ­ tÄ›chto prostÅ™edkÅ¯, a tÃ­m pÃ¡dem roste zatÃ­Å¾enÃ­, kterÃ© mÅ¯Å¾e server vytÃ­Å¾it do tÃ© mÃ­ry, Å¾e nebude provozuschopnÃ½. TakovÃ© zatÃ­Å¾enÃ­ je moÅ¾nÃ© pozorovat pÅ™i vÃ½pisu prÃ¡vÄ› bÄ›Å¾Ã­cÃ­ch procesÅ¯ a jejich vytÃ­Å¾enÃ­ na RAM Äi CPU (napÅ™Ã­klad pÅ™Ã­kazem top). DÃ¡le je moÅ¾no pozorovat tzv. Load Average (napÅ™Ã­klad pÅ™Ã­kazem uptime), kterÃ© pÅ™edstavuje poÄet procesÅ¯ ÄekajÃ­cÃ­ch na pÅ™idÄ›lenÃ­ prostÅ™edkÅ¯ bÄ›hem jednÃ©, pÄ›ti Äi patnÃ¡cti minut. Takto je moÅ¾nÃ© sledovat neÅ¾Ã¡doucÃ­ vlivy vysokÃ© zÃ¡tÄ›Å¾e na Ãºrovni jednotlivÃ½ch serverÅ¯.\cite{sledovani-zatizeni}
+Po technické stránce se pøi velké zátì¾i vytvoøí pro ka¾dı po¾adavek celı samostatnı proces èi vlákno procesu, které si klade nároky na procesor CPU a operaèní pamì» RAM serveru. Vznikají tak i procesy, které musí èekat na pøidìlení tìchto prostøedkù, a tím pádem roste zatí¾ení, které mù¾e server vytí¾it do té míry, ¾e nebude provozuschopnı. Takové zatí¾ení je mo¾né pozorovat pøi vıpisu právì bì¾ících procesù a jejich vytí¾ení na RAM èi CPU (napøíklad pøíkazem top). Dále je mo¾no pozorovat tzv. Load Average (napøíklad pøíkazem uptime), které pøedstavuje poèet procesù èekajících na pøidìlení prostøedkù bìhem jedné, pìti èi patnácti minut. Takto je mo¾né sledovat ne¾ádoucí vlivy vysoké zátì¾e na úrovni jednotlivıch serverù.\cite{sledovani-zatizeni}
 
-Je nutnÃ© podotknout, Å¾e existuje i jeden skrytÃ½ a ne tak viditelnÃ½ dÅ¯sledek vysokÃ© zÃ¡tÄ›Å¾e. TÃ­m je fakt, Å¾e jakmile se zaÄne zvedat nÃ¡vÅ¡tÄ›vnost, projektovÃ© vedenÃ­ si klade poÅ¾adavek, aby tento nÃ¡rÅ¯st uÅ¾ivatelÅ¯ jiÅ¾ zÅ¯stal, a dokonce se i zvÄ›tÅ¡oval. A to vÅ¡e z toho dÅ¯vodu, Å¾e velkÃ½ poÄet uÅ¾ivatelÅ¯ znamenÃ¡ sice velkou zÃ¡tÄ›Å¾ pro aplikaci, ovÅ¡em takÃ© velkÃ½ finanÄnÃ­ pÅ™Ã­nos pro firmu.
+Je nutné podotknout, ¾e existuje i jeden skrytı a ne tak viditelnı dùsledek vysoké zátì¾e. Tím je fakt, ¾e jakmile se zaène zvedat náv¹tìvnost, projektové vedení si klade po¾adavek, aby tento nárùst u¾ivatelù ji¾ zùstal, a dokonce se i zvìt¹oval. A to v¹e z toho dùvodu, ¾e velkı poèet u¾ivatelù znamená sice velkou zátì¾ pro aplikaci, ov¹em také velkı finanèní pøínos pro firmu.
 
 
 
 % Zneuziti
-\kapitola{ZneuÅ¾itÃ­ vysokÃ© zÃ¡tÄ›Å¾e}
-Z neÅ¾Ã¡doucÃ­ch vlivÅ¯ a dÅ¯sledkÅ¯ uvedenÃ½ch v pÅ™edchozÃ­ kapitole vyplÃ½vÃ¡, Å¾e rostoucÃ­ zÃ¡tÄ›Å¾ mÅ¯Å¾e zpÅ¯sobit katastrofickÃ© scÃ©nÃ¡Å™e, Äili mÅ¯Å¾e negativnÄ› pÅ¯sobit na celou aplikaci. Tento poznatek pÅ™edstavuje obrovskÃ© riziko pÅ™i jeho zneuÅ¾itÃ­. Zpravidla mÅ¯Å¾e bÃ½t zneuÅ¾itÃ­ vysokÃ© zÃ¡tÄ›Å¾e zpÅ¯sobeno ÃºmyslnÃ½m Äi neÃºmyslnÃ½m chovÃ¡nÃ­m nÄ›jakÃ© organizace Äi jedince. TakovÃ© zneuÅ¾itÃ­ mÃ¡ svoji oporu i v zÃ¡konech, kde hrozÃ­ aÅ¾ odnÄ›tÃ­ svobody aÅ¾ na nÄ›kolik let.
+\kapitola{Zneu¾ití vysoké zátì¾e}
+Z ne¾ádoucích vlivù a dùsledkù uvedenıch v pøedchozí kapitole vyplıvá, ¾e rostoucí zátì¾ mù¾e zpùsobit katastrofické scénáøe, èili mù¾e negativnì pùsobit na celou aplikaci. Tento poznatek pøedstavuje obrovské riziko pøi jeho zneu¾ití. Zpravidla mù¾e bıt zneu¾ití vysoké zátì¾e zpùsobeno úmyslnım èi neúmyslnım chováním nìjaké organizace èi jedince. Takové zneu¾ití má svoji oporu i v zákonech, kde hrozí a¾ odnìtí svobody a¾ na nìkolik let.
 
-U webovÃ½ch projektÅ¯ je moÅ¾nÃ© z tÄ›ch neÃºmyslnÃ½ch zneuÅ¾itÃ­ zmÃ­nit napÅ™Ã­klad nÄ›kterÃ© klientskÃ© chyby programÅ¯ Äi vÄ›tÅ¡Ã­ mÃ­ru indexace robotÅ¯ internetovÃ½ch vyhledÃ¡vÃ¡ÄÅ¯. Roboti vyhledÃ¡vaÄÅ¯ pravidelnÄ› prochÃ¡zÃ­ webovou aplikaci a indexujÃ­ jejÃ­ jednotlivÃ© ÄÃ¡sti a tyto vÃ½sledky zohledÅˆujÃ­ nÃ¡slednÄ› ve svÃ½ch vÃ½sledcÃ­ch ve vyhledÃ¡vÃ¡nÃ­. Tito roboti jsou tak souÄÃ¡stÃ­ vytÃ­Å¾enÃ­ architektury.
+U webovıch projektù je mo¾né z tìch neúmyslnıch zneu¾ití zmínit napøíklad nìkteré klientské chyby programù èi vìt¹í míru indexace robotù internetovıch vyhledáváèù. Roboti vyhledávaèù pravidelnì prochází webovou aplikaci a indexují její jednotlivé èásti a tyto vısledky zohledòují následnì ve svıch vısledcích ve vyhledávání. Tito roboti jsou tak souèástí vytí¾ení architektury.
 
-TÃ­m druhÃ½m, a daleko nebezpeÄnÄ›jÅ¡Ã­m, ÃºmyslnÃ½m zpÅ¯sobem zneuÅ¾itÃ­ lze mnohdy zpÅ¯sobit daleko vÄ›tÅ¡Ã­ Å¡kody. Toto ÃºmyslnÃ© chovÃ¡nÃ­ uÅ¾ je klasifikovÃ¡no jako Ãºtok na webovou aplikaci za kterÃ½ hrozÃ­ postih podle zÃ¡kona. Tyto Ãºtoky jsou nazÃ½vÃ¡ny DoS, neboli Denial of Service. Jejich cÃ­lem je ochromit infrastrukturu celÃ© webovÃ© architektury pÅ™ehlcenÃ­m poÅ¾adavkÅ¯, na kterÃ© aplikace bude vytvÃ¡Å™et odpovÄ›di. Tyty Ãºtoky vyuÅ¾Ã­vajÃ­ chyb, nedostatkÅ¯ Äi nedokonalostÃ­ protokolÅ¯ ICMP, TCP, UDP a jinÃ½ch protokolÅ¯ Äi samotnÃ½ch webovÃ½ch aplikacÃ­. NapÅ™Ã­klad Ãºtok s nÃ¡zvem Tcp Syn Flood, pÅ™i kterÃ©m ÃºtoÄnÃ­k vytÃ­Å¾Ã­ aplikaci SYN pakety pro navÃ¡zÃ¡nÃ­ spojenÃ­, vyuÅ¾Ã­vÃ¡ nedokonalosti TCP protokolu. DalÅ¡Ã­mi Ãºtoky vyuÅ¾Ã­vajÃ­cÃ­mi nedokonalostÃ­ mohou bÃ½t ICMP Flood, Ping of Death, Smurf Attack, IP Spoofing, Fraggle Attack, Teardrop, Application level aj. OvÅ¡em proti vÄ›tÅ¡inÄ› zmÃ­nÄ›nÃ½ch ÃºtokÅ¯ uÅ¾ dnes existuje ochrana ve formÄ› servisnÃ­ch aktualizacÃ­ systÃ©mÅ¯ a programÅ¯ nebo lehkÃ© konfigurace jednotlivÃ½ch ÄÃ¡stÃ­ aplikace. \cite{dos}
+Tím druhım, a daleko nebezpeènìj¹ím, úmyslnım zpùsobem zneu¾ití lze mnohdy zpùsobit daleko vìt¹í ¹kody. Toto úmyslné chování u¾ je klasifikováno jako útok na webovou aplikaci za kterı hrozí postih podle zákona. Tyto útoky jsou nazıvány DoS, neboli Denial of Service. Jejich cílem je ochromit infrastrukturu celé webové architektury pøehlcením po¾adavkù, na které aplikace bude vytváøet odpovìdi. Tyty útoky vyu¾ívají chyb, nedostatkù èi nedokonalostí protokolù ICMP, TCP, UDP a jinıch protokolù èi samotnıch webovıch aplikací. Napøíklad útok s názvem Tcp Syn Flood, pøi kterém útoèník vytí¾í aplikaci SYN pakety pro navázání spojení, vyu¾ívá nedokonalosti TCP protokolu. Dal¹ími útoky vyu¾ívajícími nedokonalostí mohou bıt ICMP Flood, Ping of Death, Smurf Attack, IP Spoofing, Fraggle Attack, Teardrop, Application level aj. Ov¹em proti vìt¹inì zmínìnıch útokù u¾ dnes existuje ochrana ve formì servisních aktualizací systémù a programù nebo lehké konfigurace jednotlivıch èástí aplikace. \cite{dos}
 
-Co ovÅ¡em v dneÅ¡nÃ­ dobÄ› pÅ™edstavuje daleko vÄ›tÅ¡Ã­ nebezpeÄÃ­, jsou Ãºtoky typu DDoS, neboli Distributed Denial of Service. V tomto pÅ™Ã­padÄ› je princip Ãºtoku obdobnÃ½ jako u DoS, ovÅ¡em s tÃ­m rozdÃ­lem, Å¾e je distribuovanÃ½. TakovÃ½ Ãºtok je spuÅ¡tÄ›n z nÄ›kolika stanic, nÄ›kolika uÅ¾ivateli a pomocÃ­ rÅ¯znÃ½ch nÃ¡strojÅ¯. Tento zpÅ¯sob je daleko organizoavnÄ›jÅ¡Ã­ a daleko nebezpeÄnÄ›jÅ¡Ã­ a uÄinnÄ›jÅ¡Ã­. \cite{dos}
+Co ov¹em v dne¹ní dobì pøedstavuje daleko vìt¹í nebezpeèí, jsou útoky typu DDoS, neboli Distributed Denial of Service. V tomto pøípadì je princip útoku obdobnı jako u DoS, ov¹em s tím rozdílem, ¾e je distribuovanı. Takovı útok je spu¹tìn z nìkolika stanic, nìkolika u¾ivateli a pomocí rùznıch nástrojù. Tento zpùsob je daleko organizoavnìj¹í a daleko nebezpeènìj¹í a uèinnìj¹í. \cite{dos}
 
-V souÄasnosti se stÃ¡vÃ¡ symbolem boje za svobodu internetu skupina s nÃ¡zvem Anonymous, kterÃ¡ vyuÅ¾Ã­vÃ¡ ÃºtokÅ¯ DDoS. PÅ™i svÃ½ch ÃºtocÃ­ch vyuÅ¾Ã­vajÃ­ napÅ™Ã­klad Ãºtoky typu Slowloris, kdy ÃºtoÄnÃ­k vyuÅ¾Ã­vÃ¡ protokolu HTTP na aplikaÄnÃ­ Ãºrovni a vyÅ¾aduje celou odpovÄ›Ä na svÅ¯j poÅ¾adavek. PÅ™i navÃ¡zanÃ©m spojenÃ­ ovÅ¡em odesÃ­lÃ¡ HTTP hlaviÄky co nejpomaleji, aby tak co nejvÃ­ce prodlouÅ¾ili dobu spojenÃ­ a zÃ­skal prostor pro vytvoÅ™enÃ­ dalÅ¡Ã­ho spojenÃ­, Äili dalÅ¡Ã­ zÃ¡tÄ›Å¾e. Tato skupina napadÃ¡ webovÃ© aplikace veÅ™ejnostÃ­ neoblÃ­benÃ½ch politickÃ½ch stran, vlÃ¡dnÃ­ch organizacÃ­, protipirÃ¡tskÃ½ch asociacÃ­ a jinÃ½ch subjektÅ¯. DÃ­ky tomu si zÃ­skÃ¡vajÃ­ obrovskou podporu ve spoleÄnosti i mÃ©diÃ­ch, kterÃ¡ s jejich kroky souhlasÃ­. Dokonce pro svÃ© Ãºtoky vyuÅ¾Ã­vajÃ­ i pÅ™Ã­znivcÅ¯ z Å™ad veÅ™ejnosti, kteÅ™Ã­ nemusÃ­ bÃ½t specialisty v oboru informaÄnÃ­ch technologiÃ­. StaÄÃ­ jim pouze stÃ¡hnout si upravenÃ½ program, v urÄenÃ½ Äas ho spustit a pÅ™ipojit se do internetovÃ© sÃ­tÄ›. Ãštoky probÃ­hajÃ­ neohlÃ¡Å¡enÄ›, organizovanÄ› a ditribuovanÄ›. OtÃ¡zkou zÅ¯stÃ¡vÃ¡, kdy jejich konÃ¡nÃ­ zaÅ¡tiÅ¥ujÃ­cÃ­ se honosnÃ½mi cÃ­li, pÅ™eroste ve vydÃ­rÃ¡nÃ­, snahy o posÃ­lenÃ­ moci, Äi pokusÅ¯ o finanÄnÃ­ obohacenÃ­. V ten moment i spoleÄnost, kterÃ¡ je v tyto dny podporuje, mÅ¯Å¾e pocÃ­tit jejich nebezpeÄnost. I v historii lidstva nalezneme spoustu skupin a organizacÃ­, kterÃ© byly lidmi podporovÃ¡ny a nakonec se z nich stal symbol krutosti, tyranie, Ãºtlaku a neÅ¡tÄ›stÃ­. Proto je dÅ¯leÅ¾itÃ© jejich Ãºtoky nepodceÅˆovat a umÄ›t se brÃ¡nit. Tato prÃ¡ce se nezabÃ½vÃ¡ konkrÃ©tnÃ­m Å™eÅ¡enÃ­m nÄ›kterÃ©ho z typÅ¯ ÃºtokÅ¯, ale zabÃ½vÃ¡ se obecnÄ› vysokou zÃ¡tÄ›Å¾Ã­, a zpÅ¯soby, kterÃ½mi lze ustÃ¡t obrovskÃ½ narÅ¯st zÃ¡tÄ›Å¾e, tedy i nÄ›jakÃ½ Ãºtok. \cite{anonymous}
+V souèasnosti se stává symbolem boje za svobodu internetu skupina s názvem Anonymous, která vyu¾ívá útokù DDoS. Pøi svıch útocích vyu¾ívají napøíklad útoky typu Slowloris, kdy útoèník vyu¾ívá protokolu HTTP na aplikaèní úrovni a vy¾aduje celou odpovìï na svùj po¾adavek. Pøi navázaném spojení ov¹em odesílá HTTP hlavièky co nejpomaleji, aby tak co nejvíce prodlou¾ili dobu spojení a získal prostor pro vytvoøení dal¹ího spojení, èili dal¹í zátì¾e. Tato skupina napadá webové aplikace veøejností neoblíbenıch politickıch stran, vládních organizací, protipirátskıch asociací a jinıch subjektù. Díky tomu si získávají obrovskou podporu ve spoleènosti i médiích, která s jejich kroky souhlasí. Dokonce pro své útoky vyu¾ívají i pøíznivcù z øad veøejnosti, kteøí nemusí bıt specialisty v oboru informaèních technologií. Staèí jim pouze stáhnout si upravenı program, v urèenı èas ho spustit a pøipojit se do internetové sítì. Útoky probíhají neohlá¹enì, organizovanì a ditribuovanì. Otázkou zùstává, kdy jejich konání za¹ti»ující se honosnımi cíli, pøeroste ve vydírání, snahy o posílení moci, èi pokusù o finanèní obohacení. V ten moment i spoleènost, která je v tyto dny podporuje, mù¾e pocítit jejich nebezpeènost. I v historii lidstva nalezneme spoustu skupin a organizací, které byly lidmi podporovány a nakonec se z nich stal symbol krutosti, tyranie, útlaku a ne¹tìstí. Proto je dùle¾ité jejich útoky nepodceòovat a umìt se bránit. Tato práce se nezabıvá konkrétním øe¹ením nìkterého z typù útokù, ale zabıvá se obecnì vysokou zátì¾í, a zpùsoby, kterımi lze ustát obrovskı narùst zátì¾e, tedy i nìjakı útok. \cite{anonymous}
 
 
 
 % Tri a vice vrstev
-\kapitola{TÅ™Ã­ a vÃ­cevrstvÃ¡ architektura webovÃ½ch systÃ©mÅ¯}
-WebovÃ¡ architektura je ve svÃ©m zÃ¡kladu tÅ™Ã­vrstvÃ¡. PrvnÃ­ vrstvu tvoÅ™Ã­ klient, neboli uÅ¾ivatel, se svÃ½m hardware, software a svÃ½mi aplikaÄnÃ­mi poÅ¾adavky. Druhou vrstvu tvoÅ™Ã­ aplikaÄnÃ­ vrstva, kterÃ¡ zpracovÃ¡vÃ¡ poÅ¾adavky pro aplikaci, tedy poÅ¾adavky klienta. AplikaÄnÃ­ vrstva tento poÅ¾adavek zpracuje, vytvoÅ™Ã­ odpovÄ›Ä a zaÅ¡le zpÄ›t klientovi. OvÅ¡em k tomu, aby mohla tuto odpovÄ›Ä vytvoÅ™it, potÅ™ebuje i data aplikace, kterÃ¡ jsou uloÅ¾ena v perzistentnÃ­ databÃ¡zi, kterÃ¡ tvoÅ™Ã­ tÅ™etÃ­ a poslednÃ­ vrstvu tÅ™Ã­vrstvÃ© architektury. KaÅ¾dÃ¡ z vrstev, tedy prezentaÄnÃ­, aplikaÄnÃ­ i datovÃ¡, mÃ¡ svÃ© mÃ­sto a vÃ½znam v aplikaci.\cite{tri-vrstvy}
+\kapitola{Tøí a vícevrstvá architektura webovıch systémù}
+Webová architektura je ve svém základu tøívrstvá. První vrstvu tvoøí klient, neboli u¾ivatel, se svım hardware, software a svımi aplikaèními po¾adavky. Druhou vrstvu tvoøí aplikaèní vrstva, která zpracovává po¾adavky pro aplikaci, tedy po¾adavky klienta. Aplikaèní vrstva tento po¾adavek zpracuje, vytvoøí odpovìï a za¹le zpìt klientovi. Ov¹em k tomu, aby mohla tuto odpovìï vytvoøit, potøebuje i data aplikace, která jsou ulo¾ena v perzistentní databázi, která tvoøí tøetí a poslední vrstvu tøívrstvé architektury. Ka¾dá z vrstev, tedy prezentaèní, aplikaèní i datová, má své místo a vıznam v aplikaci.\cite{tri-vrstvy}
 
 \obrazek
 \vlozeps{../images/3layer.png}{0.5}
-\endobr{TÅ™Ã­ vrstvÃ¡ architektura webovÃ½ch aplikacÃ­}
+\endobr{Tøí vrstvá architektura webovıch aplikací}
 
-V architektuÅ™e webovÃ½ch aplikacÃ­ s vysokou zÃ¡tÄ›Å¾Ã­ uÅ¾ je potÅ™eba jinÃ½ pÅ™Ã­stup. V tomto pÅ™Ã­padÄ› se dÃ¡ Å™Ã­ci, Å¾e je tÅ™Ã­vrstvÃ¡ architektura nedostaÄujÃ­cÃ­. Je potÅ™eba poÄÃ­tat se sÃ­Å¥ovÃ­mi prvky pro load balancing, s vÃ­ce aplikaÄnÃ­mi uzly, s databÃ¡zovÃ½mi replikacemi, s DNS Å™eÅ¡enÃ­m pro geografickÃ© rozdÄ›lenÃ­ zÃ¡tÄ›Å¾e, s CDN pro rozdÄ›lenÃ­ zÃ¡tÄ›Å¾e pÅ™idÄ›lovÃ¡nÃ­ statickÃ©ho obsahu, s vrstvami pro cache aplikace a s dalÅ¡Ã­mi vrstvami pro backendovÃ© Äi frontendovÃ© aplikace a sluÅ¾by. V tomto pÅ™Ã­padÄ› neexistuje Å¾Ã¡dnÃ© jasnÄ› danÃ© a pevnÃ© Å™eÅ¡enÃ­, kaÅ¾dÃ¡ aplikace si s sebou nese svou individuÃ¡lnÃ­ a specifickou strategii, i kdyÅ¾ nÄ›kterÃ© osvÄ›dÄenÃ© postupy se vyuÅ¾Ã­vajÃ­ opakovanÄ›. Tyto strategie nesou nÃ¡zev vÃ­cevrstvÃ¡ architektura.
+V architektuøe webovıch aplikací s vysokou zátì¾í u¾ je potøeba jinı pøístup. V tomto pøípadì se dá øíci, ¾e je tøívrstvá architektura nedostaèující. Je potøeba poèítat se sí»ovími prvky pro load balancing, s více aplikaèními uzly, s databázovımi replikacemi, s DNS øe¹ením pro geografické rozdìlení zátì¾e, s CDN pro rozdìlení zátì¾e pøidìlování statického obsahu, s vrstvami pro cache aplikace a s dal¹ími vrstvami pro backendové èi frontendové aplikace a slu¾by. V tomto pøípadì neexistuje ¾ádné jasnì dané a pevné øe¹ení, ka¾dá aplikace si s sebou nese svou individuální a specifickou strategii, i kdy¾ nìkteré osvìdèené postupy se vyu¾ívají opakovanì. Tyto strategie nesou název vícevrstvá architektura.
 
 \obrazek
 \vlozeps{../images/wikimedia.png}{0.325}
-\endobr{WebovÃ¡ architektura spoleÄnosti Wikimedia provozujÃ­cÃ­ Wikipedia.org}
+\endobr{Webová architektura spoleènosti Wikimedia provozující Wikipedia.org}
 
-Nutkno podoknout, Å¾e webovÃ© architektury vyuÅ¾Ã­vajÃ­ nejÄastÄ›ji ke svÃ© komunikaci mezi klientem a architekturou protokol HTTP, kterÃ½ vyuÅ¾Ã­vÃ¡ portu ÄÃ­slo 80 a protokolu TCP pro komunikaci. Proto je celÃ¡ tato odbornÃ¡ studie zaloÅ¾ena na prÃ¡ci s tÃ­mto protokolem.
+Nutkno podoknout, ¾e webové architektury vyu¾ívají nejèastìji ke své komunikaci mezi klientem a architekturou protokol HTTP, kterı vyu¾ívá portu èíslo 80 a protokolu TCP pro komunikaci. Proto je celá tato odborná studie zalo¾ena na práci s tímto protokolem.
 
-\kapitola{Typy webovÃ©ho obsahu}
-Obsah webovÃ½ch aplikacÃ­ je rozdÄ›len na dva typy. Obsah mÅ¯Å¾e bÃ½t buÄ statickÃ©ho, nebo dynamickÃ©ho charakteru. Jak uÅ¾ vyplÃ½vÃ¡ z obecnÃ© teorie systÃ©mÅ¯, statickÃ½ obsah je koneÄnÃ½, transaprentnÃ­ a mÄ›nÃ­ se podle pÅ™edepsanÃ½ch pravidel, zatÃ­m co dynamickÃ½ obsah se mÄ›nÃ­ v zÃ¡vislosti na Äase a jinÃ½ch nepÅ™edvÃ­datelnÃ½ch okolnostech. 
+\kapitola{Typy webového obsahu}
+Obsah webovıch aplikací je rozdìlen na dva typy. Obsah mù¾e bıt buï statického, nebo dynamického charakteru. Jak u¾ vyplıvá z obecné teorie systémù, statickı obsah je koneènı, transaprentní a mìní se podle pøedepsanıch pravidel, zatím co dynamickı obsah se mìní v závislosti na èase a jinıch nepøedvídatelnıch okolnostech. 
 
-Pod pojmem statickÃ½ obsah tedy mÅ¯Å¾eme chÃ¡pat videa, obrÃ¡zky a nebo statickÃ© HTML strÃ¡nky. JednÃ¡ se o obsah, kterÃ½ se moc Äasto nemÄ›nÃ­, nebo znÃ¡me jeho pÅ™esnou Å¾ivotnost, a dokÃ¡Å¾eme urÄit, kdy pÅ™esnÄ› se mÃ¡ mÄ›nit. NapÅ™Ã­klad invalidace u statickÃ©ho obsahu probÄ›hne pouze jednou za deset minut. A i kdyÅ¾ je obsah zmÄ›nÄ›n uprostÅ™ed tohoto intervalu, zmÄ›na se projevÃ­ aÅ¾ v pÅ™elomu tÄ›chto pravidelnÃ½ch desetiminutovÃ½ch intervalÅ¯, tedy aÅ¾ po invalidaci. Obsah je tak celÃ½ch deset minut statickÃ½ a nemÄ›nnÃ½.
+Pod pojmem statickı obsah tedy mù¾eme chápat videa, obrázky a nebo statické HTML stránky. Jedná se o obsah, kterı se moc èasto nemìní, nebo známe jeho pøesnou ¾ivotnost, a doká¾eme urèit, kdy pøesnì se má mìnit. Napøíklad invalidace u statického obsahu probìhne pouze jednou za deset minut. A i kdy¾ je obsah zmìnìn uprostøed tohoto intervalu, zmìna se projeví a¾ v pøelomu tìchto pravidelnıch desetiminutovıch intervalù, tedy a¾ po invalidaci. Obsah je tak celıch deset minut statickı a nemìnnı.
 
-Naopak dynamickÃ½ obsah se mÅ¯Å¾e zmÄ›nit kdykoli, nepÅ™edvÃ­datelnÄ›, typicky na nÄ›jakÃ½ uÅ¾ivatelÅ¯v podnÄ›t, a nebo v zÃ¡vislosti na Äase. PÅ™Ã­kladem mÅ¯Å¾e bÃ½t nÃ¡kupnÃ­ koÅ¡Ã­k v internetovÃ©m obchodÄ›, kterÃ½ se mÄ›nÃ­ v zÃ¡vislosti na uÅ¾ivatelovÄ› Äinnosti. DÃ¡le napÅ™Ã­klad pÅ™i vloÅ¾enÃ­ komentÃ¡Å™e pod urÄitÃ½ ÄlÃ¡nek se tento komentÃ¡Å™ zobrazÃ­ ihned v seznamu komentÃ¡Å™Å¯. TakovÃ½ obsah se pak tÄ›Å¾ko uklÃ¡dÃ¡ do cache pamÄ›ti, dokonce je nÃ¡roÄnÃ½ i pro rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e, ponÄ›vadÅ¾ musÃ­ bÃ½t zachovÃ¡no uÅ¾ivatelovo sezenÃ­ s aplikacÃ­ (session).
+Naopak dynamickı obsah se mù¾e zmìnit kdykoli, nepøedvídatelnì, typicky na nìjakı u¾ivatelùv podnìt, a nebo v závislosti na èase. Pøíkladem mù¾e bıt nákupní ko¹ík v internetovém obchodì, kterı se mìní v závislosti na u¾ivatelovì èinnosti. Dále napøíklad pøi vlo¾ení komentáøe pod urèitı èlánek se tento komentáø zobrazí ihned v seznamu komentáøù. Takovı obsah se pak tì¾ko ukládá do cache pamìti, dokonce je nároènı i pro rozlo¾ení zátì¾e, ponìvad¾ musí bıt zachováno u¾ivatelovo sezení s aplikací (session).
 
-Z uvedenÃ½ch vlastnostÃ­ vyplÃ½vÃ¡, Å¾e sprÃ¡va statickÃ©ho obsahu je jednoduÅ¡Å¡Ã­, kdeÅ¾to sprÃ¡va dynamickÃ©ho obsahu je nÃ¡roÄnÄ›jÅ¡Ã­. DynamickÃ½ pÅ™Ã­stup Äasto pÅ™edpoklÃ¡dÃ¡ propuÅ¡tÄ›nÃ­ poÅ¾adavku aÅ¾ na aplikaÄnÃ­ server, kterÃ½ urÄÃ­ vÃ½sledek. StatickÃ½ obsah lze jednoduÅ¡e uklÃ¡dat do cache pamÄ›ti, protoÅ¾e znÃ¡me jeho pÅ™esnou dobu platnosti. V tÃ©to prÃ¡ci jsou popsÃ¡ny, analyzovÃ¡ny a testovÃ¡ny oba dva pÅ™Ã­stupy a je srovnÃ¡n jejich pÅ™Ã­nos jak z pohledu aplikace, tak z pohledu nÃ¡roÄnosti na vybudovÃ¡nÃ­.
+Z uvedenıch vlastností vyplıvá, ¾e správa statického obsahu je jednodu¹¹í, kde¾to správa dynamického obsahu je nároènìj¹í. Dynamickı pøístup èasto pøedpokládá propu¹tìní po¾adavku a¾ na aplikaèní server, kterı urèí vısledek. Statickı obsah lze jednodu¹e ukládat do cache pamìti, proto¾e známe jeho pøesnou dobu platnosti. V této práci jsou popsány, analyzovány a testovány oba dva pøístupy a je srovnán jejich pøínos jak z pohledu aplikace, tak z pohledu nároènosti na vybudování.
 
 % Aplikacni vrstva
-\kapitola{AplikaÄnÃ­ vrstva}
-AplikaÄnÃ­ vrstva pÅ™edstavuje jÃ¡dro webovÃ© architektury. JejÃ­m ÃºÄelem je pÅ™Ã­jmout a zpracovat klientÅ¯v poÅ¾adavek, vytvoÅ™it odpovÄ›Ä a tuto odpovÄ›Ä zaslat nazpÄ›t klientovi. Na aplikaÄnÃ­ vrstvu jsou tak kladeny Ãºkoly celÃ© reÅ¾ie procesu tvorby odpovÄ›di, a tÃ­m pÃ¡dem mÃ¡ velkou zoodpovÄ›dnost a mnohdy ÄelÃ­ i nejvÄ›tÅ¡Ã­ zÃ¡tÄ›Å¾i.
+\kapitola{Aplikaèní vrstva}
+Aplikaèní vrstva pøedstavuje jádro webové architektury. Jejím úèelem je pøíjmout a zpracovat klientùv po¾adavek, vytvoøit odpovìï a tuto odpovìï zaslat nazpìt klientovi. Na aplikaèní vrstvu jsou tak kladeny úkoly celé re¾ie procesu tvorby odpovìdi, a tím pádem má velkou zoodpovìdnost a mnohdy èelí i nejvìt¹í zátì¾i.
 
-\sekce{WebovÃ¡ aplikaÄnÃ­ architektura MVC}
-V dneÅ¡nÃ­ modernÃ­ aplikaÄnÃ­ vrstvÄ› se pouÅ¾Ã­vÃ¡ aplikaÄnÃ­ architektura nÃ¡vrhovÃ©ho vzoru MVC pro pÅ™ehlednÄ›jÅ¡Ã­ a rychlejÅ¡Ã­ zpÅ¯sob tvorby aplikace. Tato zkratka vychÃ¡zÃ­ ze slov Model, View a Controller, kterÃ¡ oznaÄujÃ­ tÅ™i zÃ¡kladnÃ­ vrstvy aplikaÄnÃ­ architektury. Tento nÃ¡vrhovÃ½ vzor Äasto bÃ½vÃ¡ oznaÄovÃ¡n takÃ© jako MVC framework, kterÃ½ rozdÄ›luje aplikaci do tÅ™Ã­ vrstev. \cite{design-patterns}
+\sekce{Webová aplikaèní architektura MVC}
+V dne¹ní moderní aplikaèní vrstvì se pou¾ívá aplikaèní architektura návrhového vzoru MVC pro pøehlednìj¹í a rychlej¹í zpùsob tvorby aplikace. Tato zkratka vychází ze slov Model, View a Controller, která oznaèují tøi základní vrstvy aplikaèní architektury. Tento návrhovı vzor èasto bıvá oznaèován také jako MVC framework, kterı rozdìluje aplikaci do tøí vrstev. \cite{design-patterns}
 
-Controller je vrstva, kterÃ¡ vykonÃ¡vÃ¡ akci konkrÃ©tnÃ­ho poÅ¾adavku. ZpracovÃ¡vÃ¡ pÅ™Ã­chozÃ­ data, parametry a atributy danÃ© akce od uÅ¾ivatele, provÃ¡dÃ­ jejich kontrolu a formÃ¡tovÃ¡nÃ­. StarÃ¡ se i o zabezpeÄenÃ­ tÃ©to akce. ÄŒasto spolupracuje s vrstvou Model, kterÃ© pÅ™edÃ¡vÃ¡ poÅ¾adavky na data aplikace, a tato data dÃ¡le zpracovÃ¡vÃ¡ pro pÅ™edÃ¡nÃ­ do vrstvy View. \cite{design-patterns}
+Controller je vrstva, která vykonává akci konkrétního po¾adavku. Zpracovává pøíchozí data, parametry a atributy dané akce od u¾ivatele, provádí jejich kontrolu a formátování. Stará se i o zabezpeèení této akce. Èasto spolupracuje s vrstvou Model, které pøedává po¾adavky na data aplikace, a tato data dále zpracovává pro pøedání do vrstvy View. \cite{design-patterns}
 
-Model mÃ¡ za Ãºkol pÅ™istupovat k datovÃ½m ÃºloÅ¾iÅ¡tÃ­m, a to buÄ k perzistentnÃ­ databÃ¡zi, nebo souborovÃ©mu systÃ©mu, cache Äi jinÃ½m typÅ¯m ÃºloÅ¾iÅ¡Å¥. ZapouzdÅ™uje tak datovou logiku frameworku. ExistujÃ­ rÅ¯znÃ¡ Å™eÅ¡enÃ­ vrstvy Model. NapÅ™Ã­klad ORM, neboli Object Relations Mappping, kterÃ©m jsou entity se svÃ½mi atributy a vztahy mapovÃ¡ny podle relaÄnÃ­ databÃ¡ze. DalÅ¡Ã­ moÅ¾nostÃ­ je Active Record, neboli aktivnÃ­ zÃ¡znam tabulky, kterÃ½ se do databÃ¡ze sÃ¡m uklÃ¡dÃ¡, naÄÃ­tÃ¡ Äi maÅ¾e. DalÅ¡Ã­ moÅ¾nostÃ­ je Data Mapper, kterÃ½ mÃ¡ za Ãºkol mapovat entitu do databÃ¡ze a naopak. DAO neboli Data Access Object, Repository Äi Table Data Gateway nÃ¡m umoÅ¾ÅˆujÃ­ pÅ™Ã­stup k popsanÃ½m Å™eÅ¡enÃ­m. Pro architektury pokroÄilÃ½ch aplikacÃ­ existuje i mnoho dalÅ¡Ã­ch nÃ¡vrhovÃ½ch vzorÅ¯ a pÅ™Ã­stupÅ¯ k datovÃ© vrstvÄ›. ModelovÃ¡ vrstva bÃ½vÃ¡ oznaÄovÃ¡na za nejsloÅ¾itÄ›jÅ¡Ã­ vrstvu, a prÃ¡vÄ› proto je potÅ™eba dodrÅ¾ovat techniky OOP vÄetnÄ› nÃ¡vrhovÃ½ch vzorÅ¯ pro dalÅ¡Ã­ moÅ¾nou rozÅ¡iÅ™itelnost a pÅ™ehlednost. \cite{design-patterns}
+Model má za úkol pøistupovat k datovım úlo¾i¹tím, a to buï k perzistentní databázi, nebo souborovému systému, cache èi jinım typùm úlo¾i¹». Zapouzdøuje tak datovou logiku frameworku. Existují rùzná øe¹ení vrstvy Model. Napøíklad ORM, neboli Object Relations Mappping, kterém jsou entity se svımi atributy a vztahy mapovány podle relaèní databáze. Dal¹í mo¾ností je Active Record, neboli aktivní záznam tabulky, kterı se do databáze sám ukládá, naèítá èi ma¾e. Dal¹í mo¾ností je Data Mapper, kterı má za úkol mapovat entitu do databáze a naopak. DAO neboli Data Access Object, Repository èi Table Data Gateway nám umo¾òují pøístup k popsanım øe¹ením. Pro architektury pokroèilıch aplikací existuje i mnoho dal¹ích návrhovıch vzorù a pøístupù k datové vrstvì. Modelová vrstva bıvá oznaèována za nejslo¾itìj¹í vrstvu, a právì proto je potøeba dodr¾ovat techniky OOP vèetnì návrhovıch vzorù pro dal¹í mo¾nou roz¹iøitelnost a pøehlednost. \cite{design-patterns}
 
-View klade dÅ¯raz na prezentaÄnÃ­ ÃºroveÅˆ, tedy na zabrazenÃ­ vÃ½sledkÅ¯ uÅ¾ivateli. ZpracovÃ¡vÃ¡ tak vÃ½sledek prÃ¡ce vrstvy Controller nad vrstvou Model a zobrazuje vÃ½sledek urÄitÃ½ch operacÃ­. ÄŒasto vyuÅ¾Ã­vÃ¡ nÄ›kterÃ½ch Å¡ablonovacÃ­ch pÅ™Ã­stupÅ¯. \cite{design-patterns}
+View klade dùraz na prezentaèní úroveò, tedy na zabrazení vısledkù u¾ivateli. Zpracovává tak vısledek práce vrstvy Controller nad vrstvou Model a zobrazuje vısledek urèitıch operací. Èasto vyu¾ívá nìkterıch ¹ablonovacích pøístupù. \cite{design-patterns}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/mvc.png}{0.5}
-\endobr{NÃ¡vrhovÃ½ vzor MVC a jeho Å¾ivotnÃ­ cyklus}
+\endobr{Návrhovı vzor MVC a jeho ¾ivotní cyklus}
 
-\sekce{Optimalizace aplikaÄnÃ­ vrstvy}
+\sekce{Optimalizace aplikaèní vrstvy}
 \label{sec:profiler}
-Optimalizace na Ãºrovni aplikaÄnÃ­ vrstvy mÅ¯Å¾e bÃ½t provÃ¡dÄ›na nÄ›kolika zpÅ¯soby a pÅ™Ã­stupy. Tato Äinnost se tÃ½kÃ¡ pÅ™evÃ¡Å¾nÄ› programÃ¡torÅ¯ a softwarovÃ½ch inÅ¾enÃ½rÅ¯, kteÅ™Ã­ majÃ­ za Ãºkol vÃ½voj a ÃºdrÅ¾bu aplikaÄnÃ­ vrstvy. K tomu, aby se daly identifikovat problematickÃ© ÄÃ¡sti, kterÃ© vyÅ¾adujÃ­ optimalizaci, slouÅ¾Ã­ tzv. profilery. Ty majÃ­ obecnÄ› za Ãºkol vyprofilovat jednotlivÃ© funkce, metody, procedury, dotazy a pÅ™Ã­kazy, kterÃ© se v danÃ© vrstvÄ›, jiÅ¾ je profiler urÄen, vyskytujÃ­. DÃ¡le majÃ­ za Ãºkol urÄit dobu jejich trvÃ¡nÃ­, poÄet volÃ¡nÃ­, Äas spuÅ¡tÄ›nÃ­, zÃ¡vislosti a dalÅ¡Ã­ parametry. ProfilovÃ¡nÃ­, neboli urÄenÃ­ kandidÃ¡tÅ¯ pro optimalizaci, je prvnÃ­m a nejdÅ¯leÅ¾itÄ›jÅ¡Ã­m krokem pro optimalizaci aplikaÄnÃ­ vrstvy webovÃ© architektury. DalÅ¡Ã­ kroky se tÃ½kajÃ­ pÅ™edevÅ¡Ã­m tÄ›chto oblastÃ­:
+Optimalizace na úrovni aplikaèní vrstvy mù¾e bıt provádìna nìkolika zpùsoby a pøístupy. Tato èinnost se tıká pøevá¾nì programátorù a softwarovıch in¾enırù, kteøí mají za úkol vıvoj a údr¾bu aplikaèní vrstvy. K tomu, aby se daly identifikovat problematické èásti, které vy¾adují optimalizaci, slou¾í tzv. profilery. Ty mají obecnì za úkol vyprofilovat jednotlivé funkce, metody, procedury, dotazy a pøíkazy, které se v dané vrstvì, ji¾ je profiler urèen, vyskytují. Dále mají za úkol urèit dobu jejich trvání, poèet volání, èas spu¹tìní, závislosti a dal¹í parametry. Profilování, neboli urèení kandidátù pro optimalizaci, je prvním a nejdùle¾itìj¹ím krokem pro optimalizaci aplikaèní vrstvy webové architektury. Dal¹í kroky se tıkají pøedev¹ím tìchto oblastí:
 
 \begin{itemize}
-\item VÃ½bÄ›r nejoptimÃ¡lnÄ›jÅ¡Ã­ho algoritmu pro danou Ãºlohu
-\item VÃ½bÄ›r nejrychlejÅ¡Ã­ho MVC frameworku
-\item VytvÃ¡Å™enÃ­ cache souborÅ¯ aplikace
-\item ZpÅ¯sob pÅ™ekladu a vykonÃ¡nÃ­ zdrojovÃ½ch souborÅ¯
-\item PÅ™idÃ¡nÃ­ dalÅ¡Ã­ vrstvy architektury - aplikaÄnÃ­ cache
+\item Vıbìr nejoptimálnìj¹ího algoritmu pro danou úlohu
+\item Vıbìr nejrychlej¹ího MVC frameworku
+\item Vytváøení cache souborù aplikace
+\item Zpùsob pøekladu a vykonání zdrojovıch souborù
+\item Pøidání dal¹í vrstvy architektury - aplikaèní cache
 \end{itemize}
 
-\sekce{Druhy aplikaÄnÃ­ch vrstev}
-Existuje celÃ¡ Å¡kÃ¡la rÅ¯znÃ½ch programovacÃ­ch jazykÅ¯ a webovÃ½ch serverÅ¯ pro implementaci aplikace. KaÅ¾dÃ½ z nich mÃ¡ svÃ© vÃ½hody a nevÃ½hody, svÃ¡ specifickÃ¡ Å™eÅ¡enÃ­ a pÅ™Ã­stupy. Zde je uveden krÃ¡tkÃ½ seznam tÄ›ch v praxi nejpouÅ¾Ã­vanÄ›jÅ¡Ã­ch:
+\sekce{Druhy aplikaèních vrstev}
+Existuje celá ¹kála rùznıch programovacích jazykù a webovıch serverù pro implementaci aplikace. Ka¾dı z nich má své vıhody a nevıhody, svá specifická øe¹ení a pøístupy. Zde je uveden krátkı seznam tìch v praxi nejpou¾ívanìj¹ích:
 
 \begin{itemize}
-\item WebovÃ½ server Apache2 s programovacÃ­m jazykem PHP
+\item Webovı server Apache2 s programovacím jazykem PHP
 \item Java Servlets, Java Spring Source
-\item C\# s technologiÃ­ .NET
+\item C\# s technologií .NET
 \item Ruby on Rails
 \item Python a Django
-\item a mnohÃ© dalÅ¡Ã­
+\item a mnohé dal¹í
 \end{itemize}
 
-\sekce{Ajax a webovÃ© sluÅ¾by}
-Ajax, neboli Asynchronous JavaScript and XML, se dnes stÃ¡vÃ¡ nedÃ­lnou souÄÃ¡stÃ­ vÃ½voje webovÃ½ch aplikacÃ­. Aplikace tak dostÃ¡vÃ¡jÃ­ interaktivnÄ›jÅ¡Ã­ charakter a obejdou se bez nutnosti znovuzaslÃ¡nÃ­ celÃ©ho poÅ¾adavku webovÃ© aplikaci. CelÃ½ tento pÅ™Ã­stup probÃ­hÃ¡ nejvÃ­ce na stranÄ› klienta. Je pouÅ¾it JavaScript pro programovou implementaci, kterÃ½ mÃ¡ pÅ™Ã­stup ke stromu objektÅ¯ dokumentu zvanÃ©ho DOM, neboli Document Object Model. V tÃ©to kapitole je AJAX uveden z toho dÅ¯vodu, Å¾e pouÅ¾Ã­vÃ¡ objekt XMLHttpRequest pro komunikaci s aplikaÄnÃ­m serverem. Tyto aplikaÄnÃ­ poÅ¾adavky jsou nazÃ½vÃ¡ny webovÃ½mi sluÅ¾bami pro Ajax. Tyto poÅ¾adavky jsou vykonÃ¡vÃ¡ny na aplikaÄnÃ­ vrstvÄ› a pÅ™edstavujÃ­ potenciÃ¡lnÃ­ zÃ¡tÄ›Å¾, kterÃ¡ musÃ­ bÃ½t v nÄ›kterÃ½ch pÅ™Ã­padech optimalizovÃ¡na.\cite{ajax}
+\sekce{Ajax a webové slu¾by}
+Ajax, neboli Asynchronous JavaScript and XML, se dnes stává nedílnou souèástí vıvoje webovıch aplikací. Aplikace tak dostávájí interaktivnìj¹í charakter a obejdou se bez nutnosti znovuzaslání celého po¾adavku webové aplikaci. Celı tento pøístup probíhá nejvíce na stranì klienta. Je pou¾it JavaScript pro programovou implementaci, kterı má pøístup ke stromu objektù dokumentu zvaného DOM, neboli Document Object Model. V této kapitole je AJAX uveden z toho dùvodu, ¾e pou¾ívá objekt XMLHttpRequest pro komunikaci s aplikaèním serverem. Tyto aplikaèní po¾adavky jsou nazıvány webovımi slu¾bami pro Ajax. Tyto po¾adavky jsou vykonávány na aplikaèní vrstvì a pøedstavují potenciální zátì¾, která musí bıt v nìkterıch pøípadech optimalizována.\cite{ajax}
 
 
 
 % Databaze
-\kapitola{DabÃ¡zovÃ¡ vrstva}
+\kapitola{Dabázová vrstva}
 \label{sec:database}
-Ãškolem databÃ¡zovÃ© vrstvy ve webovÃ© architektuÅ™e je zajiÅ¡Å¥ovat datovÃ© sluÅ¾by a uchovÃ¡vat tak aplikaÄnÃ­ data perzistentnÃ­. V oblasti webovÃ½ch architektur se nejÄastÄ›ji vyskytujÃ­ relaÄnÃ­ databÃ¡zovÃ© systÃ©my, a proto je tato prÃ¡ce soustÅ™edÄ›na na tento typ databÃ¡zovÃ½ch systÃ©mÅ¯. DatabÃ¡zovÃ½ systÃ©m obecnÄ› tvoÅ™Ã­ databÃ¡ze, tedy skupiny strukturovanÃ½ch homogennÃ­ch souborÅ¯, a SÅ˜BD, neboli systÃ©m Å™Ã­zenÃ­ bÃ¡ze dat, jakoÅ¾to integrovanÃ½ softwarovÃ½ prostÅ™edek Å™Ã­dÃ­cÃ­ bÃ¡zi dat.
+Úkolem databázové vrstvy ve webové architektuøe je zaji¹»ovat datové slu¾by a uchovávat tak aplikaèní data perzistentní. V oblasti webovıch architektur se nejèastìji vyskytují relaèní databázové systémy, a proto je tato práce soustøedìna na tento typ databázovıch systémù. Databázovı systém obecnì tvoøí databáze, tedy skupiny strukturovanıch homogenních souborù, a SØBD, neboli systém øízení báze dat, jako¾to integrovanı softwarovı prostøedek øídící bázi dat.
 
-\sekce{Optimalizace SQL dotazÅ¯}
-Optimalizace dotazÅ¯ SQL je nedÃ­lnou souÄÃ¡sti procesu prÃ¡ce s databÃ¡zovÃ½m systÃ©m v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. Je totiÅ¾ dÅ¯leÅ¾itÃ© nejenom umÄ›t si zÃ­skat potÅ™ebnÃ¡ data, ale je potÅ™eba zvÃ¡Å¾it i za jakou cenu tato data prostÅ™ednictvÃ­m databÃ¡zavÃ©ho systÃ©mu zÃ­skÃ¡vÃ¡me. HovoÅ™Ã­me-li o webovÃ½ch architekturÃ¡ch s vysokou zÃ¡tÄ›Å¾Ã­, je tento proces optimalizace velice dÅ¯leÅ¾itÃ½. KaÅ¾dÃ¡ operace, kaÅ¾dÃ½ dotaz, kaÅ¾dÃ¡ akce potÅ™ebuje ke svÃ© realizaci urÄitÃ© hardwarovÃ© a systÃ©movÃ© prostÅ™edky. V prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e je dÅ¯leÅ¾itÃ© uÅ¡etÅ™it tÄ›chto prostÅ™edkÅ¯ co nejvÃ­ce.
+\sekce{Optimalizace SQL dotazù}
+Optimalizace dotazù SQL je nedílnou souèásti procesu práce s databázovım systém v prostøedí vysoké zátì¾e. Je toti¾ dùle¾ité nejenom umìt si získat potøebná data, ale je potøeba zvá¾it i za jakou cenu tato data prostøednictvím databázavého systému získáváme. Hovoøíme-li o webovıch architekturách s vysokou zátì¾í, je tento proces optimalizace velice dùle¾itı. Ka¾dá operace, ka¾dı dotaz, ka¾dá akce potøebuje ke své realizaci urèité hardwarové a systémové prostøedky. V prostøedí vysoké zátì¾e je dùle¾ité u¹etøit tìchto prostøedkù co nejvíce.
 
-K tomu, abychom mohli vÅ¯bec pÅ™istoupit k optimalizaci SQL dotazÅ¯, je potÅ™eba urÄit a identifikovat, kterÃ© tyto dotazy jsou opravdu nÃ¡roÄnÃ© na prostÅ™edky a Äas, neboli majÃ­ vysokou cenu. K tomu slouÅ¾Ã­ tzv profilery (viz. kapitola \ref{sec:profiler}). Profilery mohou bÃ½t urÄeny pro aplikaÄnÃ­ vrstvu, kde profilujÃ­ nejenom zdrojovÃ© kÃ³dy aplikace, ale samozÅ™ejmÄ› i databÃ¡zovÃ© dotazy, kterÃ© jsou z tÃ©to aplikaÄnÃ­ ÃºrovnÄ› spuÅ¡tÄ›ny. TÃ­mto zpÅ¯sobem je moÅ¾nÃ© zÃ­skat pÅ™ehled vÅ¡ech operacÃ­, kterÃ© probÃ­hajÃ­ na aplikaÄnÃ­ i databÃ¡zovÃ© vrstvÄ›, ponÄ›vadÅ¾ tyto vrstvy spolu Ãºzce souvisÃ­ a spolupracujÃ­. DalÅ¡Ã­ moÅ¾nostÃ­ je pouÅ¾Ã­t profiler urÄenÃ½ pÅ™Ã­mo pro databÃ¡zovou vrstvu. TakovÃ½ profiler pak profiluje pouze databÃ¡zovou vrstvu, jednotlivÃ© databÃ¡zovÃ© dotazy, jejich cenu, dobu trvÃ¡nÃ­, a jinÃ© dalÅ¡Ã­ statistiky.
+K tomu, abychom mohli vùbec pøistoupit k optimalizaci SQL dotazù, je potøeba urèit a identifikovat, které tyto dotazy jsou opravdu nároèné na prostøedky a èas, neboli mají vysokou cenu. K tomu slou¾í tzv profilery (viz. kapitola \ref{sec:profiler}). Profilery mohou bıt urèeny pro aplikaèní vrstvu, kde profilují nejenom zdrojové kódy aplikace, ale samozøejmì i databázové dotazy, které jsou z této aplikaèní úrovnì spu¹tìny. Tímto zpùsobem je mo¾né získat pøehled v¹ech operací, které probíhají na aplikaèní i databázové vrstvì, ponìvad¾ tyto vrstvy spolu úzce souvisí a spolupracují. Dal¹í mo¾ností je pou¾ít profiler urèenı pøímo pro databázovou vrstvu. Takovı profiler pak profiluje pouze databázovou vrstvu, jednotlivé databázové dotazy, jejich cenu, dobu trvání, a jiné dal¹í statistiky.
 
-KaÅ¾dÃ½ SQL dotaz mÃ¡ nÄ›jakÃ½ svÅ¯j exekuÄnÃ­ plÃ¡n. DatabÃ¡zovÃ½ systÃ©m po obdrÅ¾enÃ­ SQL dotazu vybÃ­rÃ¡ z nÄ›kolika moÅ¾nÃ½ch exekuÄnÃ­ch plÃ¡nÅ¯ ten nejvÃ½hodnÄ›jÅ¡Ã­, kterÃ½ je po tÃ© v databÃ¡zi proveden. PÅ™i vÃ½bÄ›ru exekuÄnÃ­ho plÃ¡nu je brÃ¡n v potaz vÃ½bÄ›r indexu a zpÅ¯sob skenu tabulek, vybranÃ¡ spojenÃ­, aj. ExukuÄnÃ­ plÃ¡n je moÅ¾nÃ© zobrazovat v mnoha databÃ¡zovÃ½ch systÃ©mech pomocÃ­ SQL dotazu EXPLAIN, a identifikovat tak mÃ­sta exekuÄnÃ­ho plÃ¡nu, kterÃ¡ mohou bÃ½t kandidÃ¡tem pro optimalizaci.\cite{optimalizace-sql}
+Ka¾dı SQL dotaz má nìjakı svùj exekuèní plán. Databázovı systém po obdr¾ení SQL dotazu vybírá z nìkolika mo¾nıch exekuèních plánù ten nejvıhodnìj¹í, kterı je po té v databázi proveden. Pøi vıbìru exekuèního plánu je brán v potaz vıbìr indexu a zpùsob skenu tabulek, vybraná spojení, aj. Exukuèní plán je mo¾né zobrazovat v mnoha databázovıch systémech pomocí SQL dotazu EXPLAIN, a identifikovat tak místa exekuèního plánu, která mohou bıt kandidátem pro optimalizaci.\cite{optimalizace-sql}
 
-Pro optimalizaci SQL dotazÅ¯ je moÅ¾nÃ© urÄit nÄ›kolik zÃ¡kladnÃ­ch oblastÃ­, na kterÃ© se lze zamÄ›Å™it pÅ™i konkrÃ©tnÃ­ optimalizaci urÄitÃ©ho SQL dotazu:
+Pro optimalizaci SQL dotazù je mo¾né urèit nìkolik základních oblastí, na které se lze zamìøit pøi konkrétní optimalizaci urèitého SQL dotazu:
 
 \begin{itemize}
-\item NormalizovanÃ½ databÃ¡zovÃ½ nÃ¡vrh
-\item VnoÅ™enÃ© SQL dotazy
-\item Indexace, vÃ½bÄ›r indexu a zpÅ¯sob prohledÃ¡vÃ¡nÃ­
-\item VÃ½bÄ›r druhu a poÅ™adÃ­ spojenÃ­
-\item ZpÅ¯sob pouÅ¾Ã­vÃ¡nÃ­ podmÃ­nek, klauzulÃ­ a operÃ¡torÅ¯
+\item Normalizovanı databázovı návrh
+\item Vnoøené SQL dotazy
+\item Indexace, vıbìr indexu a zpùsob prohledávání
+\item Vıbìr druhu a poøadí spojení
+\item Zpùsob pou¾ívání podmínek, klauzulí a operátorù
 \end{itemize}
 
 \sekce{Indexace}
-Indexace je dÅ¯leÅ¾itÃ¡ a nejefektivnÄ›jÅ¡Ã­ optimalizace dotazÅ¯ SQL. PÅ™i prÅ¯chodu dat tabulkou mÃ¡ databÃ¡ze na vÃ½bÄ›r nÄ›kolik moÅ¾nostÃ­ prohledÃ¡nÃ­. PrvnÃ­ moÅ¾nostÃ­ je prohledat vÅ¡echny Å™Ã¡dky tabulky podle SQL podmÃ­nek. To je nazÃ½vÃ¡no obecnÄ› Full Table Scan, nebo takÃ© Sequence Scan, neboli sekvenÄnÃ­ prohledÃ¡vÃ¡nÃ­. DalÅ¡Ã­ moÅ¾nostÃ­ je puÅ¾itÃ­ nÄ›kterÃ©ho z indexÅ¯ pro pÅ™Ã­stup k hodnotÃ¡m namapovanÃ½ch na jejich ROWID, kterÃ© ukazuje na fyzickÃ© uloÅ¾enÃ­. Toto prohledÃ¡nÃ­ bÃ½vÃ¡ nazÃ½vÃ¡no Index Range Scan, nebo jen obecnÄ› Index Scan, neboli indexaÄnÃ­ prohledÃ¡vÃ¡nÃ­. SamozÅ™ejmÄ› prohledÃ¡vÃ¡nÃ­ tabulek pomocÃ­ indexace je vÃ½raznÄ› rychlejÅ¡Ã­, a tÃ­m pÃ¡dem dÅ¯leÅ¾itÃ© pro opimalizaci SQL. \cite{optimalizace-sql}
+Indexace je dùle¾itá a nejefektivnìj¹í optimalizace dotazù SQL. Pøi prùchodu dat tabulkou má databáze na vıbìr nìkolik mo¾ností prohledání. První mo¾ností je prohledat v¹echny øádky tabulky podle SQL podmínek. To je nazıváno obecnì Full Table Scan, nebo také Sequence Scan, neboli sekvenèní prohledávání. Dal¹í mo¾ností je pu¾ití nìkterého z indexù pro pøístup k hodnotám namapovanıch na jejich ROWID, které ukazuje na fyzické ulo¾ení. Toto prohledání bıvá nazıváno Index Range Scan, nebo jen obecnì Index Scan, neboli indexaèní prohledávání. Samozøejmì prohledávání tabulek pomocí indexace je vıraznì rychlej¹í, a tím pádem dùle¾ité pro opimalizaci SQL. \cite{optimalizace-sql}
 
-Indexy jsou fyzicky i logicky uloÅ¾eny v asociativnÃ­ch tabulkÃ¡ch, a dÃ­ky tomu i oddÄ›leny od datovÃ½ch tabulek. ÄŒili pÅ™i smazÃ¡nÃ­ indexÅ¯ se datovÃ© tabulky nesmaÅ¾ou ani nijak nezmÄ›nÃ­. Pouze se mÅ¯Å¾e zpomalit pÅ™Ã­stup k datÅ¯m, kterÃ½ byl rychlejÅ¡Ã­ dÃ­ky tÄ›mto indexÅ¯m. Tabulky s indexy jsou samozÅ™ejmÄ› uloÅ¾eny na disku, ponÄ›vadÅ¾ jejich velikost je obrovskÃ¡ a neveÅ¡ly by se do operaÄnÃ­ pamÄ›ti RAM, i kdyÅ¾ pÅ™Ã­stup k nÃ­ je daleko rychlejÅ¡Ã­. Proto je potÅ™eba volit nÄ›jakÃ½ vhodnÃ½ algoritmus prohledÃ¡nÃ­ a pÅ™Ã­stupu k indexÅ¯m uloÅ¾enÃ½m na disku. Od zvolenÃ©ho algoritmu se odvyjÃ­ i nÃ¡zev a druh pouÅ¾Ã­vanÃ½ch indexÅ¯. V kaÅ¾dÃ©m databÃ¡zovÃ©m systÃ©mu samozÅ™ejmÄ› naleznete nÄ›kterÃ© typickÃ© a nÄ›kterÃ© atypickÃ© druhy indexÅ¯. \cite{optimalizace-sql} Zde je krÃ¡tkÃ½ vÃ½bÄ›r moÅ¾nÃ½ch indexÅ¯:
+Indexy jsou fyzicky i logicky ulo¾eny v asociativních tabulkách, a díky tomu i oddìleny od datovıch tabulek. Èili pøi smazání indexù se datové tabulky nesma¾ou ani nijak nezmìní. Pouze se mù¾e zpomalit pøístup k datùm, kterı byl rychlej¹í díky tìmto indexùm. Tabulky s indexy jsou samozøejmì ulo¾eny na disku, ponìvad¾ jejich velikost je obrovská a neve¹ly by se do operaèní pamìti RAM, i kdy¾ pøístup k ní je daleko rychlej¹í. Proto je potøeba volit nìjakı vhodnı algoritmus prohledání a pøístupu k indexùm ulo¾enım na disku. Od zvoleného algoritmu se odvyjí i název a druh pou¾ívanıch indexù. V ka¾dém databázovém systému samozøejmì naleznete nìkteré typické a nìkteré atypické druhy indexù. \cite{optimalizace-sql} Zde je krátkı vıbìr mo¾nıch indexù:
 
 \begin{itemize}
-\item B-tree - pro pÅ™Ã­stup pomocÃ­ Root-Node-List
-\item Bitmap - pro vÃ½ÄtovÃ© sloupce
-\item R-tree - typ indexu optimalizovanÃ½ pro geometrickÃ¡ data.
-\item GiST - zobecnÄ›nÃ½ vyhledÃ¡vacÃ­ strom
-\item a dalÅ¡Ã­
+\item B-tree - pro pøístup pomocí Root-Node-List
+\item Bitmap - pro vıètové sloupce
+\item R-tree - typ indexu optimalizovanı pro geometrická data.
+\item GiST - zobecnìnı vyhledávací strom
+\item a dal¹í
 \end{itemize}
 
 
 \sekce{Partitioning}
-Partitioning, kterÃ½ je obÄas do ÄeÅ¡tiny pÅ™eklÃ¡dÃ¡n jako segmentace, pÅ™Ã­padnÄ› jako Å¡kÃ¡lovÃ¡nÃ­, slouÅ¾Ã­ v relaÄnÃ­ch databÃ¡zovÃ½ch systÃ©mech k rozdÄ›lovÃ¡nÃ­ tabulek a indexÅ¯ do menÅ¡Ã­ch ÄÃ¡stÃ­ a komponent. DÃ­ky tomu je pak Äinnost databÃ¡ze rychlejÅ¡Ã­ a snazÅ¡Ã­. PÅ™i tÃ©to segmentaci tak mÅ¯Å¾e dojÃ­t k rozdÄ›lenÃ­ tabulek na vÃ­ce pevnÃ½ch diskÅ¯ Äi serverÅ¯. Tyto segmenty jsou na sobÄ› nezÃ¡visle, ale pÅ™itom je k nim moÅ¾nÃ© pÅ™istupovat pÅ™es tabulku, pro kterou byla segmentace vytvoÅ™ena. DatabÃ¡zovÃ¡ tabulka a jejÃ­ vlastnosti, jako napÅ™Ã­klad referenÄnÃ­ integrita nebo Å¾Ã¡dnÃ¡ redundance, jsou stÃ¡le zachovÃ¡ny a fungujÃ­ pÅ™es vÅ¡echny jejÃ­ segmenty. Dokonce i kdyÅ¾ dojde k selhÃ¡nÃ­ Äi vÃ½padku jednoho ze segmentÅ¯, ostatnÃ­ jsou stÃ¡le pÅ™Ã­stupnÃ© a je moÅ¾nÃ© s nimi pracovat. Partitioning je moÅ¾nÃ© provÃ¡dÄ›t na nÄ›kolika ÃºrovnÃ­ch a podle rÅ¯znÃ½ch klÃ­ÄÅ¯. U segmentovanÃ½ch tabulek je dÅ¯leÅ¾itÃ© rozmyslet si jakou strategii zvolit. 
+Partitioning, kterı je obèas do èe¹tiny pøekládán jako segmentace, pøípadnì jako ¹kálování, slou¾í v relaèních databázovıch systémech k rozdìlování tabulek a indexù do men¹ích èástí a komponent. Díky tomu je pak èinnost databáze rychlej¹í a snaz¹í. Pøi této segmentaci tak mù¾e dojít k rozdìlení tabulek na více pevnıch diskù èi serverù. Tyto segmenty jsou na sobì nezávisle, ale pøitom je k nim mo¾né pøistupovat pøes tabulku, pro kterou byla segmentace vytvoøena. Databázová tabulka a její vlastnosti, jako napøíklad referenèní integrita nebo ¾ádná redundance, jsou stále zachovány a fungují pøes v¹echny její segmenty. Dokonce i kdy¾ dojde k selhání èi vıpadku jednoho ze segmentù, ostatní jsou stále pøístupné a je mo¾né s nimi pracovat. Partitioning je mo¾né provádìt na nìkolika úrovních a podle rùznıch klíèù. U segmentovanıch tabulek je dùle¾ité rozmyslet si jakou strategii zvolit. 
 
-PÅ™i vertikÃ¡lnÃ­ segmentaci dojde k segmentaci podle definovanÃ½ch sloupcÅ¯ databÃ¡zovÃ© tabulky. KlÃ­Äem pÅ™i tomto rozdÄ›lenÃ­ je urÄenÃ­ sloupeÄkÅ¯, kterÃ© se nepouÅ¾Ã­vajÃ­ ve where klauzuli, nebo jsou prÃ¡zdnÃ© Äi zÅ™Ã­dka pouÅ¾Ã­vanÃ©. 
+Pøi vertikální segmentaci dojde k segmentaci podle definovanıch sloupcù databázové tabulky. Klíèem pøi tomto rozdìlení je urèení sloupeèkù, které se nepou¾ívají ve where klauzuli, nebo jsou prázdné èi zøídka pou¾ívané. 
 
-ÄŒastÄ›ji pouÅ¾Ã­vÃ¡nÃ½m pÅ™Ã­stupem je horizontÃ¡lnÃ­ segmentace tabulek, Äili segmentace podle Å™Ã¡dkÅ¯. Zde se segmentujÃ­ Å™Ã¡dky, podle urÄitÃ© hodnoty databÃ¡zovÃ©ho sloupce. O tom, do jakÃ©ho segmentu bude Å™Ã¡dek tabulky vloÅ¾en, rozhoduje urÄitÃ½ interval, hodnota vÃ½Ätu nebo konkrÃ©tnÃ­ funkce.
+Èastìji pou¾ívánım pøístupem je horizontální segmentace tabulek, èili segmentace podle øádkù. Zde se segmentují øádky, podle urèité hodnoty databázového sloupce. O tom, do jakého segmentu bude øádek tabulky vlo¾en, rozhoduje urèitı interval, hodnota vıètu nebo konkrétní funkce.
 
-DalÅ¡Ã­ moÅ¾nost je aplikaÄnÃ­ ÃºroveÅˆ segmentace, kterÃ¡ se zÅ™Ã­dka objevuje v souvislosti s Partitioning. NejednÃ¡ se totiÅ¾ o segmentaci urÄitÃ© databÃ¡zovÃ© tabulky, ale o segmentaci databÃ¡ze. ÄŒÃ¡st tabulek je umÃ­stÄ›na na jednom serveru, ÄÃ¡st na dalÅ¡Ã­m serveru, a tak dÃ¡le.
+Dal¹í mo¾nost je aplikaèní úroveò segmentace, která se zøídka objevuje v souvislosti s Partitioning. Nejedná se toti¾ o segmentaci urèité databázové tabulky, ale o segmentaci databáze. Èást tabulek je umístìna na jednom serveru, èást na dal¹ím serveru, a tak dále.
 
-Partitioning je dÅ¯leÅ¾itÃ½m nÃ¡strojem pÅ™i optimalizaci databÃ¡zovÃ© vrstvy v architektuÅ™e webovÃ½ch systÃ©mÅ¯ v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. DÃ¡ se totiÅ¾ pÅ™edpoklÃ¡dat, Å¾e se zvÄ›tÅ¡ujÃ­cÃ­ se zÃ¡tÄ›Å¾Ã­ roste i poÄet zÃ¡znamÅ¯ tabulek, a tak se doba pÅ™Ã­stupu zvÄ›tÅ¡uje a prostÅ™edky se zatÄ›Å¾ujÃ­ jeÅ¡tÄ› vÃ­c. Tyto problÃ©my dokÃ¡Å¾e vyÅ™eÅ¡it partitiong.
+Partitioning je dùle¾itım nástrojem pøi optimalizaci databázové vrstvy v architektuøe webovıch systémù v prostøedí vysoké zátì¾e. Dá se toti¾ pøedpokládat, ¾e se zvìt¹ující se zátì¾í roste i poèet záznamù tabulek, a tak se doba pøístupu zvìt¹uje a prostøedky se zatì¾ují je¹tì víc. Tyto problémy doká¾e vyøe¹it partitiong.
 \cite{partitioning-db}
 
 \sekce{Replikace}
-ReplikacÃ­ rozumÃ­me technologii, kterÃ¡ umoÅ¾Åˆuje nasadit vÃ­ce databÃ¡zovÃ½ch serverÅ¯ v rÃ¡mci jednÃ© databÃ¡ze. JednÃ¡ se tak o sdÃ­lenÃ­ dat mezi vÃ­ce hardwarovÃ½mi, softwarovÃ½mi a jinÃ½mi prostÅ™edky a jejich pÅ™enositelnost. ÃšÄelem replikace je dosÃ¡hnout vysokÃ© dostupnosti databÃ¡zovÃ©ho systÃ©mu a Å¡kÃ¡lovÃ¡nÃ­ vÃ½konu pro optimalizaci v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. ObecnÄ› existujÃ­ dvÄ› zÃ¡kladnÃ­ varianty databÃ¡zovÃ½ch replikacÃ­, od kterÃ½ch se odvyjÃ­ jejich dalÅ¡Ã­ vyuÅ¾itÃ­. SamozÅ™ejmÄ› v zÃ¡vislosti na konkrÃ©tnÃ­m databÃ¡zovÃ©m systÃ©mu pak existujÃ­ dalÅ¡Ã­ ÄlenÄ›nÃ­ a nastavenÃ­. 
+Replikací rozumíme technologii, která umo¾òuje nasadit více databázovıch serverù v rámci jedné databáze. Jedná se tak o sdílení dat mezi více hardwarovımi, softwarovımi a jinımi prostøedky a jejich pøenositelnost. Úèelem replikace je dosáhnout vysoké dostupnosti databázového systému a ¹kálování vıkonu pro optimalizaci v prostøedí vysoké zátì¾e. Obecnì existují dvì základní varianty databázovıch replikací, od kterıch se odvyjí jejich dal¹í vyu¾ití. Samozøejmì v závislosti na konkrétním databázovém systému pak existují dal¹í èlenìní a nastavení. 
 
-Replikace varianty master-slave je podporovÃ¡na ve vÄ›tÅ¡inÄ› databÃ¡zovÃ½ch systÃ©mÅ¯. JednÃ¡ se o jednoduÅ¡Å¡Ã­ tzv. jednosmÄ›rnou replikaci. V tÃ©to variantÄ› je urÄen autonomnÃ­ prvek, jedna replikace, kterÃ¡ akceptuje a zpracovÃ¡vÃ¡ poÅ¾adavky na zmÄ›ny. TakovÃ¡to replikace nese nÃ¡zev master. Prvek s nÃ¡zvem slave je vÄ›rnou kopiÃ­ autonomnÃ­ho prvku master. SlouÅ¾Ã­ pouze ke ÄtenÃ­ a mÅ¯Å¾e jich existovat vÃ­ce pro jeden master. Jakmile master obdrÅ¾Ã­ a zpracuje poÅ¾adavek na zmÄ›nu, tak jej po dokonÄenÃ­ pÅ™enese na ostatnÃ­ slave replikace.
+Replikace varianty master-slave je podporována ve vìt¹inì databázovıch systémù. Jedná se o jednodu¹¹í tzv. jednosmìrnou replikaci. V této variantì je urèen autonomní prvek, jedna replikace, která akceptuje a zpracovává po¾adavky na zmìny. Takováto replikace nese název master. Prvek s názvem slave je vìrnou kopií autonomního prvku master. Slou¾í pouze ke ètení a mù¾e jich existovat více pro jeden master. Jakmile master obdr¾í a zpracuje po¾adavek na zmìnu, tak jej po dokonèení pøenese na ostatní slave replikace.
 
-Replikace typu master-master bÃ½vÃ¡ oznaÄovÃ¡na jako obousmÄ›rnÃ¡. To znamenÃ¡, Å¾e jsou v rÃ¡mci jednoho databÃ¡zovÃ©ho systÃ©mu minimÃ¡lnÄ› dvÄ› replikace typu master, kterÃ© akceptujÃ­ vÅ¡echny druhy poÅ¾adavkÅ¯ na zmÄ›ny i ÄtenÃ­ a pÅ™enÃ¡Å¡Ã­ je vzÃ¡jemnÄ› mezi sebou. Z tÃ©to vlastnosti vyplÃ½vÃ¡, Å¾e mÅ¯Å¾e dojÃ­t ke kolizÃ­m, napÅ™Ã­klad pokud dvÄ› replikace master zapisujÃ­ do stejnÃ© tabulky. TakovÃ© kolize jsou nevyhnutelnÃ© a je potÅ™eba umÄ›t je Å™eÅ¡it.
+Replikace typu master-master bıvá oznaèována jako obousmìrná. To znamená, ¾e jsou v rámci jednoho databázového systému minimálnì dvì replikace typu master, které akceptují v¹echny druhy po¾adavkù na zmìny i ètení a pøená¹í je vzájemnì mezi sebou. Z této vlastnosti vyplıvá, ¾e mù¾e dojít ke kolizím, napøíklad pokud dvì replikace master zapisují do stejné tabulky. Takové kolize jsou nevyhnutelné a je potøeba umìt je øe¹it.
 
-ZpÅ¯sob pÅ™enosu mezi jednotlivÃ½mi replikacemi mÅ¯Å¾e bÃ½t synchronnÃ­ Äi asynchronnÃ­. U synchronnÃ­ho pÅ™enosu se ÄekÃ¡ aÅ¾ se zmÄ›ny provedou na vÅ¡ech ostatnÃ­ch replikacÃ­ch. Tento proces je ÄasovÄ› nÃ¡roÄnÃ½, ovÅ¡em na druhou stranu je celÃ½ databÃ¡zovÃ½ systÃ©m konzistentnÃ­ jako celek. U asynchronnÃ­ho pÅ™enosu se neÄekÃ¡ na dokonÄenÃ­ pÅ™enosu mezi ostatnÃ­mi replikacemi. DÃ­ky tomu je celÃ½ databÃ¡zovÃ½ systÃ©m rychlejÅ¡Ã­, ovÅ¡em mÅ¯Å¾e dojÃ­t k nekonzistenci, kdy na ostatnÃ­ replikace jeÅ¡tÄ› nejsou pÅ™enesena vÅ¡echna data.
+Zpùsob pøenosu mezi jednotlivımi replikacemi mù¾e bıt synchronní èi asynchronní. U synchronního pøenosu se èeká a¾ se zmìny provedou na v¹ech ostatních replikacích. Tento proces je èasovì nároènı, ov¹em na druhou stranu je celı databázovı systém konzistentní jako celek. U asynchronního pøenosu se neèeká na dokonèení pøenosu mezi ostatními replikacemi. Díky tomu je celı databázovı systém rychlej¹í, ov¹em mù¾e dojít k nekonzistenci, kdy na ostatní replikace je¹tì nejsou pøenesena v¹echna data.
 
-Administrace, nÃ¡stroje a konfigurace replikacÃ­ jsou zabudovanÃ© v tÃ©mÄ›Å™ kaÅ¾dÃ©m databÃ¡zovÃ©m systÃ©mu. Je dÅ¯leÅ¾itÃ© poznamenat, Å¾e tyto nÃ¡stroje nejsou mnohdy dostaÄujÃ­cÃ­ Å™eÅ¡enÃ­ pro architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e, a je proto nutnÃ© pouÅ¾Ã­vÃ¡nÃ­ jinÃ½ch doplÅˆkovÃ½ch nÃ¡strojÅ¯. TakÃ© je vÃ­ce neÅ¾ dÅ¯leÅ¾itÃ© Å™Ã­ct, Å¾e v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e se webovÃ¡ architektura bez databÃ¡zovÃ½ch replikacÃ­ jen tÄ›Å¾ko obejde.\cite{replikace}
+Administrace, nástroje a konfigurace replikací jsou zabudované v témìø ka¾dém databázovém systému. Je dùle¾ité poznamenat, ¾e tyto nástroje nejsou mnohdy dostaèující øe¹ení pro architektury v prostøedí vysoké zátì¾e, a je proto nutné pou¾ívání jinıch doplòkovıch nástrojù. Také je více ne¾ dùle¾ité øíct, ¾e v prostøedí vysoké zátì¾e se webová architektura bez databázovıch replikací jen tì¾ko obejde.\cite{replikace}
 
-\sekce{Druhy relaÄnÃ­ch databÃ¡zÃ­}
-V dneÅ¡nÃ­ dobÄ› existuje nÄ›kolik druhÅ¯ relaÄnÃ­ch databÃ¡zovÃ½ch systÃ©mÅ¯. KaÅ¾dÃ½ z nich mÃ¡ svÃ© klady a zÃ¡pory, ovÅ¡em princip a zpÅ¯sob prÃ¡ce tÄ›chto databÃ¡zÃ­ je v zÃ¡kladu podobnÃ½. Zde je uveden pÅ™ehled tÄ›ch v praxi nejbÄ›Å¾nÄ›jÅ¡Ã­ch:
+\sekce{Druhy relaèních databází}
+V dne¹ní dobì existuje nìkolik druhù relaèních databázovıch systémù. Ka¾dı z nich má své klady a zápory, ov¹em princip a zpùsob práce tìchto databází je v základu podobnı. Zde je uveden pøehled tìch v praxi nejbì¾nìj¹ích:
 
 \begin{itemize}
 \item Oracle
@@ -208,34 +208,34 @@ V dneÅ¡nÃ­ dobÄ› existuje nÄ›kolik druhÅ¯ relaÄnÃ­ch databÃ¡zovÃ½ch systÃ©mÅ¯. 
 \item PostgreSQL
 \item MSSQL
 \item Firebird
-\item a mnoho dalÅ¡Ã­ch
+\item a mnoho dal¹ích
 \end{itemize}
 
 
 
 % Web cache
-\kapitola{WebovÃ© cache}
-WebovÃ© cache jsou dÅ¯leÅ¾itou vrstvou pro rozÅ¡Ã­Å™enÃ­ vÃ½chozÃ­ tÅ™Ã­vrstvÃ© architektury. Jak uÅ¾ vyplÃ½vÃ¡ z nÃ¡zvu cache, jednÃ¡ se o vyrovnÃ¡vacÃ­ pamÄ›Å¥, jejÃ­Å¾ hlavnÃ­ ÃºÄel je zrychlit odpovÄ›Ä webovÃ© aplikace na poÅ¾adavek klienta. ZÃ¡roveÅˆ je dÅ¯leÅ¾itÃ© poznamenat, Å¾e nefunkÄnost, zÃ¡nik Äi pÃ¡d cache vrstvy nesmÃ­ nijak ovlivnit chod apikace, kterÃ¡ musÃ­ bÃ½t funkÄnÃ­ i nadÃ¡le. ÃšÄel tÃ©to vrstvy je pouze zrychlit pÅ™Ã­stup k datÅ¯m Äi jiÅ¾ jednou interpretovanÃ½ch odpovÄ›dÃ­m webovÃ© aplikace.
+\kapitola{Webové cache}
+Webové cache jsou dùle¾itou vrstvou pro roz¹íøení vıchozí tøívrstvé architektury. Jak u¾ vyplıvá z názvu cache, jedná se o vyrovnávací pamì», její¾ hlavní úèel je zrychlit odpovìï webové aplikace na po¾adavek klienta. Zároveò je dùle¾ité poznamenat, ¾e nefunkènost, zánik èi pád cache vrstvy nesmí nijak ovlivnit chod apikace, která musí bıt funkèní i nadále. Úèel této vrstvy je pouze zrychlit pøístup k datùm èi ji¾ jednou interpretovanıch odpovìdím webové aplikace.
 
-WebovÃ¡ cache se nachÃ¡zÃ­ mezi klientem a aplikaÄnÃ­ vrstvou. ZÃ¡kladnÃ­ komunikace probÃ­hÃ¡ tak, Å¾e klient poÅ¡le HTTP poÅ¾adavek, aplikaÄnÃ­ server ho pÅ™ijme a navrÃ¡tÃ­ HTTP odpovÄ›Ä. PÅ™i existenci cache vrstvy probÃ­hÃ¡ komunikace jinÃ½m zpÅ¯sobem. Klient poÅ¡le HTTP poÅ¾adavek a webovÃ¡ architektura zjistÃ­, zda-li je tento HTTP poÅ¾adavek urÄen pro uklÃ¡dÃ¡nÃ­ do cache pamÄ›ti. Pokud ano, tak webovÃ¡ architektura zkusÃ­ zÃ­skat odpovÄ›Ä z cache pamÄ›ti. KdyÅ¾ tuto odpovÄ›Ä v pamÄ›ti nalezne, zaÅ¡le ji pÅ™Ã­mo klientovi. V opaÄnÃ©m pÅ™Ã­padÄ› je poÅ¾adavek poslÃ¡n do aplikaÄnÃ­ vrstvy architektury, kterÃ¡ jej zpracuje, vytvoÅ™Ã­ odpovÄ›Ä kterou uloÅ¾Ã­ do cache pamÄ›ti a poÅ¡le klientovi. PÅ™i pÅ™Ã­Å¡tÃ­m stejnÃ©m poÅ¾adavku bude odpovÄ›Ä vrÃ¡cena z pamÄ›ti cache. Dojde-li ke zmÄ›nÄ› dat, kterÃ¡ jsou uloÅ¾ena v cache pamÄ›ti, dojde k invalidaci uloÅ¾enÃ½ch dat v cache pamÄ›ti a celÃ½ proces zaÄne od zaÄÃ¡tku s novÃ½m HTTP poÅ¾adavkem.
+Webová cache se nachází mezi klientem a aplikaèní vrstvou. Základní komunikace probíhá tak, ¾e klient po¹le HTTP po¾adavek, aplikaèní server ho pøijme a navrátí HTTP odpovìï. Pøi existenci cache vrstvy probíhá komunikace jinım zpùsobem. Klient po¹le HTTP po¾adavek a webová architektura zjistí, zda-li je tento HTTP po¾adavek urèen pro ukládání do cache pamìti. Pokud ano, tak webová architektura zkusí získat odpovìï z cache pamìti. Kdy¾ tuto odpovìï v pamìti nalezne, za¹le ji pøímo klientovi. V opaèném pøípadì je po¾adavek poslán do aplikaèní vrstvy architektury, která jej zpracuje, vytvoøí odpovìï kterou ulo¾í do cache pamìti a po¹le klientovi. Pøi pøí¹tím stejném po¾adavku bude odpovìï vrácena z pamìti cache. Dojde-li ke zmìnì dat, která jsou ulo¾ena v cache pamìti, dojde k invalidaci ulo¾enıch dat v cache pamìti a celı proces zaène od zaèátku s novım HTTP po¾adavkem.
 
-Pro webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e je tato vrstva nevyhnutelnÃ¡. OdpovÄ›di z cache vrstvy jsou daleko rychlejÅ¡Ã­, dokonce aÅ¾ mnohonÃ¡sobnÄ›, neÅ¾ odpovÄ›di z aplikaÄnÃ­ vrstvy. Tato prÃ¡ce se zabÃ½vÃ¡ rÅ¯znÃ½mi druhy cache, vÃ½sledky jejich profilovÃ¡nÃ­ a jejich testovÃ¡nÃ­m v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+Pro webové architektury v prostøedí vysoké zátì¾e je tato vrstva nevyhnutelná. Odpovìdi z cache vrstvy jsou daleko rychlej¹í, dokonce a¾ mnohonásobnì, ne¾ odpovìdi z aplikaèní vrstvy. Tato práce se zabıvá rùznımi druhy cache, vısledky jejich profilování a jejich testováním v prostøedí vysoké zátì¾e.
 
 \obrazek
 \vlozeps{../images/cache-process.png}{0.6}
-\endobr{Diagram aktivit cache webovÃ½ch systÃ©mÅ¯}
+\endobr{Diagram aktivit cache webovıch systémù}
 
-\sekce{HTTP hlaviÄky pro ovlÃ¡dÃ¡nÃ­ cache}
+\sekce{HTTP hlavièky pro ovládání cache}
 \label{sec:http-headers}
-Komunikace ve webovÃ½ch aplikacÃ­ch probÃ­hÃ¡ ve valnÃ© vÄ›tÅ¡inÄ› pÅ™Ã­padÅ¯ na Ãºrovni protokolu HTTP. KaÅ¾dÃ½ HTTP poÅ¾adavek obsahuje HTTP hlaviÄky, kterÃ½mi urÄuje poÅ¾adavek, klienta a obsahuje ÄasovÃ© razÃ­tko. OdpovÄ›Ä na tento poÅ¾adavek navracÃ­ v hlaviÄkÃ¡ch nÃ¡vratovÃ½ kÃ³d, informace o serveru, ÄasovÃ© razÃ­tko, typ obsahu odpovÄ›di, dÃ©lku odpovÄ›di a informace pro pÅ™Ã­padnÃ© uklÃ¡dÃ¡nÃ­ do cache pamÄ›ti. PrÃ¡vÄ› jednotlivÃ© cache hlaviÄky jsou dÅ¯leÅ¾itÃ© pro nastavenÃ­, uklÃ¡dÃ¡nÃ­ a invalidace do proxy cache pamÄ›ti nebo do reverznÃ­ proxy cache pamÄ›ti.
+Komunikace ve webovıch aplikacích probíhá ve valné vìt¹inì pøípadù na úrovni protokolu HTTP. Ka¾dı HTTP po¾adavek obsahuje HTTP hlavièky, kterımi urèuje po¾adavek, klienta a obsahuje èasové razítko. Odpovìï na tento po¾adavek navrací v hlavièkách návratovı kód, informace o serveru, èasové razítko, typ obsahu odpovìdi, délku odpovìdi a informace pro pøípadné ukládání do cache pamìti. Právì jednotlivé cache hlavièky jsou dùle¾ité pro nastavení, ukládání a invalidace do proxy cache pamìti nebo do reverzní proxy cache pamìti.
 
-ExistujÃ­ dva zÃ¡kladnÃ­ modely pro urÄenÃ­ prÃ¡ce s cache vrstvou. PrvnÃ­m je expiraÄnÃ­ model. Tento model urÄuje, do kdy je platnÃ¡ HTTP odpovÄ›Ä, neboli do kdy mÅ¯Å¾e tuto odpovÄ›Ä cache vrstva uklÃ¡dat a oznaÄovat ji jako platnou a stÃ¡le Äerstvou. Tento model mÅ¯Å¾e bÃ½t realizovÃ¡n dvÄ›ma zpÅ¯soby. PrvnÃ­m je hlaviÄka Expires s ÄasovÃ½m razÃ­tkem urÄujÃ­cÃ­, do kdy je odpovÄ›Ä platnÃ¡. DruhÃ½m, novÄ›jÅ¡Ã­m a daleko flexibilnÄ›jÅ¡Ã­ a konfigurovatelnÄ›jÅ¡Ã­ zpÅ¯sobem je pouÅ¾itÃ­ Cache-Control. DÃ­ky tomuto zpÅ¯sobu je moÅ¾nÃ© urÄit dalÅ¡Ã­ parametry, nejenom to, do kdy je danÃ¡ HTTP odpovÄ›Ä platnÃ¡. DÃ­ky Cache-Control je moÅ¾nÃ© urÄit, zda-li je odpovÄ›Ä urÄena jen pro sdÃ­lenÃ© cache (proxy cache), nebo jen pro uÅ¾ivatelskÃ© prohlÃ­Å¾eÄovÃ© cache, nebo zda-li ji uklÃ¡dat Äi nikoli, atd.\cite{rfc-http}
+Existují dva základní modely pro urèení práce s cache vrstvou. Prvním je expiraèní model. Tento model urèuje, do kdy je platná HTTP odpovìï, neboli do kdy mù¾e tuto odpovìï cache vrstva ukládat a oznaèovat ji jako platnou a stále èerstvou. Tento model mù¾e bıt realizován dvìma zpùsoby. Prvním je hlavièka Expires s èasovım razítkem urèující, do kdy je odpovìï platná. Druhım, novìj¹ím a daleko flexibilnìj¹í a konfigurovatelnìj¹í zpùsobem je pou¾ití Cache-Control. Díky tomuto zpùsobu je mo¾né urèit dal¹í parametry, nejenom to, do kdy je daná HTTP odpovìï platná. Díky Cache-Control je mo¾né urèit, zda-li je odpovìï urèena jen pro sdílené cache (proxy cache), nebo jen pro u¾ivatelské prohlí¾eèové cache, nebo zda-li ji ukládat èi nikoli, atd.\cite{rfc-http}
 
-DruhÃ½m modelem je model validaÄnÃ­. Ten urÄuje zpÅ¯sob komunikace pro zjiÅ¡tÄ›nÃ­, zda-li je odpovÄ›Ä uloÅ¾enÃ¡ v cache pamÄ›ti stÃ¡le validnÃ­. ZÃ¡kladem je, Å¾e cache, kterÃ¡ mÃ¡ uloÅ¾enu odpovÄ›Ä se zeptÃ¡, je-li odpovÄ›Ä stÃ¡le validnÃ­ a server odpovÃ­ jestli ano Äi vrÃ¡tÃ­ novou Äerstvou odpovÄ›Ä. Tento proces lze realizovat opÄ›t dvÄ›ma zpÅ¯soby. TÃ­m prvnÃ­m je urÄenÃ­ tzv. Last-Modified. PÅ™i prvnÃ­m poÅ¾adavku cache zÃ­skÃ¡ odpovÄ›Ä s touto hlaviÄkoku. OdpovÄ›Ä si uloÅ¾Ã­ a pÅ™i dalÅ¡Ã­m poÅ¾adavku se cache vrstva dotÃ¡Å¾e serveru pomocÃ­ hlaviÄky If-Modified-Since s ÄasovÃ½m razÃ­tkem, zda-li je odpovÄ›Ä stÃ¡le validnÃ­. Server odpovÃ­ nÃ¡vratovÃ½m kÃ³dem 304, kterÃ½ Å™Ã­kÃ¡, Å¾e nedoÅ¡lo k Å¾Ã¡dnÃ© zmÄ›nÄ› od danÃ©ho ÄasovÃ©ho razÃ­tka, a nebo vrÃ¡tÃ­ novou Äerstvou odpovÄ›Ä, pokud doÅ¡lo ke zmÄ›nÄ›. Na podobnÃ©m principu je zaloÅ¾ena i hlaviÄka Etag neboli Entity tag. Etag je unikÃ¡tnÃ­ identifikÃ¡tor vygenerovanÃ½ serverem pro danou HTTP odpovÄ›Ä. Cache vrstva si pÅ™i prvnÃ­m poÅ¾adavku uloÅ¾Ã­ odpovÄ›Ä s tÃ­mto Etag. PÅ™i dalÅ¡Ã­m poÅ¾adavku poÅ¡le na server HTTP poÅ¾adavek s hlaviÄkou If-None-Match s tÃ­mto Etag. Pokud se hodnoty Etag shodujÃ­, vrÃ¡tÃ­ aplikaÄnÃ­ server odpovÄ›Ä s nÃ¡vratovÃ½m kÃ³dem 304, a nebo celou Äerstvou odpovÄ›Ä.\cite{rfc-http}
+Druhım modelem je model validaèní. Ten urèuje zpùsob komunikace pro zji¹tìní, zda-li je odpovìï ulo¾ená v cache pamìti stále validní. Základem je, ¾e cache, která má ulo¾enu odpovìï se zeptá, je-li odpovìï stále validní a server odpoví jestli ano èi vrátí novou èerstvou odpovìï. Tento proces lze realizovat opìt dvìma zpùsoby. Tím prvním je urèení tzv. Last-Modified. Pøi prvním po¾adavku cache získá odpovìï s touto hlavièkoku. Odpovìï si ulo¾í a pøi dal¹ím po¾adavku se cache vrstva dotá¾e serveru pomocí hlavièky If-Modified-Since s èasovım razítkem, zda-li je odpovìï stále validní. Server odpoví návratovım kódem 304, kterı øíká, ¾e nedo¹lo k ¾ádné zmìnì od daného èasového razítka, a nebo vrátí novou èerstvou odpovìï, pokud do¹lo ke zmìnì. Na podobném principu je zalo¾ena i hlavièka Etag neboli Entity tag. Etag je unikátní identifikátor vygenerovanı serverem pro danou HTTP odpovìï. Cache vrstva si pøi prvním po¾adavku ulo¾í odpovìï s tímto Etag. Pøi dal¹ím po¾adavku po¹le na server HTTP po¾adavek s hlavièkou If-None-Match s tímto Etag. Pokud se hodnoty Etag shodují, vrátí aplikaèní server odpovìï s návratovım kódem 304, a nebo celou èerstvou odpovìï.\cite{rfc-http}
 
-OvlÃ¡dÃ¡nÃ­ pomocÃ­ HTTP hlaviÄek slouÅ¾Ã­ hlavnÄ› k statickÃ©mu obsahu. Pro tento ÃºÄel je pak dobrÃ© zvÃ¡Å¾it jestli je lepÅ¡Ã­ odpovÄ›di mÄ›nit v nÄ›jakÃ½ch ÄasovÃ½ch intervalech a pouÅ¾Ã­vat tak expiraÄnÃ­ model, Äi jestli se vyplatÃ­ nasazovat model validaÄnÃ­, kterÃ½ s sebou nese sloÅ¾itÄ›jÅ¡Ã­ administraci.\\
+Ovládání pomocí HTTP hlavièek slou¾í hlavnì k statickému obsahu. Pro tento úèel je pak dobré zvá¾it jestli je lep¹í odpovìdi mìnit v nìjakıch èasovıch intervalech a pou¾ívat tak expiraèní model, èi jestli se vyplatí nasazovat model validaèní, kterı s sebou nese slo¾itìj¹í administraci.\\
 \clearpage
-PÅ™Ã­klad HTTP hlaviÄek pro HTTP odpovÄ›Ä:
+Pøíklad HTTP hlavièek pro HTTP odpovìï:
 \begin{scriptsize}
 \begin{verbatim}
 HTTP/1.1 200 OK
@@ -251,16 +251,16 @@ Content-Type: text/html; charset=UTF-8
 \end{scriptsize}
 
 \sekce{Druhy cache}
-Ve webovÃ½ch architekturÃ¡ch existuje nÄ›kolik druhÅ¯ cache vrstev. Jejich ÄlenÄ›nÃ­ se odvyjÃ­ od jejich ÃºÄelu, pozici v architektuÅ™e a typu uklÃ¡danÃ½ch dat. Tyto atributy mezi sebou Ãºzce souvisÃ­. ZÃ¡kladnÃ­m ÄlenÄ›nÃ­m mÅ¯Å¾e bÃ½t jejich pozice z pohledu internetu, a to dÄ›lenÃ­ na klientskou a serverovou ÄÃ¡st. Za klientskou ÄÃ¡st povaÅ¾ujeme cache systÃ©m uÅ¾ivatelova prohlÃ­Å¾eÄe Äi systÃ©movÄ›jÅ¡Ã­ proxy cache. Na stranÄ› serveru se vyskytujÃ­ reverse proxy cache Äi aplikaÄnÃ­ distribuovanÃ© cache.
+Ve webovıch architekturách existuje nìkolik druhù cache vrstev. Jejich èlenìní se odvyjí od jejich úèelu, pozici v architektuøe a typu ukládanıch dat. Tyto atributy mezi sebou úzce souvisí. Základním èlenìním mù¾e bıt jejich pozice z pohledu internetu, a to dìlení na klientskou a serverovou èást. Za klientskou èást pova¾ujeme cache systém u¾ivatelova prohlí¾eèe èi systémovìj¹í proxy cache. Na stranì serveru se vyskytují reverse proxy cache èi aplikaèní distribuované cache.
 
 \obrazek
 \vlozeps{../images/cache-types.png}{0.5}
-\endobr{Druhy cache ve webovÃ© architektuÅ™e}
+\endobr{Druhy cache ve webové architektuøe}
 
-\podsekce{Proxy cache a cache prohlÃ­Å¾eÄe}
-Tyto druhy cache se tÃ½kajÃ­ klientskÃ© ÄÃ¡sti webovÃ© architektury, neboli ÄÃ¡sti pÅ™ed internetem. ZnamenÃ¡ to tedy, Å¾e odpovÄ›Ä na klientÅ¯v poÅ¾adavek je vrÃ¡cena z cache pamÄ›ti lokÃ¡lnÃ­ sÃ­tÄ›, a tento poÅ¾adavek vÅ¯bec nevstoupÃ­ do sÃ­tÄ› internet na vzdÃ¡lenÃ½ dotazovanÃ½ server. Tyto cache vrstvy zde nejsou jen pro to, aby zrychlily odevzvu na poÅ¾adavek, ale takÃ© aby zmenÅ¡ily odchozÃ­ komunikaci z lokÃ¡lnÃ­ sÃ­tÄ›. A to z toho dÅ¯vodu, aby byla Å¡Ã­Å™ka pÃ¡sma pÅ™Ã­stupnÃ¡ i jinÃ½m sluÅ¾bÃ¡m a uÅ¡etÅ™ily se prostÅ™edky na odchozÃ­ komunikaci.
+\podsekce{Proxy cache a cache prohlí¾eèe}
+Tyto druhy cache se tıkají klientské èásti webové architektury, neboli èásti pøed internetem. Znamená to tedy, ¾e odpovìï na klientùv po¾adavek je vrácena z cache pamìti lokální sítì, a tento po¾adavek vùbec nevstoupí do sítì internet na vzdálenı dotazovanı server. Tyto cache vrstvy zde nejsou jen pro to, aby zrychlily odevzvu na po¾adavek, ale také aby zmen¹ily odchozí komunikaci z lokální sítì. A to z toho dùvodu, aby byla ¹íøka pásma pøístupná i jinım slu¾bám a u¹etøily se prostøedky na odchozí komunikaci.
 
-V dneÅ¡nÃ­ch modernÃ­ch prohlÃ­Å¾eÄÃ­ch je prÃ¡ce s cache pamÄ›tÃ­ podporovÃ¡na. Cache prohlÃ­Å¾eÄe mÅ¯Å¾e nastavovat, konfigurovat, Äi vymazat pouze uÅ¾ivatel, neboli klient sÃ¡m. Tato pamÄ›Å¥ uklÃ¡dÃ¡ hlavnÄ› statickÃ½ obsah, napÅ™Ã­klad obrÃ¡zky, CSS soubory Äi JS soubory. Cache pamÄ›Å¥ najde svÃ© uplatnÄ›nÃ­, napÅ™Ã­klad kdyÅ¾ jsou uÅ¾ivatelovy poÅ¾adavky smÄ›Å™ovÃ¡ny jednÃ© webovÃ© aplikaci se stejnÃ½m vzhledem, rozhrannÃ­m nebo ÄÃ¡stÃ­ funkcionalit. TakovÃ¡to data mohou bÃ½t uklÃ¡dÃ¡na do cache pamÄ›ti na dlouhou dobu, a proto musÃ­ aplikace dbÃ¡t na to, aby byla tato data z cache promazÃ¡vÃ¡na tak, jak je opravdu potÅ™eba. Jednou z moÅ¾nostÃ­ je urÄit jinou url adresu pro stejnÃ½ soubor pomocÃ­ tzv. Query string, napÅ™Ã­klad takto:
+V dne¹ních moderních prohlí¾eèích je práce s cache pamìtí podporována. Cache prohlí¾eèe mù¾e nastavovat, konfigurovat, èi vymazat pouze u¾ivatel, neboli klient sám. Tato pamì» ukládá hlavnì statickı obsah, napøíklad obrázky, CSS soubory èi JS soubory. Cache pamì» najde své uplatnìní, napøíklad kdy¾ jsou u¾ivatelovy po¾adavky smìøovány jedné webové aplikaci se stejnım vzhledem, rozhranním nebo èástí funkcionalit. Takováto data mohou bıt ukládána do cache pamìti na dlouhou dobu, a proto musí aplikace dbát na to, aby byla tato data z cache promazávána tak, jak je opravdu potøeba. Jednou z mo¾ností je urèit jinou url adresu pro stejnı soubor pomocí tzv. Query string, napøíklad takto:
 
 \begin{scriptsize}
 \begin{verbatim}
@@ -268,125 +268,125 @@ V dneÅ¡nÃ­ch modernÃ­ch prohlÃ­Å¾eÄÃ­ch je prÃ¡ce s cache pamÄ›tÃ­ podporovÃ¡na
 \end{verbatim}
 \end{scriptsize}
 
-Proxy cache bÃ½vajÃ­ budovÃ¡ny a instalovÃ¡ny providery a poskytovateli pÅ™ipojenÃ­ k internetu. Jejich zÃ¡mÄ›r je jednoduchÃ½. Jde o to snÃ­Å¾it mÃ­ru odchozÃ­ komunikace, nezatÄ›Å¾ovat tolik Å¡Ã­Å™ku pÃ¡sma a zmenÅ¡it nÃ¡klady spojenÃ© s touto komunikacÃ­. NejbÄ›Å¾nÄ›jÅ¡Ã­m nastavenÃ­m tÄ›chto proxy cache pamÄ›tÃ­ bÃ½vÃ¡ uklÃ¡dÃ¡nÃ­ a invalidace obsahu v zÃ¡vislosti na HTTP hlaviÄkÃ¡ch pÅ™ijatÃ© odpovÄ›di. Nainstalujeme-li napÅ™Ã­klad takovouto cache ve firmÄ› Äi na nÄ›jakÃ©m sÃ­dliÅ¡ti s nÄ›kolika desÃ­tkami, stovkami, Äi dokonce tisÃ­ci uÅ¾ivateli, je moÅ¾nÃ©, Å¾e ÄÃ¡st z nich mÃ¡ kaÅ¾dÃ© rÃ¡no stejnÃ½ poÅ¾adavek na stejnÃ½ zpravodajskÃ½ server, tudÃ­Å¾ majÃ­ i stejnou odpovÄ›Ä. A tak mÅ¯Å¾e bÃ½t prvnÃ­ odpovÄ›Ä uloÅ¾ena do cache pamÄ›ti a dalÅ¡Ã­m uÅ¾ivatelÅ¯m mÅ¯Å¾e bÃ½t servÃ­rovÃ¡na z proxy cache pamÄ›ti.\cite{proxy-cache}
+Proxy cache bıvají budovány a instalovány providery a poskytovateli pøipojení k internetu. Jejich zámìr je jednoduchı. Jde o to sní¾it míru odchozí komunikace, nezatì¾ovat tolik ¹íøku pásma a zmen¹it náklady spojené s touto komunikací. Nejbì¾nìj¹ím nastavením tìchto proxy cache pamìtí bıvá ukládání a invalidace obsahu v závislosti na HTTP hlavièkách pøijaté odpovìdi. Nainstalujeme-li napøíklad takovouto cache ve firmì èi na nìjakém sídli¹ti s nìkolika desítkami, stovkami, èi dokonce tisíci u¾ivateli, je mo¾né, ¾e èást z nich má ka¾dé ráno stejnı po¾adavek na stejnı zpravodajskı server, tudí¾ mají i stejnou odpovìï. A tak mù¾e bıt první odpovìï ulo¾ena do cache pamìti a dal¹ím u¾ivatelùm mù¾e bıt servírována z proxy cache pamìti.\cite{proxy-cache}
 
 \obrazek
 \vlozeps{../images/proxy-cache.png}{0.5}
-\endobr{Proxy cache ve webovÃ© architektuÅ™e}
+\endobr{Proxy cache ve webové architektuøe}
 
-\podsekce{ReverznÃ­ proxy cache}
+\podsekce{Reverzní proxy cache}
 \label{sec:reverse-proxy}
-ReverznÃ­ proxy cache, nÄ›kdy oznaÄovÃ¡ny jako tzv. Gateway cache, majÃ­ podobnÃ½ systÃ©m Äinnosti jako proxy cache. MajÃ­ za Ãºkol uklÃ¡dat statickÃ½ obsah ve formÄ› HTTP odpovÄ›dÃ­ a tyto odpovÄ›di vracet nazpÄ›t tam, odkud pÅ™iÅ¡el jejich poÅ¾adavek. Ãškolem je tak pokud moÅ¾no nepropustit poÅ¾adavek dÃ¡le na aplikaÄnÃ­ vrstvu, stejnÄ› jako Ãºkolem proxy cache je pokud moÅ¾no nepropouÅ¡tÄ›t poÅ¾adavek dÃ¡le do internetu. RozdÃ­l mezi reverznÃ­ proxy cache a proxy cache spoÄÃ­vÃ¡ v jejich pozici ve webovÃ© architektuÅ™e, a takÃ© v tom, kÃ½m jsou instalovÃ¡ny. Pozice reverznÃ­ proxy cache je na stranÄ› serveru, neboli blÃ­Å¾e aplikaÄnÃ­ vrstvÄ› architektury, tedy na druhÃ© stranÄ› internetu, neÅ¾ odkud pÅ™Ã­chÃ¡zÃ­ poÅ¾adavky klientÅ¯ a kde jsou instalovÃ¡ny proxy cache. ReverznÃ­ proxy cache jsou instalovÃ¡ny samotnÃ½mi administrÃ¡tory a programÃ¡tory webovÃ© aplikace. Jejich ÃºÄel tkvÃ­ v zajiÅ¡tÄ›nÃ­ rychlejÅ¡Ã­ odezvy webovÃ© aplikace na HTTP poÅ¾adavky klientÅ¯. ReverznÃ­ proxy cache jsou nedÃ­lnou souÄÃ¡stÃ­ webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e a bez jejich existence by jen tÄ›Å¾ko mohla bÃ½t webovÃ¡ aplikace spolehlivÃ¡ a rychlÃ¡.\cite{proxy-cache}
+Reverzní proxy cache, nìkdy oznaèovány jako tzv. Gateway cache, mají podobnı systém èinnosti jako proxy cache. Mají za úkol ukládat statickı obsah ve formì HTTP odpovìdí a tyto odpovìdi vracet nazpìt tam, odkud pøi¹el jejich po¾adavek. Úkolem je tak pokud mo¾no nepropustit po¾adavek dále na aplikaèní vrstvu, stejnì jako úkolem proxy cache je pokud mo¾no nepropou¹tìt po¾adavek dále do internetu. Rozdíl mezi reverzní proxy cache a proxy cache spoèívá v jejich pozici ve webové architektuøe, a také v tom, kım jsou instalovány. Pozice reverzní proxy cache je na stranì serveru, neboli blí¾e aplikaèní vrstvì architektury, tedy na druhé stranì internetu, ne¾ odkud pøíchází po¾adavky klientù a kde jsou instalovány proxy cache. Reverzní proxy cache jsou instalovány samotnımi administrátory a programátory webové aplikace. Jejich úèel tkví v zaji¹tìní rychlej¹í odezvy webové aplikace na HTTP po¾adavky klientù. Reverzní proxy cache jsou nedílnou souèástí webové architektury v prostøedí vysoké zátì¾e a bez jejich existence by jen tì¾ko mohla bıt webová aplikace spolehlivá a rychlá.\cite{proxy-cache}
 
 \obrazek
 \vlozeps{../images/reverse-proxy-cache.png}{0.5}
-\endobr{ReverznÃ­ proxy cache ve webovÃ© architektuÅ™e}
+\endobr{Reverzní proxy cache ve webové architektuøe}
 
-\podsekce{AplikaÄnÃ­ distribuovanÃ¡ cache}
-Doposud byly popisovÃ¡ny cache pamÄ›ti pro uklÃ¡dÃ¡nÃ­ statickÃ©ho obsahu. OvÅ¡em v praxi se od projektovÃ©ho vedenÃ­ setkÃ¡me s poÅ¾adavky na dynamickÃ© chovÃ¡nÃ­ aplikace. Jako pÅ™Ã­klad mÅ¯Å¾e poslouÅ¾it opÄ›t situace s komentÃ¡Å™i, kdy jeden uÅ¾ivatel vloÅ¾Ã­ komentÃ¡Å™ k nÄ›kterÃ©mu z ÄlÃ¡nkÅ¯. Tento komentÃ¡Å™ se musÃ­ okamÅ¾itÄ› objevit v seznamu komentÃ¡Å™Å¯ k ÄlÃ¡nku. V pÅ™Ã­padÄ› statickÃ©ho obsahu, kterÃ½ se mÄ›nÃ­ pouze v urÄitÃ½ch intervalech, mÅ¯Å¾e uÅ¾ivatel nabÃ½t dojmu, Å¾e se jeho komentÃ¡Å™ nepodaÅ™ilo vloÅ¾it a zkusÃ­ ho vloÅ¾it znovu. TakovÃ© chovÃ¡nÃ­ aplikace urÄitÄ› nenÃ­ v souladu s dobrÃ½m chovÃ¡nÃ­m interakce mezi uÅ¾ivatelem a aplikacÃ­. K tomu, aby se dala data uklÃ¡dat do cache a aplikace byla stÃ¡le dynamickÃ¡, slouÅ¾Ã­ tzv. aplikaÄnÃ­ distribuovanÃ¡ cache. HTTP poÅ¾adavek je rozdistribuovÃ¡n mezi menÅ¡Ã­ poÅ¾adavky a mezi cache pamÄ›ti.
+\podsekce{Aplikaèní distribuovaná cache}
+Doposud byly popisovány cache pamìti pro ukládání statického obsahu. Ov¹em v praxi se od projektového vedení setkáme s po¾adavky na dynamické chování aplikace. Jako pøíklad mù¾e poslou¾it opìt situace s komentáøi, kdy jeden u¾ivatel vlo¾í komentáø k nìkterému z èlánkù. Tento komentáø se musí okam¾itì objevit v seznamu komentáøù k èlánku. V pøípadì statického obsahu, kterı se mìní pouze v urèitıch intervalech, mù¾e u¾ivatel nabıt dojmu, ¾e se jeho komentáø nepodaøilo vlo¾it a zkusí ho vlo¾it znovu. Takové chování aplikace urèitì není v souladu s dobrım chováním interakce mezi u¾ivatelem a aplikací. K tomu, aby se dala data ukládat do cache a aplikace byla stále dynamická, slou¾í tzv. aplikaèní distribuovaná cache. HTTP po¾adavek je rozdistribuován mezi men¹í po¾adavky a mezi cache pamìti.
 
-Jak uÅ¾ vyplÃ½vÃ¡ z nÃ¡zvu tÃ©to cache, o manipulaci s touto cache pamÄ›tÃ­ se starÃ¡ aplikaÄnÃ­ vrstva. StandardnÄ› se uklÃ¡dajÃ­ do cache pamÄ›ti ta data, k nimÅ¾ je dlouhÃ¡ doba pÅ™Ã­stupu, obvykle data z databÃ¡ze. ÃšÄelem je tedy uÅ¡etÅ™it spojenÃ­ a dotazy na databÃ¡zÃ­. Jeden HTTP poÅ¾adavek s konkrÃ©tnÃ­ url je Äasto rozdÄ›len na nÄ›kolik poÅ¾adavkÅ¯ do databÃ¡ze, v zÃ¡vislosti na tom, o jakÃ¡ data se jednÃ¡. NapÅ™Ã­klad v rÃ¡mci jednÃ© HTTP strÃ¡nky mÅ¯Å¾e bÃ½t databÃ¡ze dotÃ¡zÃ¡na o poÅ¾adovanÃ½ ÄlÃ¡nek a seznam komentÃ¡Å™Å¯ pod ÄlÃ¡nkem. DatabÃ¡ze tak obdrÅ¾Ã­ dva SQL dotazy, na kterÃ© vrÃ¡tÃ­ pÅ™Ã­sluÅ¡nÃ¡ data z databÃ¡ze. Aby se pÅ™Ã­Å¡tÄ› aplikace nemusela na tato data dotazovat, uloÅ¾Ã­ si je do aplikaÄnÃ­ cache pamÄ›ti.
+Jak u¾ vyplıvá z názvu této cache, o manipulaci s touto cache pamìtí se stará aplikaèní vrstva. Standardnì se ukládají do cache pamìti ta data, k nim¾ je dlouhá doba pøístupu, obvykle data z databáze. Úèelem je tedy u¹etøit spojení a dotazy na databází. Jeden HTTP po¾adavek s konkrétní url je èasto rozdìlen na nìkolik po¾adavkù do databáze, v závislosti na tom, o jaká data se jedná. Napøíklad v rámci jedné HTTP stránky mù¾e bıt databáze dotázána o po¾adovanı èlánek a seznam komentáøù pod èlánkem. Databáze tak obdr¾í dva SQL dotazy, na které vrátí pøíslu¹ná data z databáze. Aby se pøí¹tì aplikace nemusela na tato data dotazovat, ulo¾í si je do aplikaèní cache pamìti.
 
-PÅ™i uklÃ¡dÃ¡nÃ­ takovÃ½ch dat do cache pamÄ›ti aplikaÄnÃ­ vrstva urÄuje, jak a kam majÃ­ bÃ½t data uloÅ¾ena, a kdy a za jakÃ½ch podmÃ­nek majÃ­ bÃ½t invalidovÃ¡na. PÅ™i aplikaci tÃ©to cache vrsty dochÃ¡zÃ­ k propuÅ¡tÄ›nÃ­ poÅ¾adavku na aplikaÄnÃ­ servery, coÅ¾ znamenÃ¡ vÄ›tÅ¡Ã­ zÃ¡tÄ›Å¾ aplikaÄnÃ­ vrstvy. ReverznÃ­ proxy cache jsou v tomto smÄ›ru nepouÅ¾itelnÃ©, slouÅ¾Ã­ pouze pro statickÃ½ obsah a vÅ¡echny poÅ¾adavky propouÅ¡tÃ­ dÃ¡le na aplikaÄnÃ­ vrstvu.
+Pøi ukládání takovıch dat do cache pamìti aplikaèní vrstva urèuje, jak a kam mají bıt data ulo¾ena, a kdy a za jakıch podmínek mají bıt invalidována. Pøi aplikaci této cache vrsty dochází k propu¹tìní po¾adavku na aplikaèní servery, co¾ znamená vìt¹í zátì¾ aplikaèní vrstvy. Reverzní proxy cache jsou v tomto smìru nepou¾itelné, slou¾í pouze pro statickı obsah a v¹echny po¾adavky propou¹tí dále na aplikaèní vrstvu.
 
-PÅ™i prÃ¡ci s aplikaÄnÃ­ distribuovanou cache je dÅ¯leÅ¾itÃ© si uvÄ›domit nÄ›kolik zÃ¡kladnÃ­ch pravidel. PrvnÃ­m pravidlem je uklÃ¡dat data do cache pamÄ›ti co nejmenÅ¡Ã­. ÃšÄelem je distribuovat jednotlivÃ¡ data v rÅ¯znÃ½ch kontextech. DÃ¡le je dÅ¯leÅ¾itÃ© uklÃ¡dat data znovuzkonstruovatelnÃ¡. Je dÅ¯leÅ¾itÃ© umÄ›t z cache pamÄ›ti pÅ™eÄÃ­st to, co do nÃ­ bylo uloÅ¾eno. NejlepÅ¡Ã­ je uklÃ¡dat data serializovanÃ¡. DÃ¡le je nutno dodrÅ¾et jednoznaÄnÃ½ a jasnÄ› definovanÃ½ klÃ­Ä Äi jmennÃ½ prostor pro tato data. Aplikace totiÅ¾ musÃ­ vÄ›dÄ›t, kde a jak se ptÃ¡t na data. DalÅ¡Ã­m pravidlem je peÄlivÃ¡ a kompletnÃ­ invalidace dat v cache pamÄ›ti. PrÃ¡vÄ› invalidace je nejvÄ›tÅ¡Ã­ problÃ©m pro prÃ¡ci s cache pamÄ›tÃ­. StejnÃ¡ data mohou bÃ½t interpretovÃ¡na v rÅ¯znÃ©m kontextu. NapÅ™Ã­klad pÅ™i vloÅ¾enÃ­ novÃ©ho ÄlÃ¡nku se zmÄ›nÃ­ data pro seznam vÅ¡ech nejnovÄ›jÅ¡Ã­ch ÄlÃ¡nkÅ¯, a takÃ© data pro seznam nejnovÄ›jÅ¡Ã­ch ÄlÃ¡nkÅ¯ v danÃ© rubrice. Vzhledem k tomu, Å¾e aplikace implementuje dynamickÃ© chovÃ¡nÃ­, musÃ­ bÃ½t tento ÄlÃ¡nek vidÄ›t ihned po vloÅ¾enÃ­ ve vÅ¡ech zmÃ­nÄ›nÃ½ch interpretacÃ­ch. ÄŒili musÃ­ dojÃ­t k invalidaci vÅ¡ech zÃ¡vislostÃ­. Tento problÃ©m je oznaÄovÃ¡n jako invalidaÄnÃ­ kaskÃ¡dy, a proto je dÅ¯leÅ¾itÃ© konstruovat aplikaci tak, aby se tÄ›mto kaskÃ¡dÃ¡m vyhÃ½bala co nejvÃ­ce nebo s nimi musÃ­ vÃ½vojÃ¡Å™ aplikace poÄÃ­tat uÅ¾ pÅ™Ã­ nÃ¡vrhu aplikaÄnÃ­ distribuovanÃ© cache vrstvy.
+Pøi práci s aplikaèní distribuovanou cache je dùle¾ité si uvìdomit nìkolik základních pravidel. Prvním pravidlem je ukládat data do cache pamìti co nejmen¹í. Úèelem je distribuovat jednotlivá data v rùznıch kontextech. Dále je dùle¾ité ukládat data znovuzkonstruovatelná. Je dùle¾ité umìt z cache pamìti pøeèíst to, co do ní bylo ulo¾eno. Nejlep¹í je ukládat data serializovaná. Dále je nutno dodr¾et jednoznaènı a jasnì definovanı klíè èi jmennı prostor pro tato data. Aplikace toti¾ musí vìdìt, kde a jak se ptát na data. Dal¹ím pravidlem je peèlivá a kompletní invalidace dat v cache pamìti. Právì invalidace je nejvìt¹í problém pro práci s cache pamìtí. Stejná data mohou bıt interpretována v rùzném kontextu. Napøíklad pøi vlo¾ení nového èlánku se zmìní data pro seznam v¹ech nejnovìj¹ích èlánkù, a také data pro seznam nejnovìj¹ích èlánkù v dané rubrice. Vzhledem k tomu, ¾e aplikace implementuje dynamické chování, musí bıt tento èlánek vidìt ihned po vlo¾ení ve v¹ech zmínìnıch interpretacích. Èili musí dojít k invalidaci v¹ech závislostí. Tento problém je oznaèován jako invalidaèní kaskády, a proto je dùle¾ité konstruovat aplikaci tak, aby se tìmto kaskádám vyhıbala co nejvíce nebo s nimi musí vıvojáø aplikace poèítat u¾ pøí návrhu aplikaèní distribuované cache vrstvy.
 
 \obrazek
 \vlozeps{../images/application-distributed-cache.png}{0.5}
-\endobr{AplikaÄnÃ­ distribuovanÃ¡ cache ve webovÃ© architektuÅ™e}
+\endobr{Aplikaèní distribuovaná cache ve webové architektuøe}
 
 
 \kapitola{CDN}
-Vrstva CDN neboli Content Delivery Network je dÅ¯leÅ¾itou souÄÃ¡stÃ­ webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. JejÃ­m Ãºkolem je rozdÄ›lit zÃ¡tÄ›Å¾ webovÃ© architektury mezi vÃ­ce uzlÅ¯. JednÃ¡ se o nÄ›kolik serverÅ¯, kterÃ© majÃ­ za Ãºkol klientÅ¯m pÅ™edÃ¡vat vesmÄ›s statickÃ½ obsah ve formÄ› multimÃ©diÃ­, stream videa Äi softwarovÃ½ch aktualizacÃ­. 
+Vrstva CDN neboli Content Delivery Network je dùle¾itou souèástí webové architektury v prostøedí vysoké zátì¾e. Jejím úkolem je rozdìlit zátì¾ webové architektury mezi více uzlù. Jedná se o nìkolik serverù, které mají za úkol klientùm pøedávat vesmìs statickı obsah ve formì multimédií, stream videa èi softwarovıch aktualizací. 
 
-CDN majÃ­ obvykle jeden centrÃ¡lnÃ­ prvek, kterÃ½ rozhoduje o tom, na kterÃ½ z CDN uzlÅ¯ se poÅ¾adavek pÅ™esmÄ›ruje. RozhodovÃ¡nÃ­ mÅ¯Å¾e probÃ­hat v zÃ¡vislosti na spoustÄ› ukazatelÅ¯ a zÃ¡leÅ¾Ã­ uÅ¾ na konkrÃ©tnÃ­m vyuÅ¾itÃ­ CDN. CentrÃ¡lnÃ­ prvky se mohou rozhodovat napÅ™Ã­klad na zÃ¡kladÄ› geografickÃ©ho rozdÄ›lenÃ­. CentrÃ¡lnÃ­m prvkem je DNS server, kterÃ½ mÃ¡ pÅ™ehled o kompletnÃ­ topologii sÃ­tÄ› CDN. DÃ­ky tomu mÃ¡ pÅ™ehled o tom, kterÃ½ ze serverÅ¯ se kde nachÃ¡zÃ­. DalÅ¡Ã­m ukazatelem pro centrÃ¡lnÃ­ prvek mÅ¯Å¾e bÃ½t stav serverÅ¯, jejich vytÃ­Å¾enÃ­ operaÄnÃ­ pamÄ›ti RAM a procesoru CPU, stav odesÃ­lanÃ½ch paketÅ¯ na sÃ­Å¥ovÃ½ch kartÃ¡ch, stav cache pamÄ›tÃ­ apod. 
+CDN mají obvykle jeden centrální prvek, kterı rozhoduje o tom, na kterı z CDN uzlù se po¾adavek pøesmìruje. Rozhodování mù¾e probíhat v závislosti na spoustì ukazatelù a zále¾í u¾ na konkrétním vyu¾ití CDN. Centrální prvky se mohou rozhodovat napøíklad na základì geografického rozdìlení. Centrálním prvkem je DNS server, kterı má pøehled o kompletní topologii sítì CDN. Díky tomu má pøehled o tom, kterı ze serverù se kde nachází. Dal¹ím ukazatelem pro centrální prvek mù¾e bıt stav serverù, jejich vytí¾ení operaèní pamìti RAM a procesoru CPU, stav odesílanıch paketù na sí»ovıch kartách, stav cache pamìtí apod. 
 
-ExistujÃ­ komerÄnÃ­ i open source CDN sÃ­tÄ›, vÄ›tÅ¡Ã­ spoleÄnosti pak mÃ­vajÃ­ vlastnÃ­ Å™eÅ¡enÃ­. Mezi CDN se objevujÃ­ i moÅ¾nosti pro servÃ­rovÃ¡nÃ­ dynamickÃ©ho obsahu, ovÅ¡em primÃ¡rnÃ­ ÃºÄel by mÄ›l bÃ½t obsah statickÃ½. CDN najdou vÃ½znamnÃ© uplatnÄ›nÃ­ tam, kde dochÃ¡zÃ­ k pÅ™enosÅ¯m velkÃ½ch souborÅ¯, kterÃ© se uÅ¾ nijak nemÄ›nÃ­, a nebo se mÄ›nÃ­ ve velkÃ½ch intervalech.\cite{cdn}
+Existují komerèní i open source CDN sítì, vìt¹í spoleènosti pak mívají vlastní øe¹ení. Mezi CDN se objevují i mo¾nosti pro servírování dynamického obsahu, ov¹em primární úèel by mìl bıt obsah statickı. CDN najdou vıznamné uplatnìní tam, kde dochází k pøenosùm velkıch souborù, které se u¾ nijak nemìní, a nebo se mìní ve velkıch intervalech.\cite{cdn}
 
 \obrazek
 \vlozeps{../images/cdn.png}{0.5}
-\endobr{UkÃ¡zka komunikace klienta s CDN sÃ­tÃ­}
+\endobr{Ukázka komunikace klienta s CDN sítí}
 
 
 % Virtualizace
 \kapitola{Virtualizace}
-Virtualizace je modernÃ­ pojem, kterÃ½ umoÅ¾Åˆuje lepÅ¡Ã­ Å¡kÃ¡lovatelnost aplikace a moÅ¾nost prÃ¡ce s jednotlivÃ½mi vrstvami webovÃ© aplikace a jejÃ­mi servery. V dneÅ¡nÃ­ dobÄ› se nejvÃ­ce hovoÅ™Ã­ o tzv. virtualizaci platforem, coÅ¾ znamenÃ¡ provozovÃ¡nÃ­ vÃ­ce virtuÃ¡lnÃ­ch poÄÃ­taÄÅ¯ s vlastnÃ­m operaÄnÃ­m systÃ©mem na jednom fyzickÃ©m poÄÃ­taÄi. Takto virtualizovanÃ© poÄÃ­taÄe vÄetnÄ› operaÄnÃ­ch systÃ©mÅ¯ a aplikacÃ­ jsou od sebe navzÃ¡jem izolovÃ¡ny. 
+Virtualizace je moderní pojem, kterı umo¾òuje lep¹í ¹kálovatelnost aplikace a mo¾nost práce s jednotlivımi vrstvami webové aplikace a jejími servery. V dne¹ní dobì se nejvíce hovoøí o tzv. virtualizaci platforem, co¾ znamená provozování více virtuálních poèítaèù s vlastním operaèním systémem na jednom fyzickém poèítaèi. Takto virtualizované poèítaèe vèetnì operaèních systémù a aplikací jsou od sebe navzájem izolovány. 
 
-PÅ™Ã­klady profesionÃ¡lnÃ­ch nÃ¡strojÅ¯ pro virtualizaci poÄÃ­taÄÅ¯ jsou VMWare, Hyper-V a nebo tÅ™eba Citrix Xen Server. ZÃ¡kladem virtualizace je fyzickÃ½ server, kterÃ½ je pod sprÃ¡vou vrstvy hypervizor, kterÃ¡ Å™Ã­dÃ­ pÅ™Ã­stup k fyzickÃ½m zdrojÅ¯m a rozhranÃ­m. Takto pÅ™Ã­pravenÃ½ fyzickÃ½ server se nazÃ½vÃ¡ host. NÄ›kolik hostÅ¯ mÅ¯Å¾e bÃ½t spravovÃ¡no v jednÃ© skupinÄ› nazÃ½vanÃ© cluster, kterÃ¡ mÃ¡ svÃ© zdroje. To vÅ¡e je obvykle spravovÃ¡no centralnÃ­m serverem pomocÃ­ desktopovÃ©ho klienta Äi webovÃ©ho rozhranÃ­.
+Pøíklady profesionálních nástrojù pro virtualizaci poèítaèù jsou VMWare, Hyper-V a nebo tøeba Citrix Xen Server. Základem virtualizace je fyzickı server, kterı je pod správou vrstvy hypervizor, která øídí pøístup k fyzickım zdrojùm a rozhraním. Takto pøípravenı fyzickı server se nazıvá host. Nìkolik hostù mù¾e bıt spravováno v jedné skupinì nazıvané cluster, která má své zdroje. To v¹e je obvykle spravováno centralním serverem pomocí desktopového klienta èi webového rozhraní.
 
-Virtualizace pÅ™Ã­nÃ¡Å¡Ã­ spoustu vÃ½hod. Jednou z nich je elastiÄnost zdrojÅ¯. Jakmile se totiÅ¾ nÄ›kterÃ½ z virtualizovanÃ½ch serverÅ¯ jevÃ­ jako velice vytÃ­Å¾enÃ½, je moÅ¾nÃ© mu bÄ›hem pÃ¡r vteÅ™in pÅ™idat chybÄ›jÃ­cÃ­ prostÅ™edky. StejnÄ› tak je moÅ¾nÃ© tyto prostÅ™edky ubrat u serverÅ¯, kterÃ© jej nevyuÅ¾ijÃ­.
+Virtualizace pøíná¹í spoustu vıhod. Jednou z nich je elastiènost zdrojù. Jakmile se toti¾ nìkterı z virtualizovanıch serverù jeví jako velice vytí¾enı, je mo¾né mu bìhem pár vteøin pøidat chybìjící prostøedky. Stejnì tak je mo¾né tyto prostøedky ubrat u serverù, které jej nevyu¾ijí.
 
-Pro webovÃ© architektury je tou nejvÄ›tÅ¡Ã­ vÃ½hodou konsolidace serverÅ¯, neboli provozovÃ¡nÃ­ vÄ›tÅ¡Ã­ho poÄtu virtualizovanÃ½ch serverÅ¯ na menÅ¡Ã­m poÄtu serveru fyzickÃ½ch. Tohoto Å™eÅ¡enÃ­ se hodnÄ› vyuÅ¾Ã­vÃ¡ ve webovÃ½ch architekturÃ¡ch. Vzhledem k nÃ¡roÄnosti jednotlivÃ½ch vrstev webovÃ© architektury se v dneÅ¡nÃ­ch dnech pouÅ¾Ã­vÃ¡ pÅ™Ã­stupu s vÃ­ce virtualizovanÃ½mi servery, kterÃ© majÃ­ mnohdy jedinÃ½ ÃºÄel. NapÅ™Ã­klad jeden server pro datÃ¡bÃ¡zi, dalÅ¡Ã­ pro webovÃ½ server, mailovÃ½ server, cache servery, apod.
+Pro webové architektury je tou nejvìt¹í vıhodou konsolidace serverù, neboli provozování vìt¹ího poètu virtualizovanıch serverù na men¹ím poètu serveru fyzickıch. Tohoto øe¹ení se hodnì vyu¾ívá ve webovıch architekturách. Vzhledem k nároènosti jednotlivıch vrstev webové architektury se v dne¹ních dnech pou¾ívá pøístupu s více virtualizovanımi servery, které mají mnohdy jedinı úèel. Napøíklad jeden server pro datábázi, dal¹í pro webovı server, mailovı server, cache servery, apod.
 
-DalÅ¡Ã­ vÃ½hodou mÅ¯Å¾e bÃ½t redukce hardware, el. energie, prostoru a dalÅ¡Ã­ch zdrojÅ¯. Bez virtualizace by pÅ™idÃ¡nÃ­ dalÅ¡Ã­ho fyzickÃ©ho serveru znamenalo nakoupenÃ­ HW komponent, vytvoÅ™enÃ­ dalÅ¡Ã­ho mÃ­sta v serverovnÄ› a pÅ™ivedenÃ­ dalÅ¡Ã­ho zdroje elektrickÃ© energie. Pro virtualizaci novÃ©ho serveru staÄÃ­ vyhodnotit stÃ¡vajÃ­cÃ­ vyuÅ¾itÃ­ fyzickÃ½ch prostÅ™edkÅ¯ jinÃ½mi virtuÃ¡lnÃ­mi servery, dÃ¡le zhodnotit rezervy na fyzickÃ½ch serverech, popÅ™Ã­padÄ› dokoupit uÅ¾ jen dÃ­lÄÃ­ komponenty jako napÅ™Ã­klad operaÄnÃ­ pamÄ›Å¥ RAM.
+Dal¹í vıhodou mù¾e bıt redukce hardware, el. energie, prostoru a dal¹ích zdrojù. Bez virtualizace by pøidání dal¹ího fyzického serveru znamenalo nakoupení HW komponent, vytvoøení dal¹ího místa v serverovnì a pøivedení dal¹ího zdroje elektrické energie. Pro virtualizaci nového serveru staèí vyhodnotit stávající vyu¾ití fyzickıch prostøedkù jinımi virtuálními servery, dále zhodnotit rezervy na fyzickıch serverech, popøípadì dokoupit u¾ jen dílèí komponenty jako napøíklad operaèní pamì» RAM.
 
-Obrovskou vÃ½hodou virtualizace je moÅ¾nost sjednocenÃ­ vÃ½vojovÃ©ho, testovacÃ­ho a produkÄnÃ­ho prostÅ™edÃ­. DÃ­ky virtualizaci zÃ­skÃ¡me bÄ›hem pÃ¡r okamÅ¾ikÅ¯ vÄ›rnou kopii nÄ›kterÃ©ho ze serverÅ¯. StejnÄ› tak je moÅ¾nÃ© virtuÃ¡lnÃ­ server velice rychle pÅ™enÃ©st na jinÃ½ fyzickÃ½ server. Dokonce se mÅ¯Å¾e tento pÅ™enos obejÃ­t i bez vÃ½padku serveru, pokud jsou ve stejnÃ©m clusteru.
+Obrovskou vıhodou virtualizace je mo¾nost sjednocení vıvojového, testovacího a produkèního prostøedí. Díky virtualizaci získáme bìhem pár okam¾ikù vìrnou kopii nìkterého ze serverù. Stejnì tak je mo¾né virtuální server velice rychle pøenést na jinı fyzickı server. Dokonce se mù¾e tento pøenos obejít i bez vıpadku serveru, pokud jsou ve stejném clusteru.
 
-Virtualizace dnes znamenÃ¡ obrovskÃ© ulehÄenÃ­ pro administraci jednotlivÃ½ch serverÅ¯, jejich konfiguraci, rozÅ¡iÅ™itelnost, apod. Dokonce prÃ¡vÄ› vznikajÃ­cÃ­ trend s nÃ¡zvem Cloud Computing vychÃ¡zÃ­ z virtualizace, hlavnÄ› z jejÃ­ch modernÄ›jÅ¡Ã­ch oblastÃ­. Proto je pro webovou architekturu v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e dÅ¯leÅ¾itÃ© virtualizovat jejÃ­ jednotlivÃ© vrstvy a servery.\cite{virtual}
+Virtualizace dnes znamená obrovské ulehèení pro administraci jednotlivıch serverù, jejich konfiguraci, roz¹iøitelnost, apod. Dokonce právì vznikající trend s názvem Cloud Computing vychází z virtualizace, hlavnì z jejích modernìj¹ích oblastí. Proto je pro webovou architekturu v prostøedí vysoké zátì¾e dùle¾ité virtualizovat její jednotlivé vrstvy a servery.\cite{virtual}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/virtual.png}{1}
-\endobr{UkÃ¡zka virtualizovanÃ½ch systÃ©mÅ¯ v prostÅ™edÃ­ na jednom fyzickÃ©m serveru}
+\endobr{Ukázka virtualizovanıch systémù v prostøedí na jednom fyzickém serveru}
 
 
 % Load balancing
-\kapitola{RozloÅ¾enÃ­ zÃ¡tÄ›Å¾e}
+\kapitola{Rozlo¾ení zátì¾e}
 \label{sec:load-balancing}
-RozloÅ¾enÃ­ zÃ¡tÄ›Å¾e, neboli load balancing, se pouÅ¾Ã­vÃ¡ v momentÄ›, kdy zÃ¡tÄ›Å¾ webovÃ© architektury pÅ™eroste moÅ¾nosti a vÃ½konnost nÄ›kterÃ©ho ze svÃ½ch serverÅ¯. TÃ­m pÃ¡dem je nutnÃ© pÅ™idat dalÅ¡Ã­ server, a zajistit tak rovnomÄ›rnÃ© rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e mezi tyto servery. 
+Rozlo¾ení zátì¾e, neboli load balancing, se pou¾ívá v momentì, kdy zátì¾ webové architektury pøeroste mo¾nosti a vıkonnost nìkterého ze svıch serverù. Tím pádem je nutné pøidat dal¹í server, a zajistit tak rovnomìrné rozlo¾ení zátì¾e mezi tyto servery. 
 
-NejznÃ¡mÄ›jÅ¡Ã­m zpÅ¯sobem rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e je tzv. Round Robin DNS. PÅ™i dotazu klienta na IP adresu cÃ­lovÃ©ho serveru, vrÃ¡tÃ­ DNS server nÃ¡hodnÃ½ zÃ¡znam jednoho z nÄ›kolika cÃ­lovÃ½ch serverÅ¯. TÃ­mto zpÅ¯sobem je zÃ¡tÄ›Å¾ rozdÄ›lena nÃ¡hodnÄ›, Äili zhruba rovnomÄ›rnÄ› mezi vÅ¡echny servery. Zde nastÃ¡vÃ¡ problÃ©m se sezenÃ­m mezi aplikacÃ­ a klientem, tzv. session. Pokud se klient pÅ™ipojuje k rÅ¯znÃ½m serverÅ¯m zcela nÃ¡hodnÄ›, tak nenÃ­ zaruÄeno, Å¾e bude mÃ­t vÅ¾dy stejnÃ© sezenÃ­ s aplikacÃ­. Je totiÅ¾ dÅ¯leÅ¾itÃ©, aby kdyÅ¾ se napÅ™Ã­klad uÅ¾ivatel pÅ™ihlÃ¡sÃ­ do aplikace, doÅ¡lo k uloÅ¾enÃ­ informace o pÅ™ihlÃ¡Å¡enÃ­ do jeho sezenÃ­ a pÅ™i zobrazenÃ­ pÅ™Ã­Å¡tÃ­ strÃ¡nky se po nÄ›m aplikace nevyÅ¾adovala opÄ›tovnÃ© pÅ™ihlÃ¡Å¡enÃ­. V takovÃ©m pÅ™Ã­padÄ› nÃ¡hodnÃ©ho pÅ™idÄ›lovÃ¡nÃ­ koncovÃ½ch serverÅ¯ je potÅ™eba uklÃ¡dat tato sezenÃ­ do spoleÄnÃ©ho ÃºloÅ¾iÅ¡tÄ› pro vÅ¡echny koncovÃ© uzly.
+Nejznámìj¹ím zpùsobem rozlo¾ení zátì¾e je tzv. Round Robin DNS. Pøi dotazu klienta na IP adresu cílového serveru, vrátí DNS server náhodnı záznam jednoho z nìkolika cílovıch serverù. Tímto zpùsobem je zátì¾ rozdìlena náhodnì, èili zhruba rovnomìrnì mezi v¹echny servery. Zde nastává problém se sezením mezi aplikací a klientem, tzv. session. Pokud se klient pøipojuje k rùznım serverùm zcela náhodnì, tak není zaruèeno, ¾e bude mít v¾dy stejné sezení s aplikací. Je toti¾ dùle¾ité, aby kdy¾ se napøíklad u¾ivatel pøihlásí do aplikace, do¹lo k ulo¾ení informace o pøihlá¹ení do jeho sezení a pøi zobrazení pøí¹tí stránky se po nìm aplikace nevy¾adovala opìtovné pøihlá¹ení. V takovém pøípadì náhodného pøidìlování koncovıch serverù je potøeba ukládat tato sezení do spoleèného úlo¾i¹tì pro v¹echny koncové uzly.
 
-DalÅ¡Ã­ moÅ¾nost je Å™eÅ¡it rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e na ÃºrovnÃ­ transportnÃ­ vrstvy. K tomu slouÅ¾Ã­ HW load balancery, kterÃ© rozhodujÃ­, na kterÃ½ ze serverÅ¯ se poÅ¾adavek pÅ™epoÅ¡le dÃ¡l. Tato profesionÃ¡lnÃ­ zaÅ™Ã­zenÃ­ se uÅ¾ mohou rozhodnout v zÃ¡vislosti na jinÃ½ch parametrech jako aktuÃ¡lnÃ­ poÄet dotazÅ¯, pÅ™enÃ¡Å¡enÃ½ch dat, vytÃ­Å¾enosti Å¡Ã­Å™ky pÃ¡sma, zdrojovÃ© IP adresy, jejÃ­ geografickÃ© polohy, apod. 
+Dal¹í mo¾nost je øe¹it rozlo¾ení zátì¾e na úrovní transportní vrstvy. K tomu slou¾í HW load balancery, které rozhodují, na kterı ze serverù se po¾adavek pøepo¹le dál. Tato profesionální zaøízení se u¾ mohou rozhodnout v závislosti na jinıch parametrech jako aktuální poèet dotazù, pøená¹enıch dat, vytí¾enosti ¹íøky pásma, zdrojové IP adresy, její geografické polohy, apod. 
 
-ExistujÃ­ i aplikaÄnÃ­ load balancery. Ty najdou svÃ© uplatnÄ›nÃ­ ve webovÃ½ch architekturÃ¡ch. JednÃ¡ se o server s bÄ›Å¾Ã­cÃ­m softwarovÃ½m load balancerem, kterÃ½ pÅ™ijme a zpracuje poÅ¾adavek a rozhodne, kterÃ©mu z koncovÃ½ch serverÅ¯ ho pÅ™edÃ¡ dÃ¡l. AplikaÄnÃ­ load balancer by proto nemÄ›l mÃ­t problÃ©m zajistit klientovi vÅ¾dy stejnÃ½ koncovÃ½ server.
+Existují i aplikaèní load balancery. Ty najdou své uplatnìní ve webovıch architekturách. Jedná se o server s bì¾ícím softwarovım load balancerem, kterı pøijme a zpracuje po¾adavek a rozhodne, kterému z koncovıch serverù ho pøedá dál. Aplikaèní load balancer by proto nemìl mít problém zajistit klientovi v¾dy stejnı koncovı server.
 
-Ve webovÃ½ch architekturÃ¡ch v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e je zcela nevyhnutelnÃ© pouÅ¾itÃ­ vÃ­ce uzlÅ¯, napÅ™Ã­klad vÃ­ce aplikaÄnÃ­ch serverÅ¯. Vrstva pro rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e je tak nedÃ­lnou souÄÃ¡stÃ­ webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+Ve webovıch architekturách v prostøedí vysoké zátì¾e je zcela nevyhnutelné pou¾ití více uzlù, napøíklad více aplikaèních serverù. Vrstva pro rozlo¾ení zátì¾e je tak nedílnou souèástí webové architektury v prostøedí vysoké zátì¾e.
 
 \obrazek
 \vlozeps{../images/load-balancing.png}{0.5}
-\endobr{UkÃ¡zka jednoduchÃ©ho rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e}
+\endobr{Ukázka jednoduchého rozlo¾ení zátì¾e}
 
 
 % Dalsi vrstvy
-\kapitola{DalÅ¡Ã­ vrstvy aplikace}
-V prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e je velice dÅ¯leÅ¾itÃ¡ Å¡kÃ¡lovatelnost. Ta vznikÃ¡ pÅ™idÃ¡vÃ¡nÃ­m dalÅ¡Ã­ch samostatnÃ½ch vrstev, ÄÃ­mÅ¾ se ubÃ­rÃ¡ prÃ¡ce jinÃ½m vrstvÃ¡m. Proto je dobrÃ© zamÄ›Å™it se i na dalÅ¡Ã­ vrstvy, dalÅ¡Ã­ aplikace, sluÅ¾by a moÅ¾nosti, kterÃ© mohou bÄ›Å¾et samostatnÄ› bez nutnosti reÅ¾ie a zÃ¡sahu jinÃ½ch vrstev, a pÅ™Ã­tom mohou hodnÄ› odlehÄit dalÅ¡Ã­m vrstvÃ¡m.
+\kapitola{Dal¹í vrstvy aplikace}
+V prostøedí vysoké zátì¾e je velice dùle¾itá ¹kálovatelnost. Ta vzniká pøidáváním dal¹ích samostatnıch vrstev, èím¾ se ubírá práce jinım vrstvám. Proto je dobré zamìøit se i na dal¹í vrstvy, dal¹í aplikace, slu¾by a mo¾nosti, které mohou bì¾et samostatnì bez nutnosti re¾ie a zásahu jinıch vrstev, a pøítom mohou hodnì odlehèit dal¹ím vrstvám.
 
-Jednu z moÅ¾nostÃ­, jak pÅ™idat dalÅ¡Ã­ vrstvy aplikace a odlehÄit tak jinÃ½m vrstvÃ¡m, jsou No SQL databÃ¡ze. Jak uÅ¾ bylo nastÃ­nÄ›ho v kapitole \ref{sec:database}, jednÃ­m z nejvÄ›tÅ¡Ã­ch zdrojÅ¯ zpoÅ¾dÄ›nÃ­ ve webovÃ½ch architekturÃ¡ch v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e mohou bÃ½t databÃ¡ze. Proto je vhodnÃ© kombinovat toto primÃ¡rnÃ­ ÃºloÅ¾iÅ¡tÄ› i s jinÃ½mi moÅ¾nostmi. No SQL databÃ¡ze jsou od klasickÃ½ch relaÄnÃ­ch databÃ¡zi odliÅ¡nÃ© tÃ­m, Å¾e nemajÃ­ Å¾Ã¡dnou referenÄnÃ­ integritu, pevnou strukturu zÃ¡znamÅ¯, nezabraÅˆujÃ­ redundanci, pouÅ¾Ã­vajÃ­ jinÃ½ jazyk pro dotazovÃ¡nÃ­ a jsou volnÄ›jÅ¡Ã­ a flexibilnÄ›jÅ¡Ã­. SvÃ© uplatnÄ›nÃ­ naleznou u dat, ve kterÃ½ch nenÃ­ potÅ™eba uchovÃ¡vat pevnÄ›jÅ¡Ã­ logiku a se kterÃ½mi nenÃ­ potÅ™eba provÃ¡dÄ›t sloÅ¾itÄ›jÅ¡Ã­ operace. Mohou se hodit i k uchovÃ¡vÃ¡nÃ­ dat k nÄ›kterÃ½m statistikÃ¡m pro analÃ½zy v Business Inteligence.
+Jednu z mo¾ností, jak pøidat dal¹í vrstvy aplikace a odlehèit tak jinım vrstvám, jsou No SQL databáze. Jak u¾ bylo nastínìho v kapitole \ref{sec:database}, jedním z nejvìt¹ích zdrojù zpo¾dìní ve webovıch architekturách v prostøedí vysoké zátì¾e mohou bıt databáze. Proto je vhodné kombinovat toto primární úlo¾i¹tì i s jinımi mo¾nostmi. No SQL databáze jsou od klasickıch relaèních databázi odli¹né tím, ¾e nemají ¾ádnou referenèní integritu, pevnou strukturu záznamù, nezabraòují redundanci, pou¾ívají jinı jazyk pro dotazování a jsou volnìj¹í a flexibilnìj¹í. Své uplatnìní naleznou u dat, ve kterıch není potøeba uchovávat pevnìj¹í logiku a se kterımi není potøeba provádìt slo¾itìj¹í operace. Mohou se hodit i k uchovávání dat k nìkterım statistikám pro analızy v Business Inteligence.
 
-VÄ›tÅ¡ina webovÃ½ch aplikacÃ­ podporuje funkci vyhledÃ¡vÃ¡nÃ­. AÅ¥ uÅ¾ se jednÃ¡ o kompletnÃ­ prohledÃ¡vÃ¡nÃ­ vÅ¡ech dat aplikace Äi pouze o naÅ¡eptÃ¡vaÄ, tak je zbyteÄnÃ© tÄ›mito akcemi zahlcovat databÃ¡zovÃ½ Äas a prostÅ™edky. ExistujÃ­ totiÅ¾ i jinÃ© moÅ¾nosti, jinÃ© aplikace, kterÃ© zastÃ¡vajÃ­ funkÄnost vyhledÃ¡vÃ¡nÃ­. TÄ›mto aplikacÃ­m Äi sluÅ¾bÃ¡m se pÅ™edÃ¡vajÃ­ data k prohledÃ¡vÃ¡nÃ­, kterÃ© si samy prohledÃ¡vajÃ­, indexujÃ­ a vytvÃ¡Å™Ã­ dalÅ¡Ã­ statistiky pro vyhledÃ¡vÃ¡nÃ­ a nezatÄ›Å¾ujÃ­ tÃ­m aplikaÄnÃ­ Äi databÃ¡zovou vrstvu.
+Vìt¹ina webovıch aplikací podporuje funkci vyhledávání. A» u¾ se jedná o kompletní prohledávání v¹ech dat aplikace èi pouze o na¹eptávaè, tak je zbyteèné tìmito akcemi zahlcovat databázovı èas a prostøedky. Existují toti¾ i jiné mo¾nosti, jiné aplikace, které zastávají funkènost vyhledávání. Tìmto aplikacím èi slu¾bám se pøedávají data k prohledávání, které si samy prohledávají, indexují a vytváøí dal¹í statistiky pro vyhledávání a nezatì¾ují tím aplikaèní èi databázovou vrstvu.
 
-UrÄitÄ› existuje celÃ¡ Å™ada dalÅ¡Ã­ch aplikacÃ­ a sluÅ¾eb, kterÃ© pomohou vÄ›tÅ¡Ã­mu rozdÄ›lenÃ­ a Å¡kÃ¡lovÃ¡nÃ­ aplikace na jinÃ© dalÅ¡Ã­ ÄÃ¡sti, kterÃ© dokÃ¡Å¾ou fungovat nezÃ¡visle na sobÄ›. NejdÅ¯leÅ¾itÄ›jÅ¡Ã­ je co nejvÃ­ce odlehÄovat vrstvÃ¡m webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+Urèitì existuje celá øada dal¹ích aplikací a slu¾eb, které pomohou vìt¹ímu rozdìlení a ¹kálování aplikace na jiné dal¹í èásti, které doká¾ou fungovat nezávisle na sobì. Nejdùle¾itìj¹í je co nejvíce odlehèovat vrstvám webové architektury v prostøedí vysoké zátì¾e.
 
 
 
 % Prakticka cast
-\kapitola{PraktickÃ¡ ÄÃ¡st s experimenty a vÃ½sledky}
-PraktickÃ¡ ÄÃ¡st je zamÄ›Å™ena na testy a optimalizaci jednotlivÃ½ch vrstev webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. V tÃ©to prÃ¡ci jsou rozebrÃ¡ny jednotlivÃ© vrstvy architektury, se kterÃ½mi byly provedeny testy a experimenty. JednÃ¡ se o aplikaÄnÃ­ vrstvu, databÃ¡zovou vrstvu, reverznÃ­ proxy cache vrstvu a aplikaÄnÃ­ distribuovanou cache vrstvu. SouÄÃ¡stÃ­ prÃ¡ce nejsou pouze popis a charakteristika jendotlivÃ½ch krokÅ¯ optimalizace, ale i jejich vÃ½slednÃ© statistiky a zÃ¡tÄ›Å¾ovÃ© testy. HlavnÃ­ ÄÃ¡stÃ­ praktickÃ© ÄÃ¡sti je ovÅ¡em nÃ¡vrh a implementace aplikaÄnÃ­ ÃºrovnÄ› plnÄ› podporujÃ­cÃ­ prÃ¡ci s aplikaÄnÃ­ distribuovanou cache. DÃ¡le je popsÃ¡na i vÃ½slednÃ¡ konfigurace a nastavenÃ­ jednotlivÃ½ch vrstev architektury. VÃ½sledkem je tedy kompletnÃ­ pouÅ¾itelnÃ¡ studie Å™eÅ¡Ã­cÃ­ problematiku webovÃ© architektury v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+\kapitola{Praktická èást s experimenty a vısledky}
+Praktická èást je zamìøena na testy a optimalizaci jednotlivıch vrstev webové architektury v prostøedí vysoké zátì¾e. V této práci jsou rozebrány jednotlivé vrstvy architektury, se kterımi byly provedeny testy a experimenty. Jedná se o aplikaèní vrstvu, databázovou vrstvu, reverzní proxy cache vrstvu a aplikaèní distribuovanou cache vrstvu. Souèástí práce nejsou pouze popis a charakteristika jendotlivıch krokù optimalizace, ale i jejich vısledné statistiky a zátì¾ové testy. Hlavní èástí praktické èásti je ov¹em návrh a implementace aplikaèní úrovnì plnì podporující práci s aplikaèní distribuovanou cache. Dále je popsána i vısledná konfigurace a nastavení jednotlivıch vrstev architektury. Vısledkem je tedy kompletní pou¾itelná studie øe¹ící problematiku webové architektury v prostøedí vysoké zátì¾e.
 
 % Popis aplikace a nastroju
-\sekce{Vrstvy webovÃ© architektury}
-WebovÃ¡ architektura sestÃ¡vÃ¡ z klientskÃ© vrstvy, reverznÃ­ proxy cache vrsrtvy, aplikaÄnÃ­ vrstvy, aplikaÄnÃ­ distribuovanÃ© cache a databÃ¡zovÃ© vrstvy. KlientskÃ¡ ÄÃ¡st je tvoÅ™ena jednÃ­m uÅ¾ivatelem s operaÄnÃ­m systÃ©mem Linux Ubuntu a zÃ¡tÄ›Å¾ovÃ½m testovacÃ­m nÃ¡strojem Siege. ReverznÃ­ proxy cache vrstva je realizovÃ¡na programem Nginx. AplikaÄnÃ­ vrstva se sklÃ¡dÃ¡ z webovÃ©ho serveru Apache2 s programovacÃ­m jazykem PHP a s profilovacÃ­m nÃ¡strojem XHProf. AplikaÄnÃ­ distribuovanÃ¡ cache vrstva je tvoÅ™ena programem Memcached. DatabÃ¡zÃ­ je PostgreSQL. VÅ¡echny tyto vrstvy serverovÃ© ÄÃ¡sti webovÃ© architektury jsou vytvoÅ™eny na zvlÃ¡Å¡tnÃ­ch virtualizovanÃ½ch serverech. Pro reverznÃ­ proxy cache a aplikaÄnÃ­ distribuovanou cache byl zvolen jeden server. KaÅ¾dÃ½ ze serverÅ¯ je virtualizovÃ¡n za pomoci virtualizaÄnÃ­ho nÃ¡stroje VirtualBox. CelÃ¡ webovÃ¡ architektura je konfigurovÃ¡na v jednÃ© virtuÃ¡lnÃ­ lokÃ¡lnÃ­ sÃ­ti 10.9.0.0/24 se statickÃ½m pÅ™idÄ›lenÃ­m IP adres. RozhranÃ­ pro pÅ™Ã­pojenÃ­ tÄ›chto virtualizovanÃ½ch serverÅ¯ do virtuÃ¡lnÃ­ sÃ­tÄ› je realizovÃ¡no pomocÃ­ sÃ­Å¥ovÃ½ch mostÅ¯. Vzhledem k tomu, aby bylo moÅ¾no ukÃ¡zat velkÃ© pomÄ›rovÃ© rozdÃ­ly v jednotlivÃ½ch krocÃ­ch optimalizace pro jednotlivÃ© vrstvy architektury, bylo roznodnuto pro velice slabÃ© hardwarovÃ© vybavenÃ­ jednotlivÃ½ch serverÅ¯. Tyto servery majÃ­ 512MB operaÄnÃ­ pamÄ›ti RAM a jeden jednojÃ¡drovÃ½ procesor s frekvencÃ­ 2GHz.
+\sekce{Vrstvy webové architektury}
+Webová architektura sestává z klientské vrstvy, reverzní proxy cache vrsrtvy, aplikaèní vrstvy, aplikaèní distribuované cache a databázové vrstvy. Klientská èást je tvoøena jedním u¾ivatelem s operaèním systémem Linux Ubuntu a zátì¾ovım testovacím nástrojem Siege. Reverzní proxy cache vrstva je realizována programem Nginx. Aplikaèní vrstva se skládá z webového serveru Apache2 s programovacím jazykem PHP a s profilovacím nástrojem XHProf. Aplikaèní distribuovaná cache vrstva je tvoøena programem Memcached. Databází je PostgreSQL. V¹echny tyto vrstvy serverové èásti webové architektury jsou vytvoøeny na zvlá¹tních virtualizovanıch serverech. Pro reverzní proxy cache a aplikaèní distribuovanou cache byl zvolen jeden server. Ka¾dı ze serverù je virtualizován za pomoci virtualizaèního nástroje VirtualBox. Celá webová architektura je konfigurována v jedné virtuální lokální síti 10.9.0.0/24 se statickım pøidìlením IP adres. Rozhraní pro pøípojení tìchto virtualizovanıch serverù do virtuální sítì je realizováno pomocí sí»ovıch mostù. Vzhledem k tomu, aby bylo mo¾no ukázat velké pomìrové rozdíly v jednotlivıch krocích optimalizace pro jednotlivé vrstvy architektury, bylo roznodnuto pro velice slabé hardwarové vybavení jednotlivıch serverù. Tyto servery mají 512MB operaèní pamìti RAM a jeden jednojádrovı procesor s frekvencí 2GHz.
 
 \obrazek
 \vlozeps{../images/nginx-architecture.png}{0.5}
-\endobr{Vrstvy implementovanÃ© webovÃ© architektury}
+\endobr{Vrstvy implementované webové architektury}
 
-\sekce{TestovacÃ­ a profilovacÃ­ nÃ¡stroje}
-Proto, aby mohla bÃ½t vÅ¡echna tvrzenÃ­ a zÃ¡vÄ›ry Å™Ã¡dnÄ› podloÅ¾ena, a aby bylo moÅ¾nÃ© identifikovat mÃ­sta nutnÃ¡ pro optimalizaci, jsou potÅ™eba urÄitÃ© testovacÃ­ a profilovacÃ­ nÃ¡troje. PomocÃ­ profilovacÃ­ho nÃ¡stroje XHProf byly vyprofilovÃ¡ny statistiky pro aplikaÄnÃ­ vrstvu. Byl proveden rozbor exekuÄnÃ­ch plÃ¡nÅ¯ pro SQL dotazy pro databÃ¡zovou vrstvu, aby byla vidÄ›t mÃ­ra jejich optimalizace. TakÃ© bylo potÅ™eba vytvoÅ™it prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e a k tomu dopomohl program Siege.
+\sekce{Testovací a profilovací nástroje}
+Proto, aby mohla bıt v¹echna tvrzení a závìry øádnì podlo¾ena, a aby bylo mo¾né identifikovat místa nutná pro optimalizaci, jsou potøeba urèité testovací a profilovací nátroje. Pomocí profilovacího nástroje XHProf byly vyprofilovány statistiky pro aplikaèní vrstvu. Byl proveden rozbor exekuèních plánù pro SQL dotazy pro databázovou vrstvu, aby byla vidìt míra jejich optimalizace. Také bylo potøeba vytvoøit prostøedí vysoké zátì¾e a k tomu dopomohl program Siege.
 
 \podsekce{XHProf}
-K tomu, aby bylo moÅ¾nÃ© profilovat programovacÃ­ jazyk PHP, byl vybrÃ¡n profilovacÃ­ nÃ¡stroj XHProf. Tento nÃ¡stroj byl vyvinut v programovacÃ­m jazyce C. UvolnÄ›n byl pod open-source licencÃ­ Apache 2.0. Autorem tohoto profilovacÃ­ho nÃ¡stroje je spoleÄnost Facebook. Tento profilovacÃ­ nÃ¡stroj dokÃ¡Å¾e vyprofilovat nejenom dobu trvÃ¡nÃ­ jednotlivÃ½ch metod a funkcÃ­, ale i jejich procesorovÃ© Äi pamÄ›Å¥ovÃ© nÃ¡roky. XHProf je moÅ¾nÃ© provozovat na operaÄnÃ­ch systÃ©mech Linux, FreeBSD a Mac OS X.
+K tomu, aby bylo mo¾né profilovat programovací jazyk PHP, byl vybrán profilovací nástroj XHProf. Tento nástroj byl vyvinut v programovacím jazyce C. Uvolnìn byl pod open-source licencí Apache 2.0. Autorem tohoto profilovacího nástroje je spoleènost Facebook. Tento profilovací nástroj doká¾e vyprofilovat nejenom dobu trvání jednotlivıch metod a funkcí, ale i jejich procesorové èi pamì»ové nároky. XHProf je mo¾né provozovat na operaèních systémech Linux, FreeBSD a Mac OS X.
 
-Jeho instalace a konfigurace je jednoduchÃ¡ a bezproblÃ©movÃ¡. StaÄÃ­ si stÃ¡hnout instalaÄnÃ­ balÃ­Äek s rozÅ¡Ã­Å™enÃ­m, zkomipilovat a nainstalovat. Po instalaci je nutnÃ© jej zaregistrovat jako rozÅ¡Ã­Å™enÃ­ pro PHP v konfiguraÄnÃ­m souboru php.ini. SamotnÃ© pouÅ¾itÃ­ je pak velice snadnÃ©. Na zaÄÃ¡tek PHP skriptu se pÅ™idÃ¡ zdrojovÃ½ kÃ³d s jeho aktivacÃ­ a na konci PHP skriptu kÃ³d pro jeho deaktivaci.
+Jeho instalace a konfigurace je jednoduchá a bezproblémová. Staèí si stáhnout instalaèní balíèek s roz¹íøením, zkomipilovat a nainstalovat. Po instalaci je nutné jej zaregistrovat jako roz¹íøení pro PHP v konfiguraèním souboru php.ini. Samotné pou¾ití je pak velice snadné. Na zaèátek PHP skriptu se pøidá zdrojovı kód s jeho aktivací a na konci PHP skriptu kód pro jeho deaktivaci.
 
-VÃ½sledkem profilovÃ¡nÃ­ je pÅ™ehlednÃ¡ statistika jednotlivÃ½ch metod a funkcÃ­ ve formÃ¡tu HTML. VÅ¡echno v pÅ™ehlednÃ© tabulce, ve kterÃ© je moÅ¾nÃ© mÄ›nit pohled vÃ½sledkÅ¯ profilovÃ¡nÃ­ podle specifickÃ© metody Äi funkce. V tabulce je moÅ¾nÃ© pozorovat Äas strÃ¡venÃ½ vykonÃ¡vÃ¡nÃ­m pouze danÃ© funkce, Äas strÃ¡venÃ½ vykonÃ¡vÃ¡nÃ­m funkcÃ­ z nÃ­ volanÃ©, poÄet volÃ¡nÃ­ funkce, doba trvÃ¡nÃ­, procesorovÃ½ Äas a pamÄ›Å¥ovÃ© nÃ¡roky. VÃ½sledkem mÅ¯Å¾e bÃ½t i graf vygenerovanÃ½ ze statistik profilovÃ¡nÃ­ a ze zÃ¡vislostÃ­ mezi volÃ¡nÃ­m jednotlivÃ½ch funkcÃ­.
+Vısledkem profilování je pøehledná statistika jednotlivıch metod a funkcí ve formátu HTML. V¹echno v pøehledné tabulce, ve které je mo¾né mìnit pohled vısledkù profilování podle specifické metody èi funkce. V tabulce je mo¾né pozorovat èas strávenı vykonáváním pouze dané funkce, èas strávenı vykonáváním funkcí z ní volané, poèet volání funkce, doba trvání, procesorovı èas a pamì»ové nároky. Vısledkem mù¾e bıt i graf vygenerovanı ze statistik profilování a ze závislostí mezi voláním jednotlivıch funkcí.
 
-Tento program je nenÃ¡roÄnÃ½ a mÅ¯Å¾e bÃ½t provozovÃ¡n i v ostrÃ©m provozu. VÃ½sledky takovÃ©ho profilovÃ¡nÃ­ jsou dÅ¯leÅ¾itÃ© k identifikaci problÃ©movÃ½ch mÃ­st k optimalizaci, Äili pro webovou architekturu v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e jsou nevyhnutelnÃ©.\cite{xhprof}
+Tento program je nenároènı a mù¾e bıt provozován i v ostrém provozu. Vısledky takového profilování jsou dùle¾ité k identifikaci problémovıch míst k optimalizaci, èili pro webovou architekturu v prostøedí vysoké zátì¾e jsou nevyhnutelné.\cite{xhprof}
 
 \newpage
-PÅ™Ã­klad pouÅ¾itÃ­ XHProf profilovÃ¡nÃ­:
+Pøíklad pou¾ití XHProf profilování:
 \begin{scriptsize}
 \begin{verbatim}
 <?php
@@ -412,17 +412,17 @@ if (extension_loaded('xhprof')) {
 \end{scriptsize}
 
 \podsekce{Siege}
-Vzhledem k tomu, aby mohlo bÃ½t nasimulovÃ¡no prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e, byl zvolen nÃ¡stroj Siege pro zÃ¡tÄ›Å¾ovÃ© testy. Siege je tedy nÃ¡strojem pro testovÃ¡nÃ­ webovÃ½ch aplikacÃ­ a jejich doby odezvy v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. Tento nÃ¡stroj mÃ¡ opÄ›t lehkou a pÅ™Ã­vÄ›tivou instalaci, nachÃ¡zÃ­ se totiÅ¾ v zÃ¡kladnÃ­ch instalaÄnÃ­ch balÃ­ÄcÃ­ch pro operaÄnÃ­ systÃ©m Linux Debian. Siege je programem spouÅ¡tÄ›nÃ½m z pÅ™Ã­kazovÃ© Å™Ã¡dky. Jako kaÅ¾dÃ½ program, tak i siege mÃ¡ samozÅ™ejmÄ› svÅ¯j konfiguraÄnÃ­ soubor, kterÃ½ je dÅ¯leÅ¾itÃ½ hlavnÄ› pro nastavenÃ­ maximÃ¡lnÃ­ provÃ¡dÄ›cÃ­ doby jednotlivÃ½ch testÅ¯.
+Vzhledem k tomu, aby mohlo bıt nasimulováno prostøedí vysoké zátì¾e, byl zvolen nástroj Siege pro zátì¾ové testy. Siege je tedy nástrojem pro testování webovıch aplikací a jejich doby odezvy v prostøedí vysoké zátì¾e. Tento nástroj má opìt lehkou a pøívìtivou instalaci, nachází se toti¾ v základních instalaèních balíècích pro operaèní systém Linux Debian. Siege je programem spou¹tìnım z pøíkazové øádky. Jako ka¾dı program, tak i siege má samozøejmì svùj konfiguraèní soubor, kterı je dùle¾itı hlavnì pro nastavení maximální provádìcí doby jednotlivıch testù.
 
-Volby parametrÅ¯ tohoto pÅ™Ã­kazovÃ©ho programu jsou velice bohatÃ©, ale pÅ™itom jednoduchÃ© pro pochopenÃ­ a pouÅ¾itÃ­. ZÃ¡kladnÃ­mi parametry jsou:
+Volby parametrù tohoto pøíkazového programu jsou velice bohaté, ale pøitom jednoduché pro pochopení a pou¾ití. Základními parametry jsou:
 
 \begin{itemize}
-\item c - poÄet simulovanÃ½ch konkurenÄnÃ­ch uÅ¾ivatelÅ¯
-\item d - interval zpoÅ¾dÄ›nÃ­ mezi jednotlivÃ½mi uÅ¾ivatelskÃ½mi poÅ¾adavky
-\item r - poÄet repetic pro zÃ¡tÄ›Å¾ovÃ© testy
+\item c - poèet simulovanıch konkurenèních u¾ivatelù
+\item d - interval zpo¾dìní mezi jednotlivımi u¾ivatelskımi po¾adavky
+\item r - poèet repetic pro zátì¾ové testy
 \end{itemize}
 
-Pro tuto prÃ¡ci byly provÃ¡dÄ›ny zÃ¡tÄ›Å¾ovÃ© testy simulovÃ¡nÃ­m deseti uÅ¾ivatelÅ¯, v intervalu od nuly do jednÃ© sekundy ve tÅ™ech repeticÃ­ch. SpuÅ¡tÄ›nÃ­ vypadÃ¡ takto:
+Pro tuto práci byly provádìny zátì¾ové testy simulováním deseti u¾ivatelù, v intervalu od nuly do jedné sekundy ve tøech repeticích. Spu¹tìní vypadá takto:
 \begin{scriptsize}
 \begin{verbatim}
 siege -d1 -c10 -r3 -v http://dp-xskrha.local/hello/Mendelu
@@ -431,11 +431,11 @@ siege -d1 -c10 -r3 -v http://dp-xskrha.local/hello/Mendelu
 
 
 \podsekce{PostgreSQL Explain}
-Pro konkrÃ©tnÃ­ analÃ½zu problÃ©movÃ½ch SQL dotazÅ¯ je potÅ™eba identifikovat a analyzovat jejich exekuÄnÃ­ plÃ¡n. V databÃ¡zi PostgreSQL a ve vÄ›tÅ¡inÄ› databÃ¡zÃ­ch k tomu slouÅ¾Ã­ pÅ™Ã­kaz explain, kterÃ½ takto zobrazÃ­ exekuÄnÃ­ plÃ¡n. V tÃ©to prÃ¡ci byla analyzovÃ¡na problÃ©movÃ¡ mÃ­sta pomocÃ­ XHProf profilovÃ¡nÃ­, ze kterÃ©ho se zjistilo, Å¾e vÅ¡echna ploblÃ©movÃ¡ mÃ­sta souvisÃ­ s dotazy pro databÃ¡zi. Po tÃ©to fÃ¡zi identifikace nÃ¡sledovala fÃ¡ze vysvÄ›tlenÃ­ pomocÃ­ SQL dotazu EXPLAIN.
+Pro konkrétní analızu problémovıch SQL dotazù je potøeba identifikovat a analyzovat jejich exekuèní plán. V databázi PostgreSQL a ve vìt¹inì databázích k tomu slou¾í pøíkaz explain, kterı takto zobrazí exekuèní plán. V této práci byla analyzována problémová místa pomocí XHProf profilování, ze kterého se zjistilo, ¾e v¹echna ploblémová místa souvisí s dotazy pro databázi. Po této fázi identifikace následovala fáze vysvìtlení pomocí SQL dotazu EXPLAIN.
 
-PomocÃ­ EXPLAIN je moÅ¾nÃ© vysvÄ›tlit vÅ¡echny kroky exekuÄnÃ­ho plÃ¡nu. Je tak moÅ¾nÃ© zjistit jakÃ½ zpÅ¯sob prohledÃ¡nÃ­ byl zvolen, zda-li sekvenÄnÃ­ nebo indexovÃ½. DÃ¡le je moÅ¾nÃ© zjistit druh spojenÃ­, jestli merge join nebo hash join, apod. U jednotlivÃ½ch krokÅ¯ exekuÄnÃ­ho plÃ¡nu je zobrazena jejich cena, pÅ™edpoklÃ¡danÃ½ poÄet Å™Ã¡dkÅ¯ a pÅ™edpoklÃ¡danÃ½ poÄet sloupcÅ¯. TÃ­mto zpÅ¯sobem je moÅ¾nÃ© identifikovat slabÃ¡ mÃ­sta exekuÄnÃ­ho plÃ¡nu a provÃ©st moÅ¾nou ÃºspÄ›Å¡nou optimalizaci.\\
+Pomocí EXPLAIN je mo¾né vysvìtlit v¹echny kroky exekuèního plánu. Je tak mo¾né zjistit jakı zpùsob prohledání byl zvolen, zda-li sekvenèní nebo indexovı. Dále je mo¾né zjistit druh spojení, jestli merge join nebo hash join, apod. U jednotlivıch krokù exekuèního plánu je zobrazena jejich cena, pøedpokládanı poèet øádkù a pøedpokládanı poèet sloupcù. Tímto zpùsobem je mo¾né identifikovat slabá místa exekuèního plánu a provést mo¾nou úspì¹nou optimalizaci.\\
 \\
-\\ UkÃ¡zka analÃ½zy exekuÄnÃ­ho plÃ¡nu:
+\\ Ukázka analızy exekuèního plánu:
 \begin{scriptsize}
 \begin{verbatim}
 explain analyze select * from film f where film_id in (select film_id from film_actor);
@@ -456,59 +456,59 @@ Total runtime: 28.020 ms
 
 
 % APC
-\sekce{AplikaÄnÃ­ vrstva PHP}
-V aplikaÄnÃ­ vrstvÄ› byl zvolen pro implementaci programovacÃ­ jazyk PHP 5.3 bÄ›Å¾Ã­cÃ­ na webovÃ©m serveru Apache 2.0. WebovÃ½ server Apache je jednÃ­m z nejrozÅ¡Ã­Å™enÄ›jÅ¡Ã­ch a nejpopulÃ¡rnÄ›jÅ¡Ã­ch webovÃ½ch serverÅ¯ na internetu. Byl implementovÃ¡n v roce 1996 v jazyce C++. Jeho instalace, konfigurace a administrace nenÃ­ nikterak sloÅ¾itÃ¡. Je podporovÃ¡n vÄ›tÅ¡inou poskytovalÅ¯ webovÃ©ho hostingu v zÃ¡kladnÃ­ konfiguraci. Je to volnÄ› pouÅ¾itelnÃ½ produkt, kterÃ½ obsahuje spoustu rÅ¯znÃ½ch pÅ™Ã­davnÃ½ch mÃ³dÅ¯. Z tÄ›chto dÅ¯vodÅ¯ byl vybrÃ¡n pro praktickou ÄÃ¡st tÃ©to diplomovÃ© prÃ¡ce.
+\sekce{Aplikaèní vrstva PHP}
+V aplikaèní vrstvì byl zvolen pro implementaci programovací jazyk PHP 5.3 bì¾ící na webovém serveru Apache 2.0. Webovı server Apache je jedním z nejroz¹íøenìj¹ích a nejpopulárnìj¹ích webovıch serverù na internetu. Byl implementován v roce 1996 v jazyce C++. Jeho instalace, konfigurace a administrace není nikterak slo¾itá. Je podporován vìt¹inou poskytovalù webového hostingu v základní konfiguraci. Je to volnì pou¾itelnı produkt, kterı obsahuje spoustu rùznıch pøídavnıch módù. Z tìchto dùvodù byl vybrán pro praktickou èást této diplomové práce.
 
-ProgramovacÃ­ jazyk PHP se stal jednÃ­m z nejpouÅ¾Ã­vanÄ›jÅ¡Ã­ch programovacÃ­ch jazykÅ¯ pro svoji srozumitelnost, pÅ™enositelnost a jednoduchost. Je to dynamicky typovanÃ½ programovacÃ­ jazyk, Äili i z tÄ›chto dÅ¯vodÅ¯ je hodnÄ› ohebnÃ½. PlnÄ› podporuje OOP pÅ™Ã­stup, Äili je moÅ¾nÃ© vyÅ¾Ã­vat tÄ›chto technik vÄetnÄ› nÃ¡vrhovÃ½ch vzorÅ¯, kterÃ© jsou pro pokroÄilÃ© webovÃ© aplikace v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e velice dÅ¯leÅ¾itÃ©. AplikaÄnÃ­ vrstva samozÅ™ejmÄ› podporuje plnÄ› koncept nÃ¡vrhovÃ©ho vzoru MVC vyuÅ¾Ã­vÃ¡nÃ­m MVC frameworku Symfony 2.
+Programovací jazyk PHP se stal jedním z nejpou¾ívanìj¹ích programovacích jazykù pro svoji srozumitelnost, pøenositelnost a jednoduchost. Je to dynamicky typovanı programovací jazyk, èili i z tìchto dùvodù je hodnì ohebnı. Plnì podporuje OOP pøístup, èili je mo¾né vy¾ívat tìchto technik vèetnì návrhovıch vzorù, které jsou pro pokroèilé webové aplikace v prostøedí vysoké zátì¾e velice dùle¾ité. Aplikaèní vrstva samozøejmì podporuje plnì koncept návrhového vzoru MVC vyu¾íváním MVC frameworku Symfony 2.
 
 
-\podsekce{Optimalizace pomocÃ­ APC}
+\podsekce{Optimalizace pomocí APC}
 \label{sec:optim-apc}
-ProgramovacÃ­ jazyk PHP je sice jednoduchÃ½ na vÃ½voj, Äitelnost a dynamiÄnosti, ovÅ¡em jeho daÅˆ je ÄasovÃ¡ nÃ¡roÄnost pro pÅ™eklad. Tento jazyk je interepretovanÃ½ jazyk, Äili pÅ™i jeho interpretaci dochÃ¡zÃ­ k pÅ™ekladu do Opcode PHP kompilÃ¡torem. VznikÃ¡ tak mezikÃ³d, kterÃ½ je po skonÄenÃ­ pÅ™ekladu vykonÃ¡n.
+Programovací jazyk PHP je sice jednoduchı na vıvoj, èitelnost a dynamiènosti, ov¹em jeho daò je èasová nároènost pro pøeklad. Tento jazyk je interepretovanı jazyk, èili pøi jeho interpretaci dochází k pøekladu do Opcode PHP kompilátorem. Vzniká tak mezikód, kterı je po skonèení pøekladu vykonán.
 
-K tomu, aby se nemusel pokaÅ¾dÃ© pÅ™eklÃ¡dat stejnÃ½ script PHP kompilÃ¡torem, je moÅ¾nÃ© ho uloÅ¾it do cache pro mezikÃ³d, neboli Opcode Cache. K tomuto ÃºÄelu slouÅ¾Ã­ APC, neboli Alternative Opcode Cache. APC je rozÅ¡Ã­Å™enÃ­m pro PHP vytvoÅ™enÃ© pÅ™Ã­mo samotnÃ½mi tvÅ¯rci programovacÃ­ho jazyka PHP. Toto rozÅ¡Ã­Å™enÃ­ nenÃ­ vÅ¯bec nÃ¡roÄnÃ© na intalaci ani konfiguraci. Dokonce je k nÄ›mu moÅ¾nÃ© zprovoznit i webovÃ© rozhranÃ­ ukazujÃ­cÃ­ poÄet ÃºspÄ›Å¡nÃ½ch Äi neÃºspÄ›Å¡nÃ½ch dotazÅ¯ do cache a jinÃ© dalÅ¡Ã­ statistiky. ProstÅ™ednictvÃ­m APC programovÃ©ho rozhranÃ­ se dajÃ­ do cache pamÄ›ti uklÃ¡dat i jinÃ© dalÅ¡Ã­ hodnoty pÅ™Ã­mo ze zdrojovÃ½ch kÃ³dÅ¯. ÃšloÅ¾iÅ¡tÄ›m pro APC je operaÄnÃ­ pamÄ›Å¥ RAM. Z toho dÅ¯vodu je tedy dÅ¯leÅ¾itÃ©, aby bÄ›Å¾el webserver Apache2 stÃ¡le zapnutÃ½. PÅ™i restartu webovÃ©ho serveru dojde k invalidaci celÃ© APC cache pamÄ›ti.\cite{apc}
+K tomu, aby se nemusel poka¾dé pøekládat stejnı script PHP kompilátorem, je mo¾né ho ulo¾it do cache pro mezikód, neboli Opcode Cache. K tomuto úèelu slou¾í APC, neboli Alternative Opcode Cache. APC je roz¹íøením pro PHP vytvoøené pøímo samotnımi tvùrci programovacího jazyka PHP. Toto roz¹íøení není vùbec nároèné na intalaci ani konfiguraci. Dokonce je k nìmu mo¾né zprovoznit i webové rozhraní ukazující poèet úspì¹nıch èi neúspì¹nıch dotazù do cache a jiné dal¹í statistiky. Prostøednictvím APC programového rozhraní se dají do cache pamìti ukládat i jiné dal¹í hodnoty pøímo ze zdrojovıch kódù. Úlo¾i¹tìm pro APC je operaèní pamì» RAM. Z toho dùvodu je tedy dùle¾ité, aby bì¾el webserver Apache2 stále zapnutı. Pøi restartu webového serveru dojde k invalidaci celé APC cache pamìti.\cite{apc}
 
-VÄ›tÅ¡ina interpretovanÃ½ch jazykÅ¯ je pÅ™eklÃ¡dÃ¡na do nÄ›jakÃ©ho mezikÃ³du. Proto se pÅ™i Å¾Ã¡dnÃ© zmÄ›nÄ› zdrojovÃ½ch kÃ³dÅ¯ dÃ¡ vyuÅ¾Ã­t uÅ¾ jednou zkompilovanÃ½ch vÃ½sledkÅ¯. Tato forma recyklace zkompilovanÃ©ho mezikÃ³du dokÃ¡Å¾e pÅ™inÃ©st velkÃ© vÃ½sledky pÅ™i optimalizaci. U APC jsou tyto vÃ½sledky vÃ­ce neÅ¾ viditelnÃ©.
+Vìt¹ina interpretovanıch jazykù je pøekládána do nìjakého mezikódu. Proto se pøi ¾ádné zmìnì zdrojovıch kódù dá vyu¾ít u¾ jednou zkompilovanıch vısledkù. Tato forma recyklace zkompilovaného mezikódu doká¾e pøinést velké vısledky pøi optimalizaci. U APC jsou tyto vısledky více ne¾ viditelné.
 
-\podsekce{DosaÅ¾enÃ© vÃ½sledky}
-Pro dosaÅ¾enÃ­ vÃ½sledkÅ¯ optimalizace aplikaÄnÃ­ vrstvy bylo vygenerovÃ¡no prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e deseti konkurenÄnÃ­ch uÅ¾ivatelÅ¯ s intervalem poÅ¾adavkÅ¯ do jednÃ© sekundy ve tÅ™ech repeticÃ­ch. Na aplikaÄnÃ­m serveru tak vzniklo deset vlÃ¡ken Apache2 s PHP 5.3 pro kaÅ¾dÃ©ho z uÅ¾ivatelÅ¯ a celÃ½ procesorovÃ½ vÃ½kon byl tak rozdÄ›len rovnomÄ›rnÄ› mezi jednotlivÃ© vlÃ¡kna po deseti procentech. VytÃ­Å¾enÃ­ procesoru aplikaÄnÃ­ho serveru tak dosahovalo sta procent, Äili maximÃ¡lnÃ­ho vytÃ­Å¾enÃ­. Toto prostÅ™edÃ­ jsem nasimuloval jak pro neoptimalizovanÃ© prostÅ™edÃ­ bez APC, tak i pro optimalizovnÃ© prostÅ™edÃ­ s APC. Pro kaÅ¾dÃ½ poÅ¾adavek dochÃ¡zelo ke zpracovÃ¡nÃ­ celÃ©ho MVC frameworku, Äili ke zpracovÃ¡nÃ­ mnoho funkcÃ­, tÅ™Ã­d a metod. Z XHProf profilovÃ¡nÃ­ jsem vyprofiloval vÃ½sledky pro jeden poÅ¾adavek jak pro situaci s pouÅ¾itÃ­m APC, tak i bez pouÅ¾itÃ­ APC. VÃ½sledky tohoto profilovÃ¡nÃ­ jsou takovÃ©to:
+\podsekce{Dosa¾ené vısledky}
+Pro dosa¾ení vısledkù optimalizace aplikaèní vrstvy bylo vygenerováno prostøedí vysoké zátì¾e deseti konkurenèních u¾ivatelù s intervalem po¾adavkù do jedné sekundy ve tøech repeticích. Na aplikaèním serveru tak vzniklo deset vláken Apache2 s PHP 5.3 pro ka¾dého z u¾ivatelù a celı procesorovı vıkon byl tak rozdìlen rovnomìrnì mezi jednotlivé vlákna po deseti procentech. Vytí¾ení procesoru aplikaèního serveru tak dosahovalo sta procent, èili maximálního vytí¾ení. Toto prostøedí jsem nasimuloval jak pro neoptimalizované prostøedí bez APC, tak i pro optimalizovné prostøedí s APC. Pro ka¾dı po¾adavek docházelo ke zpracování celého MVC frameworku, èili ke zpracování mnoho funkcí, tøíd a metod. Z XHProf profilování jsem vyprofiloval vısledky pro jeden po¾adavek jak pro situaci s pou¾itím APC, tak i bez pou¾ití APC. Vısledky tohoto profilování jsou takovéto:
 
 \begin{itemize}
-\item neoptimalovanÃ© - bez APC - 1,3s
-\item optimalizovanÃ© - s APC - 0,4s
+\item neoptimalované - bez APC - 1,3s
+\item optimalizované - s APC - 0,4s
 \end{itemize}
 
-Z vÃ½sledku vyplÃ½vÃ¡, Å¾e pÅ™i optimalizaci aplikaÄnÃ­ vrstvy pomocÃ­ APC doÅ¡lo k zrychlenÃ­ pÅ™ekladu a provedenÃ­ PHP skriptÅ¯ o vÃ­ce neÅ¾ padesÃ¡t procent, a to jak pÅ™i jedinÃ©m poÅ¾adavku, tak i v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. TakovÃ½to fakt se dÃ¡ urÄitÄ› oznaÄit ÃºspÄ›Å¡nou optimalizacÃ­. Alternativou mÅ¯Å¾e bÃ½t pouÅ¾itÃ­ pÅ™Ã­stupu s webovÃ½m serverem Lighttpd a s cache pamÄ›tÃ­ pro mezikÃ³d eAccelerator. VÃ½sledky by mÄ›li bÃ½t hodnÄ› podobnÃ©. V dneÅ¡nÃ­ch dnech se objevujÃ­ a publikujÃ­ zprÃ¡vy o uvolnÄ›nÃ­ HIP-HOP pro PHP od spoleÄnosti Facebook. HIP-HOP pouÅ¾Ã­vÃ¡ ÃºplnÄ› jinÃ©ho pÅ™Ã­stupu pro zrychlenÃ­ bÄ›hu PHP scriptÅ¯. Tato varianta je dnes jeÅ¡tÄ› hodnÄ› ÄerstvÃ¡ a ne tak provÄ›Å™enÃ¡, ovÅ¡em pÅ™edstavuje dalÅ¡Ã­ moÅ¾nosti pro optimalizaci aplikaÄnÃ­ vrstvy s PHP v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e v budoucÃ­ch dnech.
+Z vısledku vyplıvá, ¾e pøi optimalizaci aplikaèní vrstvy pomocí APC do¹lo k zrychlení pøekladu a provedení PHP skriptù o více ne¾ padesát procent, a to jak pøi jediném po¾adavku, tak i v prostøedí vysoké zátì¾e. Takovıto fakt se dá urèitì oznaèit úspì¹nou optimalizací. Alternativou mù¾e bıt pou¾ití pøístupu s webovım serverem Lighttpd a s cache pamìtí pro mezikód eAccelerator. Vısledky by mìli bıt hodnì podobné. V dne¹ních dnech se objevují a publikují zprávy o uvolnìní HIP-HOP pro PHP od spoleènosti Facebook. HIP-HOP pou¾ívá úplnì jiného pøístupu pro zrychlení bìhu PHP scriptù. Tato varianta je dnes je¹tì hodnì èerstvá a ne tak provìøená, ov¹em pøedstavuje dal¹í mo¾nosti pro optimalizaci aplikaèní vrstvy s PHP v prostøedí vysoké zátì¾e v budoucích dnech.
 
 \obrazek
 \vlozeps{../images/graph-apc.png}{0.4}
-\endobr{Graf s vÃ½sledky porovnÃ¡nÃ­ doby trvÃ¡nÃ­ jednotlivÃ½ch poÅ¾adavkÅ¯ pro repetice s pouÅ¾itÃ­m a bez pouÅ¾itÃ­ APC}
+\endobr{Graf s vısledky porovnání doby trvání jednotlivıch po¾adavkù pro repetice s pou¾itím a bez pou¾ití APC}
 
 \obrazek
 \vlozeps{../images/top-apc.png}{0.4}
-\endobr{VÃ½pis systÃ©movÃ½ch procesÅ¯ aplikaÄnÃ­ho serveru s APC v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e}
+\endobr{Vıpis systémovıch procesù aplikaèního serveru s APC v prostøedí vysoké zátì¾e}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/app-architecture.png}{0.5}
-\endobr{VÃ½slednÃ© zapojenÃ­ webovÃ© architektury s aplikaÄnÃ­ vrstvou a APC}
+\endobr{Vısledné zapojení webové architektury s aplikaèní vrstvou a APC}
 
 
 
 % Databaze
-\sekce{DatabÃ¡zovÃ¡ vrstva}
-DatabÃ¡zovÃ¡ vrstva je dÅ¯leÅ¾itou a nezbytnou souÄÃ¡stÃ­ webovÃ© architektury. JejÃ­ Ãºloha je perzistence dat pomocÃ­ databÃ¡zovÃ©ho systÃ©mu. OvÅ¡em pÅ™Ã­stup k datÅ¯m mÅ¯Å¾e bÃ½t nÄ›kdy velice zdlouhavÃ½, aÅ¾ v Å™Ã¡dech nÄ›kolika minut a hodin. V prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e dochÃ¡zÃ­ obvykle k obrovskÃ©mu rÅ¯stu dat a je potÅ™eba optimalizovat databÃ¡zovou vrstvu tak, aby jejich doba pÅ™Ã­stupu byla co nejkratÅ¡Ã­.
+\sekce{Databázová vrstva}
+Databázová vrstva je dùle¾itou a nezbytnou souèástí webové architektury. Její úloha je perzistence dat pomocí databázového systému. Ov¹em pøístup k datùm mù¾e bıt nìkdy velice zdlouhavı, a¾ v øádech nìkolika minut a hodin. V prostøedí vysoké zátì¾e dochází obvykle k obrovskému rùstu dat a je potøeba optimalizovat databázovou vrstvu tak, aby jejich doba pøístupu byla co nejkrat¹í.
 
-V tÃ©to prÃ¡ci byla vytvoÅ™ena databÃ¡ze nad databÃ¡zovÃ½m systÃ©mem PostgreSQL. Tento systÃ©m je volnÄ› dostupnÃ½ a najde velkÃ© uplatnÄ›nÃ­ prÃ¡vÄ› ve webovÃ½ch architekturÃ¡ch. Podporuje vÅ¡echny standartnÃ­ databÃ¡zovÃ© operace a pÅ™Ã­stupy a je oblÃ­ben pro svoji spolehlivost.
+V této práci byla vytvoøena databáze nad databázovım systémem PostgreSQL. Tento systém je volnì dostupnı a najde velké uplatnìní právì ve webovıch architekturách. Podporuje v¹echny standartní databázové operace a pøístupy a je oblíben pro svoji spolehlivost.
 
-DatabÃ¡ze modelovanÃ© aplikace obsahuje zÃ¡znamy v Å™Ã¡dech miliÃ³nÅ¯ Å™Ã¡dkÅ¯. To z toho dÅ¯vodu, aby bylo nasimulovÃ¡no prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e i s velkou databÃ¡zÃ­. DatovÃ© zÃ¡znamy byly pro potÅ™eby mÃ© prÃ¡ce vygenerovÃ¡ny a nepÅ™edstavujÃ­ Å¾Ã¡dnou paralelu s reÃ¡lnÃ½mi daty.
+Databáze modelované aplikace obsahuje záznamy v øádech miliónù øádkù. To z toho dùvodu, aby bylo nasimulováno prostøedí vysoké zátì¾e i s velkou databází. Datové záznamy byly pro potøeby mé práce vygenerovány a nepøedstavují ¾ádnou paralelu s reálnımi daty.
 
-\podsekce{Optimalizace databÃ¡ze}
+\podsekce{Optimalizace databáze}
 \label{sec:optim-database}
-PÅ™ed samotnou optimalizacÃ­ databÃ¡zovÃ© vrstvy nebyla databÃ¡ze Å¾Ã¡dnÃ½m zpÅ¯sobem optimalizovÃ¡na, aÅ¥ uÅ¾ za pomocÃ­ indexace, optimalizace SQL dotazÅ¯, segmentovÃ¡nÃ­m Äi vytvoÅ™enÃ­m replikacÃ­. PÅ™Ã­stup k datÅ¯m v databÃ¡zi tak nebyl Å¾Ã¡dnÃ½m zpÅ¯sobem efektivnÃ­. Jednalo se o znovu se opakujÃ­cÃ­ SQL dotazy a dokonce mÃ­sto jednoho SQL dotazu se objevovalo vÃ­ce SQL dotazÅ¯ pro zjiÅ¡tÄ›nÃ­ stejnÃ© informaÄnÃ­ hodnoty. Bylo tak rozhodnuto pro aplikaci optimalizace databÃ¡zovÃ© vrstvy pomocÃ­ optimalizace SQL dotazÅ¯.
+Pøed samotnou optimalizací databázové vrstvy nebyla databáze ¾ádnım zpùsobem optimalizována, a» u¾ za pomocí indexace, optimalizace SQL dotazù, segmentováním èi vytvoøením replikací. Pøístup k datùm v databázi tak nebyl ¾ádnım zpùsobem efektivní. Jednalo se o znovu se opakující SQL dotazy a dokonce místo jednoho SQL dotazu se objevovalo více SQL dotazù pro zji¹tìní stejné informaèní hodnoty. Bylo tak rozhodnuto pro aplikaci optimalizace databázové vrstvy pomocí optimalizace SQL dotazù.
 
-PÅ™Ã­ procesu optimalizace se napÅ™ed urÄily problematickÃ© SQL dotazy pomocÃ­ XHProf profilovÃ¡nÃ­. Z tohoto procesu bylo zjiÅ¡tÄ›no, kterÃ© sql dotazy je potÅ™eba zoptimalizovat. DalÅ¡Ã­m krokem byl rozbor jejich exekuÄnÃ­ho plÃ¡nu, vyhledÃ¡nÃ­ Å™eÅ¡enÃ­ a jeho aplikace. Å˜eÅ¡enÃ­m optimalizace nÄ›kterÃ½ch z exukuÄnÃ­ch plÃ¡nÅ¯ byla indexace pÅ™Ã­sluÅ¡nÃ½ch sloupcÅ¯ pro nahrazenÃ­ sekvenÄnÃ­ho prohledÃ¡nÃ­ za indexovÃ© prohledÃ¡nÃ­. Zde je ukÃ¡zka rozboru neoptimalizovanÃ©ho exekuÄnÃ­ho plÃ¡nu se sekvenÄnÃ­m prohledÃ¡nÃ­m:
+Pøí procesu optimalizace se napøed urèily problematické SQL dotazy pomocí XHProf profilování. Z tohoto procesu bylo zji¹tìno, které sql dotazy je potøeba zoptimalizovat. Dal¹ím krokem byl rozbor jejich exekuèního plánu, vyhledání øe¹ení a jeho aplikace. Øe¹ením optimalizace nìkterıch z exukuèních plánù byla indexace pøíslu¹nıch sloupcù pro nahrazení sekvenèního prohledání za indexové prohledání. Zde je ukázka rozboru neoptimalizovaného exekuèního plánu se sekvenèním prohledáním:
 
 \begin{scriptsize}
 \begin{verbatim}
@@ -524,7 +524,7 @@ Total runtime: 16300.526 ms
 \end{verbatim}
 \end{scriptsize}
 
-Po optimalizaci je vidÄ›t, Å¾e sekvenÄnÃ­ prohledÃ¡nÃ­ bylo odstranÄ›no a nahrazeno indexovÃ½m prohledÃ¡nÃ­m, kterÃ© je daleko efektivnÄ›jÅ¡Ã­:
+Po optimalizaci je vidìt, ¾e sekvenèní prohledání bylo odstranìno a nahrazeno indexovım prohledáním, které je daleko efektivnìj¹í:
 
 \begin{scriptsize}
 \begin{verbatim}
@@ -540,175 +540,175 @@ Total runtime: 0.303 ms
 \end{verbatim}
 \end{scriptsize}
 
-\podsekce{DosaÅ¾enÃ© vÃ½sledky}
-PÅ™i optimalizaci SQL dotazÅ¯ byly dÅ¯kladnÄ› prozkoumÃ¡ny exekuÄnÃ­ plÃ¡ny jednotlivÃ½ch dlouhotrvajÃ­cÃ­ch SQL dotazÅ¯. Na spoustÄ› mÃ­stech byly Å™eÅ¡itelnÃ© pomocÃ­ indexace. Aby byly tyto kroky potvrzeny i v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e, bylo nasimulovÃ¡no prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e opÄ›t pomocÃ­ programu Siege, kterÃ½ vytvoÅ™il deset konkurenÄnÃ­ch uÅ¾ivatelÅ¯ s intervalem poÅ¾adavku do jednÃ© sekundy ve tÅ™ech repeticÃ­ch. Test probÄ›hl samozÅ™ejmÄ› pÅ™ed optimalizacÃ­ i po optimalizaci.
+\podsekce{Dosa¾ené vısledky}
+Pøi optimalizaci SQL dotazù byly dùkladnì prozkoumány exekuèní plány jednotlivıch dlouhotrvajících SQL dotazù. Na spoustì místech byly øe¹itelné pomocí indexace. Aby byly tyto kroky potvrzeny i v prostøedí vysoké zátì¾e, bylo nasimulováno prostøedí vysoké zátì¾e opìt pomocí programu Siege, kterı vytvoøil deset konkurenèních u¾ivatelù s intervalem po¾adavku do jedné sekundy ve tøech repeticích. Test probìhl samozøejmì pøed optimalizací i po optimalizaci.
 
-Z vÃ½sledkÅ¯ experimentu vyplÃ½vÃ¡, Å¾e SQL dotazy, kterÃ© trvaly nÄ›kolik Å™Ã¡dÅ¯ sekund byly zoptimalizovÃ¡ny aÅ¾ pod dobu jednÃ© sekundy. Z grafu v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e je vidÄ›t, Å¾e pÅ™ed optimalizacÃ­ byla maximÃ¡lnÃ­ doba jednoho poÅ¾adavku aÅ¾ 420 sekund. CelÃ½ proces byl hodnÄ› nestabilnÃ­ a kolÃ­savÃ½. Po optimalizaci je viditelnÃ© ustÃ¡lenÃ­ Äinnosti databÃ¡zovÃ©ho systÃ©mu a zmenÅ¡enÃ­ doby odezvy. ZrychlenÃ­ je vidÄ›t aÅ¾ o vÃ­ce neÅ¾ padesÃ¡t procent. DalÅ¡Ã­mi budoucÃ­mi Å™eÅ¡enÃ­mi, kterÃ¡ se by se dala aplikovat, mohou bÃ½t segmentace Äi replikace databÃ¡zovÃ©ho systÃ©mu. SamotnÃ¡ optimalizace SQL dotazÅ¯ Å™eÅ¡Ã­ urÄitÃ© problÃ©my, ovÅ¡em databÃ¡ze mÅ¯Å¾e pÅ™erÅ¯st aÅ¾ do takovÃ½ch rozmÄ›rÅ¯, kdy je potÅ™eba sÃ¡hnout k tÄ›mto dalÅ¡Ã­m Å™eÅ¡enÃ­m.
+Z vısledkù experimentu vyplıvá, ¾e SQL dotazy, které trvaly nìkolik øádù sekund byly zoptimalizovány a¾ pod dobu jedné sekundy. Z grafu v prostøedí vysoké zátì¾e je vidìt, ¾e pøed optimalizací byla maximální doba jednoho po¾adavku a¾ 420 sekund. Celı proces byl hodnì nestabilní a kolísavı. Po optimalizaci je viditelné ustálení èinnosti databázového systému a zmen¹ení doby odezvy. Zrychlení je vidìt a¾ o více ne¾ padesát procent. Dal¹ími budoucími øe¹eními, která se by se dala aplikovat, mohou bıt segmentace èi replikace databázového systému. Samotná optimalizace SQL dotazù øe¹í urèité problémy, ov¹em databáze mù¾e pøerùst a¾ do takovıch rozmìrù, kdy je potøeba sáhnout k tìmto dal¹ím øe¹ením.
 
-DatabÃ¡zovÃ¡ vrstva bÃ½vÃ¡ velice Äasto nejvÄ›tÅ¡Ã­m zdrojem zpomalenÃ­. Dotazy na tuto vrstvu jsou nejnÃ¡roÄnÄ›jÅ¡Ã­ ze vÅ¡ech procesÅ¯ v celÃ© webovÃ© architektuÅ™e. Proto je velice dÅ¯leÅ¾itÃ© tento proces nepodceÅˆovat a vÄ›novat tomu patÅ™iÄnÃ© prostÅ™edky.
+Databázová vrstva bıvá velice èasto nejvìt¹ím zdrojem zpomalení. Dotazy na tuto vrstvu jsou nejnároènìj¹í ze v¹ech procesù v celé webové architektuøe. Proto je velice dùle¾ité tento proces nepodceòovat a vìnovat tomu patøièné prostøedky.
 
 \obrazek
 \vlozeps{../images/graph-db.png}{0.4}
-\endobr{Graf s vÃ½sledky porovnÃ¡nÃ­ doby trvÃ¡nÃ­ jednotlivÃ½ch poÅ¾adavkÅ¯ pro repetice pÅ™ed a po optimalizaci SQL dotazÅ¯}
+\endobr{Graf s vısledky porovnání doby trvání jednotlivıch po¾adavkù pro repetice pøed a po optimalizaci SQL dotazù}
 
 \obrazek
 \vlozeps{../images/xhprof-model-db-no-optim.png}{0.4}
-\endobr{XHProf profilovÃ¡nÃ­ aplikaÄnÃ­ho modelu databÃ¡zovÃ½ch dotazÅ¯ pÅ™ed optimalizacÃ­ SQL dotazÅ¯}
+\endobr{XHProf profilování aplikaèního modelu databázovıch dotazù pøed optimalizací SQL dotazù}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/xhprof-model-db-optim.png}{0.4}
-\endobr{XHProf profilovÃ¡nÃ­ aplikaÄnÃ­ho modelu databÃ¡zovÃ½ch dotazÅ¯ po optimalizaci SQL dotazÅ¯}
+\endobr{XHProf profilování aplikaèního modelu databázovıch dotazù po optimalizaci SQL dotazù}
 
 
 \obrazek
 \vlozeps{../images/database-architecture.png}{0.5}
-\endobr{VÃ½slednÃ© zapojenÃ­ webovÃ© architektury s optimalizovanou databÃ¡zovou vrstvou}
+\endobr{Vısledné zapojení webové architektury s optimalizovanou databázovou vrstvou}
 
 
 % Memcached
-\sekce{AplikaÄnÃ­ distribuovanÃ¡ cache}
+\sekce{Aplikaèní distribuovaná cache}
 \label{sec:memcached}
-Ãškolem aplikaÄnÃ­ distribuovanÃ© cache je uklÃ¡dat jednou dotazovanÃ¡ data do cache pamÄ›ti a uÅ¡etÅ™it tak SQL dotazy do databÃ¡ze, kterÃ© mohou bÃ½t velice nÃ¡roÄnÃ©. ZÃ¡roveÅˆ ponechÃ¡vÃ¡ webovou aplikaci dynamickou. CelÃ½ tento proces je Å™Ã­zen aplikacÃ­ a jejÃ­ logikou, a tak je potÅ™eba uÅ¾ v nÃ¡vrhu poÄÃ­tat s existencÃ­ dalÅ¡Ã­ho typu ÃºloÅ¾iÅ¡tÄ›, s pÅ™Ã­stupem k tomuto ÃºloÅ¾iÅ¡ti a s invalidacÃ­ neplatnÃ½ch dat. PÅ™i pouÅ¾itÃ­ aplikaÄnÃ­ distribuovanÃ© cache vrstvy se kladou velkÃ© systÃ©movÃ© a vÃ½poÄetnÃ­ nÃ¡roky na aplikaÄnÃ­ vrstvu. JejÃ­m Ãºkolem uÅ¾ tak nenÃ­ jen vykonÃ¡vat zdrojovÃ½ kÃ³d PHP skriptÅ¯ a prÃ¡ce s databÃ¡zÃ­, ale navÃ­c i Å™Ã­zenÃ­ celÃ© logiky aplikaÄnÃ­ distribuovanÃ© cache. V tÃ©to prÃ¡ci jsou uvedeny vÃ½sledky, kterÃ© tato tvrzenÃ­ doklÃ¡dajÃ­.
+Úkolem aplikaèní distribuované cache je ukládat jednou dotazovaná data do cache pamìti a u¹etøit tak SQL dotazy do databáze, které mohou bıt velice nároèné. Zároveò ponechává webovou aplikaci dynamickou. Celı tento proces je øízen aplikací a její logikou, a tak je potøeba u¾ v návrhu poèítat s existencí dal¹ího typu úlo¾i¹tì, s pøístupem k tomuto úlo¾i¹ti a s invalidací neplatnıch dat. Pøi pou¾ití aplikaèní distribuované cache vrstvy se kladou velké systémové a vıpoèetní nároky na aplikaèní vrstvu. Jejím úkolem u¾ tak není jen vykonávat zdrojovı kód PHP skriptù a práce s databází, ale navíc i øízení celé logiky aplikaèní distribuované cache. V této práci jsou uvedeny vısledky, které tato tvrzení dokládají.
 
-\podsekce{Optimalizace aplikace pomocÃ­ Memcached}
-Ve tÃ©to prÃ¡ci byla zvolena aplikaÄnÃ­ distribuovanÃ¡ cache s nÃ¡zvem Memcached. Memcached obsahuje rozhranÃ­ pro prÃ¡ci v rÅ¯znÃ½ch programovacÃ­ch jazycÃ­ch, napÅ™Ã­klad v Java, Ruby On Rails, .NET, apod. SomozÅ™ejmÄ› obsahuje i rozhranÃ­ pro programovacÃ­ jazyk PHP, pouÅ¾itÃ©ho v mÃ© studii. PHP rozhranÃ­ pro Memcached je souÄÃ¡stÃ­ doplÅˆkovÃ½ch rozÅ¡Ã­Å™enÃ­ pro PHP, Äili instalace tohoto rozhranÃ­ je rychlÃ¡ a bezproblÃ©movÃ¡. Vzhledem k bohatÃ© podpoÅ™e rÅ¯znÃ½ch programovacÃ­ch jazykÅ¯, je moÅ¾nÃ© pouÅ¾Ã­t nÃ¡vrh, pÅ™Ã­stup a vÃ½sledky tÃ©to studie aplikaÄnÃ­ distribuovanÃ© cache Memcached i pro webovÃ© architektury implementovanÃ© v jinÃ½ch programovacÃ­ch jazycÃ­ch neÅ¾ jen PHP.
+\podsekce{Optimalizace aplikace pomocí Memcached}
+Ve této práci byla zvolena aplikaèní distribuovaná cache s názvem Memcached. Memcached obsahuje rozhraní pro práci v rùznıch programovacích jazycích, napøíklad v Java, Ruby On Rails, .NET, apod. Somozøejmì obsahuje i rozhraní pro programovací jazyk PHP, pou¾itého v mé studii. PHP rozhraní pro Memcached je souèástí doplòkovıch roz¹íøení pro PHP, èili instalace tohoto rozhraní je rychlá a bezproblémová. Vzhledem k bohaté podpoøe rùznıch programovacích jazykù, je mo¾né pou¾ít návrh, pøístup a vısledky této studie aplikaèní distribuované cache Memcached i pro webové architektury implementované v jinıch programovacích jazycích ne¾ jen PHP.
 
-Memcached je volnÄ› Å¡Ã­Å™itelnÃ½m software s vysokou rychlostÃ­ a stabilitou. SvÃ© uplatnÄ›nÃ­ najde v prostÅ™edÃ­ch vysokÃ© zÃ¡tÄ›Å¾e, kde dokÃ¡Å¾e rapidnÄ› snÃ­Å¾it dobu pÅ™Ã­stupu k datÅ¯m a zachovÃ¡vÃ¡ aplikaci dynamickou. Memcached byla vyvinuta a implentovÃ¡na v jazyce C pro Live Journal v roce 2003, kdy mÄ›la tato webovÃ¡ aplikace pÅ™Ã­stup nÄ›kolika miliÃ³nÅ¯ dynamickÃ©ho zobrazenÃ­ strÃ¡nek bÄ›hem jednoho dne. V takovÃ©mto prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e obstÃ¡la a stÃ¡vÃ¡ se dnes bÄ›Å¾nou souÄÃ¡stÃ­ vrstev webovÃ½ch arhitektur v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+Memcached je volnì ¹íøitelnım software s vysokou rychlostí a stabilitou. Své uplatnìní najde v prostøedích vysoké zátì¾e, kde doká¾e rapidnì sní¾it dobu pøístupu k datùm a zachovává aplikaci dynamickou. Memcached byla vyvinuta a implentována v jazyce C pro Live Journal v roce 2003, kdy mìla tato webová aplikace pøístup nìkolika miliónù dynamického zobrazení stránek bìhem jednoho dne. V takovémto prostøedí vysoké zátì¾e obstála a stává se dnes bì¾nou souèástí vrstev webovıch arhitektur v prostøedí vysoké zátì¾e.
 
-FyzickÃ½m ÃºloÅ¾iÅ¡tÄ›m pro Memcached je operaÄnÃ­ pamÄ›Å¥ RAM. Do pamÄ›ti uklÃ¡dÃ¡ hodnoty na principu Key-Value, Äili kaÅ¾dÃ¡ hodnota je uklÃ¡dÃ¡na a Ätena podle konkrÃ©tnÃ­ho klÃ­Äe. PÅ™ipojenÃ­ aplikaÄnÃ­ vrstvy k jednotlivÃ½m serverÅ¯m s Memcached nenÃ­ nikterak sloÅ¾itÃ©. TÄ›chto cache serverÅ¯, neboli uzlÅ¯, mÅ¯Å¾e bÃ½t i vÃ­ce a je moÅ¾nÃ© urÄit v jakÃ©m pomÄ›ru se budou hodnoty do jednotlivÃ½ch uzlÅ¯ uklÃ¡dat. Ne vÅ¡echny uzly totiÅ¾ mohou mÃ­t stejnÃ© hardwarovÃ© vybavenÃ­, zejmÃ©na stejnou velikost operaÄnÃ­ pamÄ›ti RAM. AplikaÄnÃ­ vrstva nemusÃ­ znÃ¡t informace o tom, na jakÃ©m konkrÃ©tnÃ­m uzlu se uloÅ¾ila jakÃ¡ hodnota. Pouze zaÅ¡le Memcached poÅ¾adavek pro hodnotu podle klÃ­Äe a Memcached uÅ¾ sama rozhoduje na kterÃ©m z uzlÅ¯ se tato hodnota nachÃ¡zÃ­. VÅ¡echny hodnoty jsou uklÃ¡dÃ¡ny serializovanÃ©, nebo v textovÃ© formÄ›, a nebo v nÄ›jakÃ©m jinÃ©m standardizovanÃ©m formÃ¡tu, kterÃ½ mÅ¯Å¾e urÄit aplikaÄnÃ­ vrstva.\cite{memcached}
+Fyzickım úlo¾i¹tìm pro Memcached je operaèní pamì» RAM. Do pamìti ukládá hodnoty na principu Key-Value, èili ka¾dá hodnota je ukládána a ètena podle konkrétního klíèe. Pøipojení aplikaèní vrstvy k jednotlivım serverùm s Memcached není nikterak slo¾ité. Tìchto cache serverù, neboli uzlù, mù¾e bıt i více a je mo¾né urèit v jakém pomìru se budou hodnoty do jednotlivıch uzlù ukládat. Ne v¹echny uzly toti¾ mohou mít stejné hardwarové vybavení, zejména stejnou velikost operaèní pamìti RAM. Aplikaèní vrstva nemusí znát informace o tom, na jakém konkrétním uzlu se ulo¾ila jaká hodnota. Pouze za¹le Memcached po¾adavek pro hodnotu podle klíèe a Memcached u¾ sama rozhoduje na kterém z uzlù se tato hodnota nachází. V¹echny hodnoty jsou ukládány serializované, nebo v textové formì, a nebo v nìjakém jiném standardizovaném formátu, kterı mù¾e urèit aplikaèní vrstva.\cite{memcached}
 
-SystÃ©m Memcached pÅ™edstavuje optimÃ¡lnÃ­ho kandidÃ¡ta pro tvorbu aplikaÄnÃ­ distribuovanÃ© cache pro dynamickÃ© webovÃ© aplikace. OvÅ¡em vzhledem k nÃ¡roÄnosti poÅ¾adavkÅ¯ pro tuto vrstvu webovÃ© architektury je dÅ¯leÅ¾itÃ½ sprÃ¡vnÃ½ nÃ¡vrh a implementace aplikace. To z toho dÅ¯vodu, aby byla uklÃ¡dÃ¡na a zobrazovÃ¡na ÄerstvÃ¡, aktuÃ¡lnÃ­ a sprÃ¡vnÃ¡ data pro zobrazenÃ­ korektnÃ­ch informacÃ­ pro uÅ¾ivatele webovÃ© aplikace.
+Systém Memcached pøedstavuje optimálního kandidáta pro tvorbu aplikaèní distribuované cache pro dynamické webové aplikace. Ov¹em vzhledem k nároènosti po¾adavkù pro tuto vrstvu webové architektury je dùle¾itı správnı návrh a implementace aplikace. To z toho dùvodu, aby byla ukládána a zobrazována èerstvá, aktuální a správná data pro zobrazení korektních informací pro u¾ivatele webové aplikace.
 
 \podsekce{Specifikace aplikace}
 \label{sec:app-model-memcached}
-Pro aplikaÄnÃ­ vrstvu byl pouÅ¾it programovacÃ­ jazy PHP s MVC frameworkem Symfony 2. KaÅ¾dÃ½ MVC framework by mÄ›l pracovat s daty a jejich ÃºloÅ¾iÅ¡tÄ›m ve vrstvÄ› Model. VyjÃ­mkou by nemÄ›li bÃ½t ani data uklÃ¡dÃ¡na pomocÃ­ distribuovanÃ© aplikaÄnÃ­ cache Memcached.
+Pro aplikaèní vrstvu byl pou¾it programovací jazy PHP s MVC frameworkem Symfony 2. Ka¾dı MVC framework by mìl pracovat s daty a jejich úlo¾i¹tìm ve vrstvì Model. Vyjímkou by nemìli bıt ani data ukládána pomocí distribuované aplikaèní cache Memcached.
 
-Model aplikaÄnÃ­ vrstvy je rozdÄ›len na dalÅ¡Ã­ ÄtyÅ™i vrstvy, kde kaÅ¾dÃ¡ z nich mÃ¡ svÅ¯j jasnÄ› definovanÃ½ ÃºÄel. PrvnÃ­ vrstvou je vrstva Service, neboli vrstva, kterÃ¡ je pÅ™Ã­stupna z ostatnÃ­ch vrstev MVC frameworku. TÃ©to vrstvÄ› mohou bÃ½t pÅ™edÃ¡ny i nÄ›jakÃ© parametry. ServisnÃ­ vrstva poÅ¾adavek zpracuje, zpracuje pÅ™edanÃ© parametry a pÅ™edÃ¡ Å™Ã­zenÃ­ dalÅ¡Ã­ vrstvÄ› modelu, kterou je DAO, neboli Data Access Object. ÃšÄelem tÃ©to vrstvy je vybrat zpÅ¯sob pÅ™istupu ke konkrÃ©tnÃ­m typÅ¯m ÃºloÅ¾iÅ¡Å¥. JednotlivÃ© typy ÃºloÅ¾iÅ¡Å¥ jsou pÅ™Ã­stupnÃ© pomocÃ­ vrstvy s nÃ¡zvem Mapper. Pro kaÅ¾dÃ½ typ ÃºloÅ¾iÅ¡tÄ› existuje Mapper, kterÃ½ mÃ¡ za Ãºkol realizovat danÃ½ poÅ¾adavek na konkrÃ©tnÃ­ ÃºloÅ¾iÅ¡tÄ›, napÅ™Ã­klad databÃ¡zi Äi aplikaÄnÃ­ distribuovanou cache. ÃšloÅ¾iÅ¡tÄ› tak tvoÅ™Ã­ poslednÃ­ vrstvu pro Model.
+Model aplikaèní vrstvy je rozdìlen na dal¹í ètyøi vrstvy, kde ka¾dá z nich má svùj jasnì definovanı úèel. První vrstvou je vrstva Service, neboli vrstva, která je pøístupna z ostatních vrstev MVC frameworku. Této vrstvì mohou bıt pøedány i nìjaké parametry. Servisní vrstva po¾adavek zpracuje, zpracuje pøedané parametry a pøedá øízení dal¹í vrstvì modelu, kterou je DAO, neboli Data Access Object. Úèelem této vrstvy je vybrat zpùsob pøistupu ke konkrétním typùm úlo¾i¹». Jednotlivé typy úlo¾i¹» jsou pøístupné pomocí vrstvy s názvem Mapper. Pro ka¾dı typ úlo¾i¹tì existuje Mapper, kterı má za úkol realizovat danı po¾adavek na konkrétní úlo¾i¹tì, napøíklad databázi èi aplikaèní distribuovanou cache. Úlo¾i¹tì tak tvoøí poslední vrstvu pro Model.
 
-Data, neboli dotazy se kterÃ½mi aplikace pracuje, mohou bÃ½t tÅ™Ã­ druhÅ¯ z pohledu ÄtenÃ­ z ÃºloÅ¾iÅ¡tÄ› a uklÃ¡dÃ¡nÃ­ do ÃºloÅ¾iÅ¡tÄ›. Dotazy mohou bÃ½t buÄ skalÃ¡rem, Äili jednou hodnotou, nebo entitou, neboli objektem s vÃ­ce atributy, Äi kolekcÃ­ entit. Tyto typy dotazÅ¯ jsou pÅ™edÃ¡ny buÄ databÃ¡zi a nebo distribuovanÃ© aplikaÄnÃ­ cache, podle toho jak rozhodne vrstva DAO. KaÅ¾dÃ½ z tÄ›chto dotazÅ¯ definuje svÅ¯j SQL dotaz pro naÄtenÃ­ z databÃ¡ze a klÃ­Ä pod kterÃ½m je uloÅ¾en do Memcached. Do Memcached jsou data uklÃ¡dÃ¡na serializovanÃ¡, a to z toho dÅ¯vodu, aby mohla bÃ½t znovuzkonstruovatelnÃ¡.
+Data, neboli dotazy se kterımi aplikace pracuje, mohou bıt tøí druhù z pohledu ètení z úlo¾i¹tì a ukládání do úlo¾i¹tì. Dotazy mohou bıt buï skalárem, èili jednou hodnotou, nebo entitou, neboli objektem s více atributy, èi kolekcí entit. Tyto typy dotazù jsou pøedány buï databázi a nebo distribuované aplikaèní cache, podle toho jak rozhodne vrstva DAO. Ka¾dı z tìchto dotazù definuje svùj SQL dotaz pro naètení z databáze a klíè pod kterım je ulo¾en do Memcached. Do Memcached jsou data ukládána serializovaná, a to z toho dùvodu, aby mohla bıt znovuzkonstruovatelná.
 
-NejvÄ›tÅ¡Ã­ problÃ©m obecnÄ› pro cache vrstvy bÃ½vÃ¡ jejich invalidace. V distribuovanÃ½ch aplikaÄnÃ­ch cache vrstvÃ¡ch mohou vznikat tzv. cache kaskÃ¡dy. VyjÃ­mkou tomu nebylo ani v mÃ©m nÃ¡vrhu aplikace. Tyto kaskÃ¡dy vznikajÃ­ tÃ­m, Å¾e stejnÃ¡ data jsou interpretovÃ¡na v jinÃ½ch kontextech. Jakmile dojde ke zmÄ›nÄ› tÄ›chto dat, musÃ­ se zmÄ›nit i celÃ¡ tato kaskÃ¡da. CelÃ¡ kaskÃ¡da se tak musÃ­ invalidovat. JednÃ¡ se o zÃ¡vislosti mezi jinÃ½mi vÃ½sledky dotazÅ¯ na stejnÃ½ch datech. Jako pÅ™Ã­klad mÅ¯Å¾u uvÃ©st, Å¾e jeden stejnÃ½ ÄlÃ¡nek se mÅ¯Å¾e nachÃ¡zet v kolekci nejnovÄ›jÅ¡Ã­ch ÄlÃ¡nkÅ¯ a zÃ¡roveÅˆ v kolekci ÄlÃ¡nkÅ¯ danÃ© kategorie. Jakmile dojde ke zmÄ›nÄ› ÄlÃ¡nku v databÃ¡zi, je potÅ™eba invalidovat obÄ› dvÄ› tyto kolekce v cache pamÄ›ti Memcached. V tÃ©to prÃ¡ci je tato skuteÄnost Å™eÅ¡ena pomocÃ­ Interface Dependency Injection, kterÃ¡ urÄuje zpÅ¯sob pÅ™edÃ¡vÃ¡nÃ­ zÃ¡vislostÃ­ mezi jednotlivÃ½mi objekty. VytvoÅ™Ã­ se tak nÄ›jakÃ¡ konkrÃ©tnÃ­ kaskÃ¡da, kterÃ¡ urÄuje zÃ¡vislosti mezi konkrÃ©tnÃ­mi daty a jednotlivÃ½mi dotazy mÄ›nÃ­cÃ­ data aplikace. Jakmile dojde ke zmÄ›nÄ› urÄitÃ½ch dat, tak kaskÃ¡da invaliduje vÅ¡echny zÃ¡vislosti dotazÅ¯ na tÄ›chto datech.
+Nejvìt¹í problém obecnì pro cache vrstvy bıvá jejich invalidace. V distribuovanıch aplikaèních cache vrstvách mohou vznikat tzv. cache kaskády. Vyjímkou tomu nebylo ani v mém návrhu aplikace. Tyto kaskády vznikají tím, ¾e stejná data jsou interpretována v jinıch kontextech. Jakmile dojde ke zmìnì tìchto dat, musí se zmìnit i celá tato kaskáda. Celá kaskáda se tak musí invalidovat. Jedná se o závislosti mezi jinımi vısledky dotazù na stejnıch datech. Jako pøíklad mù¾u uvést, ¾e jeden stejnı èlánek se mù¾e nacházet v kolekci nejnovìj¹ích èlánkù a zároveò v kolekci èlánkù dané kategorie. Jakmile dojde ke zmìnì èlánku v databázi, je potøeba invalidovat obì dvì tyto kolekce v cache pamìti Memcached. V této práci je tato skuteènost øe¹ena pomocí Interface Dependency Injection, která urèuje zpùsob pøedávání závislostí mezi jednotlivımi objekty. Vytvoøí se tak nìjaká konkrétní kaskáda, která urèuje závislosti mezi konkrétními daty a jednotlivımi dotazy mìnící data aplikace. Jakmile dojde ke zmìnì urèitıch dat, tak kaskáda invaliduje v¹echny závislosti dotazù na tìchto datech.
 
-Takto jsou splnÄ›ny vÅ¡chny podmÃ­nky pro sprÃ¡vnou prÃ¡ci a organizaci aplikaÄnÃ­ distribuovanÃ© cache. Data jsou do cache pamÄ›ti uklÃ¡dÃ¡na v nejmenÅ¡Ã­ch a jasnÄ› definovanÃ½ch formÃ¡tech, podle jednoznaÄnÃ©ho a konkrÃ©tnÃ­ho klÃ­Äe a jsou uklÃ¡dÃ¡na znovuzkonstruovatelnÃ¡. Invalidace dat uloÅ¾enÃ¡ch v cache pamÄ›ti je Å™eÅ¡ena systÃ©mem invalidaÄnÃ­ch kaskÃ¡d.
+Takto jsou splnìny v¹chny podmínky pro správnou práci a organizaci aplikaèní distribuované cache. Data jsou do cache pamìti ukládána v nejmen¹ích a jasnì definovanıch formátech, podle jednoznaèného a konkrétního klíèe a jsou ukládána znovuzkonstruovatelná. Invalidace dat ulo¾enách v cache pamìti je øe¹ena systémem invalidaèních kaskád.
 
-\podsekce{DosaÅ¾enÃ© vÃ½sledky}
-Po zhodnocenÃ­ dosaÅ¾enÃ½ch vÃ½sledkÅ¯ webovÃ© architektury s aplikaÄnÃ­ distribuovanou cache pomocÃ­ Memcached bylo potvrzeno dalÅ¡Ã­ zrychlenÃ­ odezvy odpovÄ›dÃ­ na poÅ¾adavky klientÅ¯ v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. OpÄ›t bylo nasimulovÃ¡no prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e pomocÃ­ zÃ¡tÄ›Å¾ovÃ½ch testÅ¯ programem Siege, kdy odpovÄ›Ä poÅ¾adovalo deset konkurenÄnÃ­ch uÅ¾ivatelÅ¯ ve stejnÃ½ moment ve tÅ™ech repeticÃ­ch. Z XHProf profilovÃ¡nÃ­ byly vyprofilovÃ½ny vÃ½sledky pro jeden poÅ¾adavek jak pro situaci s pouÅ¾itÃ­m aplikaÄnÃ­ distribuovanÃ© cache, tak i pro situaci s optimalizovanou databÃ¡zÃ­ bez pouÅ¾itÃ­ aplikaÄnÃ­ ditribuovanÃ© cache. VÃ½sledky tohoto profilovÃ¡nÃ­ jsou takovÃ©to:
+\podsekce{Dosa¾ené vısledky}
+Po zhodnocení dosa¾enıch vısledkù webové architektury s aplikaèní distribuovanou cache pomocí Memcached bylo potvrzeno dal¹í zrychlení odezvy odpovìdí na po¾adavky klientù v prostøedí vysoké zátì¾e. Opìt bylo nasimulováno prostøedí vysoké zátì¾e pomocí zátì¾ovıch testù programem Siege, kdy odpovìï po¾adovalo deset konkurenèních u¾ivatelù ve stejnı moment ve tøech repeticích. Z XHProf profilování byly vyprofilovıny vısledky pro jeden po¾adavek jak pro situaci s pou¾itím aplikaèní distribuované cache, tak i pro situaci s optimalizovanou databází bez pou¾ití aplikaèní ditribuované cache. Vısledky tohoto profilování jsou takovéto:
 
 \begin{itemize}
-\item neoptimalovanÃ© - bez Memcached - 25,9s
-\item optimalizovanÃ© - s Memcached - 0.95s
+\item neoptimalované - bez Memcached - 25,9s
+\item optimalizované - s Memcached - 0.95s
 \end{itemize}
 
-VÃ½sledky potvrdili, Å¾e doÅ¡lo k velkÃ©mu zrychlenÃ­ odpovÄ›dÃ­. ZÃ¡roveÅˆ bylo otestovÃ¡no, Å¾e aplikace stÃ¡le zÅ¯stÃ¡vÃ¡ dynamickou a vÅ¡echna data jsou invalidovÃ¡na sprÃ¡vnÄ› a ve sprÃ¡vnÃ½ Äas. OvÅ¡em stÃ¡le zÅ¯stÃ¡vÃ¡ obrovskÃ© zatÃ­Å¾enÃ­ aplikaÄnÃ­ vrstvy. Z tohoto faktu vyplÃ½vÃ¡, Å¾e pÅ™i pouÅ¾itÃ­ aplikaÄnÃ­ distribuovanÃ© cache je potÅ™eba poÄÃ­tat se zatÃ­Å¾enÃ­m aplikaÄnÃ­ vrstvy, kterÃ© je nutno Å™eÅ¡it pomocÃ­ vÃ­ce aplikaÄnÃ­ch serverÅ¯ a vyvaÅ¾ovÃ¡nÃ­m zÃ¡tÄ›Å¾e (load balancing) mezi tyto servery (viz. kapitola \ref{sec:load-balancing}). Server urÄen pro aplikaÄnÃ­ distribuovanou cache nemÄ›l Å¾Ã¡dnÃ© velkÃ© vytÃ­Å¾enÃ­ a tudÃ­Å¾ se zde nachÃ¡zÃ­ potenciÃ¡l, kterÃ½ se stÃ¡le jestÄ› mÅ¯Å¾e vyuÅ¾Ã­t.
+Vısledky potvrdili, ¾e do¹lo k velkému zrychlení odpovìdí. Zároveò bylo otestováno, ¾e aplikace stále zùstává dynamickou a v¹echna data jsou invalidována správnì a ve správnı èas. Ov¹em stále zùstává obrovské zatí¾ení aplikaèní vrstvy. Z tohoto faktu vyplıvá, ¾e pøi pou¾ití aplikaèní distribuované cache je potøeba poèítat se zatí¾ením aplikaèní vrstvy, které je nutno øe¹it pomocí více aplikaèních serverù a vyva¾ováním zátì¾e (load balancing) mezi tyto servery (viz. kapitola \ref{sec:load-balancing}). Server urèen pro aplikaèní distribuovanou cache nemìl ¾ádné velké vytí¾ení a tudí¾ se zde nachází potenciál, kterı se stále jestì mù¾e vyu¾ít.
 
 \obrazek
 \vlozeps{../images/graph-memcached.png}{0.4}
-\endobr{Graf s vÃ½sledky porovnÃ¡nÃ­ doby trvÃ¡nÃ­ jednotlivÃ½ch poÅ¾adavkÅ¯ pro repetice v prostÅ™edÃ­ s Memcached a v prostÅ™edÃ­ s optimalizovanou databÃ¡zÃ­ PostgreSQL}
+\endobr{Graf s vısledky porovnání doby trvání jednotlivıch po¾adavkù pro repetice v prostøedí s Memcached a v prostøedí s optimalizovanou databází PostgreSQL}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/xhprof-model-memcached-no-optim.png}{0.32}
-\endobr{XHProf profilovÃ¡nÃ­ aplikaÄnÃ­ho modelu dotazÅ¯ pÅ™ed optimalizacÃ­ pomocÃ­ Memcached}
+\endobr{XHProf profilování aplikaèního modelu dotazù pøed optimalizací pomocí Memcached}
 
 \obrazek
 \vlozeps{../images/xhprof-model-memcached-optim.png}{0.32}
-\endobr{XHProf profilovÃ¡nÃ­ aplikaÄnÃ­ho modelu dotazÅ¯ po optimalizaci pomocÃ­ Memcached}
+\endobr{XHProf profilování aplikaèního modelu dotazù po optimalizaci pomocí Memcached}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/memcached-architecture.png}{0.5}
-\endobr{VÃ½slednÃ© zapojenÃ­ webovÃ© architektury s aplikaÄnÃ­ distribuovanou cache vrstvou Memcached}
+\endobr{Vısledné zapojení webové architektury s aplikaèní distribuovanou cache vrstvou Memcached}
 
 
 % Reverse Proxy Cache
-\sekce{ReverznÃ­ proxy cache}
+\sekce{Reverzní proxy cache}
 \label{sec:reverse-proxy-cache}
-NejrychlejÅ¡Ã­m a nejefektivnÄ›jÅ¡Ã­ zpÅ¯sobem zÅ¯stÃ¡vÃ¡ stÃ¡le pouÅ¾itÃ­ reverznÃ­ proxy cache. OvÅ¡em aplikace tak pÅ™ichÃ¡zÃ­ o dynamiÄnost a stÃ¡vÃ¡ se vÃ­ce statickou. Ale i tak se dajÃ­ najÃ­t situace, kdy je moÅ¾nÃ© pouÅ¾itÃ­ statickÃ©ho uklÃ¡dÃ¡nÃ­ do cache pamÄ›ti reverznÃ­ proxy cache. NapÅ™Ã­klad archiv ÄlÃ¡nkÅ¯ urÄitÃ©ho obdobÃ­ mÅ¯Å¾e bÃ½t statickÃ©ho charakteru, ponÄ›vadÅ¾ takovÃ½to obsah se dynamicky Äasto nemÄ›nÃ­. Existuje spousta programÅ¯ pro Å™eÅ¡enÃ­ klasickÃ© reverznÃ­ proxy cache (viz. kapitola \ref{sec:reverse-proxy}). V tÃ©to ÄÃ¡sti svÃ© prÃ¡ce popÃ­Å¡u netradiÄnÃ­ zpÅ¯sob pro Å™eÅ¡enÃ­ reverznÃ­ proxy cache, ale tento zpÅ¯sob mÃ¡ svÃ© uplatnÄ›nÃ­ v praxi a navazuje na pÅ™edchozÃ­ kapitolu \ref{sec:memcached}.
+Nejrychlej¹ím a nejefektivnìj¹í zpùsobem zùstává stále pou¾ití reverzní proxy cache. Ov¹em aplikace tak pøichází o dynamiènost a stává se více statickou. Ale i tak se dají najít situace, kdy je mo¾né pou¾ití statického ukládání do cache pamìti reverzní proxy cache. Napøíklad archiv èlánkù urèitého období mù¾e bıt statického charakteru, ponìvad¾ takovıto obsah se dynamicky èasto nemìní. Existuje spousta programù pro øe¹ení klasické reverzní proxy cache (viz. kapitola \ref{sec:reverse-proxy}). V této èásti své práce popí¹u netradièní zpùsob pro øe¹ení reverzní proxy cache, ale tento zpùsob má své uplatnìní v praxi a navazuje na pøedchozí kapitolu \ref{sec:memcached}.
 
-\podsekce{Optimalizace pomocÃ­ reverznÃ­ proxy cache Nginx s Memcached}
-JednÃ­m z modernÃ­ch nÃ¡strojÅ¯ pro reverznÃ­ proxy cache a se nazÃ½vÃ¡ Nginx. Nginx mÃ¡ spoustu dalÅ¡Ã­ch funkcionalit a modulÅ¯. Obsahuje modul pro webovÃ½ server, pro rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e (load balancing), pro geografickÃ© rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e, pro servÃ­rovÃ¡nÃ­ obrÃ¡zkÅ¯, pro podporu memcached, a spoustu dalÅ¡Ã­ch modulÅ¯. Tento opravdu silnÃ½ nÃ¡stroj byl vytvoÅ™en programÃ¡torem Igorem Sysoevem v roce 2004 pro druhou nejvÄ›tÅ¡Ã­ ruskou webovou aplikaci Rambler.ru, kterÃ¡ servÃ­rovala pÅ™es 500 milionÅ¯ HTTP odpovÄ›dÃ­ bÄ›hem jednoho dne. Nginx jako reverznÃ­ proxy cache je Å™Ã­zen HTTP hlaviÄkami jako klasickÃ¡ reverznÃ­ proxy cache (viz. kapitola \ref{sec:http-headers}). HTTP odpovÄ›di uklÃ¡dÃ¡ do pÅ™esnÄ› definovanÃ©ho adresÃ¡Å™e souborovÃ©ho systÃ©mu. Tento klasickÃ½ zpÅ¯sob se hodÃ­ pro skuteÄnÃ½ statickÃ½ obsah, kterÃ½m jsou obrÃ¡zky, CSS soubory, JS soubory apod.\cite{nginx}
+\podsekce{Optimalizace pomocí reverzní proxy cache Nginx s Memcached}
+Jedním z moderních nástrojù pro reverzní proxy cache a se nazıvá Nginx. Nginx má spoustu dal¹ích funkcionalit a modulù. Obsahuje modul pro webovı server, pro rozlo¾ení zátì¾e (load balancing), pro geografické rozlo¾ení zátì¾e, pro servírování obrázkù, pro podporu memcached, a spoustu dal¹ích modulù. Tento opravdu silnı nástroj byl vytvoøen programátorem Igorem Sysoevem v roce 2004 pro druhou nejvìt¹í ruskou webovou aplikaci Rambler.ru, která servírovala pøes 500 milionù HTTP odpovìdí bìhem jednoho dne. Nginx jako reverzní proxy cache je øízen HTTP hlavièkami jako klasická reverzní proxy cache (viz. kapitola \ref{sec:http-headers}). HTTP odpovìdi ukládá do pøesnì definovaného adresáøe souborového systému. Tento klasickı zpùsob se hodí pro skuteènı statickı obsah, kterım jsou obrázky, CSS soubory, JS soubory apod.\cite{nginx}
 
-V tÃ©to prÃ¡ci bylo pouÅ¾ito Nginx jako reverznÃ­ proxy cache s modulem pro Memcached. Tento netradiÄnÃ­ zpÅ¯sob Å™eÅ¡enÃ­ reverznÃ­ proxy cache s sebou pÅ™inÃ¡Å¡Ã­ urÄitÃ© vÃ½hody. Jednou z vÃ½hod je, Å¾e Å™Ã­zenÃ­ Memcached je plnÄ› pod kontrolou aplikaÄnÃ­ vrstvy. AplikaÄnÃ­ vrstva uklÃ¡dÃ¡ a invaliduje vÃ½slednÃ© HTTP odpovÄ›di na HTTP poÅ¾adavky klientÅ¯ do Memcached pod URL adresou poÅ¾adavku. Memcached je pouÅ¾ita reverznÃ­ proxy cache Nginx pro ÄtenÃ­. Jakmile Nginx obdrÅ¾Ã­ HTTP poÅ¾adavek a z konfigurace zjistÃ­, Å¾e HTTP odpovÄ›Ä je moÅ¾nÃ© hledat pod URL adresou v pamÄ›ti Memcached, zkusÃ­ ji tam najÃ­t. Pokud ji Nginx nenalezne, propustÃ­ tento poÅ¾adavek dÃ¡le na aplikaÄnÃ­ vrstvu. AplikaÄnÃ­ vrstva sestavÃ­ HTTP odpovÄ›Ä, uloÅ¾Ã­ ji pod URL adresou HTTP poÅ¾adavku do cache pamÄ›ti Memcached, a poÅ¡le klientovi. PÅ™i pÅ™Ã­Å¡tÃ­m HTTP poÅ¾adavku Nginx nalezne HTTP odpvÄ›Ä v pamÄ›ti Memcached a poÅ¡le klientovi, aniÅ¾ by poÅ¾adavek propustil na aplikaÄnÃ­ vrstvu. TakovÃ©to chovÃ¡nÃ­ je obdobnÃ© jako pÅ™i klasickÃ©m nastavenÃ­ reverznÃ­ proxy cache, ovÅ¡em s tÃ­m rozdÃ­lem, Å¾e uklÃ¡dÃ¡nÃ­ a invalidace nejsou Å™Ã­zeny HTTP hlaviÄkami. DalÅ¡i vÃ½hodou mÅ¯Å¾e bÃ½t vyuÅ¾itÃ­ Ajaxu a metodiky aplikaÄnÃ­ distribuovanÃ© cache pro vytvoÅ™enÃ­ dynamickÃ©ho pÅ™Ã­stupu uklÃ¡dÃ¡nÃ­ a invalidace dat do cache pamÄ›ti pro Memcached a Nginx.\cite{nginx-memcached}
+V této práci bylo pou¾ito Nginx jako reverzní proxy cache s modulem pro Memcached. Tento netradièní zpùsob øe¹ení reverzní proxy cache s sebou pøiná¹í urèité vıhody. Jednou z vıhod je, ¾e øízení Memcached je plnì pod kontrolou aplikaèní vrstvy. Aplikaèní vrstva ukládá a invaliduje vısledné HTTP odpovìdi na HTTP po¾adavky klientù do Memcached pod URL adresou po¾adavku. Memcached je pou¾ita reverzní proxy cache Nginx pro ètení. Jakmile Nginx obdr¾í HTTP po¾adavek a z konfigurace zjistí, ¾e HTTP odpovìï je mo¾né hledat pod URL adresou v pamìti Memcached, zkusí ji tam najít. Pokud ji Nginx nenalezne, propustí tento po¾adavek dále na aplikaèní vrstvu. Aplikaèní vrstva sestaví HTTP odpovìï, ulo¾í ji pod URL adresou HTTP po¾adavku do cache pamìti Memcached, a po¹le klientovi. Pøi pøí¹tím HTTP po¾adavku Nginx nalezne HTTP odpvìï v pamìti Memcached a po¹le klientovi, ani¾ by po¾adavek propustil na aplikaèní vrstvu. Takovéto chování je obdobné jako pøi klasickém nastavení reverzní proxy cache, ov¹em s tím rozdílem, ¾e ukládání a invalidace nejsou øízeny HTTP hlavièkami. Dal¹i vıhodou mù¾e bıt vyu¾ití Ajaxu a metodiky aplikaèní distribuované cache pro vytvoøení dynamického pøístupu ukládání a invalidace dat do cache pamìti pro Memcached a Nginx.\cite{nginx-memcached}
 
 \obrazek
 \vlozeps{../images/nginx-memcached.png}{0.5}
-\endobr{SchÃ©ma webovÃ© architektury pÅ™i pouÅ¾itÃ­ Nginx s modulem pro Memcached}
+\endobr{Schéma webové architektury pøi pou¾ití Nginx s modulem pro Memcached}
 
-\podsekce{VyuÅ¾itÃ­ Ajax a webovÃ½ch sluÅ¾eb pro NGINX s Memcached}
+\podsekce{Vyu¾ití Ajax a webovıch slu¾eb pro NGINX s Memcached}
 \label{sec:ajax-nginx-memcached}
-AplikaÄnÃ­ vrstva nemusÃ­ uklÃ¡dat do cache pamÄ›ti Memcached pro Nginx pouze celÃ© kompletnÃ­ HTML strÃ¡nky, neboli odpovÄ›di pro HTTP poÅ¾adavky. MÅ¯Å¾e uklÃ¡dat i dalÅ¡Ã­ typy odpovÄ›dÃ­, jako napÅ™Ã­klad Ajaxem standardizovanÃ½ JSON, coÅ¾ je druh pÅ™enosu dat mezi AplikaÄnÃ­ vrstvou a technologiÃ­ Ajax klientskÃ© vrstvy. DÃ­ky Ajax tak mÅ¯Å¾e dojÃ­t k rozdÄ›lenÃ­ jednoho HTTP poÅ¾adavku na vÃ­ce rÅ¯znÃ½ch poÅ¾adavkÅ¯. Klient zaÅ¡le HTTP poÅ¾adavek a Nginx navrÃ¡tÃ­ HTTP odpovÄ›Ä ve formÄ› statickÃ© HTML strÃ¡nky, kterÃ¡ obsahuje nÄ›kolik dalÅ¡Ã­ch poÅ¾adavkÅ¯ pomocÃ­ Ajax. OdpovÄ›di na tyto Ajax poÅ¾adavky mohou bÃ½t dynamickÃ©ho Äi statickÃ©ho charakteru. TÃ­mto zpÅ¯sobem je webovÃ¡ aplikace rozdÄ›lena mezi vÃ­ce webovÃ½ch sluÅ¾eb, kterÃ© mohou pracovat samostatnÄ›ji a nezÃ¡visle na sobÄ›, a aplikace se tak stÃ¡vÃ¡ vÃ­ce Å¡kÃ¡lovatelnou.
+Aplikaèní vrstva nemusí ukládat do cache pamìti Memcached pro Nginx pouze celé kompletní HTML stránky, neboli odpovìdi pro HTTP po¾adavky. Mù¾e ukládat i dal¹í typy odpovìdí, jako napøíklad Ajaxem standardizovanı JSON, co¾ je druh pøenosu dat mezi Aplikaèní vrstvou a technologií Ajax klientské vrstvy. Díky Ajax tak mù¾e dojít k rozdìlení jednoho HTTP po¾adavku na více rùznıch po¾adavkù. Klient za¹le HTTP po¾adavek a Nginx navrátí HTTP odpovìï ve formì statické HTML stránky, která obsahuje nìkolik dal¹ích po¾adavkù pomocí Ajax. Odpovìdi na tyto Ajax po¾adavky mohou bıt dynamického èi statického charakteru. Tímto zpùsobem je webová aplikace rozdìlena mezi více webovıch slu¾eb, které mohou pracovat samostatnìji a nezávisle na sobì, a aplikace se tak stává více ¹kálovatelnou.
 
-Vzhledem k tomu, Å¾e aplikace a jejÃ­ logika Å™Ã­dÃ­ uklÃ¡dÃ¡nÃ­ do cache pamÄ›ti Memcached, mÅ¯Å¾e tak Å™Ã­dit i jejich invalidaci podobnÃ½m zpÅ¯sobem jako v aplikaÄnÃ­ distribuovanÃ© cache (viz. kapitola \ref{sec:app-model-memcached}). HlavnÃ­ rozdÃ­l je v tom, Å¾e v pÅ™Ã­padÄ› aplikaÄnÃ­ distribuovanÃ© cache je prÃ¡ce s cache Å™Ã­zena plnÄ› aplikaÄnÃ­ vrstvou, jak pÅ™i zmÄ›nÄ› tak ÄtenÃ­. V tomto pÅ™Ã­padÄ› dochÃ¡zÃ­ k velkÃ©mu vytÃ­Å¾enÃ­ aplikaÄnÃ­ vrstvy (viz. kapitola \ref{sec:memcached}). KdeÅ¾to systÃ©m webovÃ© architektury s Nginx a Memcached je Å™Ã­zen aplikaÄnÃ­ vrstvou pro zmÄ›nu a invalidaci dat, a reverznÃ­ proxy cache vrstvou pro ÄtenÃ­ a zÃ­skÃ¡nÃ­ dat z cache pamÄ›ti. DochÃ¡zÃ­ tak k hybridnÃ­mu zpÅ¯sobu prÃ¡ce s reverznÃ­ proxy cache a aplikaÄnÃ­ distribuovanou cache. Toho je moÅ¾nÃ© vyuÅ¾Ã­t pro webovÃ© sluÅ¾by, kterÃ© tak mohou bÃ½t i dynamickÃ©ho charakteru.
+Vzhledem k tomu, ¾e aplikace a její logika øídí ukládání do cache pamìti Memcached, mù¾e tak øídit i jejich invalidaci podobnım zpùsobem jako v aplikaèní distribuované cache (viz. kapitola \ref{sec:app-model-memcached}). Hlavní rozdíl je v tom, ¾e v pøípadì aplikaèní distribuované cache je práce s cache øízena plnì aplikaèní vrstvou, jak pøi zmìnì tak ètení. V tomto pøípadì dochází k velkému vytí¾ení aplikaèní vrstvy (viz. kapitola \ref{sec:memcached}). Kde¾to systém webové architektury s Nginx a Memcached je øízen aplikaèní vrstvou pro zmìnu a invalidaci dat, a reverzní proxy cache vrstvou pro ètení a získání dat z cache pamìti. Dochází tak k hybridnímu zpùsobu práce s reverzní proxy cache a aplikaèní distribuovanou cache. Toho je mo¾né vyu¾ít pro webové slu¾by, které tak mohou bıt i dynamického charakteru.
 
-\podsekce{DosaÅ¾enÃ© vÃ½sledky}
-Z dosaÅ¾enÃ½ch vÃ½sledkÅ¯ vyplÃ½vÃ¡ absolutnÄ› nejrychlejÅ¡Ã­ doba pro HTTP odpovÄ›di ze vÅ¡ech uvedenÃ½ch experimentÅ¯. OpÄ›t bylo nasimulovÃ¡no prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e pro deset konkurenÄnÃ­ch uÅ¾ivatelÅ¯ v jeden samÃ½ okamÅ¾ik a ve tÅ™ech repeticÃ­ch. OvÅ¡em tento experiment mÃ¡ tu nevÃ½hodu, Å¾e obsah aplikace se stÃ¡vÃ¡ statickÃ½m. OvÅ¡em pÅ™i aplikaci myÅ¡lenky z kapitoly \ref{sec:ajax-nginx-memcached} jsou HTTP odpovÄ›di servÃ­rovÃ¡ny uÅ¾ivateli velice rychle, a jakmile jsou data zmÄ›nÄ›na, mÅ¯Å¾e dojÃ­t k ivalidaci dat pomocÃ­ aplikaÄnÃ­ vrstvy (viz. kapitola \ref{sec:ajax-nginx-memcached}). Tak se obsah webovÃ© aplikace mÅ¯Å¾e stÃ¡t dynamickÃ½m. Tento zpÅ¯sob dynamickÃ©ho chovÃ¡nÃ­ byl implementovÃ¡n v aplikaÄnÃ­ vrstvÄ› pro Nginx.
+\podsekce{Dosa¾ené vısledky}
+Z dosa¾enıch vısledkù vyplıvá absolutnì nejrychlej¹í doba pro HTTP odpovìdi ze v¹ech uvedenıch experimentù. Opìt bylo nasimulováno prostøedí vysoké zátì¾e pro deset konkurenèních u¾ivatelù v jeden samı okam¾ik a ve tøech repeticích. Ov¹em tento experiment má tu nevıhodu, ¾e obsah aplikace se stává statickım. Ov¹em pøi aplikaci my¹lenky z kapitoly \ref{sec:ajax-nginx-memcached} jsou HTTP odpovìdi servírovány u¾ivateli velice rychle, a jakmile jsou data zmìnìna, mù¾e dojít k ivalidaci dat pomocí aplikaèní vrstvy (viz. kapitola \ref{sec:ajax-nginx-memcached}). Tak se obsah webové aplikace mù¾e stát dynamickım. Tento zpùsob dynamického chování byl implementován v aplikaèní vrstvì pro Nginx.
 
 \obrazek
 \vlozeps{../images/graph-nginx.png}{0.4}
-\endobr{Graf s vÃ½sledky porovnÃ¡nÃ­ doby trvÃ¡nÃ­ jednotlivÃ½ch poÅ¾adavkÅ¯ pro repetice s reverznÃ­ proxy cache Nginx s pamÄ›tÃ­ Memcached}
+\endobr{Graf s vısledky porovnání doby trvání jednotlivıch po¾adavkù pro repetice s reverzní proxy cache Nginx s pamìtí Memcached}
 
 \clearpage
 
 \obrazek
 \vlozeps{../images/nginx-architecture.png}{0.5}
-\endobr{VÃ½slednÃ© zapojenÃ­ webovÃ© architektury s reverznÃ­ proxy cache vrstvou Nginx s pamÄ›tÃ­ Memcached}
+\endobr{Vısledné zapojení webové architektury s reverzní proxy cache vrstvou Nginx s pamìtí Memcached}
 
 
 
 % Diskuze
 \kapitola{Diskuze}
-Tato prÃ¡ce se nejvÃ­ce zamÄ›Å™ila na jednotlivÃ© vrstvy webovÃ© architektury, obzvlÃ¡Å¡tÄ› na vrstvy serverovÃ© ÄÃ¡sti. Celkem byly provedeny ÄtyÅ™i vÄ›tÅ¡Ã­ experimenty, jeden experiment pro aplikaÄnÃ­ vrstvu, jeden pro databÃ¡zovou vrstvu, jeden pro aplikaÄnÃ­ distribuovanou cache vrstvu a jeden pro reverznÃ­ proxy cache vrstvu. Pro kaÅ¾dÃ½ z testÅ¯ byla navrÅ¾ena, implementovÃ¡na, otestovÃ¡na a vyhodnocena jejich webovÃ¡ architektura, konfigurace, funkcionalita, zÃ¡tÄ›Å¾ovÃ© testy a schopnost obstÃ¡t v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e.
+Tato práce se nejvíce zamìøila na jednotlivé vrstvy webové architektury, obzvlá¹tì na vrstvy serverové èásti. Celkem byly provedeny ètyøi vìt¹í experimenty, jeden experiment pro aplikaèní vrstvu, jeden pro databázovou vrstvu, jeden pro aplikaèní distribuovanou cache vrstvu a jeden pro reverzní proxy cache vrstvu. Pro ka¾dı z testù byla navr¾ena, implementována, otestována a vyhodnocena jejich webová architektura, konfigurace, funkcionalita, zátì¾ové testy a schopnost obstát v prostøedí vysoké zátì¾e.
 
-PrvnÃ­ experiment se tÃ½kal aplikaÄnÃ­ vrstvy a moÅ¾nosti vyuÅ¾itÃ­ Opcode Cache pro programovacÃ­ jazyk PHP (viz. kapitola \ref{sec:optim-apc}). Konfigurace, implementace a realizace tohoto experimentu nebyla aÅ¾ tak nÃ¡roÄnÃ¡ a pracnÃ¡. Vzhledem k nastudovanÃ½m teoretickÃ½m zÃ¡kladÅ¯m, kdy bylo znÃ¡mo jakou cestou se vydat, nebyl experiment aÅ¾ tak sloÅ¾itÃ½ a vÃ½sledky jsou vÃ­ce neÅ¾ dobrÃ©. Tento postup je tedy moÅ¾nÃ© doporuÄit pro ostrÃ© nasazenÃ­. V prostÅ™edÃ­ s opravdu vysokou zÃ¡tÄ›Å¾Ã­ je nasazenÃ­ vÃ­ce aplikaÄnÃ­ch serverÅ¯ pro rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e (load balancing) nevyhnutelnÃ©.
+První experiment se tıkal aplikaèní vrstvy a mo¾nosti vyu¾ití Opcode Cache pro programovací jazyk PHP (viz. kapitola \ref{sec:optim-apc}). Konfigurace, implementace a realizace tohoto experimentu nebyla a¾ tak nároèná a pracná. Vzhledem k nastudovanım teoretickım základùm, kdy bylo známo jakou cestou se vydat, nebyl experiment a¾ tak slo¾itı a vısledky jsou více ne¾ dobré. Tento postup je tedy mo¾né doporuèit pro ostré nasazení. V prostøedí s opravdu vysokou zátì¾í je nasazení více aplikaèních serverù pro rozlo¾ení zátì¾e (load balancing) nevyhnutelné.
 
-DruhÃ½ experiment pracoval se standartnÃ­ tÅ™Ã­vrstvou architekturou, tj. klientem, aplikaÄnÃ­m serverem a databÃ¡zovÃ½m systÃ©mem (viz. kapitola \ref{sec:optim-database}). Tento experiment byl zamÄ›Å™en na databÃ¡zovÃ½ systÃ©m, jeho pÅ™Ã­stupnost a Äasovou odezvu na SQL dotazy v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. V tomto smÄ›ru bylo zjiÅ¡tÄ›no, Å¾e optimalizace databÃ¡ze je velice dÅ¯leÅ¾itÃ¡, protoÅ¾e se pÅ™Ã­stup a odpovÄ›di na SQL dotazy mohou zrychlit v Å™Ã¡dech sekund, minut i hodin. SamozÅ™ejmÄ› jakmile se prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e zaÄne zvÄ›tÅ¡ovat a zaÄne jeÅ¡tÄ› vÃ­ce rÅ¯st zatÃ­Å¾enÃ­ databÃ¡ze, je potÅ™eba sÃ¡hnout k dalÅ¡Ã­m krokÅ¯m jako napÅ™Ã­klad partitioning nebo replikace. SamozÅ™ejmÄ› v architektuÅ™e webovÃ½ch systÃ©mÅ¯ bÃ½vÃ¡ databÃ¡zovÃ¡ vrstva tou nejvytÃ­Å¾enÄ›jÅ¡Ã­ a nejpomalejÅ¡Ã­ vrstvou. Proto je dobrÃ© zamÄ›Å™it pozornost i na to, jak zmenÅ¡it poÄet SQL dotazÅ¯ do databÃ¡ze.
+Druhı experiment pracoval se standartní tøívrstvou architekturou, tj. klientem, aplikaèním serverem a databázovım systémem (viz. kapitola \ref{sec:optim-database}). Tento experiment byl zamìøen na databázovı systém, jeho pøístupnost a èasovou odezvu na SQL dotazy v prostøedí vysoké zátì¾e. V tomto smìru bylo zji¹tìno, ¾e optimalizace databáze je velice dùle¾itá, proto¾e se pøístup a odpovìdi na SQL dotazy mohou zrychlit v øádech sekund, minut i hodin. Samozøejmì jakmile se prostøedí vysoké zátì¾e zaène zvìt¹ovat a zaène je¹tì více rùst zatí¾ení databáze, je potøeba sáhnout k dal¹ím krokùm jako napøíklad partitioning nebo replikace. Samozøejmì v architektuøe webovıch systémù bıvá databázová vrstva tou nejvytí¾enìj¹í a nejpomalej¹í vrstvou. Proto je dobré zamìøit pozornost i na to, jak zmen¹it poèet SQL dotazù do databáze.
 
-Ve tÅ™etÃ­m experimentu doÅ¡lo k rozÅ¡Ã­Å™enÃ­ tÅ™Ã­vrstvÃ© architektury o vrstvu aplikaÄnÃ­ distribuovanÃ© cache (viz. kapitola \ref{sec:memcached}). PrÃ¡vÄ› dikÃ½ tÃ©to vrstvÄ› je moÅ¾nÃ© zÃ­skat rychlejÅ¡Ã­ pÅ™Ã­stup k jiÅ¾ jednou naÄtenÃ½m datÅ¯m z databÃ¡ze. ZÃ¡roveÅˆ zÅ¯stÃ¡vÃ¡ obsah webovÃ© aplikace dynamickÃ½. OvÅ¡em je nutnÃ© zmÃ­nit, Å¾e zde zÅ¯stÃ¡vÃ¡ velkÃ© zatÃ­Å¾enÃ­ aplikaÄnÃ­ vrstvy. Proto mÅ¯Å¾e v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e nastat situace, kdy je potÅ™eba mÃ­t vÃ­ce aplikaÄnÃ­ch serverÅ¯ pro rozloÅ¾enÃ­ zÃ¡tÄ›Å¾e. VÃ½sledky testÅ¯ simulovanÃ©ho prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e byly rozhodnÄ› lepÅ¡Ã­ s vyuÅ¾itÃ­m aplikaÄnÃ­ distribuovanÃ© cache Memcached neÅ¾ vÃ½sledky pouze s databÃ¡zÃ­. OvÅ¡em je potÅ™eba pÅ™ihlÃ©dnout k nutnosti zajistit funkcionalitu aplikaÄnÃ­ distribuovanÃ© cache v jÃ¡dru aplikace a v jejÃ­ logice. Je potÅ™eba zajistit aplikaci pÅ™Ã­stup ke cache pamÄ›ti, zajistit uklÃ¡dÃ¡nÃ­ dat ve spravnÃ©m, dohodnutÃ©m a znovuzkonstruovatelnÃ©m formÃ¡tu, a hlavnÄ› zajistit jejich sprÃ¡vnou a vÄasnou invalidaci. S poÅ¾adavkem aplikaÄnÃ­ distribuovanÃ© cache je potÅ™eba poÄÃ­tat jiÅ¾ pÅ™i nÃ¡vrhu aplikace, protoÅ¾e jinak mÅ¯Å¾e dochÃ¡zet k ÄastÃ½m chybÃ¡m a nÃ¡klady, aÅ¥ uÅ¾ ÄasovÃ© Äi finanÄnÃ­, na zavedenÃ­ tÃ©to vrstvy mohou bÃ½t vysokÃ©.
+Ve tøetím experimentu do¹lo k roz¹íøení tøívrstvé architektury o vrstvu aplikaèní distribuované cache (viz. kapitola \ref{sec:memcached}). Právì dikı této vrstvì je mo¾né získat rychlej¹í pøístup k ji¾ jednou naètenım datùm z databáze. Zároveò zùstává obsah webové aplikace dynamickı. Ov¹em je nutné zmínit, ¾e zde zùstává velké zatí¾ení aplikaèní vrstvy. Proto mù¾e v prostøedí vysoké zátì¾e nastat situace, kdy je potøeba mít více aplikaèních serverù pro rozlo¾ení zátì¾e. Vısledky testù simulovaného prostøedí vysoké zátì¾e byly rozhodnì lep¹í s vyu¾itím aplikaèní distribuované cache Memcached ne¾ vısledky pouze s databází. Ov¹em je potøeba pøihlédnout k nutnosti zajistit funkcionalitu aplikaèní distribuované cache v jádru aplikace a v její logice. Je potøeba zajistit aplikaci pøístup ke cache pamìti, zajistit ukládání dat ve spravném, dohodnutém a znovuzkonstruovatelném formátu, a hlavnì zajistit jejich správnou a vèasnou invalidaci. S po¾adavkem aplikaèní distribuované cache je potøeba poèítat ji¾ pøi návrhu aplikace, proto¾e jinak mù¾e docházet k èastım chybám a náklady, a» u¾ èasové èi finanèní, na zavedení této vrstvy mohou bıt vysoké.
 
-V poslednÃ­m experimentu probÄ›hlo zkombinovÃ¡nÃ­ reverznÃ­ proxy cache Nginx s aplikaÄnÃ­ distribuovanou cache Memcached (viz. kapitola \ref{sec:reverse-proxy-cache}). PrvnÃ­ HTTP poÅ¾adavky zpracovala aplikaÄnÃ­ vrstva, vytvoÅ™ila HTTP odpovÄ›Ä a uloÅ¾ila ji do cache pamÄ›ti Memcached pro reverznÃ­ proxy cache Nginx. PÅ™i pÅ™Ã­Å¡tÃ­m dotazu naÅ¡la reverznÃ­ proxy cache odpovÄ›Ä v cache pamÄ›ti a okamÅ¾itÄ› ji vrÃ¡tila klientovi. Invalidace tÄ›chto odpovÄ›dÃ­ probÃ­hÃ¡ automaticky pomocÃ­ Memcached a ÄasovÃ©ho razÃ­tka. Tento zpÅ¯sob prÃ¡ce s obsahem webovÃ© aplikace se tak stÃ¡vÃ¡ statickÃ½m. OvÅ¡em vzhledem k tomu, Å¾e odpovÄ›di uklÃ¡dÃ¡ aplikaÄnÃ­ vrstva, mÅ¯Å¾e tyto odpovÄ›di takÃ© invalidovat podobnÄ› jako v pÅ™Ã­padÄ› aplikaÄnÃ­ distribuovanÃ© cache. Jeden HTTP poÅ¾adavek se tak dÃ¡ rozloÅ¾it na vÃ­ce poÅ¾adavkÅ¯ pomocÃ­ technologie Ajax. OdpovÄ›di na jednotlivÃ© poÅ¾adavky Ajax jsou takÃ© uklÃ¡dÃ¡ny do cache pamÄ›ti Memcached a jejich invalidace mÅ¯Å¾e probÄ›hnout ihned pÅ™i zmÄ›nÄ›. DochÃ¡zÃ­ tak k hybridnÃ­mu vyuÅ¾itÃ­ reverznÃ­ proxy cache a aplikaÄnÃ­ distribuovanÃ© cache. VÃ½sledky pro tento zpÅ¯sob prÃ¡ce byly vÃ­ce neÅ¾ uspokojivÃ©. Obsah webovÃ© aplikace je dynamickÃ½ a rychlÃ½, a to dÃ­ky reÅ¾ii uklÃ¡dÃ¡nÃ­ a invalidace na stranÄ› aplikaÄnÃ­ distriboavanÃ© cache a reÅ¾ii ÄtenÃ­ na stranÄ› reverznÃ­ proxy cache.
+V posledním experimentu probìhlo zkombinování reverzní proxy cache Nginx s aplikaèní distribuovanou cache Memcached (viz. kapitola \ref{sec:reverse-proxy-cache}). První HTTP po¾adavky zpracovala aplikaèní vrstva, vytvoøila HTTP odpovìï a ulo¾ila ji do cache pamìti Memcached pro reverzní proxy cache Nginx. Pøi pøí¹tím dotazu na¹la reverzní proxy cache odpovìï v cache pamìti a okam¾itì ji vrátila klientovi. Invalidace tìchto odpovìdí probíhá automaticky pomocí Memcached a èasového razítka. Tento zpùsob práce s obsahem webové aplikace se tak stává statickım. Ov¹em vzhledem k tomu, ¾e odpovìdi ukládá aplikaèní vrstva, mù¾e tyto odpovìdi také invalidovat podobnì jako v pøípadì aplikaèní distribuované cache. Jeden HTTP po¾adavek se tak dá rozlo¾it na více po¾adavkù pomocí technologie Ajax. Odpovìdi na jednotlivé po¾adavky Ajax jsou také ukládány do cache pamìti Memcached a jejich invalidace mù¾e probìhnout ihned pøi zmìnì. Dochází tak k hybridnímu vyu¾ití reverzní proxy cache a aplikaèní distribuované cache. Vısledky pro tento zpùsob práce byly více ne¾ uspokojivé. Obsah webové aplikace je dynamickı a rychlı, a to díky re¾ii ukládání a invalidace na stranì aplikaèní distriboavané cache a re¾ii ètení na stranì reverzní proxy cache.
 
 % Zaver
-\kapitola{ZÃ¡vÄ›r}
-ZÃ¡vÄ›rem je nutno Å™Ã­ci, Å¾e webovÃ¡ architektura je natolik komplexnÃ­ a nÃ¡roÄnÃ½ systÃ©m, Å¾e v nÄ›m neexistuje jedno Äi pÃ¡r pravidel, kterÃ¡ je nutno dodrÅ¾et a dÃ­ky kterÃ½m bude webovÃ¡ aplikace pÅ™ipravenÃ¡, optimalizovanÃ¡ a provozuschopnÃ¡ v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. Existuje spousta osvÄ›dÄenÃ½ch nÃ¡strojÅ¯ a postupÅ¯ Å™eÅ¡enÃ­, kterÃ© umÃ­ pomoci architektuÅ™e k odlehÄenÃ­ vytÃ­Å¾enosti, ovÅ¡em je nutno je brÃ¡t pouze jako rady a nÃ¡vody, ne jako zÃ¡vaznÃ¡ pravidla. KaÅ¾dÃ¡ webovÃ¡ aplikace je totiÅ¾ svÃ½m zpÅ¯sobem jedineÄnÃ¡, a vyÅ¾aduje tak unikÃ¡tnÃ­ pÅ™Ã­stup Å™eÅ¡enÃ­ optimalizace. 
+\kapitola{Závìr}
+Závìrem je nutno øíci, ¾e webová architektura je natolik komplexní a nároènı systém, ¾e v nìm neexistuje jedno èi pár pravidel, která je nutno dodr¾et a díky kterım bude webová aplikace pøipravená, optimalizovaná a provozuschopná v prostøedí vysoké zátì¾e. Existuje spousta osvìdèenıch nástrojù a postupù øe¹ení, které umí pomoci architektuøe k odlehèení vytí¾enosti, ov¹em je nutno je brát pouze jako rady a návody, ne jako závazná pravidla. Ka¾dá webová aplikace je toti¾ svım zpùsobem jedineèná, a vy¾aduje tak unikátní pøístup øe¹ení optimalizace. 
 
-V prvnÃ­ fÃ¡zi je nejdÅ¯leÅ¾itÄ›jÅ¡Ã­ identifikovat zdroj vytÃ­Å¾enÃ­. JednÃ¡-li se o nÄ›jakÃ½ z DoS ÃºtokÅ¯, nebo o nÃ¡razovou vytÃ­Å¾enost, Äi o dlouhodobÃ© kontinuÃ¡lnÃ­ vytÃ­Å¾enÃ­. Je moÅ¾nÃ© se zamÄ›Å™it i na geografickÃ½ pÅ¯vod tohoto vytÃ­Å¾enÃ­. MÅ¯Å¾e se vyskytnout i chyba v konfiguraci Äi implementaci nÄ›kterÃ© z vrstev architektury. K identifikovÃ¡nÃ­ takovÃ½ch problÃ©mÅ¯ jsou dÅ¯leÅ¾itÃ© profilery. VÅ¾dy je dobrÃ© vÄ›dÄ›t, kdo, kdy, kde a jak stojÃ­ za vytÃ­Å¾enÃ­m aplikace.
+V první fázi je nejdùle¾itìj¹í identifikovat zdroj vytí¾ení. Jedná-li se o nìjakı z DoS útokù, nebo o nárazovou vytí¾enost, èi o dlouhodobé kontinuální vytí¾ení. Je mo¾né se zamìøit i na geografickı pùvod tohoto vytí¾ení. Mù¾e se vyskytnout i chyba v konfiguraci èi implementaci nìkteré z vrstev architektury. K identifikování takovıch problémù jsou dùle¾ité profilery. V¾dy je dobré vìdìt, kdo, kdy, kde a jak stojí za vytí¾ením aplikace.
 
-DÃ¡le je nutnÃ© rozliÅ¡ovat, jakÃ½ typ dat aplikace poskytuje a kterÃ¡ data jsou v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e. Podle toho jestli se jednÃ¡ o data statickÃ¡ Äi dynamickÃ¡, je moÅ¾nÃ© urÄit, jakou dalÅ¡Ã­ cestou optimalizace se vydat. DÅ¯leÅ¾itÃ¡ je otÃ¡zka zpracovÃ¡nÃ­ dat. S webovou architekturou v prostÅ™edÃ­ vysokÃ© zÃ¡tÄ›Å¾e souvisÃ­ i vysokÃ¡ mÃ­ra dat nutnÃ½ch ke zpracovÃ¡vÃ¡nÃ­ databÃ¡zÃ­, ke kterÃ© je nutno pÅ™istupovat se zvlÃ¡Å¡tnÃ­ obezÅ™etnostÃ­, ponÄ›vadÅ¾ mÅ¯Å¾e bÃ½t tou nejvytÃ­Å¾enÄ›jÅ¡Ã­ vrstvou architektury.
+Dále je nutné rozli¹ovat, jakı typ dat aplikace poskytuje a která data jsou v prostøedí vysoké zátì¾e. Podle toho jestli se jedná o data statická èi dynamická, je mo¾né urèit, jakou dal¹í cestou optimalizace se vydat. Dùle¾itá je otázka zpracování dat. S webovou architekturou v prostøedí vysoké zátì¾e souvisí i vysoká míra dat nutnıch ke zpracovávání databází, ke které je nutno pøistupovat se zvlá¹tní obezøetností, ponìvad¾ mù¾e bıt tou nejvytí¾enìj¹í vrstvou architektury.
 
-Pokud je moÅ¾nÃ© pÅ™edvÃ­dat vysokÃ© vytÃ­Å¾enÃ­ aplikace, je dobrÃ© webovou architekturu na takovÃ© vytÃ­Å¾enÃ­ pÅ™ipravit. KdyÅ¾ se webovÃ¡ aplikace od zaÄÃ¡tku vyvyjÃ­ tak, aby byla lehce Å¡kÃ¡lovatelnÃ¡, jejÃ­ optimalaze a odlehÄenÃ­ zÃ¡tÄ›Å¾e bude o dost jednoduÅ¡Å¡Ã­. Å kÃ¡lovatelnost je jednÃ­m z nejdÅ¯leÅ¾itÄ›jÅ¡Ã­ch faktorÅ¯ pro optimÃ¡lnÃ­ chod aplikacÃ­ ve vysokÃ©m vytÃ­Å¾enÃ­. Je totiÅ¾ dobrÃ© umÄ›t do webovÃ© architektury pÅ™idat jinÃ© vrstvy, funkcionality a uzly tak, aby odlehÄily co nejvÃ­ce jinÃ½m vrstvÃ¡m. Je dÅ¯leÅ¾itÃ© kombinovat rÅ¯znÃ¡ Å™eÅ¡enÃ­ a pÅ™Ã­stupy.
+Pokud je mo¾né pøedvídat vysoké vytí¾ení aplikace, je dobré webovou architekturu na takové vytí¾ení pøipravit. Kdy¾ se webová aplikace od zaèátku vyvyjí tak, aby byla lehce ¹kálovatelná, její optimalaze a odlehèení zátì¾e bude o dost jednodu¹¹í. ©kálovatelnost je jedním z nejdùle¾itìj¹ích faktorù pro optimální chod aplikací ve vysokém vytí¾ení. Je toti¾ dobré umìt do webové architektury pøidat jiné vrstvy, funkcionality a uzly tak, aby odlehèily co nejvíce jinım vrstvám. Je dùle¾ité kombinovat rùzná øe¹ení a pøístupy.
 
-NezbytnÃ© je zvÃ¡Å¾it jakÃ© jsou dostupnÃ© moÅ¾nosti Å™eÅ¡enÃ­. AÅ¥ uÅ¾ se jednÃ¡ o moÅ¾nosti ÄasovÃ©, finanÄnÃ­ Äi jinÃ©. NÄ›kterÃ¡ Å™eÅ¡enÃ­ jsou nÃ¡roÄnÃ¡ ÄasovÄ›, jinÃ¡ zase finanÄnÄ›. MÅ¯Å¾e nastat i situace, kdy je stÃ¡vajÃ­cÃ­ webovÃ¡ architektura Å¡patnÄ› navrÅ¾ena, a tak ji lze jen tÄ›Å¾ko, Äi vÅ¯bec, rozÅ¡Ã­Å™it. OvÅ¡em ten, kdo rozhoduje o zpÅ¯sobu provedenÃ­ optimalizace a odlehÄenÃ­ vytÃ­Å¾enosti nejsou programÃ¡toÅ™i, administrÃ¡toÅ™i Äi softwarovÃ½ inÅ¾enÃ½Å™i, ale projektovÃ© vedenÃ­. To rozhoduje, jakou cestou se webovÃ¡ aplikace bude ubÃ­rat, jakÃ½ je jejÃ­ cÃ­l, jak se mÃ¡ chovat k uÅ¾ivatelÅ¯m a jakÃ½ je jejÃ­ smysl. OtÃ¡zkou zÅ¯stÃ¡vÃ¡, jsou-li k rozhodnutÃ­m vÅ¾dy dostateÄnÄ› kompetentnÃ­ z pohledu svÃ½ch technickÃ½ch znalostÃ­. V mnoha pÅ™Ã­padech se ale jednÃ¡ o zhodnocenÃ­ faktorÅ¯ finanÄnÃ­ch, ÄasovÃ½ch a technickÃ½ch. Ne kaÅ¾dÃ½ pÅ™Ã­stup k Å™eÅ¡enÃ­ vysokÃ© zÃ¡tÄ›Å¾e je efektivnÃ­ a ne kaÅ¾dÃ½ pÅ™Ã­stup je levnÃ½. VÄ›tÅ¡inou se jednÃ¡ o kompromis mezi dostupnÃ½mi finanÄnÃ­mi a ÄasovÃ½mi moÅ¾nostmi.
+Nezbytné je zvá¾it jaké jsou dostupné mo¾nosti øe¹ení. A» u¾ se jedná o mo¾nosti èasové, finanèní èi jiné. Nìkterá øe¹ení jsou nároèná èasovì, jiná zase finanènì. Mù¾e nastat i situace, kdy je stávající webová architektura ¹patnì navr¾ena, a tak ji lze jen tì¾ko, èi vùbec, roz¹íøit. Ov¹em ten, kdo rozhoduje o zpùsobu provedení optimalizace a odlehèení vytí¾enosti nejsou programátoøi, administrátoøi èi softwarovı in¾enıøi, ale projektové vedení. To rozhoduje, jakou cestou se webová aplikace bude ubírat, jakı je její cíl, jak se má chovat k u¾ivatelùm a jakı je její smysl. Otázkou zùstává, jsou-li k rozhodnutím v¾dy dostateènì kompetentní z pohledu svıch technickıch znalostí. V mnoha pøípadech se ale jedná o zhodnocení faktorù finanèních, èasovıch a technickıch. Ne ka¾dı pøístup k øe¹ení vysoké zátì¾e je efektivní a ne ka¾dı pøístup je levnı. Vìt¹inou se jedná o kompromis mezi dostupnımi finanèními a èasovımi mo¾nostmi.
 
 
 \begin{literatura}
 
 \citace{sledovani-zatizeni}{Rankin, 2010}{\autor{Kyle Rankin}
 %\citace{sledovani-zatizeni}{1}{\autor{Kyle Rankin}
-\nazev{Hack and / - Linux Troubleshooting, Part I: High Load} [online]. Linux Journal, 1.kvÄ›tna 2010. URL: http://www.linuxjournal.com/magazine/hack-and-linux-troubleshooting-part-i-high-load}
+\nazev{Hack and / - Linux Troubleshooting, Part I: High Load} [online]. Linux Journal, 1.kvìtna 2010. URL: http://www.linuxjournal.com/magazine/hack-and-linux-troubleshooting-part-i-high-load}
 
 \citace{dos}{Khan, 2009}{\autor{Faisal Khan}
 %\citace{dos}{2}{\autor{Faisal Khan}
-\nazev{Dos Attacks Overview - What are DoS attacks} [online]. Dos Attacks, 5.zÃ¡Å™Ã­ 2009. URL: http://dos-attacks.com/what-are-dos-attacks/}
+\nazev{Dos Attacks Overview - What are DoS attacks} [online]. Dos Attacks, 5.záøí 2009. URL: http://dos-attacks.com/what-are-dos-attacks/}
 
-\citace{anonymous}{ÄŒepskÃ½, 2012}{\autor{Pavel ÄŒepskÃ½}
-%\citace{anonymous}{3}{\autor{Pavel ÄŒepskÃ½}
-\nazev{Ãštoky jmÃ©nem Anonymous: Jak se rodÃ­ hackeÅ™i?} [online]. Lupa.cz, 7.Ãºnora 2012. URL: http://www.lupa.cz/clanky/utoky-jmenem-anonymous-jak-se-rodi-hackeri/}
+\citace{anonymous}{Èepskı, 2012}{\autor{Pavel Èepskı}
+%\citace{anonymous}{3}{\autor{Pavel Èepskı}
+\nazev{Útoky jménem Anonymous: Jak se rodí hackeøi?} [online]. Lupa.cz, 7.února 2012. URL: http://www.lupa.cz/clanky/utoky-jmenem-anonymous-jak-se-rodi-hackeri/}
 
 \citace{tri-vrstvy}{Zendulka, 2005}{\autor{Doc.Ing.Jaroslav Zendulka,CSc.}
 %\citace{tri-vrstvy}{4}{\autor{Doc.Ing.Jaroslav Zendulka,CSc.}
-\nazev{10. Architektura klient/server a tÅ™Ã­vrstvÃ¡ architektura} [online]. Brno: VUT-FIT, 2005. URL: http://www.fit.vutbr.cz/study/courses/DSI/public/pdf/nove/10\_clsrv.pdf}
+\nazev{10. Architektura klient/server a tøívrstvá architektura} [online]. Brno: VUT-FIT, 2005. URL: http://www.fit.vutbr.cz/study/courses/DSI/public/pdf/nove/10\_clsrv.pdf}
 
 \citace{ajax}{McLaughlin, 2005}{\autor{Brett McLaughlin}
 %\citace{ajax}{5}{\autor{Brett McLaughlin}
 \nazev{Mastering Ajax} [online]. Ibm develper works, 6.prosince 2005. URL: http://www.ibm.com/developerworks/web/library/wa-ajaxintro1/index.html}
 
-\citace{design-patterns}{PecinovskÃ½, 2007}{\autor{Rudolf PecinovskÃ½}
-%\citace{design-patterns}{6}{\autor{Rudolf PecinovskÃ½}
-\nazev{NÃ¡vrhovÃ© vzory : 33 vzorovÃ½ch postupÅ¯ pro objektovÃ© programovÃ¡nÃ­} 1. vyd. Brno: Computer Press, 2007. 527 s. ISBN 978-80-251-1582-4}
+\citace{design-patterns}{Pecinovskı, 2007}{\autor{Rudolf Pecinovskı}
+%\citace{design-patterns}{6}{\autor{Rudolf Pecinovskı}
+\nazev{Návrhové vzory : 33 vzorovıch postupù pro objektové programování} 1. vyd. Brno: Computer Press, 2007. 527 s. ISBN 978-80-251-1582-4}
 
 \citace{optimalizace-sql}{Blaha, 2007}{\autor{Bohdan Blaha}
 %\citace{optimalizace-sql}{7}{\autor{Bohdan Blaha}
@@ -719,8 +719,8 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 %\citace{partitioning-db}{8}{\autor{Eli White}
 \nazev{Habits of Highly Scalable Web Applications} DCPHP Konference. 2009}
 
-\citace{replikace}{Vondra, 2011}{\autor{TomÃ¡Å¡ Vondra}
-%\citace{replikace}{9}{\autor{TomÃ¡Å¡ Vondra}
+\citace{replikace}{Vondra, 2011}{\autor{Tomá¹ Vondra}
+%\citace{replikace}{9}{\autor{Tomá¹ Vondra}
 \nazev{Replikace v PostgreSQL} CSPUG Konference. Praha, 2011}
 
 %\citace{rfc-http}{RFC:2616, 1999}{\autor{R. Fielding, UC Irvine, J. Gettys, J. Mogul, Compaq, H. Frystyk, L. Masinter, Xerox, P. Leach, Microsoft, T. Berners-Lee, W3C/MIT}
@@ -733,11 +733,11 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 
 \citace{xhprof}{Onderka, 2011}{\autor{Jakub Onderka}
 %\citace{xhprof}{12}{\autor{Jakub Onderka}
-\nazev{ProfilovÃ¡nÃ­ PHP skriptÅ¯ pomocÃ­ XHProf} [online]. Zdrojak.cz, 24.ledna 2011. URL: http://www.zdrojak.cz/clanky/profilovani-php-skriptu-pomoci-xhprof/}
+\nazev{Profilování PHP skriptù pomocí XHProf} [online]. Zdrojak.cz, 24.ledna 2011. URL: http://www.zdrojak.cz/clanky/profilovani-php-skriptu-pomoci-xhprof/}
 
 %\citace{apc}{13}{\autor{Vito Chin}
 \citace{apc}{Chin, 2010}{\autor{Vito Chin}
-\nazev{Understanding APC} [online]. Techportal Ibuildings, 7.Å™Ã­jna 2010. URL: http://techportal.ibuildings.com/2010/10/07/understanding-apc/}
+\nazev{Understanding APC} [online]. Techportal Ibuildings, 7.øíjna 2010. URL: http://techportal.ibuildings.com/2010/10/07/understanding-apc/}
 
 %\citace{memcached}{14}{\autor{Brad Fitzpatrick}
 \citace{memcached}{Fitzpatrick, 2004}{\autor{Brad Fitzpatrick}
@@ -745,19 +745,19 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 
 %\citace{nginx}{15}{\autor{Will Reese}
 \citace{nginx}{Reese, 2008}{\autor{Will Reese}
-\nazev{Nginx: the High-Performance Web Server and Reverse Proxy} [online]. Linux Journal, 1.zÃ¡Å™Ã­ 2008. URL: http://www.linuxjournal.com/magazine/nginx-high-performance-web-server-and-reverse-proxy}
+\nazev{Nginx: the High-Performance Web Server and Reverse Proxy} [online]. Linux Journal, 1.záøí 2008. URL: http://www.linuxjournal.com/magazine/nginx-high-performance-web-server-and-reverse-proxy}
 
 %\citace{nginx-memcached}{16}{\autor{Ilya Grigorik}
 \citace{nginx-memcached}{Grigorik, 2008}{\autor{Ilya Grigorik}
-\nazev{Nginx and Memcached, a 400\% boost!} [online]. Ingvita, 11.Ãºnora 2008. URL: http://www.igvita.com/2008/02/11/nginx-and-memcached-a-400-boost/}
+\nazev{Nginx and Memcached, a 400\% boost!} [online]. Ingvita, 11.února 2008. URL: http://www.igvita.com/2008/02/11/nginx-and-memcached-a-400-boost/}
 
 %\citace{cdn}{17}{\autor{Bc. Pavel Mikulka}
 \citace{cdn}{Mikulka, 2008}{\autor{Bc. Pavel Mikulka}
-\nazev{Implementace CDN a clusteringu v prostÅ™edÃ­ GNU/LINUX s testy vÃ½konnosti}, Brno: VUT, 2008. 65 s. URL: http://www.vutbr.cz/www\_base/zav\_prace\_soubor\_verejne.php?file\_id=7793} 
+\nazev{Implementace CDN a clusteringu v prostøedí GNU/LINUX s testy vıkonnosti}, Brno: VUT, 2008. 65 s. URL: http://www.vutbr.cz/www\_base/zav\_prace\_soubor\_verejne.php?file\_id=7793} 
 
-%\citace{virtual}{18}{\autor{Petr HrÅ¯Å¡a}
-\citace{virtual}{HrÅ¯Å¡a, 2011}{\autor{Petr HrÅ¯Å¡a}
-\nazev{VÃ½hody a nevÃ½hody virtualizace platforem a aktuÃ¡lnÃ­ nabÃ­dka} [online]. Aquasoft, 24.listopadu 2011. URL: http://www.aquasoft.eu/blog/nazor_odbornika.php?nazor=450} 
+%\citace{virtual}{18}{\autor{Petr Hrù¹a}
+\citace{virtual}{Hrù¹a, 2011}{\autor{Petr Hrù¹a}
+\nazev{Vıhody a nevıhody virtualizace platforem a aktuální nabídka} [online]. Aquasoft, 24.listopadu 2011. URL: http://www.aquasoft.eu/blog/nazor_odbornika.php?nazor=450} 
 
 
 \end{literatura}
@@ -765,15 +765,15 @@ http://www.unicorncollege.cz/katalog-bakalarskych-praci/bohdan-blaha/attachments
 % Prilohy
 \prilohy
 
-\priloha{APC webovÃ© rozhranÃ­}
+\priloha{APC webové rozhraní}
 \vlozeps{../images/apc-web.png}{0.5}
 
-\priloha{XHProf graf zÃ¡vislostÃ­ funkcÃ­ a metod Symfony2}
+\priloha{XHProf graf závislostí funkcí a metod Symfony2}
 \vlozeps{../images/callgraph-xhprof.png}{0.275}
 
-\priloha{AJAX dynamickÃ© poÅ¾adavky pro reverznÃ­ proxy cache Nginx}
+\priloha{AJAX dynamické po¾adavky pro reverzní proxy cache Nginx}
 \vlozeps{../images/ajax-nginx.png}{0.4}
 
-\priloha{DVD s aplikacÃ­ pro aplikaÄnÃ­ distribuovanou cache Memcached}
+\priloha{DVD s aplikací pro aplikaèní distribuovanou cache Memcached}
 
 \end{document}
