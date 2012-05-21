@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  20 MAY 2012 02:46
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2012.4.25)  22 MAY 2012 00:48
 entering extended mode
  %&-line parsing enabled.
 **dp.tex
@@ -506,12 +506,12 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 43.
+(hyperref)                removing `\textring' on input line 47.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 43.
+(hyperref)                removing `\textasciicaron' on input line 47.
 
 [8
 
@@ -519,12 +519,12 @@ Package hyperref Warning: Composite letter `\textasciicaron+e'
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 55.
+(hyperref)                removing `\textasciicaron' on input line 57.
 
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.64 ...e, tedy i nějaký útok. \cite{anonymous}
+l.66 ...e, tedy i nějaký útok. \cite{anonymous}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -533,7 +533,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.64 ...e, tedy i nějaký útok. \cite{anonymous}
+l.66 ...e, tedy i nějaký útok. \cite{anonymous}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -545,12 +545,12 @@ your output. But keep trying; you can fix this later.
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 69.
+(hyperref)                removing `\textasciicaron' on input line 71.
 
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 69.
+(hyperref)                removing `\textring' on input line 71.
 
 <../images/3layer.png, id=333, 371.3875pt x 125.46875pt>
 File: ../images/3layer.png Graphic file (type png)
@@ -562,7 +562,7 @@ File: ../images/wikimedia.png Graphic file (type png)
 <use ../images/wikimedia.png> [11
 
  <../images/3layer.png> <../images/wikimedia.png (PNG copy)>]
-Underfull \hbox (badness 1946) in paragraph at lines 91--92
+Underfull \hbox (badness 1946) in paragraph at lines 93--94
 \OT1/cmr/m/n/12 kde^^Tzto spr^^Sava dy-na-mick^^Seho ob-sahu je n^^Saro^^Tcn^^T
 ej^^Ts^^S^^P. Dy-na-mick^^Sy p^^Tr^^S^^Pstup ^^Tcasto
  []
@@ -573,17 +573,17 @@ ej^^Ts^^S^^P. Dy-na-mick^^Sy p^^Tr^^S^^Pstup ^^Tcasto
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 94.
+(hyperref)                removing `\textasciicaron' on input line 96.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 97.
+(hyperref)                removing `\textasciicaron' on input line 99.
 
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.98 ...ci do tří vrstev. \cite{design-patterns}
+l.100 ...i do tří vrstev. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -592,7 +592,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.100 ...í do vrstvy View. \cite{design-patterns}
+l.102 ...í do vrstvy View. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -601,7 +601,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.102 ...st a přehlednost. \cite{design-patterns}
+l.104 ...st a přehlednost. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -610,7 +610,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.104 ...cích přístupů. \cite{design-patterns}
+l.106 ...cích přístupů. \cite{design-patterns}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -625,20 +625,20 @@ File: ../images/mvc.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 112.
+(hyperref)                removing `\textasciicaron' on input line 114.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 117.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 119.
 
 (/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 117.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 119.
 
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 124.
+(hyperref)                removing `\textasciicaron' on input line 126.
 
 [14
 
@@ -646,12 +646,12 @@ Package hyperref Warning: Composite letter `\textasciicaron+c'
 
 Package hyperref Warning: Composite letter `\textring+u'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textring' on input line 146.
+(hyperref)                removing `\textring' on input line 148.
 
 [16
 
 ] [17]
-Underfull \hbox (badness 1033) in paragraph at lines 192--193
+Underfull \hbox (badness 1033) in paragraph at lines 194--195
 []\OT1/cmr/m/n/12 Replikace va-ri-anty master-slave je pod-po-rov^^Sana ve v^^T
 et^^Tsin^^Te da-tab^^Sazov^^Sych
  []
@@ -660,7 +660,7 @@ et^^Tsin^^Te da-tab^^Sazov^^Sych
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 200.
+(hyperref)                removing `\textasciicaron' on input line 202.
 
 [19] <../images/cache-process.png, id=401, 401.24907pt x 357.58594pt>
 File: ../images/cache-process.png Graphic file (type png)
@@ -669,12 +669,12 @@ File: ../images/cache-process.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 226.
+(hyperref)                removing `\textasciicaron' on input line 228.
 
 [20
 
  <../images/cache-process.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 234--235
+Underfull \hbox (badness 10000) in paragraph at lines 236--237
 
  []
 
@@ -685,7 +685,7 @@ File: ../images/cache-types.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 258.
+(hyperref)                removing `\textasciicaron' on input line 260.
 
 [22
 
@@ -701,7 +701,7 @@ File: ../images/reverse-proxy-cache.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 283.
+(hyperref)                removing `\textasciicaron' on input line 285.
 
 [23 <../images/proxy-cache.png>] [24 <../images/reverse-proxy-cache.png>]
 <../images/application-distributed-cache.png, id=439, 442.65375pt x 259.97125pt
@@ -717,7 +717,7 @@ File: ../images/cdn.png Graphic file (type png)
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.323 ...dnotlivé vrstvy a servery.\cite{virtual}
+l.325 ...dnotlivé vrstvy a servery.\cite{virtual}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -726,7 +726,7 @@ your output. But keep trying; you can fix this later.
 ! A <box> was supposed to be here.
 <to be read again> 
                    {
-l.323 ...dnotlivé vrstvy a servery.\cite{virtual}
+l.325 ...dnotlivé vrstvy a servery.\cite{virtual}
                                                   
 I was expecting to see \hbox or \vbox or \copy or \box or
 something like that. So you might find something missing in
@@ -743,7 +743,7 @@ File: ../images/virtual.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 333.
+(hyperref)                removing `\textasciicaron' on input line 335.
 
 <../images/load-balancing.png, id=469, 540.0175pt x 230.8625pt>
 File: ../images/load-balancing.png Graphic file (type png)
@@ -756,7 +756,7 @@ File: ../images/load-balancing.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 363.
+(hyperref)                removing `\textasciicaron' on input line 365.
 
 <../images/nginx-architecture.png, id=481, 681.54625pt x 198.7425pt>
 File: ../images/nginx-architecture.png Graphic file (type png)
@@ -765,12 +765,12 @@ File: ../images/nginx-architecture.png Graphic file (type png)
 
  <../images/nginx-architecture.png>]
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 434--438
+Underfull \hbox (badness 10000) in paragraph at lines 436--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 434--438
+Underfull \hbox (badness 10000) in paragraph at lines 436--440
 
  []
 
@@ -778,7 +778,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 434--438
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 457.
+(hyperref)                removing `\textasciicaron' on input line 459.
 
 [34] <../images/graph-apc.png, id=504, 854.19125pt x 645.41125pt>
 File: ../images/graph-apc.png Graphic file (type png)
@@ -815,7 +815,7 @@ File: ../images/database-architecture.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 569.
+(hyperref)                removing `\textasciicaron' on input line 571.
 
 [40
 
@@ -861,113 +861,113 @@ File: ../images/nginx-architecture.png Graphic file (type png)
 
 Package hyperref Warning: Composite letter `\textasciicaron+e'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 673.
+(hyperref)                removing `\textasciicaron' on input line 675.
 
 [51
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 684--685
+Underfull \hbox (badness 10000) in paragraph at lines 691--692
 []\OT1/cmr/m/sc/12 Kyle Ran-kin \OT1/cmr/m/it/12 Hack and / - Li-nux Trouble-sh
 o-o-ting, Part I:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 684--685
+Underfull \hbox (badness 10000) in paragraph at lines 691--692
 \OT1/cmr/m/it/12 High Load \OT1/cmr/m/n/12 [on-line]. Li-nux Jour-nal, 1.kv^^Te
 tna 2010. URL:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 684--685
+Underfull \hbox (badness 10000) in paragraph at lines 691--692
 \OT1/cmr/m/n/12 http://www.linuxjournal.com/magazine/hack-and-linux-troubleshoo
 ting-
  []
 
 
-Underfull \hbox (badness 1052) in paragraph at lines 692--693
+Underfull \hbox (badness 1052) in paragraph at lines 699--700
 \OT1/cmr/m/n/12 7.^^Sunora 2012. URL: http://www.lupa.cz/clanky/utoky-jmenem-an
 onymous-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
+Underfull \hbox (badness 10000) in paragraph at lines 703--704
 []\OT1/cmr/m/sc/12 Doc.Ing.Jaroslav Zen-dulka,CSc. \OT1/cmr/m/it/12 10. Ar-chi-
 tek-tura kli-ent/server
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 696--697
+Underfull \hbox (badness 10000) in paragraph at lines 703--704
 \OT1/cmr/m/it/12 a t^^Tr^^S^^Pvrstv^^Sa ar-chi-tek-tura \OT1/cmr/m/n/12 [on-lin
 e]. Brno: VUT-FIT, 2005. URL:
  []
 
 
-Underfull \hbox (badness 1735) in paragraph at lines 700--701
+Underfull \hbox (badness 1735) in paragraph at lines 707--708
 []\OT1/cmr/m/sc/12 Brett Mc-Lau-gh-lin \OT1/cmr/m/it/12 Mas-te-ring Ajax \OT1/c
 mr/m/n/12 [on-line]. Ibm de-vel-per works, 6.pro-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 700--701
+Underfull \hbox (badness 10000) in paragraph at lines 707--708
 \OT1/cmr/m/n/12 since 2005. URL: http://www.ibm.com/developerworks/web/library/
 wa-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 709--710
+Underfull \hbox (badness 10000) in paragraph at lines 716--717
 []\OT1/cmr/m/sc/12 Bohdan Blaha \OT1/cmr/m/it/12 SQL Op-ti-ma-li-zace v Oracle 
 \OT1/cmr/m/n/12 Praha: Uni-corn
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 709--710
+Underfull \hbox (badness 10000) in paragraph at lines 716--717
 \OT1/cmr/m/n/12 College, 2010. 47 s. URL: http://www.unicorncollege.cz/katalog-
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 709--710
+Underfull \hbox (badness 10000) in paragraph at lines 716--717
 \OT1/cmr/m/n/12 bakalarskych-praci/bohdan-blaha/attachments/Blaha[]Bohdan[]-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--726
+Underfull \hbox (badness 10000) in paragraph at lines 732--733
 []\OT1/cmr/m/sc/12 Mark Not-tingham \OT1/cmr/m/it/12 CA-CHING TU-TO-RIAL for We
 b Au-thors
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 725--726
+Underfull \hbox (badness 10000) in paragraph at lines 732--733
 \OT1/cmr/m/it/12 and Web-mas-ters \OT1/cmr/m/n/12 [on-line]. Mark Not-tingham, 
 1998-2012. URL:
  []
 
 [52]
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 748--749
 []\OT1/cmr/m/sc/12 Will Re-ese \OT1/cmr/m/it/12 Nginx: the High-Performance Web
  Ser-ver and Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 748--749
 \OT1/cmr/m/it/12 verse Proxy \OT1/cmr/m/n/12 [on-line]. Li-nux Jour-nal, 1.z^^S
 a^^Tr^^S^^P 2008. URL:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 741--742
+Underfull \hbox (badness 10000) in paragraph at lines 748--749
 \OT1/cmr/m/n/12 http://www.linuxjournal.com/magazine/nginx-high-performance-web
 -server-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 749--750
+Underfull \hbox (badness 10000) in paragraph at lines 756--757
 []\OT1/cmr/m/sc/12 Bc. Pa-vel Mi-kulka \OT1/cmr/m/it/12 Im-ple-men-tace CDN a c
 lus-te-ringu v prost^^Tred^^S^^P
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 749--750
+Underfull \hbox (badness 10000) in paragraph at lines 756--757
 \OT1/cmr/m/it/12 GNU/LINUX s testy v^^Sykonnosti\OT1/cmr/m/n/12 , Brno: VUT, 20
 08. 65 s. URL:
  []
@@ -975,7 +975,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 749--750
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.753 ...ft.eu/blog/nazor_odbornika.php?nazor=450}
+l.760 ...ft.eu/blog/nazor_odbornika.php?nazor=450}
                                                   
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -983,7 +983,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.754 
+l.761 
       
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -991,7 +991,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.754 
+l.761 
       
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -1000,13 +1000,13 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--754
+Underfull \hbox (badness 10000) in paragraph at lines 760--761
 []\OT1/cmr/m/sc/12 Petr Hr[]u[]sa \OT1/cmr/m/it/12 V^^Syhody a nev^^Syhody vir-
 tu-a-li-zace plat-fo-rem a
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 753--754
+Underfull \hbox (badness 10000) in paragraph at lines 760--761
 \OT1/cmr/m/it/12 aktu^^Saln^^S^^P nab^^S^^Pdka \OT1/cmr/m/n/12 [on-line]. Aqua-
 soft, 24.lis-to-padu 2011. URL:
  []
@@ -1014,7 +1014,7 @@ soft, 24.lis-to-padu 2011. URL:
 ! Extra }, or forgotten \endgroup.
 \par ...m \@noitemerr {\@@par }\fi \else {\@@par }
                                                   \fi 
-l.754 
+l.761 
       
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -1026,7 +1026,7 @@ deleted material, e.g., by typing `I$}'.
 
 Package hyperref Warning: Composite letter `\textasciicaron+r'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 760.
+(hyperref)                removing `\textasciicaron' on input line 767.
 
 [54
 
@@ -1034,7 +1034,7 @@ Package hyperref Warning: Composite letter `\textasciicaron+r'
 has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.761 \priloha{APC webové rozhraní}
+l.768 \priloha{APC webové rozhraní}
                                      
 <../images/apc-web.png, id=639, 744.7825pt x 1106.1325pt>
 File: ../images/apc-web.png Graphic file (type png)
@@ -1045,7 +1045,7 @@ File: ../images/apc-web.png Graphic file (type png)
  same identifier (name{section.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.764 ...af závislostí funkcí a metod Symfony2}
+l.771 ...af závislostí funkcí a metod Symfony2}
                                                   
 <../images/callgraph-xhprof.png, id=645, 1294.8375pt x 2007.5pt>
 File: ../images/callgraph-xhprof.png Graphic file (type png)
@@ -1056,7 +1056,7 @@ File: ../images/callgraph-xhprof.png Graphic file (type png)
 ame identifier (name{section.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.767 ...žadavky pro reverzní proxy cache Nginx}
+l.774 ...žadavky pro reverzní proxy cache Nginx}
                                                   
 <../images/ajax-nginx.png, id=651, 499.8675pt x 1339.0025pt>
 File: ../images/ajax-nginx.png Graphic file (type png)
@@ -1067,12 +1067,12 @@ File: ../images/ajax-nginx.png Graphic file (type png)
 the same identifier (name{section.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.770 ...likační distribuovanou cache Memcached}
+l.777 ...likační distribuovanou cache Memcached}
                                                   
 
 Package hyperref Warning: Composite letter `\textasciicaron+c'
 (hyperref)                not defined in PD1 encoding,
-(hyperref)                removing `\textasciicaron' on input line 770.
+(hyperref)                removing `\textasciicaron' on input line 777.
 
 [58
 
@@ -1152,7 +1152,7 @@ e1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texmf-texlive/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
 m/cmti12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt8.pfb
 >
-Output written on dp.pdf (58 pages, 2354076 bytes).
+Output written on dp.pdf (58 pages, 2358873 bytes).
 PDF statistics:
  740 PDF objects out of 1000 (max. 8388607)
  154 named destinations out of 1000 (max. 500000)
